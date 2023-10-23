@@ -1,0 +1,290 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Товар | VATA SHOP {% endblock %}
+
+{% block content %}
+<!-- wrapper -->    
+<div id="wrapper">
+
+
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-9">
+                <div class="product-single-image">
+                   <div class="ProductCard-photo">
+                            <img src="/assets/images/vata/single-product-1.jpg" alt=""/>
+                        </div>
+                        <div class="ProductCard-picts">
+                            <a class="ProductCard-pict ProductCard-pict_ACTIVE" href="/assets/images/vata/single-product-1.jpg">
+                                <img src="/assets/images/vata/single-product-1.jpg" alt=""/>
+                            </a>
+                            <a class="ProductCard-pict" href="/assets/images/vata/single-product-2.jpg">
+                                <img src="/assets/images/vata/single-product-2.jpg" alt=""/>
+                            </a>
+                             <a class="ProductCard-pict" href="/assets/images/vata/single-product-3.jpg">
+                                <img src="/assets/images/vata/single-product-3.jpg" alt=""/>
+                            </a>
+                             <a class="ProductCard-pict" href="/assets/images/vata/single-product-4.jpg">
+                                <img src="/assets/images/vata/single-product-4.jpg" alt=""/>
+                            </a>
+
+                        </div>
+                </div>
+                <div class="product-single-info">
+                    <span class="shop-price" style="font-size:60px">{{ data.price }}.00
+                    </span>
+                    <h3 class="product-single-title">{{ data.title }}
+                    </h3>
+                    <div class="star-rating">
+                        <span style="width:90%">Rated
+                              <strong class="rating">4.50
+                              </strong>out of 5
+                          </span>
+                    </div>
+                      <div class="product-single-description">
+                          <p>{{ data.description }}
+                        </p>
+                      </div>
+
+                    <form class="cart" enctype="multipart/form-data" style="margin-top:40px; ">
+                        <div class="shop-qty">
+                            <button class="minus">-</button>
+                            <input type="number" class="input-text qty text" step="1" min="1" max="" name="quantity"
+                                   value="1" title="Qty" size="4" placeholder="" inputmode="numeric">
+                            <button class="plus">+</button>
+                        </div>
+                        <button type="submit" name="add-to-cart" class="button-product">В корзину</button>
+                    </form>
+                </div>
+                <div class="product-single-box">
+                    <p style="margin:0; text-align: left">общий вес, г</p>
+                    <p style="margin:0; text-align: right">{{ data.weight }}</p>
+                    <p style="margin:0; text-align: left">материал</p>
+                    <p style="margin:0; text-align: right">{{ data.material }}</p>
+                    <p style="margin:0; text-align: left">место размещения</p>
+                    <p style="margin:0; text-align: right">{{ data.place_operation|join(', ') }}</p>
+                    <p style="margin:0; text-align: left">цвета</p>
+                    <p style="margin:0; text-align: right">
+                        {% for key,value in data.colors|items %}
+                        <span title="{{value}}"
+                              style="background-color:{{ key }}; border-radius:10%; padding:5px 15px; margin-right:10px;"></span>
+                        {% endfor %}
+                    </p>
+                </div>
+                <div id="description" class="product-single-box">
+                    <h2>Описание</h2>
+                    {{ data.description }}
+                </div>
+                <div class="product-related-products">
+                    <h3 class="product-single-title">Related Products</h3>
+                    <div class="shop-products shopContainer columns-3">
+                        <div class="gutter-sizer"></div>
+
+                        <!-- product 1 -->
+                        <div class="product">
+                            <a class="product-images" href="single-product.html">
+                                <div class="shop-first-image">
+                                    <img alt="image" src="/assets/images/vata/single-product-1.jpg" width="300"
+                                         height="300"/>
+                                </div>
+                            </a>
+                            <div class="shop-product-details">
+                                <div class="shop-product-details-container">
+                                    <h4 class="shop-product-title">
+                                        <a href="single-product.html">Armchair</a>
+                                    </h4>
+                                    <div class="star-rating">
+                                                  <span style="width:80%">Rated
+                                                      <strong class="rating">4.00</strong>
+                                                      out of 5</span>
+                                    </div>
+                                    <span class="shop-price">
+                                                  <span>$</span>35.00</span>
+                                    <div class="shop-button-box">
+                                        <a class="button-product" href="#">Add to cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /product 1 -->
+
+                        <!-- product 2 -->
+                        <div class="product">
+                            <a class="product-images" href="single-product.html">
+                                <div class="shop-first-image">
+                                    <img alt="image" src="/assets/images/vata/single-product-1.jpg" width="300"
+                                         height="300"/>
+                                </div>
+                                <div class="shop-second-image">
+                                    <img alt="image" src="assets/images/shop-product-2-2.jpg"/>
+                                </div>
+                            </a>
+                            <div class="shop-product-details">
+                                <div class="shop-product-details-container">
+                                    <h4 class="shop-product-title">
+                                        <a href="single-product.html">Audio</a>
+                                    </h4>
+                                    <div class="star-rating">
+                                                  <span style="width:100%">Rated
+                                                      <strong class="rating">5.00</strong>
+                                                      out of 5</span>
+                                    </div>
+                                    <span class="shop-price">
+                                                  <span>$</span>9.00</span>
+                                    <div class="shop-button-box">
+                                        <a class="button-product" href="#">Add to cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /product 2 -->
+
+                        <!-- product 3 -->
+                        <div class="product">
+                            <a class="product-images" href="single-product.html">
+                                <div class="shop-first-image">
+                                    <img alt="image" src="/assets/images/vata/single-product-1.jpg" width="300"
+                                         height="300"/>
+                                </div>
+                                <div class="shop-second-image">
+                                    <img alt="image" src="/assets/images/vata/single-product-1.jpg" width="300"
+                                         height="300"/>
+                                </div>
+                            </a>
+                            <div class="shop-product-details">
+                                <div class="shop-product-details-container">
+                                    <h4 class="shop-product-title">
+                                        <a href="single-product.html">Black Armchair</a>
+                                    </h4>
+                                    <div class="star-rating">
+                                                  <span style="width:80%">Rated
+                                                      <strong class="rating">4.00</strong>
+                                                      out of 5</span>
+                                    </div>
+                                    <span class="shop-price">
+                                                  <span>$</span>35.00</span>
+                                    <div class="shop-button-box">
+                                        <a class="button-product" href="#">Add to cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /product 3 -->
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 rex-padding-left">
+                <div class="sidebar">
+                    <div class="sidebar-box">
+                        <h1 class="sidebar-title">Product categories</h1>
+                        <ul class="product-categories">
+                            <li>
+                                <a href="#">Albums</a>
+                            </li>
+                            <li>
+                                <a href="#">Clothing</a>
+                            </li>
+                            <li>
+                                <a href="#">Hoodies</a>
+                            </li>
+                            <li>
+                                <a href="#">Music</a>
+                            </li>
+                            <li>
+                                <a href="#">Posters</a>
+                            </li>
+                            <li>
+                                <a href="#">Singles</a>
+                            </li>
+                            <li>
+                                <a href="#">Uncategorized</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-box">
+                        <h1 class="sidebar-title">Top rated products</h1>
+                        <ul class="sidebar-product-list">
+                            <li>
+                                <a href="single-product.html">
+                                    <img alt="image" src="/assets/images/vata/sidebar-product-1.jpg"/>
+                                    <span class="product-title">Audio</span>
+                                </a>
+                                <div class="star-rating">
+                                              <span style="width:100%">Rated
+                                                  <strong class="rating">5.00</strong>
+                                                  out of 5</span>
+                                </div>
+                                <span class="shop-price">
+                                              <span>$</span>9.00</span>
+                            </li>
+                            <li>
+                                <a href="single-product.html">
+                                    <img alt="image" src="/assets/images/vata/sidebar-product-2.jpg"/>
+                                    <span class="product-title">Pillow</span>
+                                </a>
+                                <div class="star-rating">
+                                              <span style="width:93.4%">Rated
+                                                  <strong class="rating">4.67</strong>
+                                                  out of 5</span>
+                                </div>
+                                <span class="shop-price">
+                                              <span>$</span>35.00</span>
+                            </li>
+                            <li>
+                                <a href="single-product.html">
+                                    <img alt="image" src="/assets/images/vata/sidebar-product-3.jpg"/>
+                                    <span class="product-title">Oak Tray</span>
+                                </a>
+                                <div class="star-rating">
+                                              <span style="width:90%">Rated
+                                                  <strong class="rating">4.50</strong>
+                                                  out of 5</span>
+                                </div>
+                                <span class="shop-price">
+                                              <span>$</span>35.00</span>
+                            </li>
+                            <li>
+                                <a href="single-product.html">
+                                    <img alt="image" src="/assets/images/vata/sidebar-product-4.jpg"/>
+                                    <span class="product-title">Bottle</span>
+                                </a>
+                                <div class="star-rating">
+                                              <span style="width:90%">Rated
+                                                  <strong class="rating">4.50</strong>
+                                                  out of 5</span>
+                                </div>
+                                <del>
+                                              <span class="shop-price">
+                                                  <span>$</span>3.00</span>
+                                </del>
+                                <ins>
+                                              <span class="shop-price">
+                                                  <span>$</span>2.00</span>
+                                </ins>
+                            </li>
+                            <li>
+                                <a href="single-product.html">
+                                    <img alt="image" src="/assets/images/vata/sidebar-product-5.jpg"/>
+                                    <span class="product-title">Vases</span>
+                                </a>
+                                <div class="star-rating">
+                                              <span style="width:80%">Rated
+                                                  <strong class="rating">4.00</strong>
+                                                  out of 5</span>
+                                </div>
+                                <span class="shop-price">
+                                              <span>$</span>3.00</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /wrapper --> 
+{% endblock %}

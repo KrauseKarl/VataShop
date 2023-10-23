@@ -365,7 +365,7 @@
     gridAdjustment: 'responsive',
     caption: 'zoom',
     displayType: 'sequentially',
-    displayTypeSpeed: 100,
+    displayTypeSpeed: 200,
 
     plugins: {
       loadMore: {
@@ -1001,4 +1001,22 @@ if ($('header.sticky').length) {
   }
   }
 
+    var ProductCard = function(){
+    var $picts = $('.ProductCard-pict');
+    var $photo = $('.ProductCard-photo');
+    return {
+        init: function(){
+            $picts.on('click', function(e){
+                e.preventDefault();
+                var $this = $(this);
+                var href = $this.attr('href');
+                $photo.empty();
+                $photo.append('<img src="'+ href +'" />');
+                $picts.removeClass('ProductCard-pict_ACTIVE');
+                $this.addClass('ProductCard-pict_ACTIVE');
+            });
+        }
+    };
+};
+    ProductCard().init();
   });

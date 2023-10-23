@@ -1,0 +1,38 @@
+{"001": {
+        "id": "1",
+        "slug": "kashpo-krolik",
+        "category": "kashpo",
+        "title": "Кашпо-кролик",
+        "description": "Кашпо в форме кролика для суккулентов",
+        "price": "1000",
+        "weight": "200",
+        "material": "бетон",
+        "place_operation": [
+          "дом"
+        ],
+        "size":
+          {
+            "width": "20",
+            "height": "20",
+            "length": "20",
+            "volume": "0.2"
+          },
+        "colors": {
+          "white": "белый",
+          "black": "черный",
+          "red": "красный"
+        },
+        "hashtags": [
+            "кашпо",
+            "бетон",
+            "для суккулентов",
+            "кролик"
+        ],
+        "main_image": "/assets/images/vata/items/001/001_main.jpg",
+        "rest_image": [
+          "/assets/images/vata/items/001/001_img_1.jpg",
+          "/assets/images/vata/items/001/001_img_2.jpg"
+        ],
+        "thumbnail": "/assets/images/vata/items/001/001_thumbnail.jpg"
+}
+}

@@ -1,0 +1,17 @@
+[
+  {
+        "id": "1",
+        "slug": "kashpo-krolik",
+        "category": "кашпо"
+  },
+  {
+        "id": "2",
+        "slug": "svechi",
+        "category": "свечи"
+  },
+  {
+        "id": "3",
+        "slug": "vasy",
+        "category": "вазы"
+  }
+]

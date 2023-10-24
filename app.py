@@ -40,10 +40,13 @@ async def item(request: Request):
 
     with open("db.json", "r", encoding="utf-8") as f:
         data = json.load(f)
-    print(data.get('001'))
+    with open("categoies.json", "r", encoding="utf-8") as с:
+        categoies = json.load(с)
+    print(categoies)
     context = {
         "request": request,
         "data": data.get('001'),
+        "categoies": categoies,
     }
     return templates.TemplateResponse(
         "item.html",

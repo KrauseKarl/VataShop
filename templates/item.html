@@ -15,20 +15,21 @@
             <div class="col-md-9">
                 <div class="product-single-image">
                    <div class="ProductCard-photo">
-                            <img src="/assets/images/vata/single-product-1.jpg" alt=""/>
+                            <img src="/assets/images/vata/single-product-white.jpg" alt=""/>
                         </div>
                         <div class="ProductCard-picts">
-                            <a class="ProductCard-pict ProductCard-pict_ACTIVE" href="/assets/images/vata/single-product-1.jpg">
-                                <img src="/assets/images/vata/single-product-1.jpg" alt=""/>
+                            <a class="ProductCard-pict ProductCard-pict_ACTIVE"
+                               href="/assets/images/vata/single-product-white.jpg">
+                                <img src="/assets/images/vata/single-product-white.jpg" alt=""/>
                             </a>
-                            <a class="ProductCard-pict" href="/assets/images/vata/single-product-2.jpg">
-                                <img src="/assets/images/vata/single-product-2.jpg" alt=""/>
+                            <a class="ProductCard-pict" href="/assets/images/vata/single-product-red.jpg">
+                                <img src="/assets/images/vata/single-product-red.jpg" alt=""/>
                             </a>
-                             <a class="ProductCard-pict" href="/assets/images/vata/single-product-3.jpg">
-                                <img src="/assets/images/vata/single-product-3.jpg" alt=""/>
+                             <a class="ProductCard-pict" href="/assets/images/vata/single-product-black.jpg">
+                                <img src="/assets/images/vata/single-product-black.jpg" alt=""/>
                             </a>
-                             <a class="ProductCard-pict" href="/assets/images/vata/single-product-4.jpg">
-                                <img src="/assets/images/vata/single-product-4.jpg" alt=""/>
+                             <a class="ProductCard-pict" href="/assets/images/vata/single-product-blue.jpg">
+                                <img src="/assets/images/vata/single-product-blue.jpg" alt=""/>
                             </a>
 
                         </div>
@@ -59,25 +60,31 @@
                         <button type="submit" name="add-to-cart" class="button-product">В корзину</button>
                     </form>
                 </div>
-                <div class="product-single-box">
+
+                    <div class="product-single-box-detail" >
                     <p style="margin:0; text-align: left">общий вес, г</p>
                     <p style="margin:0; text-align: right">{{ data.weight }}</p>
                     <p style="margin:0; text-align: left">материал</p>
                     <p style="margin:0; text-align: right">{{ data.material }}</p>
+                        <p style="margin:0; text-align: left">размеры</p>
+                    <p style="margin:0; text-align: right">{{ data.size.width}} X {{ data.size.height}} X {{ data.size.length}}</p>
                     <p style="margin:0; text-align: left">место размещения</p>
                     <p style="margin:0; text-align: right">{{ data.place_operation|join(', ') }}</p>
                     <p style="margin:0; text-align: left">цвета</p>
                     <p style="margin:0; text-align: right">
                         {% for key,value in data.colors|items %}
-                        <span title="{{value}}"
-                              style="background-color:{{ key }}; border-radius:10%; padding:5px 15px; margin-right:10px;"></span>
+                        <a title="{{value}}" href="" class="colors"
+                              style="background-color:{{ key }}; border-radius:10%; padding:5px 15px; margin-right:10px;"></a>
                         {% endfor %}
                     </p>
                 </div>
-                <div id="description" class="product-single-box">
+
+                    <div id="description" class="product-single-box" style="width:40%;">
                     <h2>Описание</h2>
                     {{ data.description }}
                 </div>
+
+
                 <div class="product-related-products">
                     <h3 class="product-single-title">Related Products</h3>
                     <div class="shop-products shopContainer columns-3">
@@ -87,7 +94,7 @@
                         <div class="product">
                             <a class="product-images" href="single-product.html">
                                 <div class="shop-first-image">
-                                    <img alt="image" src="/assets/images/vata/single-product-1.jpg" width="300"
+                                    <img alt="image" src="/assets/images/vata/single-product-white.jpg" width="300"
                                          height="300"/>
                                 </div>
                             </a>
@@ -115,11 +122,11 @@
                         <div class="product">
                             <a class="product-images" href="single-product.html">
                                 <div class="shop-first-image">
-                                    <img alt="image" src="/assets/images/vata/single-product-1.jpg" width="300"
+                                    <img alt="image" src="/assets/images/vata/single-product-white.jpg" width="300"
                                          height="300"/>
                                 </div>
                                 <div class="shop-second-image">
-                                    <img alt="image" src="assets/images/shop-product-2-2.jpg"/>
+                                    <img alt="image" src="assets/images/single-product-white.jpg"/>
                                 </div>
                             </a>
                             <div class="shop-product-details">
@@ -146,11 +153,11 @@
                         <div class="product">
                             <a class="product-images" href="single-product.html">
                                 <div class="shop-first-image">
-                                    <img alt="image" src="/assets/images/vata/single-product-1.jpg" width="300"
+                                    <img alt="image" src="/assets/images/vata/single-product-white.jpg" width="300"
                                          height="300"/>
                                 </div>
                                 <div class="shop-second-image">
-                                    <img alt="image" src="/assets/images/vata/single-product-1.jpg" width="300"
+                                    <img alt="image" src="/assets/images/vata/single-product-white.jpg" width="300"
                                          height="300"/>
                                 </div>
                             </a>
@@ -180,29 +187,13 @@
             <div class="col-md-3 rex-padding-left">
                 <div class="sidebar">
                     <div class="sidebar-box">
-                        <h1 class="sidebar-title">Product categories</h1>
+                        <h1 class="sidebar-title">Категории</h1>
                         <ul class="product-categories">
+                            {% for c in categoies %}
                             <li>
-                                <a href="#">Albums</a>
+                                <a href="/catalog/category">{{ c.category }}</a>
                             </li>
-                            <li>
-                                <a href="#">Clothing</a>
-                            </li>
-                            <li>
-                                <a href="#">Hoodies</a>
-                            </li>
-                            <li>
-                                <a href="#">Music</a>
-                            </li>
-                            <li>
-                                <a href="#">Posters</a>
-                            </li>
-                            <li>
-                                <a href="#">Singles</a>
-                            </li>
-                            <li>
-                                <a href="#">Uncategorized</a>
-                            </li>
+                             {% endfor %}
                         </ul>
                     </div>
                     <div class="sidebar-box">

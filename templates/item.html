@@ -15,27 +15,27 @@
             <div class="col-md-9">
                 <div class="product-single-image">
                    <div class="ProductCard-photo">
-                            <img src="/assets/images/vata/single-product-white.jpg" alt=""/>
+                            <img src="{{ data.main_image }}" alt="{{ data.title }}"/>
                         </div>
                         <div class="ProductCard-picts">
                             <a class="ProductCard-pict ProductCard-pict_ACTIVE"
-                               href="/assets/images/vata/single-product-white.jpg">
-                                <img src="/assets/images/vata/single-product-white.jpg" alt=""/>
+                               href="{{ data.main_image }}">
+                                <img src="{{ data.main_image }}" alt=""/>
                             </a>
-                            <a class="ProductCard-pict" href="/assets/images/vata/single-product-red.jpg">
-                                <img src="/assets/images/vata/single-product-red.jpg" alt=""/>
+                            <a class="ProductCard-pict" href="{{ data.rest_image.1 }}">
+                                <img src="{{ data.rest_image.1 }}" alt="{{ data.title }}"/>
                             </a>
-                             <a class="ProductCard-pict" href="/assets/images/vata/single-product-black.jpg">
-                                <img src="/assets/images/vata/single-product-black.jpg" alt=""/>
+                             <a class="ProductCard-pict" href="{{ data.rest_image.2 }}">
+                                <img src="{{ data.rest_image.2 }}" alt="{{ data.title }}"/>
                             </a>
-                             <a class="ProductCard-pict" href="/assets/images/vata/single-product-blue.jpg">
-                                <img src="/assets/images/vata/single-product-blue.jpg" alt=""/>
+                             <a class="ProductCard-pict" href="{{ data.rest_image.3 }}">
+                                <img src="{{ data.rest_image.3 }}" alt="{{ data.title }}"/>
                             </a>
 
                         </div>
                 </div>
                 <div class="product-single-info">
-                    <span class="shop-price" style="font-size:60px">{{ data.price }}.00
+                    <span class="shop-price" style="font-size:60px"><span>&#8381&ensp;</span>{{ data.price }}.00
                     </span>
                     <h3 class="product-single-title">{{ data.title }}
                     </h3>
@@ -46,7 +46,7 @@
                           </span>
                     </div>
                       <div class="product-single-description">
-                          <p>{{ data.description }}
+                          <p>{{ data.description|truncate(300, False, '...', 0) }}<a href="#description">подробно</a>
                         </p>
                       </div>
 
@@ -77,9 +77,10 @@
                               style="background-color:{{ key }}; border-radius:10%; padding:5px 15px; margin-right:10px;"></a>
                         {% endfor %}
                     </p>
+                        <p style="margin:0; text-align: right" ><span>*</span>По вашему желанию можно выбрать цвет из каталога RAL</p>
                 </div>
 
-                    <div id="description" class="product-single-box" style="width:40%;">
+                    <div id="description" class="product-single-box">
                     <h2>Описание</h2>
                     {{ data.description }}
                 </div>
@@ -94,7 +95,7 @@
                         <div class="product">
                             <a class="product-images" href="single-product.html">
                                 <div class="shop-first-image">
-                                    <img alt="image" src="/assets/images/vata/single-product-white.jpg" width="300"
+                                    <img alt="image" src="{{ data.rest_image.2 }}" width="300"
                                          height="300"/>
                                 </div>
                             </a>
@@ -122,11 +123,12 @@
                         <div class="product">
                             <a class="product-images" href="single-product.html">
                                 <div class="shop-first-image">
-                                    <img alt="image" src="/assets/images/vata/single-product-white.jpg" width="300"
+                                    <img alt="image" src="{{ data.rest_image.3 }}" width="300"
                                          height="300"/>
                                 </div>
                                 <div class="shop-second-image">
-                                    <img alt="image" src="assets/images/single-product-white.jpg"/>
+                                    <img alt="image" src="{{ data.rest_image.2 }}" width="300"
+                                         height="300"/>
                                 </div>
                             </a>
                             <div class="shop-product-details">
@@ -153,11 +155,11 @@
                         <div class="product">
                             <a class="product-images" href="single-product.html">
                                 <div class="shop-first-image">
-                                    <img alt="image" src="/assets/images/vata/single-product-white.jpg" width="300"
+                                    <img alt="image" src="{{ data.rest_image.1 }}" width="300"
                                          height="300"/>
                                 </div>
                                 <div class="shop-second-image">
-                                    <img alt="image" src="/assets/images/vata/single-product-white.jpg" width="300"
+                                    <img alt="image" src="{{ data.rest_image.1 }}" width="300"
                                          height="300"/>
                                 </div>
                             </a>
@@ -189,7 +191,7 @@
                     <div class="sidebar-box">
                         <h1 class="sidebar-title">Категории</h1>
                         <ul class="product-categories">
-                            {% for c in categoies %}
+                            {% for c in categories %}
                             <li>
                                 <a href="/catalog/category">{{ c.category }}</a>
                             </li>
@@ -197,12 +199,13 @@
                         </ul>
                     </div>
                     <div class="sidebar-box">
-                        <h1 class="sidebar-title">Top rated products</h1>
+                        <h1 class="sidebar-title">Популярные товары</h1>
                         <ul class="sidebar-product-list">
+                            {% for item_id, item in all_products.items() %}
                             <li>
-                                <a href="single-product.html">
-                                    <img alt="image" src="/assets/images/vata/sidebar-product-1.jpg"/>
-                                    <span class="product-title">Audio</span>
+                                <a href="/item/{{ item_id }}">
+                                    <img alt="image" src="{{ item.thumbnail }}"/>
+                                    <span class="product-title">{{ item.title }}</span>
                                 </a>
                                 <div class="star-rating">
                                               <span style="width:100%">Rated
@@ -210,66 +213,9 @@
                                                   out of 5</span>
                                 </div>
                                 <span class="shop-price">
-                                              <span>$</span>9.00</span>
+                                              <span>&#8381</span>&ensp;{{ item.price}}</span>
                             </li>
-                            <li>
-                                <a href="single-product.html">
-                                    <img alt="image" src="/assets/images/vata/sidebar-product-2.jpg"/>
-                                    <span class="product-title">Pillow</span>
-                                </a>
-                                <div class="star-rating">
-                                              <span style="width:93.4%">Rated
-                                                  <strong class="rating">4.67</strong>
-                                                  out of 5</span>
-                                </div>
-                                <span class="shop-price">
-                                              <span>$</span>35.00</span>
-                            </li>
-                            <li>
-                                <a href="single-product.html">
-                                    <img alt="image" src="/assets/images/vata/sidebar-product-3.jpg"/>
-                                    <span class="product-title">Oak Tray</span>
-                                </a>
-                                <div class="star-rating">
-                                              <span style="width:90%">Rated
-                                                  <strong class="rating">4.50</strong>
-                                                  out of 5</span>
-                                </div>
-                                <span class="shop-price">
-                                              <span>$</span>35.00</span>
-                            </li>
-                            <li>
-                                <a href="single-product.html">
-                                    <img alt="image" src="/assets/images/vata/sidebar-product-4.jpg"/>
-                                    <span class="product-title">Bottle</span>
-                                </a>
-                                <div class="star-rating">
-                                              <span style="width:90%">Rated
-                                                  <strong class="rating">4.50</strong>
-                                                  out of 5</span>
-                                </div>
-                                <del>
-                                              <span class="shop-price">
-                                                  <span>$</span>3.00</span>
-                                </del>
-                                <ins>
-                                              <span class="shop-price">
-                                                  <span>$</span>2.00</span>
-                                </ins>
-                            </li>
-                            <li>
-                                <a href="single-product.html">
-                                    <img alt="image" src="/assets/images/vata/sidebar-product-5.jpg"/>
-                                    <span class="product-title">Vases</span>
-                                </a>
-                                <div class="star-rating">
-                                              <span style="width:80%">Rated
-                                                  <strong class="rating">4.00</strong>
-                                                  out of 5</span>
-                                </div>
-                                <span class="shop-price">
-                                              <span>$</span>3.00</span>
-                            </li>
+                             {% endfor %}
                         </ul>
                     </div>
                 </div>

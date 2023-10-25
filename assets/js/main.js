@@ -1043,24 +1043,28 @@ function changeColor(newColor) {
         document.documentElement.style.setProperty('--two-color', '#E2DED0');
         document.documentElement.style.setProperty('--three-color', '#4E4F50');
         document.documentElement.style.setProperty('--four-color', '#746C70');
+        document.body.style.color = '#E2DED0';
     };
     if(newColor == 'SoftSlipper') {
         document.documentElement.style.setProperty('--one-color', '#B4AAA9');
         document.documentElement.style.setProperty('--two-color', '#F9FAFF');
         document.documentElement.style.setProperty('--three-color', '#EFC9B4');
         document.documentElement.style.setProperty('--four-color', '#EFC9B4');
+         document.body.style.color = '#4E4F50';
     };
     if(newColor == 'RoomOfComfort') {
         document.documentElement.style.setProperty('--one-color', '#E7D3CC');
         document.documentElement.style.setProperty('--two-color', '#EEEDE9');
         document.documentElement.style.setProperty('--three-color', '#878A8F');
         document.documentElement.style.setProperty('--four-color', '#B9B6BD');
+         document.body.style.color = '#4E4F50';
     };
      if(newColor == 'RocksAndBarefoot') {
         document.documentElement.style.setProperty('--one-color', '#BCC3CB');
         document.documentElement.style.setProperty('--two-color', '#EEE8DC');
         document.documentElement.style.setProperty('--three-color', '#CCB0A5');
         document.documentElement.style.setProperty('--four-color', '#DBD2CB');
+        document.body.style.color = '#4E4F50';
     };
 
 

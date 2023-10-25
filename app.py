@@ -29,24 +29,34 @@ async def more(request: Request):
 
 @app.get("/catalog", response_class=HTMLResponse)
 async def catalog(request: Request):
+    with open("db.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+    with open("categoies.json", "r", encoding="utf-8") as с:
+        categories = json.load(с)
+    context = {
+        "request": request,
+        "categories": categories,
+        "all_products": data,
+    }
     return templates.TemplateResponse(
         "catalog.html",
-        context={"request": request}
+        context=context
     )
 
 
 @app.get("/item/{item_id}", response_class=HTMLResponse)
-async def item(request: Request):
+async def item(item_id, request: Request):
 
     with open("db.json", "r", encoding="utf-8") as f:
         data = json.load(f)
     with open("categoies.json", "r", encoding="utf-8") as с:
-        categoies = json.load(с)
-    print(categoies)
+        categories = json.load(с)
+    print(item_id)
     context = {
         "request": request,
-        "data": data.get('001'),
-        "categoies": categoies,
+        "data": data.get(item_id),
+        "categories": categories,
+        "all_products": data,
     }
     return templates.TemplateResponse(
         "item.html",

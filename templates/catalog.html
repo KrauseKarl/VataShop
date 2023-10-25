@@ -33,18 +33,18 @@
                       </select>
                   </form>
                   <div id="grid-shop" class="cbp shop-products">
-
+                      {% for item_id, item in all_products.items() %}
                           <!-- product 1 -->
                           <div class="cbp-item product">
-                                  <a class="product-images" href="single-product.html">
+                                  <a class="product-images" href="/item/{{ item_id }}">
                                       <div class="shop-first-image">
-                                          <img alt="image" src="assets/images/shop-product-1.jpg" />
+                                          <img alt="{{ item.title }}" src="{{ item.main_image }}" />
                                       </div>
                                   </a>
                                   <div class="shop-product-details">
                                       <div class="shop-product-details-container">
                                           <h4 class="shop-product-title">
-                                              <a href="single-product.html">Bag</a>
+                                              <a  href="/item/{{ item_id }}">{{ item.title }}</a>
                                           </h4>
                                               <div class="star-rating">
                                                   <span style="width:80%">Rated
@@ -52,160 +52,15 @@
                                                       out of 5</span>
                                               </div>
                                               <span class="shop-price">
-                                                  <span>$</span>35.00</span>
+                                                  <span>&#8381</span>&ensp;{{ item.price}}</span>
                                             <div class="shop-button-box">
-                                              <a class="button-product" href="#">Add to cart</a>
+                                              <a class="button-product" href="#">Добавить в корзину</a>
                                             </div>
                                       </div>
                                   </div>
                           </div>
                           <!-- /product 1 -->
-
-                          <!-- product 2 -->
-                          <div class="cbp-item product">
-                                  <a class="product-images" href="single-product.html">
-                                      <div class="shop-first-image">
-                                          <img alt="image" src="assets/images/shop-product-2.jpg" />
-                                      </div>
-                                      <div class="shop-second-image">
-                                          <img alt="image" src="assets/images/shop-product-2-2.jpg" />
-                                      </div>
-                                  </a>
-                                  <div class="shop-product-details">
-                                      <div class="shop-product-details-container">
-                                          <h4 class="shop-product-title">
-                                              <a href="single-product.html">Belt</a>
-                                          </h4>
-                                              <div class="star-rating">
-                                                  <span style="width:100%">Rated
-                                                      <strong class="rating">5.00</strong>
-                                                      out of 5</span>
-                                              </div>
-                                              <span class="shop-price">
-                                                  <span>$</span>9.00</span>
-                                            <div class="shop-button-box">
-                                              <a class="button-product" href="#">Add to cart</a>
-                                            </div>
-                                      </div>
-                                  </div>
-                          </div>
-                          <!-- /product 2 -->
-
-                          <!-- product 3 -->
-                          <div class="cbp-item product">
-                                  <a class="product-images" href="single-product.html">
-                                      <div class="shop-first-image">
-                                          <img alt="image" src="assets/images/shop-product-3.jpg" />
-                                      </div>
-                                      <div class="shop-second-image">
-                                          <img alt="image" src="assets/images/shop-product-3-2.jpg" />
-                                      </div>
-                                  </a>
-                                  <div class="shop-product-details">
-                                      <div class="shop-product-details-container">
-                                          <h4 class="shop-product-title">
-                                              <a href="single-product.html">Blade</a>
-                                          </h4>
-                                              <div class="star-rating">
-                                                  <span style="width:80%">Rated
-                                                      <strong class="rating">4.00</strong>
-                                                      out of 5</span>
-                                              </div>
-                                              <span class="shop-price">
-                                                  <span>$</span>35.00</span>
-                                            <div class="shop-button-box">
-                                              <a class="button-product" href="#">Add to cart</a>
-                                            </div>
-                                      </div>
-                                  </div>
-                          </div>
-                          <!-- /product 3 -->
-
-                          <!-- product 4 -->
-                          <div class="cbp-item product">
-                                  <a class="product-images" href="single-product.html">
-                                      <div class="shop-first-image">
-                                        <span class="onsale">Sale!</span>
-                                          <img alt="image" src="assets/images/shop-product-4.jpg" />
-                                      </div>
-                                  </a>
-                                  <div class="shop-product-details">
-                                      <div class="shop-product-details-container">
-                                          <h4 class="shop-product-title">
-                                              <a href="single-product.html">Boots</a>
-                                          </h4>
-                                              <div class="star-rating">
-                                                  <span style="width:90%">Rated
-                                                      <strong class="rating">4.50</strong>
-                                                      out of 5</span>
-                                              </div>
-                                              <span class="shop-price">
-                                                  <span>$</span>2.00</span>
-                                            <div class="shop-button-box">
-                                              <a class="button-product" href="#">Add to cart</a>
-                                            </div>
-                                      </div>
-                                  </div>
-                          </div>
-                          <!-- /product 4 -->
-
-                          <!-- product 5 -->
-                          <div class="cbp-item product">
-                                  <a class="product-images" href="single-product.html">
-                                      <div class="shop-first-image">
-                                          <img alt="image" src="assets/images/shop-product-5.jpg" />
-                                      </div>
-                                      <div class="shop-second-image">
-                                          <img alt="image" src="assets/images/shop-product-5-2.jpg" />
-                                      </div>
-                                  </a>
-                                  <div class="shop-product-details">
-                                      <div class="shop-product-details-container">
-                                          <h4 class="shop-product-title">
-                                              <a href="single-product.html">Brush</a>
-                                          </h4>
-                                              <div class="star-rating">
-                                                  <span style="width:60%">Rated
-                                                      <strong class="rating">3.00</strong>
-                                                      out of 5</span>
-                                              </div>
-                                              <span class="shop-price">
-                                                  <span>$</span>9.00</span>
-                                            <div class="shop-button-box">
-                                              <a class="button-product" href="#">Add to cart</a>
-                                            </div>
-                                      </div>
-                                  </div>
-                          </div>
-                          <!-- /product 5 -->
-
-                          <!-- product 6 -->
-                          <div class="cbp-item product">
-                                  <a class="product-images" href="single-product.html">
-                                      <div class="shop-first-image">
-                                          <img alt="image" src="assets/images/shop-product-6.jpg" />
-                                      </div>
-                                  </a>
-                                  <div class="shop-product-details">
-                                      <div class="shop-product-details-container">
-                                          <h4 class="shop-product-title">
-                                              <a href="single-product.html">Electric razor</a>
-                                          </h4>
-                                              <div class="star-rating">
-                                                  <span style="width:60%">Rated
-                                                      <strong class="rating">3.00</strong>
-                                                      out of 5</span>
-                                              </div>
-                                              <span class="shop-price">
-                                                  <span>$</span>15.00</span>
-                                            <div class="shop-button-box">
-                                              <a class="button-product" href="#">Add to cart</a>
-                                            </div>
-                                      </div>
-                                  </div>
-                          </div>
-                          <!-- /product 6 -->
-
+                      {% endfor %}
 
                   </div>
              
@@ -226,106 +81,33 @@
                               <div class="sidebar-box">
                                   <h1 class="sidebar-title">Product categories</h1>
                                   <ul class="product-categories">
+                                      {% for c in categories %}
                                       <li>
-                                          <a href="#">Albums</a>
+                                          <a href="/catalog/category">{{ c.category }}</a>
                                       </li>
-                                      <li>
-                                          <a href="#">Clothing</a>
-                                      </li>
-                                      <li>
-                                          <a href="#">Hoodies</a>
-                                      </li>
-                                      <li>
-                                          <a href="#">Music</a>
-                                      </li>
-                                      <li>
-                                          <a href="#">Posters</a>
-                                      </li>
-                                      <li>
-                                          <a href="#">Singles</a>
-                                      </li>
-                                      <li>
-                                          <a href="#">Uncategorized</a>
-                                      </li>
+                                      {% endfor %}
                                   </ul>
                               </div>
-                              <div class="sidebar-box">
-                                  <h1 class="sidebar-title">Top rated products</h1>
-                                  <ul class="sidebar-product-list">
-                                      <li>
-                                          <a href="single-product.html">
-                                              <img alt="image" src="assets/images/sidebar-product-1.jpg" />
-                                              <span class="product-title">Headphones</span>
-                                          </a>
-                                          <div class="star-rating">
+                            <div class="sidebar-box">
+                        <h1 class="sidebar-title">Популярные товары</h1>
+                        <ul class="sidebar-product-list">
+                            {% for item_id, item in all_products.items() %}
+                            <li>
+                                <a href="/item/{{ item_id }}">
+                                    <img alt="image" src="{{ item.thumbnail }}"/>
+                                    <span class="product-title">{{ item.title }}</span>
+                                </a>
+                                <div class="star-rating">
                                               <span style="width:100%">Rated
                                                   <strong class="rating">5.00</strong>
                                                   out of 5</span>
-                                          </div>
-                                          <span class="shop-price">
-                                              <span>$</span>9.00
-                                          </span>
-                                      </li>
-                                      <li>
-                                          <a href="single-product.html">
-                                              <img alt="image" src="assets/images/sidebar-product-2.jpg" />
-                                              <span class="product-title">Blade</span>
-                                          </a>
-                                          <div class="star-rating">
-                                              <span style="width:93.4%">Rated
-                                                  <strong class="rating">4.67</strong>
-                                                  out of 5</span>
-                                          </div>
-                                          <span class="shop-price">
-                                              <span>$</span>35.00</span>
-                                      </li>
-                                      <li>
-                                          <a href="single-product.html">
-                                              <img alt="image" src="assets/images/sidebar-product-3.jpg" />
-                                              <span class="product-title">Small brush</span>
-                                          </a>
-                                          <div class="star-rating">
-                                              <span style="width:90%">Rated
-                                                  <strong class="rating">4.50</strong>
-                                                  out of 5</span>
-                                          </div>
-                                          <span class="shop-price">
-                                              <span>$</span>35.00</span>
-                                      </li>
-                                      <li>
-                                          <a href="single-product.html">
-                                              <img alt="image" src="assets/images/sidebar-product-4.jpg" />
-                                              <span class="product-title">Boots</span>
-                                          </a>
-                                          <div class="star-rating">
-                                              <span style="width:90%">Rated
-                                                  <strong class="rating">4.50</strong>
-                                                  out of 5</span>
-                                          </div>
-                                          <del>
-                                              <span class="shop-price">
-                                                  <span>$</span>3.00</span>
-                                          </del>
-                                          <ins>
-                                              <span class="shop-price">
-                                                  <span>$</span>2.00</span>
-                                          </ins>
-                                      </li>
-                                      <li>
-                                          <a href="single-product.html">
-                                              <img alt="image" src="assets/images/sidebar-product-5.jpg" />
-                                              <span class="product-title">Brush</span>
-                                          </a>
-                                          <div class="star-rating">
-                                              <span style="width:80%">Rated
-                                                  <strong class="rating">4.00</strong>
-                                                  out of 5</span>
-                                          </div>
-                                          <span class="shop-price">
-                                              <span>$</span>3.00</span>
-                                      </li>
-                                  </ul>
-                          </div>
+                                </div>
+                                <span class="shop-price">
+                                              <span>&#8381</span>&ensp;{{ item.price}}</span>
+                            </li>
+                             {% endfor %}
+                        </ul>
+                    </div>
                       </div>
                    </div>
                  </div>

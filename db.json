@@ -119,7 +119,7 @@
   "004": {
     "id": "4",
     "slug": "vasa-deva",
-    "category": "ваза",
+    "category": "вазы",
     "title": "Ваза Дева",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet nisl suscipit adipiscing bibendum est ultricies integer quis. Fames ac turpis egestas maecenas pharetra convallis posuere morbi. Pharetra diam sit amet nisl suscipit adipiscing bibendum est. Massa sapien faucibus et molestie ac. Vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Id neque aliquam vestibulum morbi blandit. Vel fringilla est ullamcorper eget. Sit amet commodo nulla facilisi nullam. Proin libero nunc consequat interdum varius sit amet mattis vulputate. Eget dolor morbi non arcu risus quis varius quam quisque. Elit ut aliquam purus sit amet luctus venenatis lectus magna. Augue mauris augue neque gravida in fermentum et sollicitudin. Facilisi morbi tempus iaculis urna id volutpat lacus laoreet. Ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel. Amet consectetur adipiscing elit duis tristique sollicitudin nibh sit amet. Consectetur a erat nam at lectus urna duis convallis convallis. Mi sit amet mauris commodo. Ac feugiat sed lectus vestibulum mattis.",
     "price": "900",
@@ -184,7 +184,7 @@
       "свеча в крынке",
       "аромо-свеча"
     ],
-    "main_image": "/assets/images/items/005/005_img_1.jpg",
+    " ": "/assets/images/items/005/005_img_1.jpg",
     "rest_image": [
       "/assets/images/items/005/005_img_1.jpg",
       "/assets/images/items/005/005_img_2.jpg",
@@ -195,7 +195,7 @@
   "006": {
     "id": "6",
     "slug": "svecha-i-beton",
-    "category": "свеча",
+    "category": "свечи",
     "title": "Свеча и бетон",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet nisl suscipit adipiscing bibendum est ultricies integer quis. Fames ac turpis egestas maecenas pharetra convallis posuere morbi. Pharetra diam sit amet nisl suscipit adipiscing bibendum est. Massa sapien faucibus et molestie ac. Vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Id neque aliquam vestibulum morbi blandit. Vel fringilla est ullamcorper eget. Sit amet commodo nulla facilisi nullam. Proin libero nunc consequat interdum varius sit amet mattis vulputate. Eget dolor morbi non arcu risus quis varius quam quisque. Elit ut aliquam purus sit amet luctus venenatis lectus magna. Augue mauris augue neque gravida in fermentum et sollicitudin. Facilisi morbi tempus iaculis urna id volutpat lacus laoreet. Ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel. Amet consectetur adipiscing elit duis tristique sollicitudin nibh sit amet. Consectetur a erat nam at lectus urna duis convallis convallis. Mi sit amet mauris commodo. Ac feugiat sed lectus vestibulum mattis.",
     "price": "1300",

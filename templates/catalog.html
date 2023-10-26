@@ -19,9 +19,9 @@
           <div class="container">
             <div class="row">
               <div class="col-md-9">
-                  <h1 class="page-title">Shop</h1>
+                  <h1 class="page-title">Каталог | VATA SHOP</h1>
                   <p class="shop-result-count">
-                      Showing 1-9 of 15 results</p>
+                      Показано 1-{{ all_products|length }} из {{ all_products|length }} товаров </p>
                   <form class="shop-ordering" method="get">
                       <select class="orderby" name="orderby">
                           <option selected='selected' value="menu_order">Default sorting</option>
@@ -79,7 +79,7 @@
                       <div class="col-md-3 rex-padding-left">
                           <div class="sidebar">
                               <div class="sidebar-box">
-                                  <h1 class="sidebar-title">Product categories</h1>
+                                  <h1 class="sidebar-title">Категории товаров</h1>
                                   <ul class="product-categories">
                                       {% for c in categories %}
                                       <li>

@@ -14,25 +14,23 @@
 
             <div class="col-md-9">
                 <div class="product-single-image">
-                   <div class="ProductCard-photo">
-                            <img src="{{ data.main_image }}" alt="{{ data.title }}"/>
-                        </div>
-                        <div class="ProductCard-picts">
-                            <a class="ProductCard-pict ProductCard-pict_ACTIVE"
-                               href="{{ data.main_image }}">
-                                <img src="{{ data.main_image }}" alt=""/>
-                            </a>
-                            <a class="ProductCard-pict" href="{{ data.rest_image.1 }}">
-                                <img src="{{ data.rest_image.1 }}" alt="{{ data.title }}"/>
-                            </a>
-                             <a class="ProductCard-pict" href="{{ data.rest_image.2 }}">
-                                <img src="{{ data.rest_image.2 }}" alt="{{ data.title }}"/>
-                            </a>
-                             <a class="ProductCard-pict" href="{{ data.rest_image.3 }}">
-                                <img src="{{ data.rest_image.3 }}" alt="{{ data.title }}"/>
-                            </a>
-
-                        </div>
+                    <div class="ProductCard-photo" >
+                        <img src="{{ data.main_image }}" alt="{{ data.title }}" />
+                    </div>
+                    <div class="ProductCard-picts">
+                        {% for img in data.rest_image %}
+                        {% if loop.first %}
+                         <a  style="border-radius:10px;" class="ProductCard-pict ProductCard-pict_ACTIVE"
+                           href="{{ img }}">
+                            <img src="{{ img }}" alt=""/>
+                        </a>
+                        {% else %}
+                        <a  style="border-radius:10px;" class="ProductCard-pict" href="{{ img }}">
+                            <img src="{{ img }}" alt="{{ img }}"/>
+                        </a>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
                 <div class="product-single-info">
                     <span class="shop-price" style="font-size:60px"><span>&#8381&ensp;</span>{{ data.price }}.00
@@ -73,8 +71,8 @@
                     <p style="margin:0; text-align: left">цвета</p>
                     <p style="margin:0; text-align: right">
                         {% for key,value in data.colors|items %}
-                        <a title="{{value}}" href="" class="colors"
-                              style="background-color:{{ key }}; border-radius:10%; padding:5px 15px; margin-right:10px;"></a>
+                        <a title="{{ value }}" href="" class="colors"
+                              style="background-color:{{ key }}; box-shadow:2px 2px 2px rgb(0,0,0,0.3); border-radius:10%; padding:5px 15px; margin-right:10px;"></a>
                         {% endfor %}
                     </p>
                         <p style="margin:0; text-align: right" ><span>*</span>По вашему желанию можно выбрать цвет из каталога RAL</p>
@@ -84,25 +82,32 @@
                     <h2>Описание</h2>
                     {{ data.description }}
                 </div>
+                     <div  class="product-single-box">
+                    {% for hashtag in data.hashtags %}
+                    <span>#</span>&nbsp;{{ hashtag }}&emsp;
+                         {% endfor %}
+                </div>
 
-
+                <!--RELATED ITEMS -->
                 <div class="product-related-products">
-                    <h3 class="product-single-title">Related Products</h3>
+                    <h3 class="product-single-title">Похожие товары</h3>
                     <div class="shop-products shopContainer columns-3">
                         <div class="gutter-sizer"></div>
-
-                        <!-- product 1 -->
+                        {% for item_id, item in all_products.items() %}
+                        {% if item.category == data.category %}
                         <div class="product">
-                            <a class="product-images" href="single-product.html">
+                            <a class="product-images" href="/item/{{ item_id }}">
                                 <div class="shop-first-image">
-                                    <img alt="image" src="{{ data.rest_image.2 }}" width="300"
-                                         height="300"/>
+                                    <img alt="image" src="{{ item.main_image }}" />
+                                </div>
+                                 <div class="shop-second-image">
+                                    <img alt="image" src="{{ item.rest_image.1 }}" />
                                 </div>
                             </a>
                             <div class="shop-product-details">
                                 <div class="shop-product-details-container">
                                     <h4 class="shop-product-title">
-                                        <a href="single-product.html">Armchair</a>
+                                        <a  href="/item/{{ item_id }}">{{ item.title }}</a>
                                     </h4>
                                     <div class="star-rating">
                                                   <span style="width:80%">Rated
@@ -110,89 +115,27 @@
                                                       out of 5</span>
                                     </div>
                                     <span class="shop-price">
-                                                  <span>$</span>35.00</span>
+                                                   <span>&#8381</span>&ensp;{{ item.price }}</span>
                                     <div class="shop-button-box">
-                                        <a class="button-product" href="#">Add to cart</a>
+                                        <a class="button-product" href="#">Добавить в корзину</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- /product 1 -->
-
-                        <!-- product 2 -->
-                        <div class="product">
-                            <a class="product-images" href="single-product.html">
-                                <div class="shop-first-image">
-                                    <img alt="image" src="{{ data.rest_image.3 }}" width="300"
-                                         height="300"/>
-                                </div>
-                                <div class="shop-second-image">
-                                    <img alt="image" src="{{ data.rest_image.2 }}" width="300"
-                                         height="300"/>
-                                </div>
-                            </a>
-                            <div class="shop-product-details">
-                                <div class="shop-product-details-container">
-                                    <h4 class="shop-product-title">
-                                        <a href="single-product.html">Audio</a>
-                                    </h4>
-                                    <div class="star-rating">
-                                                  <span style="width:100%">Rated
-                                                      <strong class="rating">5.00</strong>
-                                                      out of 5</span>
-                                    </div>
-                                    <span class="shop-price">
-                                                  <span>$</span>9.00</span>
-                                    <div class="shop-button-box">
-                                        <a class="button-product" href="#">Add to cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /product 2 -->
-
-                        <!-- product 3 -->
-                        <div class="product">
-                            <a class="product-images" href="single-product.html">
-                                <div class="shop-first-image">
-                                    <img alt="image" src="{{ data.rest_image.1 }}" width="300"
-                                         height="300"/>
-                                </div>
-                                <div class="shop-second-image">
-                                    <img alt="image" src="{{ data.rest_image.1 }}" width="300"
-                                         height="300"/>
-                                </div>
-                            </a>
-                            <div class="shop-product-details">
-                                <div class="shop-product-details-container">
-                                    <h4 class="shop-product-title">
-                                        <a href="single-product.html">Black Armchair</a>
-                                    </h4>
-                                    <div class="star-rating">
-                                                  <span style="width:80%">Rated
-                                                      <strong class="rating">4.00</strong>
-                                                      out of 5</span>
-                                    </div>
-                                    <span class="shop-price">
-                                                  <span>$</span>35.00</span>
-                                    <div class="shop-button-box">
-                                        <a class="button-product" href="#">Add to cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /product 3 -->
-
+                        {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
+                <!--RELATED ITEMS -->
             </div>
+
             <div class="col-md-3 rex-padding-left">
                 <div class="sidebar">
                     <div class="sidebar-box">
                         <h1 class="sidebar-title">Категории</h1>
                         <ul class="product-categories">
                             {% for c in categories %}
-                            <li>
+                            <li style="font-weight:600">
                                 <a href="/catalog/category">{{ c.category }}</a>
                             </li>
                              {% endfor %}

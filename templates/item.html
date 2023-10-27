@@ -59,25 +59,23 @@
                     </form>
                 </div>
 
-                    <div class="product-single-box-detail" >
-                    <p style="margin:0; text-align: left">общий вес, г</p>
-                    <p style="margin:0; text-align: right">{{ data.weight }}</p>
-                    <p style="margin:0; text-align: left">материал</p>
-                    <p style="margin:0; text-align: right">{{ data.material }}</p>
-                        <p style="margin:0; text-align: left">размеры</p>
-                    <p style="margin:0; text-align: right">{{ data.size.width}} X {{ data.size.height}} X {{ data.size.length}}</p>
-                    <p style="margin:0; text-align: left">место размещения</p>
-                    <p style="margin:0; text-align: right">{{ data.place_operation|join(', ') }}</p>
-                    <p style="margin:0; text-align: left">цвета</p>
-                    <p style="margin:0; text-align: right">
+                <div class="product-single-box-detail">
+                    <p><span>общий вес, г</span><span>{{data.weight}}</span></p>
+                    <p><span>материал</span><span>{{data.material}}</span></p>
+                    <p><span>размеры, мм</span><span>{{data.size.width}} X {{data.size.height}} X {{data.size.length}}</span></p>
+                    <p><span>место размещения</span><span>{{data.place_operation|join(', ') }}</span></p>
+                    <p><span>цвета</span><span>
                         {% for key,value in data.colors|items %}
                         <a title="{{ value }}" href="" class="colors"
-                              style="background-color:{{ key }}; box-shadow:2px 2px 2px rgb(0,0,0,0.3); border-radius:10%; padding:5px 15px; margin-right:10px;"></a>
-                        {% endfor %}
-                    </p>
-                        <p style="margin:0; text-align: right" ><span>*</span>По вашему желанию можно выбрать цвет из каталога RAL</p>
+                           style="box-shadow:2px 2px 2px rgb(0,0,0,0.3);
+                                 border-radius:20%;
+                                 padding:15px;
+                                 margin-right:10px;
+                                 margin-bottom: 10px;
+                                 background-color:{{ key }};"></a>
+                        {% endfor %}</span></p>
+                    <p><span>*По вашему желанию можно выбрать цвет из каталога RAL</span></p>
                 </div>
-
                     <div id="description" class="product-single-box">
                     <h2>Описание</h2>
                     {{ data.description }}

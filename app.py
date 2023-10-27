@@ -62,6 +62,12 @@ async def item(item_id, request: Request):
         "item.html",
         context=context
     )
+@app.get("/items/{item_id}", response_class=HTMLResponse)
+async def item2(item_id, request: Request):
+
+    with open("db.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return {"status": 200, "data": data.get(item_id)}
 
 
 if __name__ == '__main__':

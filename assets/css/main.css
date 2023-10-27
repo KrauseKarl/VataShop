@@ -23,10 +23,10 @@
 /* ================================= */
 :root {
 
-    --one-color:  #647C90; /* OPPOSITE */
-    --two-color:  #E2DED0 ; /*  LIGHT */
-    --three-color: #4E4F50; /* DARK   */
-    --four-color:  #746C70; /* SEMIDARK  */
+    --one-color:  #BCC3CB; /* OPPOSITE */
+    --two-color:  #EEE8DC ; /*  LIGHT */
+    --three-color: #CCB0A5; /* DARK   */
+    --four-color:  #DBD2CB; /* SEMIDARK  */
 
 }
 html, body {
@@ -42,8 +42,8 @@ html, body {
 	-moz-osx-font-smoothing: grayscale;
 	font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
-    color: var( --two-color);
-    background-color: var(--four-color);
+    color: #000;
+    background-color: var(--one-color);
     font-size: 14px;
 }
 
@@ -2667,7 +2667,8 @@ footer a:hover {
 .sidebar-product-list .star-rating span::before,
 .product-single-info .star-rating span::before {
     content: '\53\53\53\53\53';
-     color: var(--two-color);
+    color: var(--three-color);
+    text-shadow:1px 1px 2px rgb(0,0,0,0.5);
     top: 0;
     position: absolute;
     left: 0;
@@ -2677,7 +2678,7 @@ footer a:hover {
 .sidebar-product-list .star-rating::before,
 .product-single-info .star-rating::before {
     content: '\73\73\73\73\73';
-     color: var(--two-color);
+    color: var(--three-color);
     float: left;
     top: 0;
     left: 0;
@@ -2732,6 +2733,34 @@ footer a:hover {
 
     clear: both;
     padding-top: 50px;
+}
+.product-single-box-detail p {
+    overflow: hidden;
+}
+
+.product-single-box-detail p:after {
+  content:'___________________________________________________________________________________________________________________';
+  display: block;
+  color: rgb(0,0,0,0.2);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.product-single-box-detail p span:first-of-type {
+  float:left;
+  margin-right: 10px;
+ }
+
+.product-single-box-detail p span:last-of-type {
+  float:right;
+  margin-left: 10px;
+}
+.product-single-box-detail p:last-of-type: {
+  margin-bottom: 10px;
+}
+.product-single-box-detail p:last-of-type:after  {
+  content: '';
+  margin: 20px 0;
 }
 .product-single-box-description {
     width: 48%;

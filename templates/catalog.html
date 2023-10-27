@@ -82,8 +82,11 @@
                                   <h1 class="sidebar-title">Категории товаров</h1>
                                   <ul class="product-categories">
                                       {% for c in categories %}
-                                      <li>
-                                          <a href="/catalog/category">{{ c.category }}</a>
+                                      <li style="margin-bottom:10px;">
+                                          <a href="/catalog/category">
+                                              <img src="{{c.icon }}" width="48px">&nbsp;&nbsp;
+                                              {{ c.category }}
+                                          </a>
                                       </li>
                                       {% endfor %}
                                   </ul>

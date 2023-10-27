@@ -184,7 +184,7 @@
       "свеча в крынке",
       "аромо-свеча"
     ],
-    " ": "/assets/images/items/005/005_img_1.jpg",
+    "main_image": "/assets/images/items/005/005_img_1.jpg",
     "rest_image": [
       "/assets/images/items/005/005_img_1.jpg",
       "/assets/images/items/005/005_img_2.jpg",

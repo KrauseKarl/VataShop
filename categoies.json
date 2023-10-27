@@ -2,16 +2,19 @@
   {
         "id": "1",
         "slug": "kashpo-krolik",
-        "category": "кашпо"
+        "category": "кашпо",
+        "icon":"/assets/images/icon/pot.svg"
   },
   {
         "id": "2",
         "slug": "svechi",
-        "category": "свечи"
+        "category": "свечи",
+        "icon":"/assets/images/icon/candel.svg"
   },
   {
         "id": "3",
         "slug": "vasy",
-        "category": "вазы"
+        "category": "вазы",
+        "icon":"/assets/images/icon/vasa.svg"
   }
 ]

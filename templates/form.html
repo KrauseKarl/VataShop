@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block title %} {% endblock %}
+
+{% block content %}
+<div id="wrapper">
+
+
+
+  <div class="container">
+    <div class="row">
+            <div class="col-md-6">
+                <div class="contact-form" style="margin-top: 35px;">
+                    {% if status == 'error' %}
+                    <div style="background-color:red; padding: 20px; color:white;">
+                        {{ status }}
+                    </div>
+                    {% elif status == 'OK' %}
+                    <div style="background-color:green; padding: 20px; color:white;">
+                        {{ status }}
+                    </div>
+                {% else %}
+                    <div id="note"></div>
+                    <div id="fields">
+                        <form id="ajax-contact-form" method="post">
+                          <p><input type="text" name="name" id="name" placeholder="Name" value=""/></p>
+                          <p><input type="email" name="email" id="email" placeholder="Email" value=""/></p>
+                          <p><input type="text" name="phone" id="phone" placeholder="Phone" value=""/></p>
+                          <p><textarea name="msg" id="msg" placeholder="Message"></textarea></p>
+                          <input type="submit" name="submit" id="submit" value="Send message"/>
+                        </form>
+                     </div>
+                    {% endif %}
+                  </div>
+            </div>
+     </div>
+    </div>
+</div>
+{% endblock %}

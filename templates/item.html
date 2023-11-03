@@ -48,14 +48,26 @@
                         </p>
                       </div>
 
-                    <form class="cart" enctype="multipart/form-data" style="margin-top:40px; ">
+                    <form id="ajax-add-cart-form" class="cart" method="post"  enctype="multipart/form-data" style="margin-top:40px; ">
                         <div class="shop-qty">
                             <button class="minus">-</button>
-                            <input type="number" class="input-text qty text" step="1" min="1" max="" name="quantity"
+                            <input id="name" type="hidden"  name="name"   value="{{ data.id }}">
+
+                            <input id="quantity" type="number" class="input-text qty text" step="1" min="1" max="" name="quantity"
                                    value="1" title="Qty" size="4" placeholder="" inputmode="numeric">
                             <button class="plus">+</button>
                         </div>
+                        {% if data.id in cart.keys() %}
+                        <button type="submit" name="add-to-cart" class="button-product">
+                            {% for k, v in cart.items() %}
+                                {% if data.title == v.name %}
+                                    {{ v.quantity }}
+                                {% endif  %}
+                            {% endfor  %}
+                             корзинe</button>
+                        {% else %}
                         <button type="submit" name="add-to-cart" class="button-product">В корзину</button>
+                        {% endif  %}
                     </form>
                 </div>
 

@@ -82,6 +82,7 @@
     mt_counter_shortcode();
     mt_google_map();
     mt_headerSticky();
+    mt_addCart();
 
   });
 
@@ -90,6 +91,49 @@
   $(document).on('onAfterLoadMore.cbp', function(event) {
     mt_lightCase();
   });
+
+
+  function mt_addCart() {
+      $('.button-product').on("click", function(event) {
+
+           // validate and process form here
+         // Create variables from the form
+
+            var name = +$('input#name').val();
+            var quantity = $('input#quantity').val();
+            console.log($name)
+            console.log($quantity)
+            // Create variables that will be sent in a URL string to contact.php
+
+            $.ajax({
+                type: "post",
+                url: '/item/'+`${name}`,
+                data: {'name': $name, 'quantity': +$quantity},
+                dataType: 'json',
+                success: function(data) {
+                    console.log('OK')
+                      if(data.context.status == 'OK') {
+                        var result = '<div class="notification_ok"><i class="fa fa-check"></i> Your email was sent. Thanks!</div>';
+                        $("#ajax-contact-form").find('input[type=text], input[type=email], textarea').val("");
+
+                      } else {
+                      result = data;
+                     }
+                     $('#note').html(result).fadeIn();
+                     setTimeout(function () {
+                       $('#note').html(result).fadeOut();
+                     }, 4000);
+              }
+
+          });
+             event.preventDefault();
+            return false;
+
+
+    });
+
+  }
+
 
   function mt_loading() {
       $(".text-loader").delay(700).fadeOut();
@@ -256,7 +300,7 @@
 
   function mt_portfolio() {
 
-  $('#grid-classic').cubeportfolio({
+  $('.classicAnim').cubeportfolio({
     filters: '.portfolioFilter',
     layoutMode: 'masonry',
     sortByDimension: true,
@@ -285,7 +329,7 @@
     gridAdjustment: 'responsive',
     caption: 'zoom',
     displayType: 'sequentially',
-    displayTypeSpeed: 100,
+    displayTypeSpeed: 200,
 
     plugins: {
       loadMore: {
@@ -582,7 +626,7 @@ $('#grid-shop').cubeportfolio({
 
   function mt_ajax_contact_form() {
 
-      $('#submit').on("click", function() {  
+      $('#submit').on("click", function() {
            // validate and process form here 
            $("#ajax-contact-form").validate({
              
@@ -606,7 +650,7 @@ $('#grid-shop').cubeportfolio({
                         },
                    },
 
-                   messages:{
+                  messages:{
 
                           name:{
                             required: "The field is required.",
@@ -629,7 +673,7 @@ $('#grid-shop').cubeportfolio({
 
                 // JQuery's awesome submit handler.
                 submitHandler: function(form) {
-
+                      console.log(form)
                      // Create variables from the form
                      var name = $('input#name').val(); 
                      var email = $('input#email').val();  
@@ -638,13 +682,16 @@ $('#grid-shop').cubeportfolio({
 
                      // Create variables that will be sent in a URL string to contact.php
                      var dataString = '&name='+ name + '&email=' + email + '&phone=' + phone + '&msg=' + msg;
-        
+                        console.log(dataString)
                         $.ajax({
                             type: "POST",
-                            url: "php/contact.php",
+                            url: "/form",
                             data: dataString,
+                            dataType: 'json',
                             success: function(data) {
-                                  if(data == 'OK') {
+                                console.log(data.context)
+                                console.log('OK')
+                                  if(data.context.status == 'OK') {
                                     var result = '<div class="notification_ok"><i class="fa fa-check"></i> Your email was sent. Thanks!</div>';
                                     $("#ajax-contact-form").find('input[type=text], input[type=email], textarea').val("");
                                    

@@ -2785,7 +2785,7 @@ footer a:hover {
     font-weight: 800;
     text-shadow:1px 1px 2px rgb(0,0,0,0.3);
     text-align: right;
-    color: var(--two-color);
+    color: #000;
     margin-top: 40px;
     margin-bottom: 40px;
 }
@@ -3532,6 +3532,7 @@ footer .social-icons {
     float: none;
     display: inline-block;
     text-align: center;
+    align-items:center;
 }
 .shop-ordering select {
     margin-bottom: 30px;

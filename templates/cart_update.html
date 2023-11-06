@@ -1,0 +1,35 @@
+<div class="icon-cart">
+    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+    {% if cart %}<span class="cart-count">{{ cart.item|length }}</span> {% endif %}
+</div>
+
+<div class="cart-widget">
+    {% if cart %}
+    <ul class="mini-cart cart_list product_list_widget">
+
+        {% for key, it in cart.item.items() %}
+        <li>
+            <a href="single-product.html">
+                <img alt="product-1" src="{{ it.img }} ">{{ it.name }}
+            </a>
+            <span class="quantity">{{ it.quantity }}&nbsp;×&nbsp;<span>{{ it.price }}&nbsp;&#8381;</span>
+                </span>
+        </li>
+        {% endfor %}
+
+
+    </ul>
+    <p class="mini-cart__total total">
+        <strong>Итого:</strong>
+        <span>{{ cart.total.total }}&nbsp;&#8381;</span>
+    </p>
+    <p class="mini-cart__buttons buttons">
+        <a class="button" href="/my-cart">В корзину</a>
+        <a class="button checkout" href="#">Заказать</a>
+    </p>
+    {% else %}
+    <p class="mini-cart__total total">
+        корзина пуста
+    </p>
+    {% endif %}
+</div>

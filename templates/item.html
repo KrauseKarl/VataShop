@@ -6,19 +6,15 @@
 {% block content %}
 <!-- wrapper -->    
 <div id="wrapper">
-
-
-
     <div class="container">
         <div class="row">
-
             <div class="col-md-9">
                 <div class="product-single-image">
                     <div class="ProductCard-photo" >
-                        <img src="{{ data.main_image }}" alt="{{ data.title }}" />
+                        <img src="{{ product.main_image }}" alt="{{ product.title }}" />
                     </div>
                     <div class="ProductCard-picts">
-                        {% for img in data.rest_image %}
+                        {% for img in product.rest_image %}
                         {% if loop.first %}
                          <a  style="border-radius:10px;" class="ProductCard-pict ProductCard-pict_ACTIVE"
                            href="{{ img }}">
@@ -33,9 +29,9 @@
                     </div>
                 </div>
                 <div class="product-single-info">
-                    <span class="shop-price" style="font-size:60px"><span>&#8381&ensp;</span>{{ data.price }}.00
+                    <span class="shop-price" style="font-size:60px"><span>&#8381&ensp;</span>{{ product.price }}.00
                     </span>
-                    <h3 class="product-single-title">{{ data.title }}
+                    <h3 class="product-single-title">{{ product.title }}
                     </h3>
                     <div class="star-rating">
                         <span style="width:90%">Rated
@@ -43,41 +39,37 @@
                               </strong>out of 5
                           </span>
                     </div>
-                      <div class="product-single-description">
-                          <p>{{ data.description|truncate(300, False, '...', 0) }}<a href="#description">подробно</a>
+                    <div class="product-single-description">
+                        <p>{{ product.description|truncate(300, False, '...', 0) }}<a href="#description">подробно</a>
                         </p>
-                      </div>
+                    </div>
 
-                    <form id="ajax-add-cart-form" class="cart" method="post"  enctype="multipart/form-data" style="margin-top:40px; ">
+                    <form id="ajax-add-cart-form" class="cart" method="post" enctype="multipart/form-data"
+                          style="margin-top:40px; ">
                         <div class="shop-qty">
                             <button class="minus">-</button>
-                            <input id="name" type="hidden"  name="name"   value="{{ data.id }}">
+                            <input id="name" type="hidden" name="name" value="{{ product.id }}">
 
-                            <input id="quantity" type="number" class="input-text qty text" step="1" min="1" max="" name="quantity"
-                                   value="1" title="Qty" size="4" placeholder="" inputmode="numeric">
+                            <input id="quantity" type="number" class="input-text qty text" step="1" min="-1" max="20"
+                                   name="quantity"
+                                   value="1" title="Qty" size="4" placeholder="">
                             <button class="plus">+</button>
                         </div>
-                        {% if data.id in cart.keys() %}
-                        <button type="submit" name="add-to-cart" class="button-product">
-                            {% for k, v in cart.items() %}
-                                {% if data.title == v.name %}
-                                    {{ v.quantity }}
-                                {% endif  %}
-                            {% endfor  %}
-                             корзинe</button>
+                        {% if in_cart %}
+                        <button type="submit" name="add-to-cart" class="button-product">{{ in_cart }} в корзинe</button>
                         {% else %}
                         <button type="submit" name="add-to-cart" class="button-product">В корзину</button>
-                        {% endif  %}
+                        {% endif %}
                     </form>
                 </div>
 
                 <div class="product-single-box-detail">
-                    <p><span>общий вес, г</span><span>{{data.weight}}</span></p>
-                    <p><span>материал</span><span>{{data.material}}</span></p>
-                    <p><span>размеры, мм</span><span>{{data.size.width}} X {{data.size.height}} X {{data.size.length}}</span></p>
-                    <p><span>место размещения</span><span>{{data.place_operation|join(', ') }}</span></p>
+                    <p><span>общий вес, г</span><span>{{product.weight}}</span></p>
+                    <p><span>материал</span><span>{{product.material}}</span></p>
+                    <p><span>размеры, мм</span><span>{{product.size.width}} X {{product.size.height}} X {{product.size.length}}</span></p>
+                    <p><span>место размещения</span><span>{{product.place_operation|join(', ') }}</span></p>
                     <p><span>цвета</span><span>
-                        {% for key,value in data.colors|items %}
+                        {% for key,value in product.colors|items %}
                         <a title="{{ value }}" href="" class="colors"
                            style="box-shadow:2px 2px 2px rgb(0,0,0,0.3);
                                  border-radius:20%;
@@ -90,10 +82,10 @@
                 </div>
                     <div id="description" class="product-single-box">
                     <h2>Описание</h2>
-                    {{ data.description }}
+                    {{ product.description }}
                 </div>
                      <div  class="product-single-box">
-                    {% for hashtag in data.hashtags %}
+                    {% for hashtag in product.hashtags %}
                     <span>#</span>&nbsp;{{ hashtag }}&emsp;
                          {% endfor %}
                 </div>
@@ -104,7 +96,7 @@
                     <div class="shop-products shopContainer columns-3">
                         <div class="gutter-sizer"></div>
                         {% for item_id, item in all_products.items() %}
-                        {% if item.category == data.category %}
+                        {% if item.category == product.category %}
                         <div class="product">
                             <a class="product-images" href="/item/{{ item_id }}">
                                 <div class="shop-first-image">

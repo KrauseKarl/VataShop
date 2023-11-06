@@ -59,7 +59,6 @@
   }
   };
 
-
   /* ================================= */
   /* :::::::::: 1. Loading ::::::::::: */
   /* ================================= */
@@ -83,62 +82,132 @@
     mt_google_map();
     mt_headerSticky();
     mt_addCart();
+    mt_change_in_cart()
 
   });
-
 
   // re-call functions for cube portfolio
   $(document).on('onAfterLoadMore.cbp', function(event) {
     mt_lightCase();
   });
 
-
   function mt_addCart() {
-      $('.button-product').on("click", function(event) {
-
-           // validate and process form here
-         // Create variables from the form
-
-            var name = +$('input#name').val();
+      $('.button-product').on("click", function() {
+            event.preventDefault();
+            var name = $('input#name').val();
             var quantity = $('input#quantity').val();
-            console.log($name)
-            console.log($quantity)
-            // Create variables that will be sent in a URL string to contact.php
-
             $.ajax({
-                type: "post",
-                url: '/item/'+`${name}`,
-                data: {'name': $name, 'quantity': +$quantity},
-                dataType: 'json',
+                type: "POST",
+                url: '/add',
+                data: {'name': name, 'quantity': quantity},
                 success: function(data) {
-                    console.log('OK')
-                      if(data.context.status == 'OK') {
-                        var result = '<div class="notification_ok"><i class="fa fa-check"></i> Your email was sent. Thanks!</div>';
-                        $("#ajax-contact-form").find('input[type=text], input[type=email], textarea').val("");
+                    var count = data.item
+                    var cartPage = $( "#cart" );
+                    var product = product
+                    if(data.data == 'OK') {
+                        var result = '<div class="toster toster__success"><i class="fa fa-check"></i>&nbsp;Товар добавлен в корзину&nbsp;<i class="fa fa-cart-plus" aria-hidden="true"></i></div>';
+                        var cartCount = '<i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="cart-count"></span>'
+                    } else {
+                        result = data;
+                    }
 
-                      } else {
-                      result = data;
-                     }
-                     $('#note').html(result).fadeIn();
-                     setTimeout(function () {
-                       $('#note').html(result).fadeOut();
-                     }, 4000);
+                    $('#toster').html(result).fadeIn('slow');
+                    $('.icon-cart').html(cartCount).fadeIn();
+                    $('.cart-count').html(count).fadeIn();
+                    $(".cart-container").load("/cart_update")
+                    $('.icon-cart, .cart-widget').wrapAll('<div class="cart-container"></div>');
+
+                    setTimeout(function () {
+                        $('#toster').html(result).fadeOut();
+
+                    }, 3000);
               }
-
           });
-             event.preventDefault();
             return false;
+    });
+  }
 
+  function mt_change_in_cart() {
+    // Quantity
+    $(document).on('click', '.change-qty .plus, .change-qty .minus', function(event){
+        event.preventDefault();
+        var $this = $(this);
 
+        var $qtty = $this.siblings('.qty');
+        var item = $this.siblings('.hidden-name').val();
+
+        var current = parseInt($qtty.val(), 10);
+        var min = parseInt($qtty.attr('min'), 10);
+        var max = parseInt($qtty.attr('max'), 10);
+        var step = parseInt($qtty.attr('step'), 10);
+
+      min = min ? min : 1;
+      max = max ? max : current + step;
+
+      if ($this.hasClass('minus') && current > min) {
+        $qtty.val(current - step);
+        $qtty.trigger('change');
+      }
+      if ($this.hasClass('plus') && current < max) {
+        $qtty.val(current + step);
+        $qtty.trigger('change');
+      }
+      var dataInsert = {'item_id': item, 'qty': $qtty.val()};
+      console.log($qtty.val())
+      $.ajax({
+        type: "GET",
+        url: '/cart-item-update',
+        data: dataInsert,
+        success: function(data) {
+            if(data.status == 'OK') {
+                var idd = '' + data.item_id;
+                if(data.extra){
+                    var card = "#item_" + data.removed_id
+                    $(card).remove().fadeOut('slow');
+                    var result = '<div class="toster toster__info"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Товар удален</div>';
+                    if(data.removed_all){
+                        $("#container__total").remove().fadeOut('slow');
+                        var empty_cart_msg = "<div class='col '><i class='fa fa-shopping-cart' aria-hidden='true'></i>Корзина пуста</div>"
+                        $(".cart__container .row").html(empty_cart_msg)
+
+                    }
+                } else {
+                    var result = '<div class="toster toster__success "><i class="fa fa-check "></i>&nbsp;Количество товара обновлено</div>';
+                    var quantity = "#" + idd + "_quantity";
+                    var summary = "#" + idd + "_summary";
+                    var totalSummary = "#" + idd + "__summary";
+                    $(quantity).text(data.cart['item'][idd]['quantity']);
+                    $(summary).text(data.cart['item'][idd]['summary']);
+                    $(totalSummary).text(data.cart['item'][idd]['summary']);
+                    };
+                $("#cart__total").text(data.cart["total"]['total']);
+            } else {
+               var result = '<div class="toster toster__error"><i class="fa fa-error"></i>&nbsp;Товар удален</div>';;
+            };
+            $('.fixed-bottom-bar').css('display', 'block');
+            $('#toster').html(result).fadeIn('slow');
+            setTimeout(function () {
+                $('#toster').html(result).fadeOut('slow');
+            }, 3000);
+            },
+//        error: function(){
+//            var result = '<div class="toster"><i class="fa fa-error"></i>&nbsp;Ошибка!</div>';
+//            $('.fixed-bottom-bar').css('display', 'block');
+//            $('#toster').html(result).fadeIn('slow');
+//            setTimeout(function () {
+//                $('#toster').html(result).fadeOut('slow');
+//            }, 3000);
+//        },
+      });
+      return false;
     });
 
   }
 
-
   function mt_loading() {
       $(".text-loader").delay(700).fadeOut();
       $(".page-loader").delay(900).fadeOut("fast");
-  } 
+  }
 
 
   /* ================================= */
@@ -175,14 +244,17 @@
     });
 
     // Quantity
-    $(document).on('click', '.shop-qty .plus, .shop-qty .minus', function(){
-
+    $(document).on('click', '.shop-qtty .plus, .shop-qtty .minus', function(){
       var $this = $(this),
         $qty = $this.siblings('.qty'),
         current = parseInt($qty.val(), 10),
         min = parseInt($qty.attr('min'), 10),
         max = parseInt($qty.attr('max'), 10),
         step = parseInt($qty.attr('step'), 10);
+        item = $this.siblings('.name'),
+
+        console.log('item')
+        console.log(item)
 
       min = min ? min : 1;
       max = max ? max : current + step;
@@ -190,11 +262,13 @@
       if ($this.hasClass('minus') && current > min) {
         $qty.val(current - step);
         $qty.trigger('change');
+        console.log('minus')
       }
 
       if ($this.hasClass('plus') && current < max) {
         $qty.val(current + step);
         $qty.trigger('change');
+        console.log('plus')
       }
 
       return false;
@@ -627,9 +701,9 @@ $('#grid-shop').cubeportfolio({
   function mt_ajax_contact_form() {
 
       $('#submit').on("click", function() {
-           // validate and process form here 
+           // validate and process form here
            $("#ajax-contact-form").validate({
-             
+
                   rules:{
 
                         name:{
@@ -675,9 +749,9 @@ $('#grid-shop').cubeportfolio({
                 submitHandler: function(form) {
                       console.log(form)
                      // Create variables from the form
-                     var name = $('input#name').val(); 
-                     var email = $('input#email').val();  
-                     var phone = $('input#phone').val(); 
+                     var name = $('input#name').val();
+                     var email = $('input#email').val();
+                     var phone = $('input#phone').val();
                      var msg = $('textarea#msg').val();
 
                      // Create variables that will be sent in a URL string to contact.php
@@ -694,7 +768,7 @@ $('#grid-shop').cubeportfolio({
                                   if(data.context.status == 'OK') {
                                     var result = '<div class="notification_ok"><i class="fa fa-check"></i> Your email was sent. Thanks!</div>';
                                     $("#ajax-contact-form").find('input[type=text], input[type=email], textarea').val("");
-                                   
+
                                   } else {
                                   result = data;
                                  }
@@ -703,7 +777,7 @@ $('#grid-shop').cubeportfolio({
                                    $('#note').html(result).fadeOut();
                                  }, 4000);
                           }
-                         
+
                       });
                      return false;
                }
@@ -719,334 +793,327 @@ $('#grid-shop').cubeportfolio({
 function mt_headerSticky() {
 
 if ($('header.sticky').length) {
-  $("header.sticky").sticky({ topSpacing: 0, zIndex: "99999" });
+$("header.sticky").sticky({ topSpacing: 0, zIndex: "99999" });
 
 }
 
 }
 
-  /* ================================= */
-  /* :::::::: 15. Google Map ::::::::: */
-  /* ================================= */
+/* ================================= */
+/* :::::::: 15. Google Map ::::::::: */
+/* ================================= */
 
-  function mt_google_map() {
+function mt_google_map() {
 
-  if ($('#google-container').length) {
+if ($('#google-container').length) {
 
-    //set your google maps parameters
-    var latitude = -37.8602828,
-      longitude = 145.079616,
-      map_zoom = 10;
+//set your google maps parameters
+var latitude = -37.8602828,
+  longitude = 145.079616,
+  map_zoom = 10;
 
-    //google map custom marker icon - .png fallback for IE11
-    var is_internetExplorer11 = navigator.userAgent.toLowerCase().indexOf('trident') > -1;
-    var marker_url = (is_internetExplorer11) ? 'assets/images/icon-location.png' : 'assets/images/icon-location.png';
+//google map custom marker icon - .png fallback for IE11
+var is_internetExplorer11 = navigator.userAgent.toLowerCase().indexOf('trident') > -1;
+var marker_url = (is_internetExplorer11) ? 'assets/images/icon-location.png' : 'assets/images/icon-location.png';
 
-    //define the basic color of your map, plus a value for saturation and brightness
-    var main_color = '#2d313f',
-      saturation_value = -70,
-      brightness_value = 5;
+//define the basic color of your map, plus a value for saturation and brightness
+var main_color = '#2d313f',
+  saturation_value = -70,
+  brightness_value = 5;
 
-    //we define here the style of the map
-    var style = [{
-        //set saturation for the labels on the map
-        elementType: 'labels',
-        stylers: [{
-          saturation: saturation_value
-        }, ]
-      },
-      { //poi stands for point of interest - don't show these lables on the map 
-        featureType: 'poi',
-        elementType: 'labels',
-        stylers: [{
-          visibility: 'off'
-        }, ]
-      },
-      {
-        //don't show highways lables on the map
-        featureType: 'road.highway',
-        elementType: 'labels',
-        stylers: [{
-          visibility: 'off'
-        }, ]
-      },
-      {
-        //don't show local road lables on the map
-        featureType: 'road.local',
-        elementType: 'labels.icon',
-        stylers: [{
-          visibility: 'off'
-        }, ]
-      },
-      {
-        //don't show arterial road lables on the map
-        featureType: 'road.arterial',
-        elementType: 'labels.icon',
-        stylers: [{
-          visibility: 'off'
-        }, ]
-      },
-      {
-        //don't show road lables on the map
-        featureType: 'road',
-        elementType: 'geometry.stroke',
-        stylers: [{
-          visibility: 'off'
-        }, ]
-      },
-      //style different elements on the map
-      {
-        featureType: 'transit',
-        elementType: 'geometry.fill',
-        stylers: [{
-            hue: main_color
-          },
-          {
-            visibility: 'on'
-          },
-          {
-            lightness: brightness_value
-          },
-          {
-            saturation: saturation_value
-          },
-        ]
+//we define here the style of the map
+var style = [{
+    //set saturation for the labels on the map
+    elementType: 'labels',
+    stylers: [{
+      saturation: saturation_value
+    }, ]
+  },
+  { //poi stands for point of interest - don't show these lables on the map
+    featureType: 'poi',
+    elementType: 'labels',
+    stylers: [{
+      visibility: 'off'
+    }, ]
+  },
+  {
+    //don't show highways lables on the map
+    featureType: 'road.highway',
+    elementType: 'labels',
+    stylers: [{
+      visibility: 'off'
+    }, ]
+  },
+  {
+    //don't show local road lables on the map
+    featureType: 'road.local',
+    elementType: 'labels.icon',
+    stylers: [{
+      visibility: 'off'
+    }, ]
+  },
+  {
+    //don't show arterial road lables on the map
+    featureType: 'road.arterial',
+    elementType: 'labels.icon',
+    stylers: [{
+      visibility: 'off'
+    }, ]
+  },
+  {
+    //don't show road lables on the map
+    featureType: 'road',
+    elementType: 'geometry.stroke',
+    stylers: [{
+      visibility: 'off'
+    }, ]
+  },
+  //style different elements on the map
+  {
+    featureType: 'transit',
+    elementType: 'geometry.fill',
+    stylers: [{
+        hue: main_color
       },
       {
-        featureType: 'poi',
-        elementType: 'geometry.fill',
-        stylers: [{
-            hue: main_color
-          },
-          {
-            visibility: 'on'
-          },
-          {
-            lightness: brightness_value
-          },
-          {
-            saturation: saturation_value
-          },
-        ]
+        visibility: 'on'
       },
       {
-        featureType: 'poi.government',
-        elementType: 'geometry.fill',
-        stylers: [{
-            hue: main_color
-          },
-          {
-            visibility: 'on'
-          },
-          {
-            lightness: brightness_value
-          },
-          {
-            saturation: saturation_value
-          },
-        ]
+        lightness: brightness_value
       },
       {
-        featureType: 'poi.attraction',
-        elementType: 'geometry.fill',
-        stylers: [{
-            hue: main_color
-          },
-          {
-            visibility: 'on'
-          },
-          {
-            lightness: brightness_value
-          },
-          {
-            saturation: saturation_value
-          },
-        ]
+        saturation: saturation_value
+      },
+    ]
+  },
+  {
+    featureType: 'poi',
+    elementType: 'geometry.fill',
+    stylers: [{
+        hue: main_color
       },
       {
-        featureType: 'poi.business',
-        elementType: 'geometry.fill',
-        stylers: [{
-            hue: main_color
-          },
-          {
-            visibility: 'on'
-          },
-          {
-            lightness: brightness_value
-          },
-          {
-            saturation: saturation_value
-          },
-        ]
+        visibility: 'on'
       },
       {
-        featureType: 'transit',
-        elementType: 'geometry.fill',
-        stylers: [{
-            hue: main_color
-          },
-          {
-            visibility: 'on'
-          },
-          {
-            lightness: brightness_value
-          },
-          {
-            saturation: saturation_value
-          },
-        ]
+        lightness: brightness_value
       },
       {
-        featureType: 'transit.station',
-        elementType: 'geometry.fill',
-        stylers: [{
-            hue: main_color
-          },
-          {
-            visibility: 'on'
-          },
-          {
-            lightness: brightness_value
-          },
-          {
-            saturation: saturation_value
-          },
-        ]
+        saturation: saturation_value
+      },
+    ]
+  },
+  {
+    featureType: 'poi.government',
+    elementType: 'geometry.fill',
+    stylers: [{
+        hue: main_color
       },
       {
-        featureType: 'landscape',
-        stylers: [{
-            hue: main_color
-          },
-          {
-            visibility: 'on'
-          },
-          {
-            lightness: brightness_value
-          },
-          {
-            saturation: saturation_value
-          },
-        ]
-
+        visibility: 'on'
       },
       {
-        featureType: 'road',
-        elementType: 'geometry.fill',
-        stylers: [{
-            hue: main_color
-          },
-          {
-            visibility: 'on'
-          },
-          {
-            lightness: brightness_value
-          },
-          {
-            saturation: saturation_value
-          },
-        ]
+        lightness: brightness_value
       },
       {
-        featureType: 'road.highway',
-        elementType: 'geometry.fill',
-        stylers: [{
-            hue: main_color
-          },
-          {
-            visibility: 'on'
-          },
-          {
-            lightness: brightness_value
-          },
-          {
-            saturation: saturation_value
-          },
-        ]
+        saturation: saturation_value
+      },
+    ]
+  },
+  {
+    featureType: 'poi.attraction',
+    elementType: 'geometry.fill',
+    stylers: [{
+        hue: main_color
       },
       {
-        featureType: 'water',
-        elementType: 'geometry',
-        stylers: [{
-            hue: main_color
-          },
-          {
-            visibility: 'on'
-          },
-          {
-            lightness: brightness_value
-          },
-          {
-            saturation: saturation_value
-          },
-        ]
-      }
-    ];
+        visibility: 'on'
+      },
+      {
+        lightness: brightness_value
+      },
+      {
+        saturation: saturation_value
+      },
+    ]
+  },
+  {
+    featureType: 'poi.business',
+    elementType: 'geometry.fill',
+    stylers: [{
+        hue: main_color
+      },
+      {
+        visibility: 'on'
+      },
+      {
+        lightness: brightness_value
+      },
+      {
+        saturation: saturation_value
+      },
+    ]
+  },
+  {
+    featureType: 'transit',
+    elementType: 'geometry.fill',
+    stylers: [{
+        hue: main_color
+      },
+      {
+        visibility: 'on'
+      },
+      {
+        lightness: brightness_value
+      },
+      {
+        saturation: saturation_value
+      },
+    ]
+  },
+  {
+    featureType: 'transit.station',
+    elementType: 'geometry.fill',
+    stylers: [{
+        hue: main_color
+      },
+      {
+        visibility: 'on'
+      },
+      {
+        lightness: brightness_value
+      },
+      {
+        saturation: saturation_value
+      },
+    ]
+  },
+  {
+    featureType: 'landscape',
+    stylers: [{
+        hue: main_color
+      },
+      {
+        visibility: 'on'
+      },
+      {
+        lightness: brightness_value
+      },
+      {
+        saturation: saturation_value
+      },
+    ]
 
-
-    //set google map options
-    var map_options = {
-      center: new google.maps.LatLng(latitude, longitude),
-      zoom: map_zoom,
-      panControl: false,
-      zoomControl: false,
-      mapTypeControl: false,
-      streetViewControl: false,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      scrollwheel: false,
-      styles: style,
-    }
-
-    //inizialize the map
-    var map = new google.maps.Map(document.getElementById('google-container'), map_options);
-    //add a custom marker to the map      
-
-
-
-    var marker = new google.maps.Marker({
-      position: new google.maps.LatLng(latitude, longitude),
-      map: map,
-      title: 'Melbourne, Australia',
-      visible: true,
-      icon: marker_url,
-    });
-
-
-
-
-    google.maps.event.addDomListener(window, "resize", function () {
-      var center = map.getCenter();
-      google.maps.event.trigger(map, "resize");
-      map.setCenter(center);
-
-    });
-
-
-    //add custom buttons for the zoom-in/zoom-out on the map
-    function CustomZoomControl(controlDiv, map) {
-      //grap the zoom elements from the DOM and insert them in the map 
-      var controlUIzoomIn = document.getElementById('zoom-in'),
-        controlUIzoomOut = document.getElementById('zoom-out');
-      controlDiv.appendChild(controlUIzoomIn);
-      controlDiv.appendChild(controlUIzoomOut);
-
-      // Setup the click event listeners and zoom-in or out according to the clicked element
-      google.maps.event.addDomListener(controlUIzoomIn, 'click', function () {
-        map.setZoom(map.getZoom() + 1)
-      });
-      google.maps.event.addDomListener(controlUIzoomOut, 'click', function () {
-        map.setZoom(map.getZoom() - 1)
-      });
-    }
-
-    var zoomControlDiv = document.createElement('div');
-    var zoomControl = new CustomZoomControl(zoomControlDiv, map);
-
-    //insert the zoom div on the top left of the map
-    map.controls[google.maps.ControlPosition.LEFT_TOP].push(zoomControlDiv);
+  },
+  {
+    featureType: 'road',
+    elementType: 'geometry.fill',
+    stylers: [{
+        hue: main_color
+      },
+      {
+        visibility: 'on'
+      },
+      {
+        lightness: brightness_value
+      },
+      {
+        saturation: saturation_value
+      },
+    ]
+  },
+  {
+    featureType: 'road.highway',
+    elementType: 'geometry.fill',
+    stylers: [{
+        hue: main_color
+      },
+      {
+        visibility: 'on'
+      },
+      {
+        lightness: brightness_value
+      },
+      {
+        saturation: saturation_value
+      },
+    ]
+  },
+  {
+    featureType: 'water',
+    elementType: 'geometry',
+    stylers: [{
+        hue: main_color
+      },
+      {
+        visibility: 'on'
+      },
+      {
+        lightness: brightness_value
+      },
+      {
+        saturation: saturation_value
+      },
+    ]
   }
-  }
+];
+
+//set google map options
+var map_options = {
+  center: new google.maps.LatLng(latitude, longitude),
+  zoom: map_zoom,
+  panControl: false,
+  zoomControl: false,
+  mapTypeControl: false,
+  streetViewControl: false,
+  mapTypeId: google.maps.MapTypeId.ROADMAP,
+  scrollwheel: false,
+  styles: style,
+}
+
+//inizialize the map
+var map = new google.maps.Map(document.getElementById('google-container'), map_options);
+//add a custom marker to the map
+
+var marker = new google.maps.Marker({
+  position: new google.maps.LatLng(latitude, longitude),
+  map: map,
+  title: 'Melbourne, Australia',
+  visible: true,
+  icon: marker_url,
+});
+
+google.maps.event.addDomListener(window, "resize", function () {
+  var center = map.getCenter();
+  google.maps.event.trigger(map, "resize");
+  map.setCenter(center);
+
+});
+
+//add custom buttons for the zoom-in/zoom-out on the map
+function CustomZoomControl(controlDiv, map) {
+  //grap the zoom elements from the DOM and insert them in the map
+  var controlUIzoomIn = document.getElementById('zoom-in'),
+    controlUIzoomOut = document.getElementById('zoom-out');
+  controlDiv.appendChild(controlUIzoomIn);
+  controlDiv.appendChild(controlUIzoomOut);
+
+  // Setup the click event listeners and zoom-in or out according to the clicked element
+  google.maps.event.addDomListener(controlUIzoomIn, 'click', function () {
+    map.setZoom(map.getZoom() + 1)
+  });
+  google.maps.event.addDomListener(controlUIzoomOut, 'click', function () {
+    map.setZoom(map.getZoom() - 1)
+  });
+}
+
+var zoomControlDiv = document.createElement('div');
+var zoomControl = new CustomZoomControl(zoomControlDiv, map);
+
+//insert the zoom div on the top left of the map
+map.controls[google.maps.ControlPosition.LEFT_TOP].push(zoomControlDiv);
+}
+}
 
     var ProductCard = function(){
     var $picts = $('.ProductCard-pict');
@@ -1067,52 +1134,4 @@ if ($('header.sticky').length) {
 };
         ProductCard().init();
 
-(function($) {
-    $('#HereAtHome').on('click', function () {
-        $(":root").css("--one-color",   "#647C90");
-        $(":root").css("--two-color",   "#E2DED0");
-        $(":root").css("--three-color", "#4E4F50");
-        $(":root").css("--four-color",  "#746C70");
-    });
-     $('#SoftSlipper').on('click', function () {
-        $(":root").css("--one-color",   "#B4AAA9");
-        $(":root").css("--two-color",   "#F9FAFF");
-        $(":root").css("--three-color", "#EFC9B4");
-        $(":root").css("--four-color",  "#EFC9B4");
-    });
-
-  });
-  });
-
-function changeColor(newColor) {
-    if(newColor == 'HereAtHome') {
-        document.documentElement.style.setProperty('--one-color', '#647C90');
-        document.documentElement.style.setProperty('--two-color', '#E2DED0');
-        document.documentElement.style.setProperty('--three-color', '#4E4F50');
-        document.documentElement.style.setProperty('--four-color', '#746C70');
-        document.body.style.color = '#E2DED0';
-    };
-    if(newColor == 'SoftSlipper') {
-        document.documentElement.style.setProperty('--one-color', '#B4AAA9');
-        document.documentElement.style.setProperty('--two-color', '#F9FAFF');
-        document.documentElement.style.setProperty('--three-color', '#EFC9B4');
-        document.documentElement.style.setProperty('--four-color', '#EFC9B4');
-         document.body.style.color = '#4E4F50';
-    };
-    if(newColor == 'RoomOfComfort') {
-        document.documentElement.style.setProperty('--one-color', '#E7D3CC');
-        document.documentElement.style.setProperty('--two-color', '#EEEDE9');
-        document.documentElement.style.setProperty('--three-color', '#878A8F');
-        document.documentElement.style.setProperty('--four-color', '#B9B6BD');
-         document.body.style.color = '#4E4F50';
-    };
-     if(newColor == 'RocksAndBarefoot') {
-        document.documentElement.style.setProperty('--one-color', '#BCC3CB');
-        document.documentElement.style.setProperty('--two-color', '#EEE8DC');
-        document.documentElement.style.setProperty('--three-color', '#CCB0A5');
-        document.documentElement.style.setProperty('--four-color', '#DBD2CB');
-        document.body.style.color = '#4E4F50';
-    };
-
-
-};
+});

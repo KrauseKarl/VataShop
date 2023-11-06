@@ -1418,6 +1418,7 @@ max-width: 100%;
     width: 100%;
     margin-bottom: 50px;
     padding-bottom: 50px!important;
+    margin-top: 20px;
 }
 
 .blogContainer .blog-column-one:last-child {
@@ -1452,6 +1453,10 @@ h2.entry-title {
 
 .post-button {
     margin-top: 30px;
+    font-weight: 800;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: end;
 }
 
 .post-button a {
@@ -1563,6 +1568,8 @@ a.cbp-l-loadMore-stop:hover {
 .post-info {
     color: #000000;
     margin-top: 7px;
+    display: flex;
+    justify-content: start;
 }
 
 .post-info img {
@@ -1923,6 +1930,8 @@ li.comment {
 
 .blog-minimal {
     display: flex;
+    justify-content:space-evenly;
+    align-item:center;
 }
 
 
@@ -2101,6 +2110,22 @@ li.comment {
     margin-bottom: 15px;
 }
 
+.order-side-box {
+    background-color: var(--three-color);
+    border-radius: 10px;
+    padding:20px;
+    margin-top:20px;
+}
+.order-item-list {
+    background-color: var(--two-color);
+    border-radius: 10px;
+    padding:20px;
+    margin-right:20px;
+}
+.order-item-list:first-child {
+    margin-top:20px;
+}
+
 .sidebar .search input[type=search]:focus {
     outline: 0;
     box-shadow: none;
@@ -2260,7 +2285,11 @@ footer a:hover {
 /* ================================= */
 /* :::::::::: 6. Shop :::::::::::::: */
 /* ================================= */
+.cart-carousel {
+    display:flex;
+    justify-content:space-evenly;
 
+}
 .cart-container {
     position: relative;
     float: right;
@@ -2284,7 +2313,7 @@ footer a:hover {
     line-height: 18px;
     display: block;
     text-align: center;
-    background: #000;
+    background: red;
     color: #fff;
     width: 19px;
     font-weight: 400;
@@ -2733,12 +2762,12 @@ footer a:hover {
     clear: both;
     padding-top: 50px;
 }
-.product-single-box-detail {
+.product-single-box-detail, .total-side-bar {
 
     clear: both;
     padding-top: 50px;
 }
-.product-single-box-detail p {
+.product-single-box-detail, .total-side-bar p {
     overflow: hidden;
 }
 
@@ -2749,20 +2778,27 @@ footer a:hover {
   white-space: nowrap;
   overflow: hidden;
 }
+.total-side-bar p:after {
+  content:'';
+  display: block;
+  color: rgb(0,0,0,0.2);
+  white-space: nowrap;
+  overflow: hidden;
+}
 
-.product-single-box-detail p span:first-of-type {
+.product-single-box-detail, .total-side-bar p span:first-of-type {
   float:left;
   margin-right: 10px;
  }
 
-.product-single-box-detail p span:last-of-type {
+.product-single-box-detail,  .total-side-bar p span:last-of-type {
   float:right;
   margin-left: 10px;
 }
-.product-single-box-detail p:last-of-type: {
+.product-single-box-detail, .total-side-bar p:last-of-type: {
   margin-bottom: 10px;
 }
-.product-single-box-detail p:last-of-type:after  {
+.product-single-box-detail,  .total-side-bar p:last-of-type:after  {
   content: '';
   margin: 20px 0;
 }
@@ -2824,6 +2860,9 @@ footer a:hover {
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   background: none;
+}
+.product-single-info .button-product .button-wide {
+    width: 100%;
 }
 
 .product-single-info .button-product:hover {
@@ -3964,12 +4003,10 @@ footer .social-icons {
 
 /* FIX PANEL */
 .fixed-bottom-bar {
-    background-color: var(--main-color);
-    border-radius: 8px;
-    bottom: 29px;
-<!--			border: 10px solid var(&#45;&#45;main-color);-->
-    height: 0;
-    width:75%;
+    display: block;
+    bottom: 22px;
+    height: 15%;
+    width: 25%;
     overflow: hidden;
     position: fixed;
     width: 100%;
@@ -3981,9 +4018,27 @@ footer .social-icons {
 
     z-index: 1700;
     padding : 5px;
+    /*-webkit-box-shadow: 10px 10px 15px 3px rgba(116, 121, 125, 0.6);
+    -moz-box-shadow: 10px 10px 15px 3px rgba(116, 121, 125, 0.6);
+    box-shadow: 10px 10px 15px 3px rgba(116, 121, 125, 0.6);  */
+}
+.toster {
+    display:block;
+    border-radius: 28px;
+    padding:20px; color:#fff;
+    font-weight:600;
     -webkit-box-shadow: 10px 10px 15px 3px rgba(116, 121, 125, 0.6);
     -moz-box-shadow: 10px 10px 15px 3px rgba(116, 121, 125, 0.6);
     box-shadow: 10px 10px 15px 3px rgba(116, 121, 125, 0.6);
+}
+.toster__success {
+    background-color: green;
+}
+.toster__error {
+    background-color: red;
+}
+.toster__info {
+    background-color: orange;
 }
 .color-button {
     -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);

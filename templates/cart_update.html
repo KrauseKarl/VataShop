@@ -1,10 +1,10 @@
 <div class="icon-cart">
     <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-    {% if cart %}<span class="cart-count">{{ cart.item|length }}</span> {% endif %}
+    {% if  cart.item|length > 0 %}<span class="cart-count">{{ cart.item|length }}</span> {% endif %}
 </div>
 
 <div class="cart-widget">
-    {% if cart %}
+    {% if cart.item %}
     <ul class="mini-cart cart_list product_list_widget">
 
         {% for key, it in cart.item.items() %}

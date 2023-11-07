@@ -90,7 +90,14 @@
   $(document).on('onAfterLoadMore.cbp', function(event) {
     mt_lightCase();
   });
-
+   function toster(msg) {
+        $('.fixed-bottom-bar').css('display', 'block');
+        $('#toster').html(msg).fadeIn('slow');
+        setTimeout(function () {
+            $('#toster').fadeOut(2000,"linear",);
+            $('.fixed-bottom-bar').css('display', 'none');
+        }, 2000);
+   };
   function mt_addCart() {
       $('.button-product').on("click", function() {
             event.preventDefault();
@@ -110,17 +117,11 @@
                     } else {
                         result = data;
                     }
-
-                    $('#toster').html(result).fadeIn('slow');
                     $('.icon-cart').html(cartCount).fadeIn();
                     $('.cart-count').html(count).fadeIn();
                     $(".cart-container").load("/cart_update")
                     $('.icon-cart, .cart-widget').wrapAll('<div class="cart-container"></div>');
-
-                    setTimeout(function () {
-                        $('#toster').html(result).fadeOut();
-
-                    }, 3000);
+                    toster(result);
               }
           });
             return false;
@@ -163,12 +164,15 @@
                 var idd = '' + data.item_id;
                 if(data.extra){
                     var card = "#item_" + data.removed_id
-                    $(card).remove().fadeOut('slow');
+                    $(card).remove().fadeOut(3000);
                     var result = '<div class="toster toster__info"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Товар удален</div>';
                     if(data.removed_all){
-                        $("#container__total").remove().fadeOut('slow');
-                        var empty_cart_msg = "<div class='col '><i class='fa fa-shopping-cart' aria-hidden='true'></i>Корзина пуста</div>"
-                        $(".cart__container .row").html(empty_cart_msg)
+                        $("#container__total").remove().fadeOut(3000);
+                        var emptyCart = "<div class='parallax'><div class='info'><i style='text-shadow:2px 2px 4px rgb(0,0,0,0.4);' class='fa fa-shopping-cart fa-4x' aria-hidden='true'></i><h4 style='margin-top:20px;  text-shadow:2px 2px 7px rgb(0,0,0,0.4)'>Корзина пуста</h4></div></div>"
+                        var emptyMiniCart = "<p class='mini-cart__total total'>корзина пуста</p>"
+                        $("#wrapper").html(emptyCart)
+                        $(".cart-count").remove().fadeOut(3000);
+                        $(".cart-widget").empty().html(emptyMiniCart)
 
                     }
                 } else {
@@ -176,19 +180,15 @@
                     var quantity = "#" + idd + "_quantity";
                     var summary = "#" + idd + "_summary";
                     var totalSummary = "#" + idd + "__summary";
-                    $(quantity).text(data.cart['item'][idd]['quantity']);
-                    $(summary).text(data.cart['item'][idd]['summary']);
-                    $(totalSummary).text(data.cart['item'][idd]['summary']);
+                    $(quantity).text(data.cart['item'][idd]['quantity']).fadeIn(1000);
+                    $(summary).text(data.cart['item'][idd]['summary']).fadeIn(1000);
+                    $(totalSummary).text(data.cart['item'][idd]['summary']).fadeIn(1000);
                     };
-                $("#cart__total").text(data.cart["total"]['total']);
+                $("#cart__total").text(data.cart["total"]['total']).fadeIn(1000);
             } else {
                var result = '<div class="toster toster__error"><i class="fa fa-error"></i>&nbsp;Товар удален</div>';;
             };
-            $('.fixed-bottom-bar').css('display', 'block');
-            $('#toster').html(result).fadeIn('slow');
-            setTimeout(function () {
-                $('#toster').html(result).fadeOut('slow');
-            }, 3000);
+            toster(result);
             },
 //        error: function(){
 //            var result = '<div class="toster"><i class="fa fa-error"></i>&nbsp;Ошибка!</div>';
@@ -344,6 +344,9 @@
   $(window).on('resize', function () {
     element.isotope();
   }).trigger('resize');
+     $(window).on('mousemove', function () {
+    element.isotope();
+  }).trigger('resize');
 
   }
 
@@ -364,7 +367,9 @@
   $(window).on('resize', function () {
     element.isotope();
   }).trigger('resize');
-
+   $(window).on('mousemove', function () {
+    element.isotope();
+  }).trigger('resize');
   }
 
 
@@ -700,10 +705,9 @@ $('#grid-shop').cubeportfolio({
 
   function mt_ajax_contact_form() {
 
-      $('#submit').on("click", function() {
-           // validate and process form here
+      $('#submit').on("click", function(event) {
+            event.preventDefault();
            $("#ajax-contact-form").validate({
-
                   rules:{
 
                         name:{
@@ -723,7 +727,6 @@ $('#grid-shop').cubeportfolio({
                             required: true,
                         },
                    },
-
                   messages:{
 
                           name:{
@@ -744,7 +747,6 @@ $('#grid-shop').cubeportfolio({
                         },
 
                    },
-
                 // JQuery's awesome submit handler.
                 submitHandler: function(form) {
                       console.log(form)
@@ -758,7 +760,7 @@ $('#grid-shop').cubeportfolio({
                      var dataString = '&name='+ name + '&email=' + email + '&phone=' + phone + '&msg=' + msg;
                         console.log(dataString)
                         $.ajax({
-                            type: "POST",
+                            type: "GET",
                             url: "/form",
                             data: dataString,
                             dataType: 'json',

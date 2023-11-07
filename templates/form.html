@@ -5,36 +5,44 @@
 
 {% block content %}
 <div id="wrapper">
-
-
-
-  <div class="container">
-    <div class="row">
-            <div class="col-md-6">
-                <div class="contact-form" style="margin-top: 35px;">
-                    {% if status == 'error' %}
-                    <div style="background-color:red; padding: 20px; color:white;">
-                        {{ status }}
+    <div class="container">
+        <div class="row" >
+            <div style="background: var(--one-color); padding: 20px;" class="col-md-6">
+                <div class="contact-form" style="margin-top: 35px; margin-bottom:20px;">
+                    <div class="order-widget">
+                        <p class="mini-cart__total total">
+                        <strong>Итого:</strong>
+                        <span>{{ cart.total.total }}&nbsp;&#8381;</span>
+                        </p>
+                        <hr>
+                        <ul class=" cart_list product_list_widget">
+                            {% for key, it in cart.item.items() %}
+                            <li>
+                                <img alt="{{ it.name }}" src="{{ it.img }}">{{ it.name }}
+                                <p class="quantity">{{ it.quantity }}&nbsp;×&nbsp;<span>{{ it.price }}&nbsp;&#8381;</span>
+                                </p>
+                            </li>
+                            {% endfor %}
+                        </ul>
                     </div>
-                    {% elif status == 'OK' %}
-                    <div style="background-color:green; padding: 20px; color:white;">
-                        {{ status }}
-                    </div>
-                {% else %}
+                </div>
+            </div>
+            <div style="background: var(--one-color); padding:20px;" class="col-md-6 " >
+                <div class="contact-form" style="margin-top: 35px; padding:20px 20px;">
                     <div id="note"></div>
                     <div id="fields">
-                        <form id="ajax-contact-form" method="post">
-                          <p><input type="text" name="name" id="name" placeholder="Name" value=""/></p>
-                          <p><input type="email" name="email" id="email" placeholder="Email" value=""/></p>
-                          <p><input type="text" name="phone" id="phone" placeholder="Phone" value=""/></p>
-                          <p><textarea name="msg" id="msg" placeholder="Message"></textarea></p>
-                          <input type="submit" name="submit" id="submit" value="Send message"/>
+                        <form id="ajax-contact-form" method="get">
+                            <p><input type="text" name="name" id="name" placeholder="Имя" value=""/></p>
+                            <p><input type="email" name="email" id="email" placeholder="Email" value=""/></p>
+                            <p><input type="text" name="phone" id="phone" placeholder="телефон" value=""/></p>
+                            <p><textarea name="msg" id="msg" placeholder="комментарий к заказу ..."></textarea></p>
+                            <input type="submit" name="submit" id="submit" value="отправить предзаказ"/>
                         </form>
-                     </div>
-                    {% endif %}
-                  </div>
+                    </div>
+
+                </div>
             </div>
-     </div>
+        </div>
     </div>
 </div>
 {% endblock %}

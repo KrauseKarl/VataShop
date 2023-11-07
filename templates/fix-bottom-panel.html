@@ -1,0 +1,29 @@
+<div class="fixed-mobile-bar">
+    <div class="container">
+        <div class="row product-single-info">
+            <div class="col-md pr-4 topper bottom-center">
+
+                <span class="fix-bottom-total">
+                  <span>{{ cart.total.total }}&nbsp;&#8381;</span>
+                </span>
+                <a class="fix-bottom-button" href="/my-cart">
+                    <i class="fa fa-shopping-bag " aria-hidden="true"></i>
+                </a>
+                {% if product %}
+                <form id="ajax-add-cart-form" class="cart" method="post" enctype="multipart/form-data">
+                    <div class="">
+                        <input id="name" type="hidden" name="name" value="{{ product.id }}">
+                        <input id="quantity" type="hidden" class="input-text qty text" step="1" min="-1" max="20"
+                               name="quantity"
+                               value="1" title="Qty" size="4" placeholder="">
+                    </div>
+
+                    <button type="submit" style="background-color:#fff;" name="add-to-cart" class="button-product"><i class="fa fa-plus">&nbsp;добавить</i>
+                    </button>
+                </form>
+                {% endif %}
+                <a class="fix-bottom-button" href="#roof"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+</div>

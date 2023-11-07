@@ -8,26 +8,48 @@ from starlette.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
 
-
 from services import add_cart
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 app.mount("/assets", StaticFiles(directory="assets"), name="assets")
-app.add_middleware(SessionMiddleware, secret_key="some-random-string", max_age=None)
+app.add_middleware(SessionMiddleware, secret_key="some-random-string", max_age=31536000)
 
-#
-# @app.get("/a")
-# async def session_set(request: Request):
-#     request.session["my_var"] = "1234"
-#     return 'ok'
+
+def items_list():
+    with open("db.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return data
+
+
+def categories_list():
+    with open("categoies.json", "r", encoding="utf-8") as с:
+        categories = json.load(с)
+    return categories
+
+
+def get_cart(request: Request):
+    fake_cart = {
+            "item": {},
+            "total": {
+                "total": 0
+            }
+        }
+
+    cart = request.session.get('cart', fake_cart)
+    return cart
 
 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
+    cart = get_cart(request)
+    context = {
+        "request": request,
+        "cart": cart
+    }
     return templates.TemplateResponse(
         "index.html",
-        context={"request": request}
+        context=context
     )
 
 
@@ -35,17 +57,20 @@ async def index(request: Request):
 async def form(request: Request):
     return templates.TemplateResponse(
         "form.html",
-        context={"request": request}
+        context={
+            "request": request,
+            "cart": get_cart(request),
+            }
     )
 
 
 @app.get("/cart", response_class=JSONResponse)
 async def form(request: Request):
-    cart = request.session.get('cart')
+    cart = get_cart(request)
     if cart:
         result = {'cart': cart}
     else:
-        result = {'status': 200, 'cart': cart}
+        result = {'status': 200, 'cart': 'empty'}
     return result
 
 
@@ -132,14 +157,11 @@ async def more(request: Request):
 
 @app.get("/catalog", response_class=HTMLResponse)
 async def catalog(request: Request):
-    with open("db.json", "r", encoding="utf-8") as f:
-        data = json.load(f)
-    with open("categoies.json", "r", encoding="utf-8") as с:
-        categories = json.load(с)
     context = {
+        "cart": get_cart(request),
         "request": request,
-        "categories": categories,
-        "all_products": data,
+        "categories": categories_list(),
+        "all_products": items_list(),
     }
     return templates.TemplateResponse(
         "catalog.html",
@@ -149,7 +171,6 @@ async def catalog(request: Request):
 
 @app.get("/cart_update", response_class=HTMLResponse)
 async def update_cart(request: Request):
-
     context = {
         "request": request,
         "cart": request.session["cart"],
@@ -160,9 +181,9 @@ async def update_cart(request: Request):
         context=context
     )
 
+
 @app.get("/my-cart", response_class=HTMLResponse)
 async def my_cart(request: Request):
-
     context = {
         "request": request,
         "cart": request.session["cart"],
@@ -211,17 +232,12 @@ async def recalculate_cart(
 
 @app.get("/item/{item_id}", response_class=HTMLResponse)
 async def item(item_id: str, request: Request):
-    with open("db.json", "r", encoding="utf-8") as f:
-        data = json.load(f)
-    with open("categoies.json", "r", encoding="utf-8") as с:
-        categories = json.load(с)
-    cart = request.session.get("cart")
-
+    cart = get_cart(request)
     context = {
         "request": request,
-        "product": data.get(item_id),
-        "categories": categories,
-        "all_products": data,
+        "product": items_list().get(item_id),
+        "categories": categories_list(),
+        "all_products": items_list(),
         "cart": cart,
     }
     return templates.TemplateResponse(

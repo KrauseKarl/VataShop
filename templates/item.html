@@ -43,17 +43,13 @@
                         <p>{{ product.description|truncate(300, False, '...', 0) }}<a href="#description">подробно</a>
                         </p>
                     </div>
-
                     <form id="ajax-add-cart-form" class="cart" method="post" enctype="multipart/form-data"
                           style="margin-top:40px; ">
                         <div class="shop-qty">
-                            <button class="minus">-</button>
                             <input id="name" type="hidden" name="name" value="{{ product.id }}">
-
-                            <input id="quantity" type="number" class="input-text qty text" step="1" min="-1" max="20"
+                            <input id="quantity" type="hidden" class="input-text qty text" step="1" min="-1" max="20"
                                    name="quantity"
                                    value="1" title="Qty" size="4" placeholder="">
-                            <button class="plus">+</button>
                         </div>
                         {% if in_cart %}
                         <button type="submit" name="add-to-cart" class="button-product">{{ in_cart }} в корзинe</button>
@@ -63,7 +59,7 @@
                     </form>
                 </div>
 
-                <div class="product-single-box-detail">
+                    <div class="product-single-box-detail">
                     <p><span>общий вес, г</span><span>{{product.weight}}</span></p>
                     <p><span>материал</span><span>{{product.material}}</span></p>
                     <p><span>размеры, мм</span><span>{{product.size.width}} X {{product.size.height}} X {{product.size.length}}</span></p>

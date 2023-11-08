@@ -53,10 +53,10 @@ async def index(request: Request):
     )
 
 
-@app.get("/form", response_class=HTMLResponse)
-async def form(request: Request):
+@app.get("/make-order", response_class=HTMLResponse)
+async def make_order_form(request: Request):
     return templates.TemplateResponse(
-        "form.html",
+        "order-form.html",
         context={
             "request": request,
             "cart": get_cart(request),
@@ -85,19 +85,15 @@ async def add(
         request: Request,
         name: str = Form(...),
         quantity: str = Form(...),
-
 ):
-    with open("db.json", "r", encoding="utf-8") as f:
-        data = json.load(f)
-    with open("categoies.json", "r", encoding="utf-8") as с:
-        categories = json.load(с)
-    cart = request.session.get("cart", None)
+    data = items_list()
+    cart = get_cart(request)
 
     title = data.get('00' + str(name))['title']
     price = data.get('00' + str(name))['price']
-
     img = data.get('00' + str(name))['thumbnail']
     quantity = int(quantity)
+
     items = {
         name: {
             "name": title,
@@ -156,12 +152,35 @@ async def more(request: Request):
 
 
 @app.get("/catalog", response_class=HTMLResponse)
-async def catalog(request: Request):
+async def catalog(
+        request: Request,
+        sort_by: str | None = None,
+        category: str | None = None
+):
+    cat = categories_list()
+    products = items_list()
+    if category in ['кашпо', 'свечи', 'вазы']:
+        res = {k: v for k, v in products.items() if v['category'] == sort_by}
+    if sort_by == 'price_desc':
+        res = {k: v for k, v in sorted(products.items(), key=lambda x: int(x[1]["price"]))}
+    elif sort_by == 'price':
+        res = {k: v for k, v in sorted(products.items(), key=lambda x: int(x[1]["price"]), reverse=True)}
+    else:
+        res = products
+
+        # price_desc = "price_desc"
+    # if sort_by:
+    #     if sort_by == price_desc:
+    #         products = {k: v for k, v in sorted(products.items(), key=lambda it: it['price'])}
+    #         print('\n')
+    #         print('************************')
+    #         print(products)
+    #         print('************************\n')
     context = {
         "cart": get_cart(request),
         "request": request,
         "categories": categories_list(),
-        "all_products": items_list(),
+        "all_products": res,
     }
     return templates.TemplateResponse(
         "catalog.html",
@@ -244,13 +263,6 @@ async def item(item_id: str, request: Request):
         "item.html",
         context=context
     )
-
-
-@app.get("/items/{item_id}", response_class=HTMLResponse)
-async def item2(item_id, request: Request):
-    with open("db.json", "r", encoding="utf-8") as f:
-        data = json.load(f)
-    return {"status": 200, "data": data.get(item_id)}
 
 
 if __name__ == '__main__':

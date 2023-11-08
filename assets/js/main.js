@@ -761,7 +761,7 @@ $('#grid-shop').cubeportfolio({
                         console.log(dataString)
                         $.ajax({
                             type: "GET",
-                            url: "/form",
+                            url: "/make-order",
                             data: dataString,
                             dataType: 'json',
                             success: function(data) {

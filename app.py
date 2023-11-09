@@ -1,5 +1,5 @@
 import json
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 import uvicorn
 from fastapi import FastAPI, Request, Form
@@ -83,8 +83,8 @@ async def delete_cart(request: Request):
 @app.post("/add", response_class=JSONResponse)
 async def add(
         request: Request,
-        name: str = Form(...),
-        quantity: str = Form(...),
+        name: Optional[str] = Form(...),
+        quantity: Optional[str] = Form(...),
 ):
     data = items_list()
     cart = get_cart(request)
@@ -154,7 +154,7 @@ async def more(request: Request):
 @app.get("/catalog", response_class=HTMLResponse)
 async def catalog(
         request: Request,
-        sort_by: str | None = None,
+        sort_by: Optional[str] = None
 ):
     products = items_list()
     if sort_by == 'price-asc':
@@ -179,7 +179,7 @@ async def catalog(
 @app.get("/catalog-sort", response_class=HTMLResponse)
 async def catalog(
         request: Request,
-        sort_by: str | None = None,
+        sort_by: Optional[str] = None
 ):
     products = items_list()
     if sort_by == 'price-asc':
@@ -203,8 +203,8 @@ async def catalog(
 @app.get("/category/{category}", response_class=HTMLResponse)
 async def a_category_list(
         request: Request,
-        sort_by: str | None = None,
-        category: str | None = None
+        sort_by: Optional[str]=None,
+        category: Optional[str]=None
 ):
     products = items_list()
 
@@ -255,8 +255,8 @@ async def my_cart(request: Request):
 @app.get("/cart-item-update", response_class=JSONResponse)
 async def recalculate_cart(
         request: Request,
-        item_id: str | None = None,
-        qty: int | None = None
+        item_id: Optional[str]=None,
+        qty: Optional[int]=None
 ):
     extra_msg = None
     removed_id = None

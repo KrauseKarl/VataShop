@@ -6,7 +6,17 @@
 {% block content %}
 <!-- wrapper -->    
 <div id="wrapper">
-    <div class="container">
+        <!-- parallax -->
+    <div class="catalog-parallax"
+         style="margin-top:-70px; background-image: url(/assets/images/paralax/paralax_5.jpg);">
+        <div class="info catalog-parallax-info">
+            <h2 data-in-effect="fadeIn" style="text-align: center;
+            font-size: 3.1em;font-weight:900;text-shadow:0 0 5px #000;">VATA SHOP
+            </h2>
+        </div>
+    </div>
+    <!-- /parallax -->
+    <div class="container" style="margin-top:50px;">
         <div class="row">
             <div class="col-md-9">
                 <div class="product-single-image">
@@ -51,30 +61,26 @@
                                    name="quantity"
                                    value="1" title="Qty" size="4" placeholder="">
                         </div>
-                        {% if in_cart %}
-                        <button type="submit" name="add-to-cart" class="button-product">{{ in_cart }} в корзинe</button>
-                        {% else %}
-                        <button type="submit" name="add-to-cart" class="button-product">В корзину</button>
-                        {% endif %}
+
+                        <button type="submit" style="width:100%;" name="add-to-cart" class="button-product ">В корзину</button>
                     </form>
                 </div>
 
                     <div class="product-single-box-detail">
+                    <p><span>цвета</span><span>
+                        {% for color in product.colors %}
+                        <a class="ProductCard-pict colors"
+                           style="background-color: {{ color.color_code  }};"
+                           title="{{ color.color_name }}" href="{{ color.img }}" >
+                        </a>
+                        {% endfor %}
+                    </span></p>
+
                     <p><span>общий вес, г</span><span>{{product.weight}}</span></p>
                     <p><span>материал</span><span>{{product.material}}</span></p>
                     <p><span>размеры, мм</span><span>{{product.size.width}} X {{product.size.height}} X {{product.size.length}}</span></p>
                     <p><span>место размещения</span><span>{{product.place_operation|join(', ') }}</span></p>
-                    <p><span>цвета</span><span>
-                        {% for key,value in product.colors|items %}
-                        <a title="{{ value }}" href="" class="colors"
-                           style="box-shadow:2px 2px 2px rgb(0,0,0,0.3);
-                                 border-radius:20%;
-                                 padding:15px;
-                                 margin-right:10px;
-                                 margin-bottom: 10px;
-                                 background-color:{{ key }};"></a>
-                        {% endfor %}</span></p>
-                    <p><span>*По вашему желанию можно выбрать цвет из каталога RAL</span></p>
+                     <p><span>*По вашему желанию можно выбрать цвет из каталога RAL</span></p>
                 </div>
                     <div id="description" class="product-single-box">
                     <h2>Описание</h2>
@@ -85,8 +91,7 @@
                     <span>#</span>&nbsp;{{ hashtag }}&emsp;
                          {% endfor %}
                 </div>
-
-                <!--RELATED ITEMS -->
+                      <!--RELATED ITEMS -->
                 <div class="product-related-products">
                     <h3 class="product-single-title">Похожие товары</h3>
                     <div class="shop-products shopContainer columns-3">
@@ -126,19 +131,8 @@
                 </div>
                 <!--RELATED ITEMS -->
             </div>
-
             <div class="col-md-3 rex-padding-left">
                 <div class="sidebar">
-                    <div class="sidebar-box">
-                        <h1 class="sidebar-title">Категории</h1>
-                        <ul class="product-categories">
-                            {% for c in categories %}
-                            <li style="font-weight:600">
-                                <a href="/catalog/category">{{ c.category }}</a>
-                            </li>
-                             {% endfor %}
-                        </ul>
-                    </div>
                     <div class="sidebar-box">
                         <h1 class="sidebar-title">Популярные товары</h1>
                         <ul class="sidebar-product-list">

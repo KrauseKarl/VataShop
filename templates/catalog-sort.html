@@ -1,0 +1,21 @@
+<div id="catalog-item-list" class="row">
+
+    {% for item_id, item in all_products.items() %}
+    <!-- product 1 -->
+    <div class="col-lg-4 col-md-6   col-sm-6 col-12">
+        <div class="card mb-2">
+            <a href="/item/00{{item.id}}" class="card-text">
+
+                <img class="card-img-top" src="{{item.thumbnail }}" width="300"
+                     alt="Card image cap">
+            </a>
+            <div class="card-body">
+                <h5 class="card-title">{{ item.title| capitalize }}</h5>
+                <p class="card-text"></p>
+                <small class="text-muted">{{ item.price }}</small>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>

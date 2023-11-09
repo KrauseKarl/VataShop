@@ -82,7 +82,8 @@
     mt_google_map();
     mt_headerSticky();
     mt_addCart();
-    mt_change_in_cart()
+    mt_change_in_cart();
+    mt_sortItems();
 
   });
 
@@ -90,15 +91,37 @@
   $(document).on('onAfterLoadMore.cbp', function(event) {
     mt_lightCase();
   });
-   function toster(msg) {
+     function mt_sortItems() {
+        $('a.shop-sort-button').on('click', function(event) {
+            alert('done')
+            var sort_by = this.value;
+            var dataString = 'sort_by='+ sort_by;
+            alert(dataString)
+            $.ajax({
+                type: "GET",
+                url: '/catalog-sort',
+                data: dataString,
+                success: function(data) {
+                    alert(data.status)
+                    $("#catalog-item-list").html();
+
+//                    $("#catalog-item-list").load('/catalog #catalog-item-list > *#catalog-item-list');
+                },
+            });
+            return false;
+        });
+     };
+
+
+    function toster(msg) {
         $('.fixed-bottom-bar').css('display', 'block');
         $('#toster').html(msg).fadeIn('slow');
         setTimeout(function () {
             $('#toster').fadeOut(2000,"linear",);
             $('.fixed-bottom-bar').css('display', 'none');
         }, 2000);
-   };
-  function mt_addCart() {
+    };
+    function mt_addCart() {
       $('.button-product').on("click", function() {
             event.preventDefault();
             var name = $('input#name').val();
@@ -126,9 +149,9 @@
           });
             return false;
     });
-  }
+    }
 
-  function mt_change_in_cart() {
+    function mt_change_in_cart() {
     // Quantity
     $(document).on('click', '.change-qty .plus, .change-qty .minus', function(event){
         event.preventDefault();
@@ -190,24 +213,24 @@
             };
             toster(result);
             },
-//        error: function(){
-//            var result = '<div class="toster"><i class="fa fa-error"></i>&nbsp;Ошибка!</div>';
-//            $('.fixed-bottom-bar').css('display', 'block');
-//            $('#toster').html(result).fadeIn('slow');
-//            setTimeout(function () {
-//                $('#toster').html(result).fadeOut('slow');
-//            }, 3000);
-//        },
+    //        error: function(){
+    //            var result = '<div class="toster"><i class="fa fa-error"></i>&nbsp;Ошибка!</div>';
+    //            $('.fixed-bottom-bar').css('display', 'block');
+    //            $('#toster').html(result).fadeIn('slow');
+    //            setTimeout(function () {
+    //                $('#toster').html(result).fadeOut('slow');
+    //            }, 3000);
+    //        },
       });
       return false;
     });
 
-  }
+    }
 
-  function mt_loading() {
+    function mt_loading() {
       $(".text-loader").delay(700).fadeOut();
       $(".page-loader").delay(900).fadeOut("fast");
-  }
+    }
 
 
   /* ================================= */
@@ -379,7 +402,7 @@
 
   function mt_portfolio() {
 
-  $('.classicAnim').cubeportfolio({
+    $('.classicAnim').cubeportfolio({
     filters: '.portfolioFilter',
     layoutMode: 'masonry',
     sortByDimension: true,
@@ -417,7 +440,7 @@
         loadItems: 3,
       }
     },
-  });
+    });
 
     $('#grid-minimal').cubeportfolio({
     filters: '.portfolioFilter',
@@ -457,9 +480,9 @@
         loadItems: 3,
       }
     },
-  });
+    });
 
- $('#grid-creative').cubeportfolio({
+    $('#grid-creative').cubeportfolio({
     filters: '.portfolioFilter',
     layoutMode: 'masonry',
     sortByDimension: true,
@@ -497,9 +520,9 @@
         loadItems: 3,
       }
     },
-  });
+    });
 
-  $('#grid-alternative').cubeportfolio({
+    $('#grid-alternative').cubeportfolio({
     filters: '.portfolioFilter',
     layoutMode: 'masonry',
     sortByDimension: true,
@@ -537,11 +560,11 @@
         loadItems: 3,
       }
     },
-  });
+    });
 
-$('#grid-shop').cubeportfolio({
+    $('#grid-shop').cubeportfolio({
     filters: '.portfolioFilter',
-    layoutMode: 'masonry',
+    layoutMode: 'grid',
     sortByDimension: true,
     mediaQueries: [{
       width: 1500,
@@ -580,9 +603,9 @@ $('#grid-shop').cubeportfolio({
         loadItems: 3,
       }
     },
-  });
+    });
 
-  $('#grid-blog').cubeportfolio({
+    $('#grid-blog').cubeportfolio({
     filters: '.portfolioFilter',
     layoutMode: 'masonry',
     sortByDimension: true,
@@ -620,9 +643,9 @@ $('#grid-shop').cubeportfolio({
         loadItems: 2,
       }
     },
-  });
+    });
 
-  $('#grid-blogGrid').cubeportfolio({
+    $('#grid-blogGrid').cubeportfolio({
     filters: '.portfolioFilter',
     layoutMode: 'masonry',
     sortByDimension: true,
@@ -660,7 +683,7 @@ $('#grid-shop').cubeportfolio({
         loadItems: 2,
       }
     },
-  });
+    });
 
   }
 

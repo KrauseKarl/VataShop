@@ -30,11 +30,11 @@ def categories_list():
 
 def get_cart(request: Request):
     fake_cart = {
-            "item": {},
-            "total": {
-                "total": 0
-            }
+        "item": {},
+        "total": {
+            "total": 0
         }
+    }
 
     cart = request.session.get('cart', fake_cart)
     return cart
@@ -60,7 +60,7 @@ async def make_order_form(request: Request):
         context={
             "request": request,
             "cart": get_cart(request),
-            }
+        }
     )
 
 
@@ -155,32 +155,71 @@ async def more(request: Request):
 async def catalog(
         request: Request,
         sort_by: str | None = None,
-        category: str | None = None
 ):
-    cat = categories_list()
     products = items_list()
-    if category in ['кашпо', 'свечи', 'вазы']:
-        res = {k: v for k, v in products.items() if v['category'] == sort_by}
-    if sort_by == 'price_desc':
-        res = {k: v for k, v in sorted(products.items(), key=lambda x: int(x[1]["price"]))}
-    elif sort_by == 'price':
-        res = {k: v for k, v in sorted(products.items(), key=lambda x: int(x[1]["price"]), reverse=True)}
+    if sort_by == 'price-asc':
+        queryset = {k: v for k, v in sorted(products.items(), key=lambda x: int(x[1]["price"]))}
+    elif sort_by == 'price-desc':
+        queryset = {k: v for k, v in sorted(products.items(), key=lambda x: int(x[1]["price"]), reverse=True)}
     else:
-        res = products
+        queryset = products
 
-        # price_desc = "price_desc"
-    # if sort_by:
-    #     if sort_by == price_desc:
-    #         products = {k: v for k, v in sorted(products.items(), key=lambda it: it['price'])}
-    #         print('\n')
-    #         print('************************')
-    #         print(products)
-    #         print('************************\n')
     context = {
         "cart": get_cart(request),
         "request": request,
         "categories": categories_list(),
-        "all_products": res,
+        "all_products": queryset,
+    }
+    return templates.TemplateResponse(
+        "catalog.html",
+        context=context
+    )
+
+
+@app.get("/catalog-sort", response_class=HTMLResponse)
+async def catalog(
+        request: Request,
+        sort_by: str | None = None,
+):
+    products = items_list()
+    if sort_by == 'price-asc':
+        queryset = {k: v for k, v in sorted(products.items(), key=lambda x: int(x[1]["price"]))}
+    elif sort_by == 'price-desc':
+        queryset = {k: v for k, v in sorted(products.items(), key=lambda x: int(x[1]["price"]), reverse=True)}
+    else:
+        queryset = products
+
+    context = {
+        "request": request,
+        "status": "ok",
+        "all_products": queryset,
+    }
+    return templates.TemplateResponse(
+        "catalog.html",
+        context=context
+    )
+
+
+@app.get("/category/{category}", response_class=HTMLResponse)
+async def a_category_list(
+        request: Request,
+        sort_by: str | None = None,
+        category: str | None = None
+):
+    products = items_list()
+
+    if category in ['кашпо', 'свечи', 'вазы']:
+        products = {k: v for k, v in products.items() if v['category'] == category}
+    if sort_by == 'price-asc':
+        products = {k: v for k, v in sorted(products.items(), key=lambda x: int(x[1]["price"]))}
+    elif sort_by == 'price-desc':
+        products = {k: v for k, v in sorted(products.items(), key=lambda x: int(x[1]["price"]), reverse=True)}
+
+    context = {
+        "cart": get_cart(request),
+        "request": request,
+        "categories": categories_list(),
+        "all_products": products,
     }
     return templates.TemplateResponse(
         "catalog.html",

@@ -7,115 +7,66 @@
 <!-- wrapper -->
 <div id="wrapper">
 
-        <!-- parallax -->
-<!--        <div class="parallax" style="background-image: url(assets/images/parallax-3.jpg);">-->
-<!--            <div class="info">-->
-<!--                <h2 data-in-effect="fadeIn">Minimal Shop</h2>-->
-<!--            </div>-->
-<!--        </div>-->
-        <!-- /parallax -->
+    <!-- parallax -->
+    <div class="catalog-parallax"
+         style="margin-top:-70px; background-image: url(/assets/images/paralax/paralax_2.jpg);">
+        <div class="info catalog-parallax-info">
+            <h2 data-in-effect="fadeIn" style="text-align: center;
+            font-size: 3.1em;font-weight:900;text-shadow:0 0 5px #000;">VATA SHOP
+            </h2>
+        </div>
+    </div>
+    <!-- /parallax -->
 
-         <div style="margin-top: 60px; margin-bottom: 10px;">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-9">
-                  <h1 class="page-title">Каталог | VATA SHOP</h1>
-                  <p class="shop-result-count">
-                      Показано 1-{{ all_products|length }} из {{ all_products|length }} товаров </p>
-                  <form class="shop-ordering" method="get">
-                      <select class="orderby" name="orderby">
-                          <option selected='selected' value="menu_order">Default sorting</option>
-                          <option value="popularity">Sort by popularity</option>
-                          <option value="rating">Sort by average rating</option>
-                          <option value="date">Sort by newness</option>
-                          <option value="price">Sort by price: low to high</option>
-                          <option value="price-desc">Sort by price: high to low</option>
-                      </select>
-                  </form>
-                  <div id="grid-shop" class="cbp shop-products">
-                      {% for item_id, item in all_products.items() %}
-                          <!-- product 1 -->
-                          <div class="cbp-item product">
-                                  <a class="product-images" href="/item/{{ item_id }}">
-                                      <div class="shop-first-image">
-                                          <img alt="{{ item.title }}" src="{{ item.main_image }}" />
-                                      </div>
-                                  </a>
-                                  <div class="shop-product-details">
-                                      <div class="shop-product-details-container">
-                                          <h4 class="shop-product-title">
-                                              <a  href="/item/{{ item_id }}">{{ item.title }}</a>
-                                          </h4>
-                                              <div class="star-rating">
-                                                  <span style="width:80%">Rated
-                                                      <strong class="rating">4.00</strong>
-                                                      out of 5</span>
-                                              </div>
-                                              <span class="shop-price">
-                                                  <span>&#8381</span>&ensp;{{ item.price}}</span>
-                                            <div class="shop-button-box">
-                                              <a class="button-product" href="#">Добавить в корзину</a>
-                                            </div>
-                                      </div>
-                                  </div>
-                          </div>
-                          <!-- /product 1 -->
-                      {% endfor %}
 
-                  </div>
-             
-                <!-- ajax load button -->
-                <div class="load-more text-center">
-                    <a href="ajax-content/loadMore-Shop.html" class="cbp-l-loadMore-link" rel="nofollow">
-                        <span class="cbp-l-loadMore-defaultText">Load more</span>
-                    <span class="cbp-l-loadMore-loadingText"><i class="fas fa-spinner fa-spin"></i>Load more</span>
-                    <span class="cbp-l-loadMore-noMoreLoading">No More Products</span>
-                    </a>
-                </div>
-                <!-- /ajax load button -->
+    <div class="container" style="margin-top:50px;">
+        <div class="row">
+            <div id="catalog-container" class="col-lg-10 offset-lg-1 ">
+                <h1 class="page-title">Каталог </h1>
+
+                <div class="row">
+                    <p class="shop-result-count">
+                        1-{{ all_products| length }} из {{ all_products| length }} позиций
+                    </p>
+                    <form class="ordering" method="get">
+                        <a href="/catalog" class="shop-sort-button-left">all</a>
+                        {% for cat in categories %}
+                            <a href="/category/{{ cat.category }}" class="shop-sort-button-left">{{ cat.category }}</a>
+                        {% endfor %}
+                        <button  class="shop-sort-button" name="sort_by" value="price-asc">по возрастанию</button>
+                        <button  class="shop-sort-button" name="sort_by" value="price-desc">по убыванию</button>
+                    </form>
 
                 </div>
+                <div id="catalog-item-list" class="row" style="margin-top:20px;">
 
-                      <div class="col-md-3 rex-padding-left">
-                          <div class="sidebar">
-                              <div class="sidebar-box">
-                                  <h1 class="sidebar-title">Категории товаров</h1>
-                                  <ul class="product-categories">
-                                      {% for c in categories %}
-                                      <li style="margin-bottom:10px;">
-                                          <a href="/catalog/category">
-                                              <img src="{{c.icon }}" width="48px">&nbsp;&nbsp;
-                                              {{ c.category }}
-                                          </a>
-                                      </li>
-                                      {% endfor %}
-                                  </ul>
-                              </div>
-                            <div class="sidebar-box">
-                        <h1 class="sidebar-title">Популярные товары</h1>
-                        <ul class="sidebar-product-list">
-                            {% for item_id, item in all_products.items() %}
-                            <li>
-                                <a href="/item/{{ item_id }}">
-                                    <img alt="image" src="{{ item.thumbnail }}"/>
-                                    <span class="product-title">{{ item.title }}</span>
-                                </a>
-                                <div class="star-rating">
-                                              <span style="width:100%">Rated
-                                                  <strong class="rating">5.00</strong>
-                                                  out of 5</span>
+                    {% for item_id, item in all_products.items() %}
+                    <!-- product 1 -->
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div class="card mb-2 product">
+                            <a class="product-images" href="/item/00{{item.id}}">
+                                <div class="shop-first-image">
+                                    <img src="{{ item.rest_image.0 }}" alt="{{ item.title| capitalize }}" height="300"/>
                                 </div>
-                                <span class="shop-price">
-                                              <span>&#8381</span>&ensp;{{ item.price}}</span>
-                            </li>
-                             {% endfor %}
-                        </ul>
+                                 <div class="shop-second-image">
+                                    <img src="{{ item.rest_image.1 }}" alt="{{ item.title| capitalize }}" height="300"/>
+                                </div>
+                            </a>
+
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item.title| capitalize }}</h5>
+                                <p class="card-text"></p>
+                                <small class="text-muted">{{ item.price }} &#8381&ensp;</small>
+                            </div>
+                        </div>
                     </div>
-                      </div>
-                   </div>
-                 </div>
-              </div>
+
+                    {% endfor %}
+                </div>
             </div>
+        </div>
+    </div>
+
 </div>
 <!-- /wrapper --> 
 {% endblock %}

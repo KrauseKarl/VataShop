@@ -17,12 +17,29 @@
       "length": "29",
       "volume": "0.2"
     },
-    "colors": {
-      "#D2CAAF": "белый",
-      "#696250": "черный",
-      "#956B53": "красный",
-      "#8BA5B3": "синий"
-    },
+    "colors":
+    [
+      {
+        "color_code": "#D2CAAF",
+        "#color_name": "белый",
+        "img": "/assets/images/items/001/001_img_1.jpg"
+      },
+      {
+        "color_code": "#8BA5B3",
+        "#color_name": "синий",
+        "img": "/assets/images/items/001/001_img_2.jpg"
+      },
+      {
+        "color_code": "#956B53",
+        "#color_name": "красный",
+        "img": "/assets/images/items/001/001_img_3.jpg"
+      },
+      {
+        "color_code": "#696250",
+        "#color_name": "черный",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      }
+    ],
     "hashtags": [
       "кашпо",
       "бетон",
@@ -32,9 +49,9 @@
     "main_image": "/assets/images/items/001/001_img_1.jpg",
     "rest_image": [
         "/assets/images/items/001/001_img_1.jpg",
-        "/assets/images/items/001/001_img_2.jpg",
-        "/assets/images/items/001/001_img_3.jpg",
-        "/assets/images/items/001/001_img_4.jpg"
+        "/assets/images/items/001/001_img_5.jpg",
+        "/assets/images/items/001/001_img_6.jpg",
+        "/assets/images/items/001/001_img_7.jpg"
     ],
     "thumbnail": "/assets/images/items/001/001_thumbnail.jpg"
   },
@@ -56,12 +73,29 @@
       "length": "29",
       "volume": "0.4"
     },
-    "colors": {
-      "#D2CAAF": "белый",
-      "#443A33": "коричневый",
-      "#956B53": "красный",
-      "#8BA5B3": "синий"
-    },
+    "colors":
+       [
+      {
+        "color_code": "#D2CAAF",
+        "#color_name": "белый",
+        "img": "/assets/images/items/002/002_img_1.jpg"
+      },
+      {
+        "color_code": "#443A33",
+        "#color_name": "коричневый",
+        "img": "/assets/images/items/002/002_img_3.jpg"
+      },
+      {
+        "color_code": "#EB4C42",
+        "#color_name": "красный",
+        "img": "/assets/images/items/002/002_img_2.jpg"
+      },
+      {
+        "color_code": "#318CE7",
+        "#color_name": "синий",
+        "img": "/assets/images/items/002/002_img_4.jpg"
+      }
+    ],
     "hashtags": [
       "кашпо",
       "бетон",
@@ -71,9 +105,9 @@
     "main_image": "/assets/images/items/002/002_img_1.jpg",
     "rest_image": [
         "/assets/images/items/002/002_img_1.jpg",
-        "/assets/images/items/002/002_img_2.jpg",
-        "/assets/images/items/002/002_img_3.jpg",
-        "/assets/images/items/002/002_img_4.jpg"
+        "/assets/images/items/002/002_img_5.jpg",
+        "/assets/images/items/002/002_img_6.jpg",
+        "/assets/images/items/002/002_img_7.jpg"
     ],
     "thumbnail": "/assets/images/items/002/002_thumbnail.jpg"
   },

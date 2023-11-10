@@ -80,11 +80,11 @@
                         <div class="total-side-bar">
                             {% for item_id, item in cart.item.items() %}
                             <p>
-                                 <span>{{ item.name }}
-                                 </span>
-                                <span>
-                                     <b id="{{ item_id }}__summary">{{ item.summary }}</b>&nbsp;&#8381;
-                                 </span>
+                                <span>{{ item.name }}
+                                </span>
+                                <span><b id="{{ item_id }}__summary">{{ item.summary }}
+                                </b>&nbsp;&#8381;
+                                </span>
                             </p>
                             {% endfor %}
                             <hr>
@@ -93,7 +93,7 @@
                                 </span>
                                 <span>
                                     <b style="font-size: 1.1rem;font-weight:600;" id="cart__total">
-                                    {{ cart.total.total }}
+                                    {{ cart.total }}
                                     </b>&nbsp;&#8381;
                                 </span>
                             </p>
@@ -113,7 +113,7 @@
         </div>
     </div>
     {% else %}
-    <div class="parallax" >
+    <div class="parallax" style="height:300px; margin-top:-50px;background-image: url(/assets/images/paralax/paralax_2.jpg)">
         <div class="info">
             <i style="text-shadow:2px 2px 4px rgb(0,0,0,0.4);" class='fa fa-shopping-cart fa-4x' aria-hidden='true'></i>
             <h4 style="margin-top:20px;  text-shadow:2px 2px 7px rgb(0,0,0,0.4)">Корзина пуста</h4>

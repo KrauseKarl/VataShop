@@ -1,6 +1,9 @@
 <div class="icon-cart">
     <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-    {% if  cart.item|length > 0 %}<span class="cart-count">{{ cart.item|length }}</span> {% endif %}
+    {% if  cart.item|length > 0 %}
+    <span class="cart-count">{{ cart.item|length }}
+    </span>
+    {% endif %}
 </div>
 
 <div class="cart-widget">
@@ -21,15 +24,21 @@
     </ul>
     <p class="mini-cart__total total">
         <strong>Итого:</strong>
-        <span>{{ cart.total.total }}&nbsp;&#8381;</span>
+        <span>{{cart.total}}&nbsp;&#8381;</span>
     </p>
     <p class="mini-cart__buttons buttons">
-        <a class="button" href="/my-cart">В корзину</a>
-        <a class="button checkout" href="/make-order">Заказать</a>
+        <a class="button checkout" href="/my-cart">В корзину</a>
+        <a class="button " href="/make-order">Заказать</a>
     </p>
     {% else %}
-    <p class="mini-cart__total total">
-        корзина пуста
+    <p class="mini-cart__total total" style="text-align:center;">Корзина пуста
     </p>
+    <p class="mini-cart__total total">
+        <strong>Итого:
+        </strong>
+        <span>{% if cart.total %}{{ cart.total }}{% else %}0.00{% endif %}&nbsp;&#8381;
+            </span>
+    </p>
+    <p class="mini-cart__buttons buttons"><a class="button checkout" href="/my-cart">В корзину</a></p>
     {% endif %}
 </div>

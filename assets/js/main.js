@@ -91,9 +91,16 @@
   $(document).on('onAfterLoadMore.cbp', function(event) {
     mt_lightCase();
   });
+
+//    function navBarButtons () {
+//        $("#rex_menu ul:li").on('click', function() {
+//             var activeButton = this.value;
+//             activeButton.addClass("active")
+//        });
+//    };
+
      function mt_sortItems() {
         $('a.shop-sort-button').on('click', function(event) {
-            alert('done')
             var sort_by = this.value;
             var dataString = 'sort_by='+ sort_by;
             alert(dataString)
@@ -134,6 +141,7 @@
                     var count = data.item
                     var cartPage = $( "#cart" );
                     var product = product
+                    var totalSum = data.cart.total + '&#8381;'
                     if(data.data == 'OK') {
                         var result = '<div class="toster toster__success"><i class="fa fa-check"></i>&nbsp;Товар добавлен в корзину&nbsp;<i class="fa fa-cart-plus" aria-hidden="true"></i></div>';
                         var cartCount = '<i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="cart-count"></span>'
@@ -141,6 +149,8 @@
                         result = data;
                     }
                     $('.icon-cart').html(cartCount).fadeIn();
+                    $('.icon-cart-fix-bottom').html(cartCount).fadeIn();
+                    $('.fix__cart__total').html(totalSum).fadeIn();
                     $('.cart-count').html(count).fadeIn();
                     $(".cart-container").load("/cart_update")
                     $('.icon-cart, .cart-widget').wrapAll('<div class="cart-container"></div>');
@@ -191,11 +201,15 @@
                     var result = '<div class="toster toster__info"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Товар удален</div>';
                     if(data.removed_all){
                         $("#container__total").remove().fadeOut(3000);
-                        var emptyCart = "<div class='parallax'><div class='info'><i style='text-shadow:2px 2px 4px rgb(0,0,0,0.4);' class='fa fa-shopping-cart fa-4x' aria-hidden='true'></i><h4 style='margin-top:20px;  text-shadow:2px 2px 7px rgb(0,0,0,0.4)'>Корзина пуста</h4></div></div>"
+                        var emptyCart = "<div class='parallax' style='height:300px; margin-top:-50px;background-image: url(/assets/images/paralax/paralax_2.jpg)'><div class='info'><i style='text-shadow:2px 2px 4px rgb(0,0,0,0.4);' class='fa fa-shopping-cart fa-4x' aria-hidden='true'></i><h4 style='margin-top:20px;  text-shadow:2px 2px 7px rgb(0,0,0,0.4)'>Корзина пуста</h4></div></div>"
                         var emptyMiniCart = "<p class='mini-cart__total total'>корзина пуста</p>"
+                        var emptyTotal = "<span class='fix__cart__total'>0&nbsp;&#8381;</span>"
                         $("#wrapper").html(emptyCart)
                         $(".cart-count").remove().fadeOut(3000);
                         $(".cart-widget").empty().html(emptyMiniCart)
+                        $(".cart-count-fix-bottom").remove().fadeOut(3000);
+                        $(".fix-bottom-total").remove().html(emptyTotal)
+
 
                     }
                 } else {

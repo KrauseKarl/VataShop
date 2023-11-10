@@ -2341,6 +2341,25 @@ footer a:hover {
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
 }
+.icon-cart-fix-bottom  span {
+    position: relative;
+    right: -10px;
+    top: -30px;
+    font-size: 12px;
+    line-height: 18px;
+    display: block;
+    text-align: center;
+    background: red;
+    color: #fff;
+    width: 19px;
+    font-weight: 400;
+    height: 19px;
+    word-wrap: break-word;
+    border-radius: 50%;
+    -o-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
 
 .cart-widget {
     visibility: hidden;
@@ -2934,6 +2953,7 @@ footer a:hover {
   cursor: pointer;
   letter-spacing: 1px;
   border: 1px solid #000;
+  box-shadow: 0 0 2px #000;
   height: 44px;
   padding: 8px 18px;
   -webkit-transition: all 0.3s ease-in-out;
@@ -2946,6 +2966,9 @@ footer a:hover {
 .product-single-info .fix-bottom-total {
   margin-right:2px;
   color: #fff;
+  background: #000;
+  border: 1px solid #000;
+  box-shadow: 0 0 2px #000;
   text-decoration: none;
   vertical-align: middle;
   font-size: 13px;
@@ -2959,7 +2982,7 @@ footer a:hover {
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  background: #000;
+
 }
 .product-single-info .button-product .button-wide {
     width: 100%;
@@ -4107,15 +4130,15 @@ footer .social-icons {
 /* MESSAGE TOSTER   */
 .fixed-bottom-bar {
     display: none;
-    bottom: 22px;
     height: 15%;
     width: 25%;
     overflow: hidden;
     position: fixed;
     width: 100%;
     text-align: center;
-    bottom: 5%;
+    top: 25%;
     left: 50%;
+    right: 50%;
     padding: 20px;
     transform: translate(-50%, 0);
 
@@ -4127,7 +4150,7 @@ footer .social-icons {
 }
 .toster {
     display:block;
-    border-radius: 28px;
+    border-radius: 8px;
     padding:20px; color:#fff;
     font-weight:600;
     -webkit-box-shadow: 10px 10px 15px 3px rgba(116, 121, 125, 0.6);
@@ -4165,7 +4188,7 @@ footer .social-icons {
     position: fixed;
     width: 100%;
     text-align: center;
-    bottom: 2%;
+    bottom: -1%;
     left: 50%;
     right: 50%;
     padding: 20px;

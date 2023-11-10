@@ -1,20 +1,25 @@
 [
   {
         "id": "1",
-        "slug": "kashpo-krolik",
+        "slug": "kashpo",
         "category": "кашпо",
-        "icon":"/assets/images/icon/pot.svg"
+        "icon":"/assets/images/icon/pot.svg",
+        "background_img": "/assets/images/paralax/paralax_2.jpg",
+        "title": "КАШПО ИЗ БЕТОНА"
   },
   {
         "id": "2",
         "slug": "svechi",
         "category": "свечи",
-        "icon":"/assets/images/icon/candel.svg"
+        "icon":"/assets/images/icon/candel.svg",
+        "background_img": "/assets/images/paralax/paralax_3.jpg",
+    "title": "СВЕЧИ"
   },
   {
         "id": "3",
         "slug": "vasy",
         "category": "вазы",
-        "icon":"/assets/images/icon/vasa.svg"
+        "background_img": "/assets/images/paralax/paralax_1.jpg",
+        "title": "ВАЗЫ И КАШПО"
   }
 ]

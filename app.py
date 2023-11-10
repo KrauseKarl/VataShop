@@ -1,5 +1,5 @@
 import json
-from typing import Any, Dict, Optional
+from typing import Optional, Dict
 
 import uvicorn
 from fastapi import FastAPI, Request, Form
@@ -31,22 +31,27 @@ def categories_list():
 def get_cart(request: Request):
     fake_cart = {
         "item": {},
-        "total": {
-            "total": 0
-        }
+        "total": 0
     }
-
-    cart = request.session.get('cart', fake_cart)
+    cart = request.session.get('cart')
+    if not cart:
+        request.session['cart'] = fake_cart
     return cart
+
+
+def get_category(items: Dict, category: str):
+    return {k: v for k, v in items.items() if v['category'] == category}
 
 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
-    cart = get_cart(request)
     context = {
         "request": request,
-        "cart": cart
+        "cart": get_cart(request),
+        "categories": categories_list(),
+        "products": items_list()
     }
+
     return templates.TemplateResponse(
         "index.html",
         context=context
@@ -77,7 +82,7 @@ async def form(request: Request):
 @app.delete("/del", response_class=JSONResponse)
 async def delete_cart(request: Request):
     del request.session['cart']
-    return {'status': 204, "url_for": request.url}
+    return {'status': 204, "cart": get_cart(request)}
 
 
 @app.post("/add", response_class=JSONResponse)
@@ -103,7 +108,7 @@ async def add(
             "summary": int(price) * int(quantity),
         }
     }
-    total = {"total": 0}
+    total_sum = 0
     if cart:
         if name in cart.keys():
             price = int(request.session["cart"]["item"][name]['price'])
@@ -115,40 +120,31 @@ async def add(
             else:
                 request.session["cart"]["item"][name]['quantity'] = quantity
             for k, i in items.items():
-                total += int(i.get("quantity", 0))
+                total_sum += int(i.get("quantity", 0))
             request.session["cart"]["item"][name]['summary'] = quantity * price
         else:
             request.session["cart"]["item"].update(items)
     else:
-        request.session["cart"] = {"item": {}, "total": 0}
         request.session["cart"]["item"].update(items)
 
-    for k, i in request.session["cart"]["item"].items():
+    for k, i in cart["item"].items():
         quant = int(i.get("quantity", 0))
         price = int(i.get("price"))
-        total["total"] += (quant * price)
+        total_sum += (quant * price)
 
-    request.session["cart"]["total"] = total
+    request.session["cart"]["total"] = total_sum
 
     # return templates.TemplateResponse("item.html", context=context)
 
     context = {
         "data": "OK",
-        "item": len(request.session["cart"]["item"].keys()),
-        "cart": request.session["cart"],
+        "item": len(cart["item"].keys()),
+        "cart": cart,
         "product": data.get('00' + str(name))
 
     }
 
     return context
-
-
-@app.get("/more", response_class=HTMLResponse)
-async def more(request: Request):
-    return templates.TemplateResponse(
-        "more.html",
-        context={"request": request}
-    )
 
 
 @app.get("/catalog", response_class=HTMLResponse)
@@ -231,7 +227,7 @@ async def a_category_list(
 async def update_cart(request: Request):
     context = {
         "request": request,
-        "cart": request.session["cart"],
+        "cart": get_cart(request),
     }
     return templates.TemplateResponse(
 
@@ -270,13 +266,13 @@ async def recalculate_cart(
         price = int(request.session["cart"]["item"][item_id]['price'])
         request.session['cart']['item'][item_id]['quantity'] = qty
         request.session["cart"]["item"][item_id]['summary'] = qty * price
-        request.session["cart"]["total"]["total"] = 0
+        request.session["cart"]["total"] = 0
     if len(request.session["cart"]["item"]) > 0:
         for k, it in request.session["cart"]["item"].items():
-            request.session["cart"]["total"]["total"] += int(it.get("summary"))
+            request.session["cart"]["total"] += int(it.get("summary"))
     else:
         removed_all = True
-        del request.session["cart"]["total"]["total"]
+        request.session["cart"]["total"] = 0
 
     return {
         "status": "OK",

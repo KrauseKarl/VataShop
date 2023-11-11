@@ -4274,11 +4274,12 @@ footer .social-icons {
     color: #000;
     padding: 20px;
     background: var(--one-color);
-    height:400px;
+    height:auto;
+
 
 }
 .order-widget img {
-    width: 50px;
+    width: 110px;
     height: auto;
     float: right;
 }
@@ -4301,8 +4302,9 @@ footer .social-icons {
     margin: 0;
 }
 .order-widget .mini-cart__total {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    text-align: end;
 
 }
 .colors {

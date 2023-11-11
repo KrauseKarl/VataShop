@@ -2128,7 +2128,7 @@ li.comment {
 }
 
 .order-side-box {
-    background-color: var(--three-color);
+    background-color: var(--one-color);
     border-radius: 10px;
     padding:20px;
     margin-top:20px;
@@ -2943,6 +2943,43 @@ footer a:hover {
   transition: all 0.3s ease-in-out;
 
 }
+.product-single-info .button-product {
+  background: #000;
+  color: #fff!important;
+  text-decoration: none;
+  vertical-align: middle;
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  letter-spacing: 1px;
+  border: 1px solid #000;
+  height: 44px;
+  padding: 0 17px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
+}.product-single-info .button-order {
+  background: #000;
+  color: #fff!important;
+  text-decoration: none;
+  vertical-align: middle;
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  letter-spacing: 1px;
+  border: 1px solid #000;
+  height: 44px;
+  padding: 0 17px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
+}
 .product-single-info .fix-bottom-button {
   margin-right:2px;
   color: #fff;
@@ -2989,6 +3026,10 @@ footer a:hover {
 }
 
 .product-single-info .button-product:hover {
+    background: var(--one-color);
+    color: #000!important;
+}
+.product-single-info .button-order:hover {
     background: var(--one-color);
     color: #000!important;
 }
@@ -4128,44 +4169,25 @@ footer .social-icons {
 }
 
 /* MESSAGE TOSTER   */
-.fixed-bottom-bar {
-    display: none;
-    height: 15%;
-    width: 25%;
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-    text-align: center;
-    top: 25%;
-    left: 50%;
-    right: 50%;
-    padding: 20px;
-    transform: translate(-50%, 0);
-
-    z-index: 1700;
-    padding : 5px;
-    /*-webkit-box-shadow: 10px 10px 15px 3px rgba(116, 121, 125, 0.6);
-    -moz-box-shadow: 10px 10px 15px 3px rgba(116, 121, 125, 0.6);
-    box-shadow: 10px 10px 15px 3px rgba(116, 121, 125, 0.6);  */
-}
-.toster {
-    display:block;
-    border-radius: 8px;
-    padding:20px; color:#fff;
-    font-weight:600;
-    -webkit-box-shadow: 10px 10px 15px 3px rgba(116, 121, 125, 0.6);
-    -moz-box-shadow: 10px 10px 15px 3px rgba(116, 121, 125, 0.6);
-    box-shadow: 10px 10px 15px 3px rgba(116, 121, 125, 0.6);
-}
 .toster__success {
+    border-radius: 8px;
+    color: #fff;
+    font-weight:600;
     background-color: green;
 }
 .toster__error {
+    border-radius: 8px;
+    color: #fff;
+    font-weight:600;
     background-color: red;
 }
 .toster__info {
+    border-radius: 8px;
+    color: #fff;
+    font-weight:600;
     background-color: orange;
 }
+
 .color-button {
     -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
     -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
@@ -4223,24 +4245,7 @@ footer .social-icons {
     justify-content: center;
     align-items: center;
 }
-.toster {
-    display:block;
-    border-radius: 28px;
-    padding:20px; color:#fff;
-    font-weight:600;
-    -webkit-box-shadow: 10px 10px 15px 3px rgba(116, 121, 125, 0.6);
-    -moz-box-shadow: 10px 10px 15px 3px rgba(116, 121, 125, 0.6);
-    box-shadow: 10px 10px 15px 3px rgba(116, 121, 125, 0.6);
-}
-.toster__success {
-    background-color: green;
-}
-.toster__error {
-    background-color: red;
-}
-.toster__info {
-    background-color: orange;
-}
+
 .color-button {
     -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
     -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);

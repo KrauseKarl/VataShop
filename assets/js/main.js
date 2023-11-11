@@ -84,6 +84,7 @@
     mt_addCart();
     mt_change_in_cart();
     mt_sortItems();
+    removeItemCart ();
 
   });
 
@@ -109,7 +110,6 @@
                 url: '/catalog-sort',
                 data: dataString,
                 success: function(data) {
-                    alert(data.status)
                     $("#catalog-item-list").html();
 
 //                    $("#catalog-item-list").load('/catalog #catalog-item-list > *#catalog-item-list');
@@ -120,13 +120,25 @@
      };
 
 
-    function toster(msg) {
-        $('.fixed-bottom-bar').css('display', 'block');
-        $('#toster').html(msg).fadeIn('slow');
+    function toster(msg, color, imgItem) {
+        $('.toast.fade').addClass('show');
+        if(!imgItem) {
+            if(color == 'toster__success') {
+                var imgItem = '<i class="fa fa-check fa-lg" aria-hidden="true"></i>&ensp;'
+                };
+            if(color == 'toster__error') {
+                var imgItem = '<i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i>&ensp;'
+                };
+            if(color == 'toster__info') {
+                var imgItem = '<i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>&ensp;'
+                };
+        };
+        $('.toast-body').html(imgItem+"&nbsp;"+msg).fadeIn('slow');
+        $('.toast-body').addClass(color)
         setTimeout(function () {
-            $('#toster').fadeOut(2000,"linear",);
-            $('.fixed-bottom-bar').css('display', 'none');
-        }, 2000);
+            $('.toast-body').removeClass(color)
+            $('.toast.fade').removeClass('show');
+        }, 3000);
     };
     function mt_addCart() {
       $('.button-product').on("click", function() {
@@ -143,18 +155,23 @@
                     var product = product
                     var totalSum = data.cart.total + '&#8381;'
                     if(data.data == 'OK') {
-                        var result = '<div class="toster toster__success"><i class="fa fa-check"></i>&nbsp;Товар добавлен в корзину&nbsp;<i class="fa fa-cart-plus" aria-hidden="true"></i></div>';
-                        var cartCount = '<i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="cart-count"></span>'
+                        var toasterMessage =    "Товар добавлен в корзину";
+                        var toasterColor =      "toster__success"
+                        var imgAddItem =        '<img src="' + data.img + '" class="m-1 p-1 rounded mr-2" width="75" alt="..."> '
+                        var cartCount =         '<i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="cart-count"></span>'
+                        var buttonCart =        "<a  href='/my-cart' style='background-color: var(--one-color); color;#fff; padding:10px;'>уже в корзине</a>"
                     } else {
                         result = data;
                     }
+                    $('.cart button').remove();
+                    $('.cart').html(buttonCart).fadeIn(3000);
                     $('.icon-cart').html(cartCount).fadeIn();
                     $('.icon-cart-fix-bottom').html(cartCount).fadeIn();
                     $('.fix__cart__total').html(totalSum).fadeIn();
                     $('.cart-count').html(count).fadeIn();
                     $(".cart-container").load("/cart_update")
                     $('.icon-cart, .cart-widget').wrapAll('<div class="cart-container"></div>');
-                    toster(result);
+                    toster(toasterMessage, toasterColor, imgAddItem);
               }
           });
             return false;
@@ -195,10 +212,16 @@
         success: function(data) {
             if(data.status == 'OK') {
                 var idd = '' + data.item_id;
-                if(data.extra){
-                    var card = "#item_" + data.removed_id
-                    $(card).remove().fadeOut(3000);
-                    var result = '<div class="toster toster__info"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Товар удален</div>';
+                var count = data.count_items;
+                if(data.extra == "removed"){
+                    var cardItem = "#item_" + data.removed_id
+                    var totalItem = "p#total_item_" + data.removed_id
+
+                    $('.cart span').html(count).fadeIn(1000);
+                    $(cardItem).remove().fadeOut(3000);
+                    $(totalItem).remove();
+                    var toasterMessage = 'Товар удален';
+                    var toasterColor = "toster__info";
                     if(data.removed_all){
                         $("#container__total").remove().fadeOut(3000);
                         var emptyCart = "<div class='parallax' style='height:300px; margin-top:-50px;background-image: url(/assets/images/paralax/paralax_2.jpg)'><div class='info'><i style='text-shadow:2px 2px 4px rgb(0,0,0,0.4);' class='fa fa-shopping-cart fa-4x' aria-hidden='true'></i><h4 style='margin-top:20px;  text-shadow:2px 2px 7px rgb(0,0,0,0.4)'>Корзина пуста</h4></div></div>"
@@ -209,23 +232,32 @@
                         $(".cart-widget").empty().html(emptyMiniCart)
                         $(".cart-count-fix-bottom").remove().fadeOut(3000);
                         $(".fix-bottom-total").remove().html(emptyTotal)
-
-
                     }
                 } else {
-                    var result = '<div class="toster toster__success "><i class="fa fa-check "></i>&nbsp;Количество товара обновлено</div>';
+                    var toasterMessage = 'Количество товара обновлено';
+                    var toasterColor = "toster__success";
+
                     var quantity = "#" + idd + "_quantity";
                     var summary = "#" + idd + "_summary";
                     var totalSummary = "#" + idd + "__summary";
+
                     $(quantity).text(data.cart['item'][idd]['quantity']).fadeIn(1000);
                     $(summary).text(data.cart['item'][idd]['summary']).fadeIn(1000);
                     $(totalSummary).text(data.cart['item'][idd]['summary']).fadeIn(1000);
                     };
-                $("#cart__total").text(data.cart["total"]['total']).fadeIn(1000);
-            } else {
-               var result = '<div class="toster toster__error"><i class="fa fa-error"></i>&nbsp;Товар удален</div>';;
-            };
-            toster(result);
+                $("#cart__total").text(data.cart["total"]).fadeIn(1000);
+                } else {
+                    var cardItem = "#item_" + data.removed_id
+                    var totalItem = "p#total_item_" + data.removed_id
+                    console.log(totalItem)
+                    $('.cart span').html(count).fadeIn(1000);
+                    $(cardItem).remove().fadeOut(3000);
+                    $(totalItem).remove();
+                    var toasterMessage = 'Товар удален';
+                    var toasterColor = "toster__info";
+                    var imgAddItem = '<img src="' + data.img + '" class="m-1 p-1 rounded mr-2" width="75" alt="..."> '
+                };
+            toster(toasterMessage, toasterColor, imgAddItem);
             },
     //        error: function(){
     //            var result = '<div class="toster"><i class="fa fa-error"></i>&nbsp;Ошибка!</div>';
@@ -239,6 +271,59 @@
       return false;
     });
 
+    }
+    function removeItemCart () {
+    $('.delete-button').on('click', function(event){
+        event.preventDefault();
+        var $this = $(this);
+        var zeroQty = $this.siblings('.remove_qty');
+        var zeroItem = $this.siblings('.remove_name').val();
+        var dataInsert = {'item_id': zeroItem, 'qty': zeroQty.val()};
+        $.ajax({
+        type: "GET",
+        url: '/cart-item-update',
+        data: dataInsert,
+        success: function(data) {
+            if(data.status == 'OK') {
+                var idd = '' + data.item_id;
+                if(data.extra){
+                    var count = data.count_items
+                    var totalItem = "p#total_item_" + data.removed_id;
+                    var cardItem = "#item_" + data.removed_id;
+                    var cartCount = '<i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="cart-count"></span>'
+                    var toasterMessage = "Товар удален";
+                    var toasterColor = "toster__error"
+                    $('.icon-cart').html(cartCount).fadeIn();
+                    $('.cart-count').html(count).fadeIn();
+                    $(cardItem).remove().fadeOut(3000);
+                    $(totalItem).remove();
+
+                    if(data.removed_all){
+
+                        var emptyCart = "<div class='parallax' style='height:300px; margin-top:-50px;background-image: url(/assets/images/paralax/paralax_2.jpg)'><div class='info'><i style='text-shadow:2px 2px 4px rgb(0,0,0,0.4);' class='fa fa-shopping-cart fa-4x' aria-hidden='true'></i><h4 style='margin-top:20px;  text-shadow:2px 2px 7px rgb(0,0,0,0.4)'>Корзина пуста</h4></div></div>"
+                        var emptyMiniCart = "<p class='mini-cart__total total'>корзина пуста</p>"
+                        var emptyTotal = "<span class='fix__cart__total'>0&nbsp;&#8381;</span>"
+
+                        $("#container__total").remove().fadeOut(3000);
+                        $("#wrapper").html(emptyCart)
+                        $(".cart-count").remove().fadeOut(3000);
+                        $(".cart-widget").empty().html(emptyMiniCart)
+                        $(".cart-count-fix-bottom").remove().fadeOut(3000);
+                        $(".fix-bottom-total").remove().html(emptyTotal)
+                    }
+                }
+                $("#cart__total").text(data.cart["total"]).fadeIn(1000);
+            } else {
+                var toasterMessage = "Товар удален";
+                var toasterColor = "toster__error";
+
+            };
+            var imgItem = '<img src="' + data.img + '" class="m-1 p-1 rounded mr-2" width="75" alt="..."> '
+            toster(toasterMessage, toasterColor, imgItem);
+            },
+      });
+      return false;
+    });
     }
 
     function mt_loading() {
@@ -378,17 +463,14 @@
       percentPosition: true
     });
   });
-  $(window).on('resize', function () {
+  $(window).on('blur change click dblclick error focus focusin focusout hover keydown keypress keyup load mousedown mouseenter mouseleave mousemove mouseout mouseover mouseup resize scroll select submit', function () {
     element.isotope();
-  }).trigger('resize');
-     $(window).on('mousemove', function () {
-    element.isotope();
-  }).trigger('resize');
+    }
+  ).trigger('resize');
+  };
 
-  }
 
   function mt_shopGrid() {
-
   // Shop Grid
   var element = $('.shopContainer');
   element.imagesLoaded().done(function () {
@@ -401,14 +483,10 @@
       percentPosition: true
     });
   });
-  $(window).on('resize', function () {
-    element.isotope();
-  }).trigger('resize');
-   $(window).on('mousemove', function () {
+  $(window).on('blur change click dblclick error focus focusin focusout hover keydown keypress keyup load mousedown mouseenter mouseleave mousemove mouseout mouseover mouseup resize scroll select submit', function () {
     element.isotope();
   }).trigger('resize');
   }
-
 
   /* ================================= */
   /* ::::::::: 9. Portfolio :::::::::: */

@@ -9,13 +9,13 @@
     {% if cart.item | length > 0 %}
     <div class="container cart__container" >
         <div class="row" >
-            <div class="col-md-8 rex-padding-left" >
+            <div class="col-lg-8 col-md-12 col-sm-12  rex-padding-left" >
                 <div class="blogContainer">
                     <div class="gutter-sizer"></div>
                     {% for key, it in cart.item.items() %}
                     <article id="item_{{ key }}" class="blog-column-one">
                         <div class="blog-minimal">
-                            <div class="col-md-2">
+                            <div class="col-md-5">
                                 <a href="/item/00{{it.id}}/">
                                     <div class="post-intro">
                                         <img src="{{ it.img }}" width="200" alt="{{ it.name }}">
@@ -23,9 +23,9 @@
                                 </a>
 
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-7">
                                 <h2 class="entry-title">
-                                    <a href="single-post.html" rel="bookmark">{{ it.name}}</a>
+                                    <a href="/item/{{key}}" rel="bookmark">{{ it.name}}</a>
                                 </h2>
                                 <div class="post-details">
                                     <div class="post-date">
@@ -41,15 +41,7 @@
 
                                 </div>
                                 <div class="post-info">
-                                    <div class="post-date"><a href="#">
-                                        <i class="fa fa-times" aria-hidden="true"></i>&nbsp;удалить
-                                    </a>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <form method="get" class="cart cart-carousel"
+                                       <form method="get" class="cart cart-carousel"
                                       enctype="multipart/form-data" style="margin-top:40px;">
                                     <div class="shop-qty change-qty">
                                         <button class="minus">-</button>
@@ -68,18 +60,39 @@
                                         <button class="plus">+</button>
                                     </div>
                                 </form>
+                                </div>
+                                <div class="post-info">
+                                    <form method="get" class="post-date"
+                                          enctype="multipart/form-data" style="margin-top:40px;">
+                                        <input class="remove_name" type="hidden" name="name" value="{{ key }}">
+                                        <input type="hidden"
+                                               class="input-text remove_qty text"
+                                               step="1"
+                                               min="-1" max="20"
+                                               name="qty"
+                                               value="0"
+                                               title="Qty"
+                                               size="4"
+                                               placeholder="">
+                                        <a href="#" class="delete-button">
+                                            <i class="fa fa-times" aria-hidden="true"></i>&nbsp;удалить
+                                        </a>
+                                    </form>
+
+                                </div>
+
                             </div>
                         </div>
                     </article>
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-md-4 rex-padding-left">
+            <div class="col-lg-4 col-md-12 col-sm-12  rex-padding-left">
                 <div class="sidebar " id="container__total">
                     <div class="recent-posts sidebar-box  order-side-box">
                         <div class="total-side-bar">
                             {% for item_id, item in cart.item.items() %}
-                            <p>
+                            <p id="total_item_{{ item_id }}">
                                 <span>{{ item.name }}
                                 </span>
                                 <span><b id="{{ item_id }}__summary">{{ item.summary }}
@@ -93,19 +106,26 @@
                                 </span>
                                 <span>
                                     <b style="font-size: 1.1rem;font-weight:600;" id="cart__total">
-                                    {{ cart.total }}
+                                    {{cart.total}}
                                     </b>&nbsp;&#8381;
                                 </span>
                             </p>
                         </div>
                     </div>
+<!--                    <div class="product-single-info   sidebar-box" style="width:100%;">-->
+<!--                        <form action="#" method="get" id="search-bar"-->
+<!--                              class="search-widget form-inline" role="form">-->
+<!--                            <div class="input-group">-->
+<!--                                <button type="submit" class="button-product" style="width:100%;">заказать</button>-->
+<!--                            </div>-->
+<!--                        </form>-->
+<!--                    </div>-->
                     <div class="product-single-info   sidebar-box" style="width:100%;">
-                        <form action="#" method="get" id="search-bar"
-                              class="search-widget form-inline" role="form">
+                        <div class="search-widget form-inline">
                             <div class="input-group">
-                                <button type="submit" class="button-product" style="width:100%;">заказать</button>
+                                <a  href="/make-order" class="button-order" style="width:100%;">заказать</a>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

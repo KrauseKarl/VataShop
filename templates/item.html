@@ -57,8 +57,12 @@
                                    name="quantity"
                                    value="1" title="Qty" size="4" placeholder="">
                         </div>
-
+                        {% if product.id in cart.item.keys() %}
+                        <a href="/my-cart" style='background-color: var(--one-color); color;#fff; padding:10px;'>
+                           уже в корзине</a>
+                        {% else %}
                         <button type="submit" style="width:100%;" name="add-to-cart" class="button-product ">В корзину</button>
+                        {% endif %}
                     </form>
                     <div class="product-single-description">
                         <p>{{ product.description|truncate(300, False, '...', 0) }}<a href="#description">подробно</a>

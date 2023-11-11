@@ -79,7 +79,7 @@ async def form(request: Request):
     return result
 
 
-@app.delete("/del", response_class=JSONResponse)
+@app.delete("/del-cart", response_class=JSONResponse)
 async def delete_cart(request: Request):
     del request.session['cart']
     return {'status': 204, "cart": get_cart(request)}
@@ -133,14 +133,16 @@ async def add(
         total_sum += (quant * price)
 
     request.session["cart"]["total"] = total_sum
-
+    img_item = request.session['cart']['item'][name]['img']
     # return templates.TemplateResponse("item.html", context=context)
-
+    count_items = len(request.session["cart"].get("item").keys())
     context = {
         "data": "OK",
         "item": len(cart["item"].keys()),
         "cart": cart,
-        "product": data.get('00' + str(name))
+        "product": data.get('00' + str(name)),
+        "count_items": count_items,
+        "img": img_item
 
     }
 
@@ -251,16 +253,17 @@ async def my_cart(request: Request):
 @app.get("/cart-item-update", response_class=JSONResponse)
 async def recalculate_cart(
         request: Request,
-        item_id: Optional[str]=None,
-        qty: Optional[int]=None
+        item_id: Optional[str] = None,
+        qty: Optional[int] = None
 ):
     extra_msg = None
     removed_id = None
     removed_all = None
-
-    if qty < 1:
+    img_removed_item = None
+    if int(qty) < 1:
         extra_msg = "removed"
         removed_id = item_id
+        img_removed_item = request.session['cart']['item'][item_id]['img']
         del request.session['cart']['item'][item_id]
     else:
         price = int(request.session["cart"]["item"][item_id]['price'])
@@ -273,7 +276,7 @@ async def recalculate_cart(
     else:
         removed_all = True
         request.session["cart"]["total"] = 0
-
+    count_items = len(request.session["cart"].get("item").keys())
     return {
         "status": "OK",
         "extra": extra_msg,
@@ -281,6 +284,8 @@ async def recalculate_cart(
         "removed_all": removed_all,
         "item_id": str(item_id),
         "cart": request.session["cart"],
+        "count_items": count_items,
+        "img": img_removed_item
     }
 
 

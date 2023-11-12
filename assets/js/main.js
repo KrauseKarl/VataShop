@@ -145,10 +145,11 @@
             event.preventDefault();
             var name = $('input#name').val();
             var quantity = $('input#quantity').val();
+            var color = $('select#color').val();
             $.ajax({
                 type: "POST",
                 url: '/add',
-                data: {'name': name, 'quantity': quantity},
+                data: {'name': name, 'quantity': quantity,'color': color},
                 success: function(data) {
                     var count = data.item
                     var cartPage = $( "#cart" );

@@ -90,38 +90,40 @@ async def add(
         request: Request,
         name: Optional[str] = Form(...),
         quantity: Optional[str] = Form(...),
+        color: Optional[str] = Form(...),
 ):
     data = items_list()
     cart = get_cart(request)
-
     title = data.get('00' + str(name))['title']
     price = data.get('00' + str(name))['price']
-    img = data.get('00' + str(name))['thumbnail']
+    img = data.get('00' + str(name))["colors"][color]['img']
     quantity = int(quantity)
 
     items = {
-        name: {
+        color: {
             "name": title,
+            "parent_id": '00' + str(name),
             "price": price,
             "quantity": quantity,
+            "color": color,
             "img": img,
             "summary": int(price) * int(quantity),
         }
     }
     total_sum = 0
+    print(request.session["cart"]["item"].keys())
     if cart:
-        if name in cart.keys():
-            price = int(request.session["cart"]["item"][name]['price'])
-            in_cart_qnt = int(request.session["cart"]["item"][name]['quantity'])
-            if quantity == 0:
-                del request.session["cart"]["item"][name]
-            elif in_cart_qnt > quantity:
-                request.session["cart"]["item"][name]['quantity'] = quantity
-            else:
-                request.session["cart"]["item"][name]['quantity'] = quantity
-            for k, i in items.items():
-                total_sum += int(i.get("quantity", 0))
-            request.session["cart"]["item"][name]['summary'] = quantity * price
+        if color in request.session["cart"]["item"].keys():
+            request.session["cart"]["item"][color]['quantity'] += 1
+            # price = int(request.session["cart"]["item"][color]['price'])
+            # in_cart_qnt = int(request.session["cart"]["item"][color]['quantity'])
+            # if quantity == 0:
+            #     del request.session["cart"]["item"][color]
+            # elif in_cart_qnt > quantity:
+            #     request.session["cart"]["item"][color]['quantity'] = quantity
+            # else:
+            #     request.session["cart"]["item"][color]['quantity'] = quantity
+            request.session["cart"]["item"][color]['summary'] = quantity * price
         else:
             request.session["cart"]["item"].update(items)
     else:
@@ -133,7 +135,7 @@ async def add(
         total_sum += (quant * price)
 
     request.session["cart"]["total"] = total_sum
-    img_item = request.session['cart']['item'][name]['img']
+    img_item = request.session['cart']['item'][color]['img']
     # return templates.TemplateResponse("item.html", context=context)
     count_items = len(request.session["cart"].get("item").keys())
     context = {
@@ -260,6 +262,7 @@ async def recalculate_cart(
     removed_id = None
     removed_all = None
     img_removed_item = None
+    request.session["cart"]["total"] = 0
     if int(qty) < 1:
         extra_msg = "removed"
         removed_id = item_id

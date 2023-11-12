@@ -53,9 +53,17 @@
                           style="margin-top:40px; ">
                         <div class="shop-qty">
                             <input id="name" type="hidden" name="name" value="{{ product.id }}">
+
                             <input id="quantity" type="hidden" class="input-text qty text" step="1" min="-1" max="20"
                                    name="quantity"
                                    value="1" title="Qty" size="4" placeholder="">
+                            <select class="form-select"  id="color" name="color">
+                                <option selected>Open this select menu</option>
+                                {% for color_id, color in product.colors.items() %}
+                                <option value="{{ color_id }}">{{ color.color_name}}</option>
+                                {% endfor %}
+                            </select>
+
                         </div>
                         {% if product.id in cart.item.keys() %}
                         <a href="/my-cart" style='background-color: var(--one-color); color;#fff; padding:10px;'>

@@ -19,59 +19,69 @@
     <div class="container" style="margin-top:50px;">
         <div class="row">
             <div class="col-md-9">
+
+<!--MAIN IMAGE -->
                 <div class="product-single-image">
-                    <div class="ProductCard-photo" >
-                        <img src="{{ product.main_image }}" alt="{{ product.title }}" />
+                    <div class="ProductCard-photo">
+                        <img src="{{ product.main_image }}" alt="{{ product.title }}"/>
                     </div>
                     <div class="ProductCard-picts">
+
                         {% for img in product.rest_image %}
-                        {% if loop.first %}
-                         <a  style="border-radius:10px;" class="ProductCard-pict ProductCard-pict_ACTIVE"
+                        <a style="border-radius:8px;"
+                           class="ProductCard-pict {% if loop.first %}ProductCard-pict_ACTIVE {% endif %}"
                            href="{{ img }}">
-                            <img src="{{ img }}" alt=""/>
+                            <img src="{{ img }}" alt="{{ product.title }}"/>
                         </a>
-                        {% else %}
-                        <a  style="border-radius:10px;" class="ProductCard-pict" href="{{ img }}">
-                            <img src="{{ img }}" alt="{{ img }}"/>
-                        </a>
-                        {% endif %}
                         {% endfor %}
                     </div>
                 </div>
+<!--MAIN IMAGE -->
+
                 <div class="product-single-info">
-                    <span class="shop-price" style="font-size:60px"><span>&#8381&ensp;</span>{{ product.price }}.00
+
+<!-- PRICE   -->
+                    <span class="shop-price" style="font-size:60px">
+                        <span>&#8381&ensp;</span>{{ product.price }}.00
                     </span>
+<!-- PRICE   -->
+
+<!-- TITLE   -->
                     <h3 class="product-single-title">{{ product.title }}
                     </h3>
-                    <div class="star-rating">
-                        <span style="width:90%">Rated
-                              <strong class="rating">4.50
-                              </strong>out of 5
-                          </span>
+<!-- TITLE   -->
+
+<!-- COLOR CHOSEN BUTTONS  -->
+                    <div class="ProductCard-picts">
+                        {% for key, img in product.colors.items() %}
+                        <a style="border-radius:8px;" id="{{key}}"
+                           class="color-img ProductCard-pict  {% if loop.first %}ProductCard-pict_ACTIVE color-chosen{% endif %} "
+                           href="{{ img.img }}">
+                            <img src="{{ img.img }}" alt="{{ product.title }}"/>
+                        </a>
+                        {% endfor %}
                     </div>
+<!-- COLOR CHOSEN BUTTONS  -->
+
+<!--                    <div class="star-rating">-->
+<!--                        <span style="width:90%">Rated-->
+<!--                              <strong class="rating">4.50-->
+<!--                              </strong>out of 5-->
+<!--                          </span>-->
+<!--                    </div>-->
+
+<!--  FORM ADD TO CART -->
                     <form id="ajax-add-cart-form" class="cart" method="post" enctype="multipart/form-data"
                           style="margin-top:40px; ">
                         <div class="shop-qty">
                             <input id="name" type="hidden" name="name" value="{{ product.id }}">
-
-                            <input id="quantity" type="hidden" class="input-text qty text" step="1" min="-1" max="20"
-                                   name="quantity"
-                                   value="1" title="Qty" size="4" placeholder="">
-                            <select class="form-select"  id="color" name="color">
-                                <option selected>Open this select menu</option>
-                                {% for color_id, color in product.colors.items() %}
-                                <option value="{{ color_id }}">{{ color.color_name}}</option>
-                                {% endfor %}
-                            </select>
-
+                            <input id="color" type="hidden" name="color" value="{{ default }}">
+                            <input id="quantity" type="hidden" class="input-text qty text" step="1" min="-1" max="20" name="quantity" value="1" title="Qty" size="4" placeholder="">
                         </div>
-                        {% if product.id in cart.item.keys() %}
-                        <a href="/my-cart" style='background-color: var(--one-color); color;#fff; padding:10px;'>
-                           уже в корзине</a>
-                        {% else %}
                         <button type="submit" style="width:100%;" name="add-to-cart" class="button-product ">В корзину</button>
-                        {% endif %}
                     </form>
+<!--  FORM ADD TO CART -->
+
                     <div class="product-single-description">
                         <p>{{ product.description|truncate(300, False, '...', 0) }}<a href="#description">подробно</a>
                         </p>
@@ -81,11 +91,14 @@
 
                     <div class="product-single-box-detail">
                     <p><span>цвета</span><span>
-                        {% for color in product.colors %}
-                        <a class="ProductCard-pict colors"
-                           style="background-color: {{ color.color_code  }};"
-                           title="{{ color.color_name }}" href="{{ color.img }}" >
-                        </a>
+                        {% for key, color in product.colors.items() %}
+                        <b
+                            style="margin-right:5px;
+                            border-radius:20%;
+                            background-color:{{color.color_code}};
+                            padding:8px 15px;"
+                            title="{{color.color_name}}">
+                        </b>
                         {% endfor %}
                     </span></p>
 

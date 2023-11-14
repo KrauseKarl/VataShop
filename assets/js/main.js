@@ -120,7 +120,7 @@
      };
 
 
-    function toster(msg, color, imgItem) {
+     function toster(msg, color, imgItem) {
         $('.toast.fade').addClass('show');
         if(!imgItem) {
             if(color == 'toster__success') {
@@ -140,12 +140,13 @@
             $('.toast.fade').removeClass('show');
         }, 3000);
     };
+
     function mt_addCart() {
       $('.button-product').on("click", function() {
             event.preventDefault();
             var name = $('input#name').val();
             var quantity = $('input#quantity').val();
-            var color = $('select#color').val();
+            var color = $('input#color').val();
             $.ajax({
                 type: "POST",
                 url: '/add',
@@ -153,19 +154,17 @@
                 success: function(data) {
                     var count = data.item
                     var cartPage = $( "#cart" );
-                    var product = product
+                    var product = data.product
                     var totalSum = data.cart.total + '&#8381;'
                     if(data.data == 'OK') {
-                        var toasterMessage =    "Товар добавлен в корзину";
-                        var toasterColor =      "toster__success"
-                        var imgAddItem =        '<img src="' + data.img + '" class="m-1 p-1 rounded mr-2" width="75" alt="..."> '
-                        var cartCount =         '<i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="cart-count"></span>'
-                        var buttonCart =        "<a  href='/my-cart' style='background-color: var(--one-color); color;#fff; padding:10px;'>уже в корзине</a>"
+                        var toasterMessage = product.title +" добавлен в корзину";
+                        var toasterColor = "toster__success"
+                        var imgAddItem = '<img src="' + data.img + '" class="m-1 p-1 rounded mr-2" width="50" alt="..."> '
+                        var cartCount = '<i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="cart-count"></span>'
                     } else {
                         result = data;
                     }
-                    $('.cart button').remove();
-                    $('.cart').html(buttonCart).fadeIn(3000);
+
                     $('.icon-cart').html(cartCount).fadeIn();
                     $('.icon-cart-fix-bottom').html(cartCount).fadeIn();
                     $('.fix__cart__total').html(totalSum).fadeIn();
@@ -173,7 +172,12 @@
                     $(".cart-container").load("/cart_update")
                     $('.icon-cart, .cart-widget').wrapAll('<div class="cart-container"></div>');
                     toster(toasterMessage, toasterColor, imgAddItem);
-              }
+              },
+                error: function(data) {
+                    var toasterMessage = "Ошибка";
+                    var toasterColor = "toster__error";
+                    toster(toasterMessage, toasterColor);
+                }
           });
             return false;
     });
@@ -260,14 +264,11 @@
                 };
             toster(toasterMessage, toasterColor, imgAddItem);
             },
-    //        error: function(){
-    //            var result = '<div class="toster"><i class="fa fa-error"></i>&nbsp;Ошибка!</div>';
-    //            $('.fixed-bottom-bar').css('display', 'block');
-    //            $('#toster').html(result).fadeIn('slow');
-    //            setTimeout(function () {
-    //                $('#toster').html(result).fadeOut('slow');
-    //            }, 3000);
-    //        },
+        error: function(data) {
+                    var toasterMessage = "Ошибка";
+                    var toasterColor = "toster__error";
+                    toster(toasterMessage, toasterColor);
+                },
       });
       return false;
     });
@@ -322,6 +323,11 @@
             var imgItem = '<img src="' + data.img + '" class="m-1 p-1 rounded mr-2" width="75" alt="..."> '
             toster(toasterMessage, toasterColor, imgItem);
             },
+        error: function(data) {
+                    var toasterMessage = "Ошибка";
+                    var toasterColor = "toster__error";
+                    toster(toasterMessage, toasterColor);
+                }
       });
       return false;
     });
@@ -823,86 +829,38 @@
 
       $('#submit').on("click", function(event) {
             event.preventDefault();
-           $("#ajax-contact-form").validate({
-                  rules:{
+            var name = $('input#name').val();
+            var email = $('input#email').val();
+            var phone = $('input#phone').val();
+            var msg = $('textarea#msg').val();
 
-                        name:{
-                            required: true,
-                        },
+            var dataDict = {"name": name, "email": email, "phone": phone, "msg": msg}
+            console.log(dataDict)
+            $.ajax({
+                type: "POST",
+                url: "/send-order",
+                data: dataDict,
+                success: function(data) {
+                      if(data.status == '200') {
+                        var result = '<div class="notification_ok"><i class="fa fa-check fa-lg"></i> Заказ отправлен.</div>';
+                        $("#ajax-order-form").find('input[type=text], input[type=email], textarea').val();
+                      } else {
+                      result = data;
+                     }
+                     $('#note').html(result).fadeIn();
+                     setTimeout(function () {
+                        $('#note').html(result).fadeOut();
+                     }, 4000);
+                     setTimeout(function () {
+                        window.location = data.url
+                     }, 4000);
+              }
 
-                        email:{
-                            required: true,
-                            email: true,
-                        },
+            });
+            return false;
+           });
 
-                        phone:{
-                            required: true,
-                        },
-
-                        msg:{
-                            required: true,
-                        },
-                   },
-                  messages:{
-
-                          name:{
-                            required: "The field is required.",
-                        },
-
-                        email:{
-                            required: "The field is required.",
-                            email: "The e-mail address entered is invalid.",
-                        },
-
-                        phone:{
-                            required: "The field is required.",
-                        },
-
-                          msg:{
-                            required: "The field is required.",
-                        },
-
-                   },
-                // JQuery's awesome submit handler.
-                submitHandler: function(form) {
-                      console.log(form)
-                     // Create variables from the form
-                     var name = $('input#name').val();
-                     var email = $('input#email').val();
-                     var phone = $('input#phone').val();
-                     var msg = $('textarea#msg').val();
-
-                     // Create variables that will be sent in a URL string to contact.php
-                     var dataString = '&name='+ name + '&email=' + email + '&phone=' + phone + '&msg=' + msg;
-                        console.log(dataString)
-                        $.ajax({
-                            type: "GET",
-                            url: "/make-order",
-                            data: dataString,
-                            dataType: 'json',
-                            success: function(data) {
-                                console.log(data.context)
-                                console.log('OK')
-                                  if(data.context.status == 'OK') {
-                                    var result = '<div class="notification_ok"><i class="fa fa-check"></i> Your email was sent. Thanks!</div>';
-                                    $("#ajax-contact-form").find('input[type=text], input[type=email], textarea').val("");
-
-                                  } else {
-                                  result = data;
-                                 }
-                                 $('#note').html(result).fadeIn();
-                                 setTimeout(function () {
-                                   $('#note').html(result).fadeOut();
-                                 }, 4000);
-                          }
-
-                      });
-                     return false;
-               }
-          });
-    });
-
-  }
+  };
 
 /* ================================= */
 /* :::::: 14. Header Sticky :::::::: */
@@ -1240,12 +1198,22 @@ map.controls[google.maps.ControlPosition.LEFT_TOP].push(zoomControlDiv);
         init: function(){
             $picts.on('click', function(e){
                 e.preventDefault();
+
+
+
                 var $this = $(this);
                 var href = $this.attr('href');
+
+                var colorId = $this.attr('id');
+                var optionId = "#color-option_"+colorId;
+                var inputColor = $('#color')
+                inputColor.val(colorId);
+
+
                 $photo.empty();
                 $photo.append('<img src="'+ href +'" />');
-                $picts.removeClass('ProductCard-pict_ACTIVE');
-                $this.addClass('ProductCard-pict_ACTIVE');
+                $picts.removeClass('ProductCard-pict_ACTIVE color-chosen');
+                $this.addClass('ProductCard-pict_ACTIVE color-chosen');
             });
         }
     };

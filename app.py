@@ -4,13 +4,22 @@ from typing import Optional, Dict
 import uvicorn
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, JSONResponse
+
 from starlette.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
-
-from services import add_cart
+from task import send_order_email
 
 app = FastAPI()
+
+# @app.on_event("startup")
+# async def startup():
+#     redis = aioredis.from_url("redis://localhost", encoding="utf8", decode_responses=True)
+#     FastAPICache.init(RedisBackend(redis), prefix="fastapi-cache")
+#     with open("db.json", "r", encoding="utf-8") as f:
+#         data = json.load(f)
+
+
 templates = Jinja2Templates(directory="templates")
 app.mount("/assets", StaticFiles(directory="assets"), name="assets")
 app.add_middleware(SessionMiddleware, secret_key="some-random-string", max_age=31536000)
@@ -97,6 +106,7 @@ async def add(
     title = data.get('00' + str(name))['title']
     price = data.get('00' + str(name))['price']
     img = data.get('00' + str(name))["colors"][color]['img']
+    color_name = data.get('00' + str(name))["colors"][color]['color_name']
     quantity = int(quantity)
 
     items = {
@@ -106,24 +116,19 @@ async def add(
             "price": price,
             "quantity": quantity,
             "color": color,
+            "color_name":color_name,
             "img": img,
             "summary": int(price) * int(quantity),
         }
     }
     total_sum = 0
-    print(request.session["cart"]["item"].keys())
     if cart:
-        if color in request.session["cart"]["item"].keys():
+        if color in list(request.session["cart"]["item"].keys()):
             request.session["cart"]["item"][color]['quantity'] += 1
-            # price = int(request.session["cart"]["item"][color]['price'])
-            # in_cart_qnt = int(request.session["cart"]["item"][color]['quantity'])
-            # if quantity == 0:
-            #     del request.session["cart"]["item"][color]
-            # elif in_cart_qnt > quantity:
-            #     request.session["cart"]["item"][color]['quantity'] = quantity
-            # else:
-            #     request.session["cart"]["item"][color]['quantity'] = quantity
-            request.session["cart"]["item"][color]['summary'] = quantity * price
+            final_price = int(request.session["cart"]["item"][color]['price'])
+            final_quantity = request.session["cart"]["item"][color]['quantity']
+            final_summary = final_quantity * final_price
+            request.session["cart"]["item"][color]['summary'] = final_summary
         else:
             request.session["cart"]["item"].update(items)
     else:
@@ -136,19 +141,17 @@ async def add(
 
     request.session["cart"]["total"] = total_sum
     img_item = request.session['cart']['item'][color]['img']
-    # return templates.TemplateResponse("item.html", context=context)
     count_items = len(request.session["cart"].get("item").keys())
-    context = {
+    return {
         "data": "OK",
         "item": len(cart["item"].keys()),
         "cart": cart,
         "product": data.get('00' + str(name)),
+        "title": title,
         "count_items": count_items,
         "img": img_item
 
     }
-
-    return context
 
 
 @app.get("/catalog", response_class=HTMLResponse)
@@ -203,8 +206,8 @@ async def catalog(
 @app.get("/category/{category}", response_class=HTMLResponse)
 async def a_category_list(
         request: Request,
-        sort_by: Optional[str]=None,
-        category: Optional[str]=None
+        sort_by: Optional[str] = None,
+        category: Optional[str] = None
 ):
     products = items_list()
 
@@ -280,7 +283,7 @@ async def recalculate_cart(
         removed_all = True
         request.session["cart"]["total"] = 0
     count_items = len(request.session["cart"].get("item").keys())
-    return {
+    context = {
         "status": "OK",
         "extra": extra_msg,
         "removed_id": removed_id,
@@ -291,21 +294,51 @@ async def recalculate_cart(
         "img": img_removed_item
     }
 
+    return context
+
 
 @app.get("/item/{item_id}", response_class=HTMLResponse)
 async def item(item_id: str, request: Request):
     cart = get_cart(request)
+    default = list(items_list().get(item_id)['colors'].keys())[0]
     context = {
         "request": request,
         "product": items_list().get(item_id),
         "categories": categories_list(),
         "all_products": items_list(),
         "cart": cart,
+        "default": default
     }
     return templates.TemplateResponse(
         "item.html",
         context=context
     )
+
+
+@app.post("/send-order", response_class=JSONResponse)
+async def preorder(
+        request: Request,
+        name: Optional[str] = Form(...),
+        email: Optional[str] = Form(...),
+        phone: Optional[str] = Form(...),
+        msg: Optional[str] = Form(...)):
+    cart = request.session["cart"]
+    data = {
+        "name": name,
+        "email": email,
+        "phone": phone,
+        "msg": msg,
+        "cart": cart
+    }
+    send_order_email.apply_async(kwargs={'data': data})
+    request.session["cart"]['item'] = {}
+    request.session["cart"]['total'] = {}
+    return {
+        "status": 200,
+        "data": "Письмо отправлено",
+        "details": None,
+        "url": '/'
+    }
 
 
 if __name__ == '__main__':

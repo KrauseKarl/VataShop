@@ -16,7 +16,7 @@
                     <article id="item_{{ key }}" class="blog-column-one">
                         <div class="blog-minimal">
                             <div class="col-md-5">
-                                <a href="/item/00{{it.id}}/">
+                              <a href="/item/{{it.parent_id}}">
                                     <div class="post-intro">
                                         <img src="{{ it.img }}" width="200" alt="{{ it.name }}">
                                     </div>
@@ -25,7 +25,7 @@
                             </div>
                             <div class="col-md-7">
                                 <h2 class="entry-title">
-                                    <a href="/item/{{key}}" rel="bookmark">{{ it.name}}</a>
+                                    <a href="/item/{{it.parent_id}}" rel="bookmark">{{ it.name}}</a>
                                 </h2>
                                 <div class="post-details">
                                     <div class="post-date">

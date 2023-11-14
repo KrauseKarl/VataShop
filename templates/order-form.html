@@ -9,11 +9,12 @@
         <div class="row" >
             <div class="col-lg-8 offset-lg-2 col-12"
                  style="background: var(--one-color); padding: 20px;" >
+
                 <div class="contact-form" style="margin-top: 35px; margin-bottom:20px;">
                     <div class="order-widget">
                         <p class="mini-cart__total total">
                         <strong>Итого:</strong>
-                        <span>{{ cart.total }}&nbsp;&#8381;</span>
+                        <span>{{cart.total}}&nbsp;&#8381;</span>
                         </p>
                         <hr>
                         <ul class=" cart_list product_list_widget">
@@ -32,7 +33,7 @@
                 <div class="contact-form" style="margin-top: 35px; padding:20px 20px;">
                     <div id="note"></div>
                     <div id="fields">
-                        <form id="ajax-contact-form" method="get">
+                        <form id="ajax-order-form" method="post" action="/send-order">
                             <p><input type="text" name="name" id="name" placeholder="Имя" value=""/></p>
                             <p><input type="email" name="email" id="email" placeholder="Email" value=""/></p>
                             <p><input type="text" name="phone" id="phone" placeholder="телефон" value=""/></p>

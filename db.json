@@ -1,22 +1,6 @@
 {
   "001": {
     "id": "1",
-    "slug": "kashpo-krolik",
-    "category": "кашпо",
-    "title": "Кашпо-кролик",
-    "description": "Кашпо в форме кролика для суккулентов.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet nisl suscipit adipiscing bibendum est ultricies integer quis. Fames ac turpis egestas maecenas pharetra convallis posuere morbi. Pharetra diam sit amet nisl suscipit adipiscing bibendum est. Massa sapien faucibus et molestie ac. Vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Id neque aliquam vestibulum morbi blandit. Vel fringilla est ullamcorper eget. Sit amet commodo nulla facilisi nullam. Proin libero nunc consequat interdum varius sit amet mattis vulputate. Eget dolor morbi non arcu risus quis varius quam quisque. Elit ut aliquam purus sit amet luctus venenatis lectus magna. Augue mauris augue neque gravida in fermentum et sollicitudin. Facilisi morbi tempus iaculis urna id volutpat lacus laoreet. Ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel. Amet consectetur adipiscing elit duis tristique sollicitudin nibh sit amet. Consectetur a erat nam at lectus urna duis convallis convallis. Mi sit amet mauris commodo. Ac feugiat sed lectus vestibulum mattis.",
-    "price": "1000",
-    "weight": "200",
-    "material": "бетон",
-    "place_operation": [
-      "дом"
-    ],
-    "size": {
-      "width": "20",
-      "height": "25",
-      "length": "29",
-      "volume": "0.2"
-    },
     "colors": {
       "00101": {
         "color_code": "#D2CAAF",
@@ -39,6 +23,22 @@
         "img": "/assets/images/items/001/001_img_4.jpg"
       }
     },
+    "slug": "kashpo-krolik",
+    "category": "кашпо",
+    "title": "Кашпо-кролик",
+    "description": "Кашпо в форме кролика для суккулентов.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet nisl suscipit adipiscing bibendum est ultricies integer quis. Fames ac turpis egestas maecenas pharetra convallis posuere morbi. Pharetra diam sit amet nisl suscipit adipiscing bibendum est. Massa sapien faucibus et molestie ac. Vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Id neque aliquam vestibulum morbi blandit. Vel fringilla est ullamcorper eget. Sit amet commodo nulla facilisi nullam. Proin libero nunc consequat interdum varius sit amet mattis vulputate. Eget dolor morbi non arcu risus quis varius quam quisque. Elit ut aliquam purus sit amet luctus venenatis lectus magna. Augue mauris augue neque gravida in fermentum et sollicitudin. Facilisi morbi tempus iaculis urna id volutpat lacus laoreet. Ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel. Amet consectetur adipiscing elit duis tristique sollicitudin nibh sit amet. Consectetur a erat nam at lectus urna duis convallis convallis. Mi sit amet mauris commodo. Ac feugiat sed lectus vestibulum mattis.",
+    "price": "1000",
+    "weight": "200",
+    "material": "бетон",
+    "place_operation": [
+      "дом"
+    ],
+    "size": {
+      "width": "20",
+      "height": "25",
+      "length": "29",
+      "volume": "0.2"
+    },
     "hashtags": [
       "кашпо",
       "бетон",
@@ -56,6 +56,28 @@
   },
   "002": {
     "id": "2",
+    "colors": {
+      "00201": {
+        "color_code": "#D2CAAF",
+        "color_name": "белый",
+         "img": "/assets/images/items/002/002_img_1.jpg"
+      },
+      "00202": {
+        "color_code": "#443A33",
+        "color_name": "коричневый",
+        "img": "/assets/images/items/002/002_img_3.jpg"
+      },
+      "00203": {
+         "color_code": "#EB4C42",
+        "color_name": "красный",
+        "img": "/assets/images/items/002/002_img_2.jpg"
+      },
+      "00204": {
+        "color_code": "#318CE7",
+        "color_name": "синий",
+        "img": "/assets/images/items/002/002_img_4.jpg"
+      }
+    },
     "slug": "banochki",
     "category": "кашпо",
     "title": "баночки",
@@ -72,29 +94,6 @@
       "length": "29",
       "volume": "0.4"
     },
-    "colors":
-       [
-      {
-        "color_code": "#D2CAAF",
-        "color_name": "белый",
-        "img": "/assets/images/items/002/002_img_1.jpg"
-      },
-      {
-        "color_code": "#443A33",
-        "color_name": "коричневый",
-        "img": "/assets/images/items/002/002_img_3.jpg"
-      },
-      {
-        "color_code": "#EB4C42",
-        "color_name": "красный",
-        "img": "/assets/images/items/002/002_img_2.jpg"
-      },
-      {
-        "color_code": "#318CE7",
-        "color_name": "синий",
-        "img": "/assets/images/items/002/002_img_4.jpg"
-      }
-    ],
     "hashtags": [
       "кашпо",
       "бетон",
@@ -112,6 +111,28 @@
   },
   "003": {
     "id": "3",
+    "colors": {
+      "00301": {
+        "color_code": "#D2CAAF",
+        "color_name": "белый",
+         "img": "/assets/images/items/003/003_img_1.jpg"
+      },
+      "00302": {
+        "color_code": "#6D7B6E",
+        "color_name": "зеленый",
+        "img": "/assets/images/items/003/003_img_2.jpg"
+      },
+      "00303": {
+         "color_code": "#EB4C42",
+        "color_name": "красный",
+        "img": "/assets/images/items/003/003_img_3.jpg"
+      },
+      "00304": {
+        "color_code": "#318CE7",
+        "color_name": "синий",
+        "img": "/assets/images/items/003/003_img_4.jpg"
+      }
+    },
     "slug": "kashpo-polygon",
     "category": "кашпо",
     "title": "Кашпо-полигон",
@@ -127,12 +148,6 @@
       "height": "25",
       "length": "29",
       "volume": "0.7"
-    },
-    "colors": {
-      "#D2CAAF": "белый",
-      "#6D7B6E": "зеленый",
-      "#956B53": "красный",
-      "#8BA5B3": "синий"
     },
     "hashtags": [
       "кашпо",
@@ -151,6 +166,28 @@
   },
   "004": {
     "id": "4",
+    "colors": {
+      "00401": {
+        "color_code": "#D2CAAF",
+        "color_name": "белый",
+         "img": "/assets/images/items/004/004_img_1.jpg"
+      },
+      "00402": {
+        "color_code": "#696250",
+        "color_name": "черный",
+        "img": "/assets/images/items/004/004_img_2.jpg"
+      },
+      "00403": {
+         "color_code": "#956B53",
+        "color_name": "красный",
+        "img": "/assets/images/items/004/004_img_3.jpg"
+      },
+      "00404": {
+        "color_code": "#8BA5B3",
+        "color_name": "синий",
+        "img": "/assets/images/items/004/004_img_4.jpg"
+      }
+    },
     "slug": "vasa-deva",
     "category": "вазы",
     "title": "Ваза Дева",
@@ -166,12 +203,6 @@
       "height": "6",
       "length": "17",
       "volume": "0.3"
-    },
-    "colors": {
-      "#D2CAAF": "белый",
-      "#696250": "черный",
-      "#956B53": "красный",
-      "#8BA5B3": "синий"
     },
     "hashtags": [
       "кашпо",
@@ -190,6 +221,23 @@
   },
   "005": {
     "id": "5",
+    "colors": {
+      "00501": {
+        "color_code": "#B2A05C",
+        "color_name": "желтый",
+         "img": "/assets/images/items/005/005_img_1.jpg"
+      },
+      "00502": {
+        "color_code": "#81807E",
+        "color_name": "серый",
+        "img": "/assets/images/items/005/005_img_2.jpg"
+      },
+      "00503": {
+         "color_code": "#8BA5B3",
+        "color_name": "синий",
+        "img": "/assets/images/items/005/005_img_3.jpg"
+      }
+    },
     "slug": "svecha-v-krynke",
     "category": "свечи",
     "title": "Свеча в крынке",
@@ -205,11 +253,6 @@
       "height": "12",
       "length": "18",
       "volume": "0.4"
-    },
-    "colors": {
-      "#B2A05C": "желтый",
-      "#81807E": "серый",
-      "#8BA5B3": "синий"
     },
     "hashtags": [
       "свеча",
@@ -227,6 +270,28 @@
   },
   "006": {
     "id": "6",
+    "colors": {
+      "00601": {
+        "color_code": "#1E1F22",
+        "color_name": "черный",
+         "img": "/assets/images/items/006/006_img_1.jpg"
+      },
+      "00602": {
+        "color_code": "#318CE7",
+        "color_name": "синий",
+        "img": "/assets/images/items/006/006_img_2.jpg"
+      },
+      "00603": {
+        "color_code": "#EB4C42",
+        "color_name": "красный",
+        "img": "/assets/images/items/006/006_img_3.jpg"
+      },
+      "00604": {
+        "color_code": "#9457EB",
+        "color_name": "пупурный",
+        "img": "/assets/images/items/006/006_img_4.jpg"
+      }
+    },
     "slug": "svecha-i-beton",
     "category": "свечи",
     "title": "Свеча и бетон",
@@ -242,13 +307,6 @@
       "height": "7",
       "length": "22"
 
-    },
-    "colors": {
-      "#D2CAAF": "белый",
-      "#696250": "черный",
-      "#956B53": "красный",
-      "#8BA5B3": "синий",
-      "#745888": "лиловый"
     },
     "hashtags": [
       "свеча",

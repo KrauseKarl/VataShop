@@ -1,5 +1,9 @@
 import os
+from dotenv import load_dotenv
 
+load_dotenv()
+
+PROJECT_ID = os.getenv("PROJECT_ID")
 # DB_HOST = os.getenv("DB_HOST")
 # DB_PORT = os.getenv("DB_PORT")
 # DB_NAME = os.getenv("DB_NAME")
@@ -10,3 +14,5 @@ import os
 
 SMTP_USER = os.getenv("SMTP_USER")
 SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
+TOKEN_TG = os.getenv("TG_TOKEN")
+CHAT_ID = os.getenv("TG_CHAT_ID")

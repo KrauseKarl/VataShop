@@ -4281,9 +4281,11 @@ footer .social-icons {
 
 }
 .order-widget img {
-    width: 110px;
+    width: 50px;
     height: auto;
     float: right;
+    border-radius: 8px;
+    border-radius: 8px;
 }
 .order-widget ul.cart_list li,
 .order-widget ul.product_list_widget li {

@@ -160,7 +160,7 @@
                     <tr>
                         <th>Название</th>
                         <th class="w-20">&nbsp;&nbsp;цвет&nbsp;&nbsp;</th>
-                        <th class="w-20">&nbsp;кол-во&nbsp;</th>
+                        <th class="w-20">кол-во</th>
                         <th class="w-20">&nbsp;цена&nbsp;</th>
                         <th class="w-20">&nbsp;всего&nbsp;</th>
                     </tr>
@@ -169,8 +169,8 @@
                  {% for key, it in cart.item.items() %}
                 <tr>
                     <td>&nbsp;<b>{{ it.name }}</b>&nbsp;</td>
-                    <td>&nbsp;{{ it.color_name }}&nbsp;({{ key }})&nbsp;</td>
-                    <td>&nbsp;{{ it.quantity }}&nbsp;</td>
+                    <td>&nbsp;{{ it.color_name }}&nbsp;<br>({{ key }})&nbsp;</td>
+                    <td>{{ it.quantity }}</td>
                     <td>&nbsp;{{ it.price }}&nbsp;</td>
                     <td>&nbsp;{{ it.summary }}&nbsp;</td>
                 </tr>

@@ -7,7 +7,7 @@
 <div id="wrapper">
     <div class="container">
         <div class="row" >
-            <div class="col-lg-8 offset-lg-2 col-12"
+            <div class="col-lg-5 offset-lg-1 col-12"
                  style="background: var(--one-color); padding: 20px;" >
 
                 <div class="contact-form" style="margin-top: 35px; margin-bottom:20px;">
@@ -20,7 +20,7 @@
                         <ul class=" cart_list product_list_widget">
                             {% for key, it in cart.item.items() %}
                             <li>
-                                <img alt="{{ it.name }}" src="{{ it.img }}" width="300">{{ it.name }}
+                                <img alt="{{ it.name }}" src="{{ it.img }}" width="50">{{ it.name }}
                                 <p class="quantity">{{ it.quantity }}&nbsp;×&nbsp;<span>{{ it.price }}&nbsp;&#8381;</span>
                                 </p>
                             </li>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-8 offset-lg-2 col-12" style="background: var(--one-color); padding:20px;"  >
+            <div class="col-lg-5  col-12" style="background: var(--one-color); padding:20px;"  >
                 <div class="contact-form" style="margin-top: 35px; padding:20px 20px;">
                     <div id="note"></div>
                     <div id="fields">

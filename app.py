@@ -331,8 +331,8 @@ async def preorder(
         "cart": cart
     }
     send_order_email.apply_async(kwargs={'data': data})
-    request.session["cart"]['item'] = {}
-    request.session["cart"]['total'] = {}
+    # request.session["cart"]['item'] = {}
+    # request.session["cart"]['total'] = {}
     return {
         "status": 200,
         "data": "Письмо отправлено",

@@ -1,14 +1,24 @@
+import datetime
 import json
+
+import locale
+import uvicorn
 from typing import Optional, Dict
 
-import uvicorn
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 
 from starlette.templating import Jinja2Templates
-from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
+
+from order_db import record_to_order_db
 from task import send_order_email
+
+locale.setlocale(
+    category=locale.LC_ALL,
+    locale="ru"
+)
 
 app = FastAPI()
 
@@ -116,7 +126,7 @@ async def add(
             "price": price,
             "quantity": quantity,
             "color": color,
-            "color_name":color_name,
+            "color_name": color_name,
             "img": img,
             "summary": int(price) * int(quantity),
         }
@@ -324,13 +334,16 @@ async def preorder(
         msg: Optional[str] = Form(...)):
     cart = request.session["cart"]
     data = {
+        "date": datetime.datetime.now().strftime("%d %B %Y(%H:%M)"),
         "name": name,
         "email": email,
         "phone": phone,
         "msg": msg,
         "cart": cart
     }
-    send_order_email.apply_async(kwargs={'data': data})
+
+    record_to_order_db(data)
+    # send_order_email.apply_async(kwargs={'data': data})
     # request.session["cart"]['item'] = {}
     # request.session["cart"]['total'] = {}
     return {

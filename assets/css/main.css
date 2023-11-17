@@ -3487,9 +3487,13 @@ h3.title-section:after {
 }
 
 .contact-form .notification_ok {
-    font-weight: 400;
+    font-weight: 600;
     padding-bottom: 20px;
     font-size: 14px;
+    height:381px;
+    display:flex;
+    justify-content: center;
+    align-item: center;
 
 }
 

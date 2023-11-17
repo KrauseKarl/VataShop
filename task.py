@@ -1,3 +1,4 @@
+import locale
 import smtplib
 import telebot
 import requests
@@ -10,9 +11,14 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from celery import Celery
 from config import TOKEN_TG, CHAT_ID, SMTP_USER, SMTP_PASSWORD
+from order_db import record_to_order_db
 
 # celery -A task:celery worker -l INFO --pool=solo
 # celery -A task:celery flower
+locale.setlocale(
+    category=locale.LC_ALL,
+    locale="Russian"
+)
 
 
 # SMTP_USER = SMTP_USER
@@ -32,13 +38,14 @@ celery.autodiscover_tasks()
 def create_pdf(data):
     filename = data.get("phone")
     context = {
-        "date": datetime.datetime.now().strftime("%H:%M от %B-%d-%Y"),
+        "date": datetime.datetime.now().strftime("%B-%d-%Y (%H:%M)"),
         "name": data.get("name"),
         "email": data.get("email"),
         "phone": data.get("phone"),
         "msg": data.get("msg"),
         'cart': data.get("cart")
     }
+
     cart = context.get("cart")
     products = cart.get("item")
 

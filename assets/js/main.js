@@ -81,10 +81,11 @@
     mt_counter_shortcode();
     mt_google_map();
     mt_headerSticky();
-    mt_addCart();
-    mt_change_in_cart();
-    mt_sortItems();
-    removeItemCart ();
+    // extra
+    extra_addItemCart();
+    extra_chgItemCart();
+    extra_delItemCart ();
+    extra_sortItems();
 
   });
 
@@ -92,252 +93,261 @@
   $(document).on('onAfterLoadMore.cbp', function(event) {
     mt_lightCase();
   });
+  /* ================================= */
+  /* :::::::::: 0.2 sort Items ::::::: */
+  /* ================================= */
+    function extra_sortItems() {
+    $('a.shop-sort-button').on('click', function(event) {
+        var sort_by = this.value;
+        var dataString = 'sort_by='+ sort_by;
+        alert(dataString)
+        $.ajax({
+            type: "GET",
+            url: '/catalog-sort',
+            data: dataString,
+            success: function(data) {
+                $("#catalog-item-list").html();
 
-//    function navBarButtons () {
-//        $("#rex_menu ul:li").on('click', function() {
-//             var activeButton = this.value;
-//             activeButton.addClass("active")
-//        });
-//    };
-
-     function mt_sortItems() {
-        $('a.shop-sort-button').on('click', function(event) {
-            var sort_by = this.value;
-            var dataString = 'sort_by='+ sort_by;
-            alert(dataString)
-            $.ajax({
-                type: "GET",
-                url: '/catalog-sort',
-                data: dataString,
-                success: function(data) {
-                    $("#catalog-item-list").html();
-
-//                    $("#catalog-item-list").load('/catalog #catalog-item-list > *#catalog-item-list');
-                },
-            });
-            return false;
+    //                    $("#catalog-item-list").load('/catalog #catalog-item-list > *#catalog-item-list');
+            },
         });
-     };
-
-
-     function toster(msg, color, imgItem) {
-        $('.toast.fade').addClass('show');
-        if(!imgItem) {
-            if(color == 'toster__success') {
-                var imgItem = '<i class="fa fa-check fa-lg" aria-hidden="true"></i>&ensp;'
-                };
-            if(color == 'toster__error') {
-                var imgItem = '<i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i>&ensp;'
-                };
-            if(color == 'toster__info') {
-                var imgItem = '<i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>&ensp;'
-                };
-        };
-        $('.toast-body').html(imgItem+"&nbsp;"+msg).fadeIn('slow');
-        $('.toast-body').addClass(color)
-        setTimeout(function () {
-            $('.toast-body').removeClass(color)
-            $('.toast.fade').removeClass('show');
-        }, 3000);
+        return false;
+    });
     };
 
-    function mt_addCart() {
-      $('.button-product').on("click", function() {
-            event.preventDefault();
-            var name = $('input#name').val();
-            var quantity = $('input#quantity').val();
-            var color = $('input#color').val();
-            $.ajax({
-                type: "POST",
-                url: '/add',
-                data: {'name': name, 'quantity': quantity,'color': color},
-                success: function(data) {
-                    var count = data.item
-                    var cartPage = $( "#cart" );
-                    var product = data.product
-                    var totalSum = data.cart.total + '&#8381;'
-                    if(data.data == 'OK') {
-                        var toasterMessage = product.title +" добавлен в корзину";
-                        var toasterColor = "toster__success"
-                        var imgAddItem = '<img src="' + data.img + '" class="m-1 p-1 rounded mr-2" width="50" alt="..."> '
-                        var cartCount = '<i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="cart-count"></span>'
-                    } else {
-                        result = data;
-                    }
+  /* ================================= */
+  /* :::::::::: 0.3 toster ::::::::::: */
+  /* ================================= */
+    function toster(msg, color, imgItem) {
+    $('.toast.fade').addClass('show');
+    if(!imgItem) {
+        if(color == 'toster__success') {
+            var imgItem = '<i class="fa fa-check fa-lg" aria-hidden="true"></i>&ensp;'
+            };
+        if(color == 'toster__error') {
+            var imgItem = '<i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i>&ensp;'
+            };
+        if(color == 'toster__info') {
+            var imgItem = '<i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>&ensp;'
+            };
+    };
+    $('.toast-body').html(imgItem+"&nbsp;"+msg).fadeIn('slow');
+    $('.toast-body').addClass(color)
+    setTimeout(function () {
+        $('.toast-body').removeClass(color)
+        $('.toast.fade').removeClass('show');
+    }, 3000);
+    };
 
-                    $('.icon-cart').html(cartCount).fadeIn();
-                    $('.icon-cart-fix-bottom').html(cartCount).fadeIn();
-                    $('.fix__cart__total').html(totalSum).fadeIn();
-                    $('.cart-count').html(count).fadeIn();
-                    $(".cart-container").load("/cart_update")
-                    $('.icon-cart, .cart-widget').wrapAll('<div class="cart-container"></div>');
-                    toster(toasterMessage, toasterColor, imgAddItem);
-              },
-                error: function(data) {
-                    var toasterMessage = "Ошибка";
-                    var toasterColor = "toster__error";
-                    toster(toasterMessage, toasterColor);
+  /* ================================= */
+  /* :::::::::: 0.4 add Cart ::::::::: */
+  /* ================================= */
+    function extra_addItemCart() {
+    $('.button-product').on("click", function() {
+        event.preventDefault();
+        var name = $('input#name').val();
+        var quantity = $('input#quantity').val();
+        var color = $('input#color').val();
+        $.ajax({
+            type: "POST",
+            url: '/add',
+            data: {'name': name, 'quantity': quantity,'color': color},
+            success: function(data) {
+                var count = data.item
+                var cartPage = $( "#cart" );
+                var product = data.product
+                var totalSum = data.cart.total + '&#8381;'
+                if(data.data == 'OK') {
+                    var toasterMessage = product.title +" добавлен в корзину";
+                    var toasterColor = "toster__success"
+                    var imgAddItem = '<img src="' + data.img + '" class="m-1 p-1 rounded mr-2" width="50" alt="..."> '
+                    var cartCount = '<i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="cart-count"></span>'
+                } else {
+                    result = data;
                 }
-          });
-            return false;
-    });
-    }
 
-    function mt_change_in_cart() {
+                $('.icon-cart').html(cartCount).fadeIn();
+                $('.icon-cart-fix-bottom').html(cartCount).fadeIn();
+                $('.fix__cart__total').html(totalSum).fadeIn();
+                $('.cart-count').html(count).fadeIn();
+                $(".cart-container").load("/cart_update")
+                $('.icon-cart, .cart-widget').wrapAll('<div class="cart-container"></div>');
+                toster(toasterMessage, toasterColor, imgAddItem);
+          },
+            error: function(data) {
+                var toasterMessage = "Ошибка";
+                var toasterColor = "toster__error";
+                toster(toasterMessage, toasterColor);
+            }
+      });
+        return false;
+    });
+    };
+
+  /* ================================= */
+  /* :::::::::: 0.4 change Cart :::::: */
+  /* ================================= */
+    function extra_chgItemCart() {
     // Quantity
     $(document).on('click', '.change-qty .plus, .change-qty .minus', function(event){
-        event.preventDefault();
-        var $this = $(this);
+    event.preventDefault();
+    var $this = $(this);
 
-        var $qtty = $this.siblings('.qty');
-        var item = $this.siblings('.hidden-name').val();
+    var $qtty = $this.siblings('.qty');
+    var item = $this.siblings('.hidden-name').val();
 
-        var current = parseInt($qtty.val(), 10);
-        var min = parseInt($qtty.attr('min'), 10);
-        var max = parseInt($qtty.attr('max'), 10);
-        var step = parseInt($qtty.attr('step'), 10);
+    var current = parseInt($qtty.val(), 10);
+    var min = parseInt($qtty.attr('min'), 10);
+    var max = parseInt($qtty.attr('max'), 10);
+    var step = parseInt($qtty.attr('step'), 10);
 
-      min = min ? min : 1;
-      max = max ? max : current + step;
+    min = min ? min : 1;
+    max = max ? max : current + step;
 
-      if ($this.hasClass('minus') && current > min) {
-        $qtty.val(current - step);
-        $qtty.trigger('change');
-      }
-      if ($this.hasClass('plus') && current < max) {
-        $qtty.val(current + step);
-        $qtty.trigger('change');
-      }
-      var dataInsert = {'item_id': item, 'qty': $qtty.val()};
-      console.log($qtty.val())
-      $.ajax({
-        type: "GET",
-        url: '/cart-item-update',
-        data: dataInsert,
-        success: function(data) {
-            if(data.status == 'OK') {
-                var idd = '' + data.item_id;
-                var count = data.count_items;
-                if(data.extra == "removed"){
-                    var cardItem = "#item_" + data.removed_id
-                    var totalItem = "p#total_item_" + data.removed_id
-
-                    $('.cart span').html(count).fadeIn(1000);
-                    $(cardItem).remove().fadeOut(3000);
-                    $(totalItem).remove();
-                    var toasterMessage = 'Товар удален';
-                    var toasterColor = "toster__info";
-                    if(data.removed_all){
-                        $("#container__total").remove().fadeOut(3000);
-                        var emptyCart = "<div class='parallax' style='height:300px; margin-top:-50px;background-image: url(/assets/images/paralax/paralax_2.jpg)'><div class='info'><i style='text-shadow:2px 2px 4px rgb(0,0,0,0.4);' class='fa fa-shopping-cart fa-4x' aria-hidden='true'></i><h4 style='margin-top:20px;  text-shadow:2px 2px 7px rgb(0,0,0,0.4)'>Корзина пуста</h4></div></div>"
-                        var emptyMiniCart = "<p class='mini-cart__total total'>корзина пуста</p>"
-                        var emptyTotal = "<span class='fix__cart__total'>0&nbsp;&#8381;</span>"
-                        $("#wrapper").html(emptyCart)
-                        $(".cart-count").remove().fadeOut(3000);
-                        $(".cart-widget").empty().html(emptyMiniCart)
-                        $(".cart-count-fix-bottom").remove().fadeOut(3000);
-                        $(".fix-bottom-total").remove().html(emptyTotal)
-                    }
-                } else {
-                    var toasterMessage = 'Количество товара обновлено';
-                    var toasterColor = "toster__success";
-
-                    var quantity = "#" + idd + "_quantity";
-                    var summary = "#" + idd + "_summary";
-                    var totalSummary = "#" + idd + "__summary";
-
-                    $(quantity).text(data.cart['item'][idd]['quantity']).fadeIn(1000);
-                    $(summary).text(data.cart['item'][idd]['summary']).fadeIn(1000);
-                    $(totalSummary).text(data.cart['item'][idd]['summary']).fadeIn(1000);
-                    };
-                $("#cart__total").text(data.cart["total"]).fadeIn(1000);
-                } else {
-                    var cardItem = "#item_" + data.removed_id
-                    var totalItem = "p#total_item_" + data.removed_id
-                    console.log(totalItem)
-                    $('.cart span').html(count).fadeIn(1000);
-                    $(cardItem).remove().fadeOut(3000);
-                    $(totalItem).remove();
-                    var toasterMessage = 'Товар удален';
-                    var toasterColor = "toster__info";
-                    var imgAddItem = '<img src="' + data.img + '" class="m-1 p-1 rounded mr-2" width="75" alt="..."> '
-                };
-            toster(toasterMessage, toasterColor, imgAddItem);
-            },
-        error: function(data) {
-                    var toasterMessage = "Ошибка";
-                    var toasterColor = "toster__error";
-                    toster(toasterMessage, toasterColor);
-                },
-      });
-      return false;
-    });
-
+    if ($this.hasClass('minus') && current > min) {
+    $qtty.val(current - step);
+    $qtty.trigger('change');
     }
-    function removeItemCart () {
-    $('.delete-button').on('click', function(event){
-        event.preventDefault();
-        var $this = $(this);
-        var zeroQty = $this.siblings('.remove_qty');
-        var zeroItem = $this.siblings('.remove_name').val();
-        var dataInsert = {'item_id': zeroItem, 'qty': zeroQty.val()};
-        $.ajax({
-        type: "GET",
-        url: '/cart-item-update',
-        data: dataInsert,
-        success: function(data) {
-            if(data.status == 'OK') {
-                var idd = '' + data.item_id;
-                if(data.extra){
-                    var count = data.count_items
-                    var totalItem = "p#total_item_" + data.removed_id;
-                    var cardItem = "#item_" + data.removed_id;
-                    var cartCount = '<i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="cart-count"></span>'
-                    var toasterMessage = "Товар удален";
-                    var toasterColor = "toster__error"
-                    $('.icon-cart').html(cartCount).fadeIn();
-                    $('.cart-count').html(count).fadeIn();
-                    $(cardItem).remove().fadeOut(3000);
-                    $(totalItem).remove();
+    if ($this.hasClass('plus') && current < max) {
+    $qtty.val(current + step);
+    $qtty.trigger('change');
+    }
+    var dataInsert = {'item_id': item, 'qty': $qtty.val()};
+    console.log($qtty.val())
+    $.ajax({
+    type: "GET",
+    url: '/cart-item-update',
+    data: dataInsert,
+    success: function(data) {
+        if(data.status == 'OK') {
+            var idd = '' + data.item_id;
+            var count = data.count_items;
+            if(data.extra == "removed"){
+                var cardItem = "#item_" + data.removed_id
+                var totalItem = "p#total_item_" + data.removed_id
 
-                    if(data.removed_all){
-
-                        var emptyCart = "<div class='parallax' style='height:300px; margin-top:-50px;background-image: url(/assets/images/paralax/paralax_2.jpg)'><div class='info'><i style='text-shadow:2px 2px 4px rgb(0,0,0,0.4);' class='fa fa-shopping-cart fa-4x' aria-hidden='true'></i><h4 style='margin-top:20px;  text-shadow:2px 2px 7px rgb(0,0,0,0.4)'>Корзина пуста</h4></div></div>"
-                        var emptyMiniCart = "<p class='mini-cart__total total'>корзина пуста</p>"
-                        var emptyTotal = "<span class='fix__cart__total'>0&nbsp;&#8381;</span>"
-
-                        $("#container__total").remove().fadeOut(3000);
-                        $("#wrapper").html(emptyCart)
-                        $(".cart-count").remove().fadeOut(3000);
-                        $(".cart-widget").empty().html(emptyMiniCart)
-                        $(".cart-count-fix-bottom").remove().fadeOut(3000);
-                        $(".fix-bottom-total").remove().html(emptyTotal)
-                    }
+                $('.cart span').html(count).fadeIn(1000);
+                $(cardItem).remove().fadeOut(3000);
+                $(totalItem).remove();
+                var toasterMessage = 'Товар удален';
+                var toasterColor = "toster__info";
+                if(data.removed_all){
+                    $("#container__total").remove().fadeOut(3000);
+                    var emptyCart = "<div class='parallax' style='height:300px; margin-top:-50px;background-image: url(/assets/images/paralax/paralax_2.jpg)'><div class='info'><i style='text-shadow:2px 2px 4px rgb(0,0,0,0.4);' class='fa fa-shopping-cart fa-4x' aria-hidden='true'></i><h4 style='margin-top:20px;  text-shadow:2px 2px 7px rgb(0,0,0,0.4)'>Корзина пуста</h4></div></div>"
+                    var emptyMiniCart = "<p class='mini-cart__total total'>корзина пуста</p>"
+                    var emptyTotal = "<span class='fix__cart__total'>0&nbsp;&#8381;</span>"
+                    $("#wrapper").html(emptyCart)
+                    $(".cart-count").remove().fadeOut(3000);
+                    $(".cart-widget").empty().html(emptyMiniCart)
+                    $(".cart-count-fix-bottom").remove().fadeOut(3000);
+                    $(".fix-bottom-total").remove().html(emptyTotal)
                 }
-                $("#cart__total").text(data.cart["total"]).fadeIn(1000);
             } else {
-                var toasterMessage = "Товар удален";
-                var toasterColor = "toster__error";
+                var toasterMessage = 'Количество товара обновлено';
+                var toasterColor = "toster__success";
 
+                var quantity = "#" + idd + "_quantity";
+                var summary = "#" + idd + "_summary";
+                var totalSummary = "#" + idd + "__summary";
+
+                $(quantity).text(data.cart['item'][idd]['quantity']).fadeIn(1000);
+                $(summary).text(data.cart['item'][idd]['summary']).fadeIn(1000);
+                $(totalSummary).text(data.cart['item'][idd]['summary']).fadeIn(1000);
+                };
+            $("#cart__total").text(data.cart["total"]).fadeIn(1000);
+            } else {
+                var cardItem = "#item_" + data.removed_id
+                var totalItem = "p#total_item_" + data.removed_id
+                console.log(totalItem)
+                $('.cart span').html(count).fadeIn(1000);
+                $(cardItem).remove().fadeOut(3000);
+                $(totalItem).remove();
+                var toasterMessage = 'Товар удален';
+                var toasterColor = "toster__info";
+                var imgAddItem = '<img src="' + data.img + '" class="m-1 p-1 rounded mr-2" width="75" alt="..."> '
             };
-            var imgItem = '<img src="' + data.img + '" class="m-1 p-1 rounded mr-2" width="75" alt="..."> '
-            toster(toasterMessage, toasterColor, imgItem);
+        toster(toasterMessage, toasterColor, imgAddItem);
+        },
+    error: function(data) {
+                var toasterMessage = "Ошибка";
+                var toasterColor = "toster__error";
+                toster(toasterMessage, toasterColor);
             },
-        error: function(data) {
-                    var toasterMessage = "Ошибка";
-                    var toasterColor = "toster__error";
-                    toster(toasterMessage, toasterColor);
-                }
-      });
-      return false;
     });
-    }
+    return false;
+    });
 
+    };
+
+  /* ================================= */
+  /* :::::::::: 0.4 remove Cart :::::: */
+  /* ================================= */
+    function extra_delItemCart () {
+    $('.delete-button').on('click', function(event){
+    event.preventDefault();
+    var $this = $(this);
+    var zeroQty = $this.siblings('.remove_qty');
+    var zeroItem = $this.siblings('.remove_name').val();
+    var dataInsert = {'item_id': zeroItem, 'qty': zeroQty.val()};
+    $.ajax({
+    type: "GET",
+    url: '/cart-item-update',
+    data: dataInsert,
+    success: function(data) {
+        if(data.status == 'OK') {
+            var idd = '' + data.item_id;
+            if(data.extra){
+                var count = data.count_items
+                var totalItem = "p#total_item_" + data.removed_id;
+                var cardItem = "#item_" + data.removed_id;
+                var cartCount = '<i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="cart-count"></span>'
+                var toasterMessage = "Товар удален";
+                var toasterColor = "toster__error"
+                $('.icon-cart').html(cartCount).fadeIn();
+                $('.cart-count').html(count).fadeIn();
+                $(cardItem).remove().fadeOut(3000);
+                $(totalItem).remove();
+
+                if(data.removed_all){
+
+                    var emptyCart = "<div class='parallax' style='height:300px; margin-top:-50px;background-image: url(/assets/images/paralax/paralax_2.jpg)'><div class='info'><i style='text-shadow:2px 2px 4px rgb(0,0,0,0.4);' class='fa fa-shopping-cart fa-4x' aria-hidden='true'></i><h4 style='margin-top:20px;  text-shadow:2px 2px 7px rgb(0,0,0,0.4)'>Корзина пуста</h4></div></div>"
+                    var emptyMiniCart = "<p class='mini-cart__total total'>корзина пуста</p>"
+                    var emptyTotal = "<span class='fix__cart__total'>0&nbsp;&#8381;</span>"
+
+                    $("#container__total").remove().fadeOut(3000);
+                    $("#wrapper").html(emptyCart)
+                    $(".cart-count").remove().fadeOut(3000);
+                    $(".cart-widget").empty().html(emptyMiniCart)
+                    $(".cart-count-fix-bottom").remove().fadeOut(3000);
+                    $(".fix-bottom-total").remove().html(emptyTotal)
+                }
+            }
+            $("#cart__total").text(data.cart["total"]).fadeIn(1000);
+        } else {
+            var toasterMessage = "Товар удален";
+            var toasterColor = "toster__error";
+
+        };
+        var imgItem = '<img src="' + data.img + '" class="m-1 p-1 rounded mr-2" width="75" alt="..."> '
+        toster(toasterMessage, toasterColor, imgItem);
+        },
+    error: function(data) {
+                var toasterMessage = "Ошибка";
+                var toasterColor = "toster__error";
+                toster(toasterMessage, toasterColor);
+            }
+    });
+    return false;
+    });
+    };
+
+  /* ================================= */
+  /* :::::::::: 1. Loading ::::::::::: */
+  /* ================================= */
     function mt_loading() {
-      $(".text-loader").delay(700).fadeOut();
-      $(".page-loader").delay(900).fadeOut("fast");
-    }
-
+    $(".text-loader").delay(700).fadeOut();
+    $(".page-loader").delay(900).fadeOut("fast");
+    };
 
   /* ================================= */
   /* ::::::: 2. Mobile Menu :::::::::: */
@@ -475,7 +485,6 @@
     }
   ).trigger('resize');
   };
-
 
   function mt_shopGrid() {
   // Shop Grid
@@ -786,7 +795,6 @@
 
   }
 
-
   /* ================================= */
   /* :::::::::::: 10. Wow :::::::::::: */
   /* ================================= */
@@ -805,7 +813,6 @@
     noAndroid: true
   });
   }
-
 
   /* ================================= */
   /* ::::::: 12. Flex Slider ::::::::: */
@@ -828,28 +835,29 @@
   function mt_ajax_contact_form() {
 
       $('#submit').on("click", function(event) {
+            $('#submit').css("opacity","0.09");
             event.preventDefault();
             var name = $('input#name').val();
             var email = $('input#email').val();
             var phone = $('input#phone').val();
             var msg = $('textarea#msg').val();
-
             var dataDict = {"name": name, "email": email, "phone": phone, "msg": msg}
-            console.log(dataDict)
             $.ajax({
                 type: "POST",
                 url: "/send-order",
                 data: dataDict,
                 success: function(data) {
                       if(data.status == '200') {
-                        var result = '<div class="notification_ok"><i class="fa fa-check fa-lg"></i> Заказ отправлен.</div>';
-                        $("#ajax-order-form").find('input[type=text], input[type=email], textarea').val();
+                        var result = '<div class="notification_ok" style="font-weight:600;padding-bottom:20px;font-size:24px;height:381px;display:flex;justify-content:center;align-items:center;"><i class="fa fa-check fa-lg"></i> Заказ отправлен.</div>';
+                        $("#ajax-order-form").find('input[type=text], input[type=email], textarea').val('');
+                        $('#fields').css("opacity","1");
+                        $('#submit').css("background-color","#000");
                       } else {
                       result = data;
                      }
-                     $('#note').html(result).fadeIn();
+                     $('#fields').html(result).fadeIn(3000);
                      setTimeout(function () {
-                        $('#note').html(result).fadeOut();
+                        $('#fields').html(result).fadeOut();
                      }, 4000);
                      setTimeout(function () {
                         window.location = data.url
@@ -862,11 +870,11 @@
 
   };
 
-/* ================================= */
-/* :::::: 14. Header Sticky :::::::: */
-/* ================================= */
+  /* ================================= */
+  /* :::::: 14. Header Sticky :::::::: */
+  /* ================================= */
 
-function mt_headerSticky() {
+  function mt_headerSticky() {
 
 if ($('header.sticky').length) {
 $("header.sticky").sticky({ topSpacing: 0, zIndex: "99999" });
@@ -875,30 +883,26 @@ $("header.sticky").sticky({ topSpacing: 0, zIndex: "99999" });
 
 }
 
-/* ================================= */
-/* :::::::: 15. Google Map ::::::::: */
-/* ================================= */
+  /* ================================= */
+  /* :::::::: 15. Google Map ::::::::: */
+  /* ================================= */
 
-function mt_google_map() {
+  function mt_google_map() {
 
-if ($('#google-container').length) {
-
-//set your google maps parameters
-var latitude = -37.8602828,
-  longitude = 145.079616,
-  map_zoom = 10;
-
-//google map custom marker icon - .png fallback for IE11
-var is_internetExplorer11 = navigator.userAgent.toLowerCase().indexOf('trident') > -1;
-var marker_url = (is_internetExplorer11) ? 'assets/images/icon-location.png' : 'assets/images/icon-location.png';
-
-//define the basic color of your map, plus a value for saturation and brightness
-var main_color = '#2d313f',
-  saturation_value = -70,
-  brightness_value = 5;
-
-//we define here the style of the map
-var style = [{
+  if ($('#google-container').length) {
+  //set your google maps parameters
+  var latitude = -37.8602828,
+    longitude = 145.079616,
+    map_zoom = 10;
+  //google map custom marker icon - .png fallback for IE11
+  var is_internetExplorer11 = navigator.userAgent.toLowerCase().indexOf('trident') > -1;
+  var marker_url = (is_internetExplorer11) ? 'assets/images/icon-location.png' : 'assets/images/icon-location.png';
+  //define the basic color of your map, plus a value for saturation and brightness
+  var main_color = '#2d313f',
+    saturation_value = -70,
+    brightness_value = 5;
+  //we define here the style of the map
+  var style = [{
     //set saturation for the labels on the map
     elementType: 'labels',
     stylers: [{
@@ -1189,9 +1193,12 @@ var zoomControl = new CustomZoomControl(zoomControlDiv, map);
 //insert the zoom div on the top left of the map
 map.controls[google.maps.ControlPosition.LEFT_TOP].push(zoomControlDiv);
 }
-}
+  }
 
-    var ProductCard = function(){
+  /* ================================= */
+  /* :::::::: 16. ProductCard ::::::::: */
+  /* ================================= */
+   var ProductCard = function(){
     var $picts = $('.ProductCard-pict');
     var $photo = $('.ProductCard-photo');
     return {
@@ -1219,5 +1226,4 @@ map.controls[google.maps.ControlPosition.LEFT_TOP].push(zoomControlDiv);
     };
 };
         ProductCard().init();
-
 });

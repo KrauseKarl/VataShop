@@ -52,7 +52,7 @@
 <!-- TITLE   -->
 
 <!-- COLOR CHOSEN BUTTONS  -->
-                    <div class="ProductCard-picts">
+                    <div class="ProductCard-picts color-variants" >
                         {% for key, img in product.colors.items() %}
                         <a style="border-radius:8px;" id="{{key}}"
                            class="color-img ProductCard-pict  {% if loop.first %}ProductCard-pict_ACTIVE color-chosen{% endif %} "
@@ -73,6 +73,7 @@
 <!--  FORM ADD TO CART -->
                     <form id="ajax-add-cart-form" class="cart" method="post" enctype="multipart/form-data"
                           style="margin-top:40px; ">
+                        <div id="error-msg"></div>
                         <div class="shop-qty">
                             <input id="name" type="hidden" name="name" value="{{ product.id }}">
                             <input id="color" type="hidden" name="color" value="{{ default }}">
@@ -106,7 +107,7 @@
                     <p><span>материал</span><span>{{product.material}}</span></p>
                     <p><span>размеры, мм</span><span>{{product.size.width}} X {{product.size.height}} X {{product.size.length}}</span></p>
                     <p><span>место размещения</span><span>{{product.place_operation|join(', ') }}</span></p>
-                     <p><span>*По вашему желанию можно выбрать цвет из каталога RAL</span></p>
+                    <p><span>*По вашему желанию можно выбрать цвет из каталога RAL</span></p>
                 </div>
                     <div id="description" class="product-single-box">
                     <h2>Описание</h2>

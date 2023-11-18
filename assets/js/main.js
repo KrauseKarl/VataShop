@@ -86,6 +86,7 @@
     extra_chgItemCart();
     extra_delItemCart ();
     extra_sortItems();
+    extra_colorChose();
 
   });
 
@@ -142,12 +143,30 @@
   /* ================================= */
   /* :::::::::: 0.4 add Cart ::::::::: */
   /* ================================= */
+    function extra_colorChose() {
+    $('.color-img').on("click", function(){
+        $('.color-variants').removeClass("error-color-msg");
+        $('#error-msg').html("");
+    });
+    };
     function extra_addItemCart() {
     $('.button-product').on("click", function() {
+        $('.color-variants').removeClass("error-color-msg");
+        $('#error-msg').html("");
         event.preventDefault();
         var name = $('input#name').val();
         var quantity = $('input#quantity').val();
         var color = $('input#color').val();
+        if (color == "" || color == null) {
+            $('.color-variants').addClass("error-color-msg")
+            $('#error-msg').html("<div class='error-msg '>* Выберите один из вариантов цвета</div>").fadeIn(1000);
+            setTimeout(function () {
+            $('.color-variants').removeClass("error-color-msg");
+            $('#error-msg').html("").fadeOut(1000);
+             }, 2000);
+        return false;
+    };
+
         $.ajax({
             type: "POST",
             url: '/add',
@@ -160,7 +179,7 @@
                 if(data.data == 'OK') {
                     var toasterMessage = product.title +" добавлен в корзину";
                     var toasterColor = "toster__success"
-                    var imgAddItem = '<img src="' + data.img + '" class="m-1 p-1 rounded mr-2" width="50" alt="..."> '
+                    var imgAddItem = '<img src="' + data.img + '" class="m-1 p-1 rounded mr-2 border-2" width="75" alt="..."> '
                     var cartCount = '<i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="cart-count"></span>'
                 } else {
                     result = data;
@@ -264,7 +283,7 @@
                 $(totalItem).remove();
                 var toasterMessage = 'Товар удален';
                 var toasterColor = "toster__info";
-                var imgAddItem = '<img src="' + data.img + '" class="m-1 p-1 rounded mr-2" width="75" alt="..."> '
+                var imgAddItem = '<img src="' + data.img + '" class="m-1 p-1 rounded mr-2 border-2" width="75" alt="..."> '
             };
         toster(toasterMessage, toasterColor, imgAddItem);
         },
@@ -328,7 +347,7 @@
             var toasterColor = "toster__error";
 
         };
-        var imgItem = '<img src="' + data.img + '" class="m-1 p-1 rounded mr-2" width="75" alt="..."> '
+        var imgItem = '<img src="' + data.img + '" class="m-1 p-1 rounded mr-2 border-2" width="75" alt="..."> '
         toster(toasterMessage, toasterColor, imgItem);
         },
     error: function(data) {

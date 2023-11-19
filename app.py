@@ -2,6 +2,8 @@ import datetime
 import json
 
 import locale
+import uuid
+
 import uvicorn
 from typing import Optional, Dict
 
@@ -12,6 +14,7 @@ from fastapi.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 from starlette.middleware.sessions import SessionMiddleware
 
+from cart_db import record_to_carts_db
 from order_db import record_to_order_db
 from task import send_order_email
 
@@ -48,13 +51,18 @@ def categories_list():
 
 
 def get_cart(request: Request):
-    fake_cart = {
-        "item": {},
-        "total": 0
-    }
     cart = request.session.get('cart')
     if not cart:
+        id_cart = str(uuid.uuid4())
+        fake_cart = {
+            "created": datetime.datetime.now().strftime("%d %B %Y(%H:%M)"),
+            "updated": datetime.datetime.now().strftime("%d %B %Y(%H:%M)"),
+            "id": id_cart,
+            "item": {},
+            "total": 0
+        }
         request.session['cart'] = fake_cart
+        record_to_carts_db(fake_cart)
     return cart
 
 
@@ -113,6 +121,7 @@ async def add(
 ):
     data = items_list()
     cart = get_cart(request)
+
     title = data.get('00' + str(name))['title']
     price = data.get('00' + str(name))['price']
     img = data.get('00' + str(name))["colors"][color]['img']
@@ -143,13 +152,14 @@ async def add(
             request.session["cart"]["item"].update(items)
     else:
         request.session["cart"]["item"].update(items)
-
+    record_to_carts_db(cart)
     for k, i in cart["item"].items():
         quant = int(i.get("quantity", 0))
         price = int(i.get("price"))
         total_sum += (quant * price)
 
     request.session["cart"]["total"] = total_sum
+    request.session["cart"]["updated"] = datetime.datetime.now().strftime("%d %B %Y(%H:%M)")
     img_item = request.session['cart']['item'][color]['img']
     count_items = len(request.session["cart"].get("item").keys())
     return {
@@ -162,6 +172,50 @@ async def add(
         "img": img_item
 
     }
+
+
+@app.get("/cart-item-update", response_class=JSONResponse)
+async def recalculate_cart(
+        request: Request,
+        item_id: Optional[str] = None,
+        qty: Optional[int] = None
+):
+    extra_msg = None
+    removed_id = None
+    removed_all = None
+    img_removed_item = None
+    request.session["cart"]["total"] = 0
+    if int(qty) < 1:
+        extra_msg = "removed"
+        removed_id = item_id
+        img_removed_item = request.session['cart']['item'][item_id]['img']
+        del request.session['cart']['item'][item_id]
+    else:
+        price = int(request.session["cart"]["item"][item_id]['price'])
+        request.session['cart']['item'][item_id]['quantity'] = qty
+        request.session["cart"]["item"][item_id]['summary'] = qty * price
+        request.session["cart"]["total"] = 0
+    if len(request.session["cart"]["item"]) > 0:
+        for k, it in request.session["cart"]["item"].items():
+            request.session["cart"]["total"] += int(it.get("summary"))
+    else:
+        removed_all = True
+        request.session["cart"]["total"] = 0
+    request.session["cart"]["updated"] = datetime.datetime.now().strftime("%d %B %Y(%H:%M)")
+    record_to_carts_db(request.session["cart"])
+    count_items = len(request.session["cart"].get("item").keys())
+    context = {
+        "status": "OK",
+        "extra": extra_msg,
+        "removed_id": removed_id,
+        "removed_all": removed_all,
+        "item_id": str(item_id),
+        "cart": request.session["cart"],
+        "count_items": count_items,
+        "img": img_removed_item
+    }
+
+    return context
 
 
 @app.get("/catalog", response_class=HTMLResponse)
@@ -265,48 +319,6 @@ async def my_cart(request: Request):
     )
 
 
-@app.get("/cart-item-update", response_class=JSONResponse)
-async def recalculate_cart(
-        request: Request,
-        item_id: Optional[str] = None,
-        qty: Optional[int] = None
-):
-    extra_msg = None
-    removed_id = None
-    removed_all = None
-    img_removed_item = None
-    request.session["cart"]["total"] = 0
-    if int(qty) < 1:
-        extra_msg = "removed"
-        removed_id = item_id
-        img_removed_item = request.session['cart']['item'][item_id]['img']
-        del request.session['cart']['item'][item_id]
-    else:
-        price = int(request.session["cart"]["item"][item_id]['price'])
-        request.session['cart']['item'][item_id]['quantity'] = qty
-        request.session["cart"]["item"][item_id]['summary'] = qty * price
-        request.session["cart"]["total"] = 0
-    if len(request.session["cart"]["item"]) > 0:
-        for k, it in request.session["cart"]["item"].items():
-            request.session["cart"]["total"] += int(it.get("summary"))
-    else:
-        removed_all = True
-        request.session["cart"]["total"] = 0
-    count_items = len(request.session["cart"].get("item").keys())
-    context = {
-        "status": "OK",
-        "extra": extra_msg,
-        "removed_id": removed_id,
-        "removed_all": removed_all,
-        "item_id": str(item_id),
-        "cart": request.session["cart"],
-        "count_items": count_items,
-        "img": img_removed_item
-    }
-
-    return context
-
-
 @app.get("/item/{item_id}", response_class=HTMLResponse)
 async def item(item_id: str, request: Request):
     cart = get_cart(request)
@@ -343,8 +355,9 @@ async def preorder(
     }
 
     record_to_order_db(data)
+    record_to_carts_db(cart, msg="order")
     # send_order_email.apply_async(kwargs={'data': data})
-    # request.session["cart"]['item'] = {}
+    del request.session["cart"]
     # request.session["cart"]['total'] = {}
     return {
         "status": 200,

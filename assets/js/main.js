@@ -149,6 +149,7 @@
         $('#error-msg').html("");
     });
     };
+
     function extra_addItemCart() {
     $('.button-product').on("click", function() {
         $('.color-variants').removeClass("error-color-msg");

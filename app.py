@@ -59,7 +59,8 @@ def get_cart(request: Request):
             "updated": datetime.datetime.now().strftime("%d %B %Y(%H:%M)"),
             "id": id_cart,
             "item": {},
-            "total": 0
+            "total": 0,
+            "archived": False
         }
         request.session['cart'] = fake_cart
         record_to_carts_db(fake_cart)
@@ -311,7 +312,7 @@ async def update_cart(request: Request):
 async def my_cart(request: Request):
     context = {
         "request": request,
-        "cart": request.session["cart"],
+        "cart": get_cart(request),
     }
     return templates.TemplateResponse(
         "cart_view.html",
@@ -355,6 +356,7 @@ async def preorder(
     }
 
     record_to_order_db(data)
+    cart['archived'] = True
     record_to_carts_db(cart, msg="order")
     # send_order_email.apply_async(kwargs={'data': data})
     del request.session["cart"]

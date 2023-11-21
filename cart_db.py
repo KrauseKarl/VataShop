@@ -14,7 +14,6 @@ def create_carts_json():
         os.makedirs(CART_DB_FOLDER)
     with open(CART_DB_PATH, 'w', encoding='utf-8') as f:
         carts_dict = {
-            "carts": {}
         }
         json.dump(carts_dict, f, indent=4, ensure_ascii=False)
 
@@ -22,17 +21,7 @@ def create_carts_json():
 def update_carts_json(cart: Dict, **kwargs):
     with open(CART_DB_PATH, "r", encoding='utf-8') as jsonFile:
         data = json.load(jsonFile)
-    current_cart = cart["id"]
-    if cart["id"] in data["carts"].keys():
-        if not data["carts"][current_cart]["archived"]:
-            if len(cart['item'].keys()) < 1 or kwargs['msg'] == "order":
-                data["carts"][current_cart]["archived"] = True
-            else:
-                data["carts"][current_cart]["item"] = cart['item']
-                data["carts"][current_cart]["total"] = cart['total']
-                data["carts"][current_cart]["updated"] = datetime.datetime.now().strftime("%d %B %Y(%H:%M)")
-    else:
-        data["carts"][current_cart] = cart
+    data[cart["id"]] = cart
     with open(CART_DB_PATH, "w", encoding='utf-8') as jsonFile:
         json.dump(data, jsonFile, indent=4, ensure_ascii=False)
 

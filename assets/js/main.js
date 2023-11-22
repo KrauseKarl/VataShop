@@ -853,15 +853,51 @@
   /* ================================= */
 
   function mt_ajax_contact_form() {
-
+       $('input#agreement').on("click", function(event) {
+           $('#agr_string').removeClass('error');
+           $("#note").empty()
+      });
+      $('input').on("change focus keypress", function(event) {
+           $(this).removeClass('error');
+           $("#note").empty()
+      });
       $('#submit').on("click", function(event) {
-            $('#submit').css("opacity","0.09");
+
             event.preventDefault();
+
             var name = $('input#name').val();
             var email = $('input#email').val();
             var phone = $('input#phone').val();
             var msg = $('textarea#msg').val();
-            var dataDict = {"name": name, "email": email, "phone": phone, "msg": msg}
+            var is_checked = $('#agreement').is(':checked');
+            if (!is_checked){
+                $("#note").html("<div class='contact-form error'>Обязательное поле для ввода</div>")
+                $('#agr_string').addClass('error');
+                return false
+            };
+            if (name == '' || name == null) {
+                $("#note").html("<div class='contact-form error'>Обязательное поле для ввода</div>")
+                $('input#name').addClass('error');
+                return false
+            };
+            if (email == '' || email == null) {
+                $("#note").html("<div class='contact-form error'>Обязательное поле для ввода</div>")
+                $('input#email').addClass('error');
+                return false
+            };
+            if (phone == '' || phone == null) {
+                $("#note").html("<div class='contact-form error'>Обязательное поле для ввода</div>")
+                $('input#phone').addClass('error');
+                return false
+            };
+            var dataDict = {"name": name, "email": email, "phone": phone, "msg": msg};
+            var spinner = '<div style="height:381px;display:flex;justify-content:center;align-items:center;"> <div class="spinner-border text-success" role="status"><span class="visually-hidden">Loading...</span></div></div>'
+            $('#fields').empty();
+            $('#fields').html(spinner).fadeIn(4000);
+
+            setTimeout(function () {
+                $('#fields').html(spinner).fadeOut(5000);
+            }, 40000);
             $.ajax({
                 type: "POST",
                 url: "/send-order",
@@ -870,8 +906,6 @@
                       if(data.status == '200') {
                         var result = '<div class="notification_ok" style="font-weight:600;padding-bottom:20px;font-size:24px;height:381px;display:flex;justify-content:center;align-items:center;"><i class="fa fa-check fa-lg"></i> Заказ отправлен.</div>';
                         $("#ajax-order-form").find('input[type=text], input[type=email], textarea').val('');
-                        $('#fields').css("opacity","1");
-                        $('#submit').css("background-color","#000");
                       } else {
                       result = data;
                      }

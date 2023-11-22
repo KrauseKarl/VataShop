@@ -3441,7 +3441,12 @@ h3.title-section:after {
     z-index: 999;
     border-radius: 3px;
 }
-
+.contact-form input[type='text'].error,
+.contact-form input[type='email'].error,
+.contact-form input[type='checkbox'].error,
+.contact-form textarea.error {
+    border: 5px solid rgba(243, 0, 0, 0.4);
+}
 .contact-form .error {
     color: red;
     font-size: 13px;
@@ -3450,8 +3455,10 @@ h3.title-section:after {
 
 .contact-form input[type='text'].error,
 .contact-form input[type='email'].error,
-.contact-form textarea.error  {
-    border: 1px solid rgba(243, 0, 0, 0.2);
+.contact-form input[type='checkbox'].error,
+.contact-form textarea.error,
+.contact-form label.error{
+    border: 5px solid rgba(243, 0, 0, 0.4);
 }
 
 .contact-form::-webkit-input-placeholder {

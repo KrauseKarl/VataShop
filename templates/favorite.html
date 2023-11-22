@@ -9,7 +9,7 @@
 
     <!-- parallax -->
     <div class="catalog-parallax"
-         style="margin-top:-70px; background-image: url(/assets/images/paralax/paralax_2.jpg);">
+         style="margin-top:-70px; background-image: url(/assets/images/paralax/paralax_1.jpg);">
         <div class="info catalog-parallax-info">
             <h2 data-in-effect="fadeIn" style="text-align: center;
             font-size: 3.1em;font-weight:900;text-shadow:0 0 5px #000;">VATA SHOP
@@ -22,51 +22,44 @@
     <div class="container" style="margin-top:50px;">
         <div class="row">
             <div id="catalog-container" class="col-lg-10 offset-lg-1 ">
-                <h1 class="page-title">Каталог </h1>
+                <h1 class="page-title">Избранное </h1>
 
                 <div class="row">
                     <p class="shop-result-count">
-                        1-{{ all_products| length }} из {{ all_products| length }} позиций
+
                     </p>
-                    <form class="ordering" method="get">
-                        <a href="/catalog" class="shop-sort-button-left">all</a>
-                        {% for cat in categories %}
-                            <a href="/category/{{ cat.category }}" class="shop-sort-button-left">{{ cat.category }}</a>
-                        {% endfor %}
-                        <button  class="shop-sort-button" name="sort_by" value="price-asc">по возрастанию</button>
-                        <button  class="shop-sort-button" name="sort_by" value="price-desc">по убыванию</button>
-                    </form>
+
 
                 </div>
+                {% if products %}
                 <div id="catalog-item-list" class="row" style="margin-top:20px;">
-                    {% for item_id, item in all_products.items() %}
-                    <!-- product 1 -->
 
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    {% for item_id, item in products.items() %}
+                    <!-- product 1 -->
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                         <div class="card mb-2 product">
                             <a class="product-images" href="/item/00{{item.id}}">
                                 <div class="shop-first-image">
-                                    <img src="{{ item.rest_image.0 }}" alt="{{ item.title| capitalize }}" />
+                                    <img src="{{ item.img }}" alt="{{ item.title| capitalize }}" />
                                 </div>
-                                 <div class="shop-second-image">
-                                    <img src="{{ item.rest_image.1 }}" alt="{{ item.title| capitalize }}" />
-                                </div>
+
                             </a>
 
                             <div class="card-body">
                                 <h5 class="card-title">{{ item.title| capitalize }}</h5>
                                 <p class="card-text"></p>
-                                <small class="text-muted">{{ item.price }} &#8381&ensp;</small>
+                                <small class="text-muted">{{ item.date }}</small>
                             </div>
                         </div>
                     </div>
 
                     {% endfor %}
                 </div>
+                 {% endif %}
             </div>
         </div>
     </div>
 
 </div>
-<!-- /wrapper --> 
+<!-- /wrapper -->
 {% endblock %}

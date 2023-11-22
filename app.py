@@ -7,7 +7,7 @@ import uuid
 import uvicorn
 from typing import Optional, Dict
 
-from fastapi import FastAPI, Request, Form
+from fastapi import FastAPI, Request, Form, Depends
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
@@ -67,6 +67,13 @@ def get_cart(request: Request):
     return cart
 
 
+def get_favorite(request: Request):
+    favorites = request.session.get('favorite')
+    if not favorites:
+        request.session['favorite'] = {}
+    return  request.session['favorite']
+
+
 def get_category(items: Dict, category: str):
     return {k: v for k, v in items.items() if v['category'] == category}
 
@@ -110,6 +117,12 @@ async def form(request: Request):
 @app.delete("/del-cart", response_class=JSONResponse)
 async def delete_cart(request: Request):
     del request.session['cart']
+    return {'status': 204, "cart": get_cart(request)}
+
+
+@app.delete("/del-favorite", response_class=JSONResponse)
+async def delete_favorite(request: Request):
+    del request.session['favorite']
     return {'status': 204, "cart": get_cart(request)}
 
 
@@ -320,6 +333,19 @@ async def my_cart(request: Request):
     )
 
 
+@app.get("/favorite", response_class=HTMLResponse)
+async def favorite(request: Request, cart=Depends(get_cart)):
+    context = {
+        "request": request,
+        "products": get_favorite(request),
+        "cart": get_cart(request)
+    }
+    return templates.TemplateResponse(
+        "favorite.html",
+        context=context
+    )
+
+
 @app.get("/item/{item_id}", response_class=HTMLResponse)
 async def item(item_id: str, request: Request):
     cart = get_cart(request)
@@ -344,7 +370,7 @@ async def preorder(
         name: Optional[str] = Form(...),
         email: Optional[str] = Form(...),
         phone: Optional[str] = Form(...),
-        msg: Optional[str] = Form(...)):
+        msg: Optional[str] = None):
     cart = request.session["cart"]
     data = {
         "date": datetime.datetime.now().strftime("%d %B %Y(%H:%M)"),
@@ -359,6 +385,12 @@ async def preorder(
     cart['archived'] = True
     record_to_carts_db(cart, msg="order")
     # send_order_email.apply_async(kwargs={'data': data})
+
+    for k, v in request.session["cart"]['item'].items():
+        v["date"] = datetime.datetime.now().strftime("%d %B %Y")
+    favorites = get_favorite(request)
+    favorites.update(request.session["cart"]['item'])
+
     del request.session["cart"]
     # request.session["cart"]['total'] = {}
     return {

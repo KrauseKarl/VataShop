@@ -33,12 +33,23 @@
                 <div class="contact-form" style="margin-top: 35px; padding:20px 20px;">
                     <div id="note"></div>
                     <div id="fields" >
+
                         <form id="ajax-order-form" method="post" action="/send-order">
-                            <p><input type="text" name="name" id="name" placeholder="Имя" value=""/></p>
-                            <p><input type="email" name="email" id="email" placeholder="Email" value=""/></p>
-                            <p><input type="text" name="phone" id="phone" placeholder="телефон" value=""/></p>
+                            <p><input type="text" name="name" id="name" placeholder="Имя" value="" required/></p>
+                            <p><input type="email" name="email" id="email" placeholder="Email" value="" required/></p>
+                            <p><input type="text" name="phone" id="phone" placeholder="телефон" value="" required/></p>
                             <p><textarea name="msg" id="msg" placeholder="комментарий к заказу ..."></textarea></p>
+                            <p><input class="error" type="checkbox" id="agreement"  name="agreement">
+                                <span id="agr_string">согласие на обработку персональной информации</span>
+<!--                                <label style="font-size:7px">Нажимая кнопку "Отправить"-->
+<!--                                        Вы даёте свое согласие на обработку-->
+<!--                                        введенной персональной информации в соответствии-->
+<!--                                        с Федеральным Законом №152-ФЗ от 27.07.2006-->
+<!--                                        "О персональных данных"-->
+<!--                                </label>-->
+                            </p>
                             <input type="submit" name="submit" id="submit"  value="отправить предзаказ"/>
+<!--                            Соглашаюсь на обработку персональных данных в соответствии с политикой конфиденциальности-->
                         </form>
                     </div>
                 </div>

@@ -101,7 +101,6 @@
     $('a.shop-sort-button').on('click', function(event) {
         var sort_by = this.value;
         var dataString = 'sort_by='+ sort_by;
-        alert(dataString)
         $.ajax({
             type: "GET",
             url: '/catalog-sort',
@@ -170,7 +169,7 @@
 
         $.ajax({
             type: "POST",
-            url: '/add',
+            url: '/cart/add',
             data: {'name': name, 'quantity': quantity,'color': color},
             success: function(data) {
                 var count = data.item
@@ -190,7 +189,7 @@
                 $('.icon-cart-fix-bottom').html(cartCount).fadeIn();
                 $('.fix__cart__total').html(totalSum).fadeIn();
                 $('.cart-count').html(count).fadeIn();
-                $(".cart-container").load("/cart_update")
+                $(".cart-container").load("/cart/update")
                 $('.icon-cart, .cart-widget').wrapAll('<div class="cart-container"></div>');
                 toster(toasterMessage, toasterColor, imgAddItem);
           },
@@ -212,10 +211,8 @@
     $(document).on('click', '.change-qty .plus, .change-qty .minus', function(event){
     event.preventDefault();
     var $this = $(this);
-
     var $qtty = $this.siblings('.qty');
     var item = $this.siblings('.hidden-name').val();
-
     var current = parseInt($qtty.val(), 10);
     var min = parseInt($qtty.attr('min'), 10);
     var max = parseInt($qtty.attr('max'), 10);
@@ -236,7 +233,7 @@
     console.log($qtty.val())
     $.ajax({
     type: "GET",
-    url: '/cart-item-update',
+    url: '/cart/update',
     data: dataInsert,
     success: function(data) {
         if(data.status == 'OK') {
@@ -311,7 +308,7 @@
     var dataInsert = {'item_id': zeroItem, 'qty': zeroQty.val()};
     $.ajax({
     type: "GET",
-    url: '/cart-item-update',
+    url: '/cart/update',
     data: dataInsert,
     success: function(data) {
         if(data.status == 'OK') {
@@ -900,7 +897,7 @@
             }, 40000);
             $.ajax({
                 type: "POST",
-                url: "/send-order",
+                url: "/order/send",
                 data: dataDict,
                 success: function(data) {
                       if(data.status == '200') {

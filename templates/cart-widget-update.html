@@ -1,0 +1,64 @@
+<div class="icon-cart">
+    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+    {% if  cart.item|length > 0 %}
+        <span class="cart-count">{{ cart.item|length }}
+        </span>
+    {% endif %}
+</div>
+
+<div class="cart-widget">
+    {% if cart.item %}
+    <ul class="mini-cart cart_list product_list_widget">
+        {% if cart.item|length > 3 %}
+            {% for it in cart.item.values()|slice(3)|list %}
+            <li>
+                <a href="single-product.html">
+                    <img alt="{{ it.0.name }}" src="{{ it.0.img }} ">{{ it.0.name }}
+                </a>
+                <span class="quantity">{{ it.0.quantity }}&nbsp;×&nbsp;
+                    <span>{{ it.0.price }}&nbsp;&#8381;</span>
+                </span>
+            </li>
+            {% endfor %}
+            <li>
+            <span class="quantity" >
+                <span style="background-color:var(--three-color); padding: 5px;">+ ещё {{ cart.item|length - 3 }} товара
+                </span>
+            </span>
+            </li>
+        {% else %}
+        {% for it in cart.item.values()|list %}
+        <li>
+            <a href="single-product.html">
+                <img alt="{{ it.name }}" src="{{ it.img }} ">{{ it.name }}
+            </a>
+            <span class="quantity">{{ it.quantity }}&nbsp;×&nbsp;
+                <span>{{ it.price }}&nbsp;&#8381;</span>
+            </span>
+        </li>
+        {% endfor %}
+        {% endif %}
+
+    </ul>
+    <p class="mini-cart__total total">
+        <strong>Итого:</strong>
+        <span>{{cart.total}}&nbsp;&#8381;</span>
+    </p>
+    <p class="mini-cart__buttons buttons">
+        <a class="button checkout" href="/cart">В корзину</a>
+        <a class="button " href="/order/form">Заказать</a>
+    </p>
+    {% else %}
+    <p class="mini-cart__total total" style="text-align:center;">Корзина пуста
+    </p>
+    <p class="mini-cart__total total">
+        <strong>Итого:
+        </strong>
+        <span>{% if cart.total %}{{ cart.total }}{% else %}0.00{% endif %}&nbsp;&#8381;
+                </span>
+    </p>
+    <p class="mini-cart__buttons buttons">
+        <a class="button checkout" href="/cart">В корзину</a>
+    </p>
+    {% endif %}
+</div>

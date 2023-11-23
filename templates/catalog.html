@@ -31,7 +31,7 @@
                     <form class="ordering" method="get">
                         <a href="/catalog" class="shop-sort-button-left">all</a>
                         {% for cat in categories %}
-                            <a href="/category/{{ cat.category }}" class="shop-sort-button-left">{{ cat.category }}</a>
+                            <a href="/catalog/{{ cat.category }}" class="shop-sort-button-left">{{ cat.category }}</a>
                         {% endfor %}
                         <button  class="shop-sort-button" name="sort_by" value="price-asc">по возрастанию</button>
                         <button  class="shop-sort-button" name="sort_by" value="price-desc">по убыванию</button>

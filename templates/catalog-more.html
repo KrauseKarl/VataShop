@@ -1,0 +1,23 @@
+<div  class="row" style="margin-top:20px;">
+    {% for item in all_products %}
+    <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+        <div class="card mb-2 product">
+            <a class="product-images" href="{{item.url}}">
+                <div class="shop-first-image">
+                    <img src="{{ item.main_image }}" alt="{{ item.title| capitalize }}"/>
+                </div>
+                <div class="shop-second-image">
+                    <img src="{{ item.main_image }}" alt="{{ item.title| capitalize }}"/>
+                </div>
+            </a>
+
+            <div class="card-body">
+                <h5 class="card-title">{{ item.title| capitalize }}</h5>
+                <p class="card-text"></p>
+                <small class="text-muted">{{ item.price }} &#8381&ensp;</small>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>

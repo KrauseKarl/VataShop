@@ -87,6 +87,7 @@
     extra_delItemCart ();
     extra_sortItems();
     extra_colorChose();
+    scroll();
 
   });
 
@@ -94,6 +95,42 @@
   $(document).on('onAfterLoadMore.cbp', function(event) {
     mt_lightCase();
   });
+
+  $(document).ready(function(){
+        var limit = 3;
+        var offset = 2;
+        var action = 'inactive';
+        function load_country_data(limit, offset) {
+            $.ajax({
+                type: "GET",
+                url: '/catalog/load/more',
+                data: {"offset":offset, "limit":limit},
+                success:function(data) {
+                $('#catalog-item-list').append(data);
+                    if(data == ''){
+                    $('#load_data_message').html("<button type='button' class='btn btn-info'>No Data Found</button>");
+                    action = 'active';
+                    } else {
+                    $('#load_data_message').html("<button type='button' class='btn btn-warning'>загрузка....</button>");
+                    action = "inactive";}
+                }
+            });
+            }
+        if(action == 'inactive'){
+            action = 'active';
+            load_country_data(limit, offset);
+        };
+        $(window).scroll(function(){
+            if($(window).scrollTop() + $(window).height() > $("#catalog-item-list").height() && action == 'inactive'){
+                action = 'active';
+                offset = offset + (limit / limit);
+                setTimeout(function(){
+                load_country_data(limit, offset);
+            }, 1000);
+        }
+        });
+  });
+
   /* ================================= */
   /* :::::::::: 0.2 sort Items ::::::: */
   /* ================================= */
@@ -533,13 +570,13 @@
     sortByDimension: true,
     mediaQueries: [{
       width: 1500,
-      cols: 3,
+      cols: 4,
     }, {
       width: 1100,
-      cols: 3,
+      cols: 4,
     }, {
       width: 800,
-      cols: 2,
+      cols: 3,
     }, {
       width: 480,
       cols: 1,

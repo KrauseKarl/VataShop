@@ -1,3 +1,4 @@
+import json
 import locale
 import smtplib
 import telebot
@@ -11,7 +12,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from celery import Celery
 from config import TOKEN_TG, CHAT_ID, SMTP_USER, SMTP_PASSWORD
-from order_db import record_to_order_db
+from order_db import record_to_order_db, ORDER_DB_PATH
 
 # celery -A task:celery worker -l INFO --pool=solo
 # celery -A task:celery flower
@@ -36,7 +37,12 @@ celery.autodiscover_tasks()
 
 
 def create_pdf(data):
-    filename = data.get("phone")
+    with open(ORDER_DB_PATH, "r", encoding='utf-8') as jsonFile:
+        data = json.load(jsonFile)
+        try:
+            filename = int(list(data["orders"].keys())[-1])
+        except (KeyError, IndexError):
+            filename = datetime.datetime.now().strftime("%B_%m_%y")
     context = {
         "date": datetime.datetime.now().strftime("%B-%d-%Y (%H:%M)"),
         "name": data.get("name"),

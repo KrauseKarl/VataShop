@@ -1,6 +1,8 @@
 import locale
+from typing import Dict
+
 import uvicorn
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Depends
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
@@ -34,7 +36,7 @@ async def index(request: Request):
         "request": request,
         "cart": get_cart(request),
         "categories": categories_list(),
-        "products": items_list()
+        "products": [i for i in items_list().values()]
     }
 
     return templates.TemplateResponse(
@@ -42,23 +44,6 @@ async def index(request: Request):
         context=context
     )
 
-
-@app.get("/item/{item_id}", response_class=HTMLResponse)
-async def item(item_id: str, request: Request):
-    cart = get_cart(request)
-    default = list(items_list().get(item_id)['colors'].keys())[0]
-    context = {
-        "request": request,
-        "product": items_list().get(item_id),
-        "categories": categories_list(),
-        "all_products": items_list(),
-        "cart": cart,
-        "default": default
-    }
-    return templates.TemplateResponse(
-        "item.html",
-        context=context
-    )
 
 
 if __name__ == '__main__':

@@ -2,7 +2,7 @@ import json
 import uuid
 from typing import Dict
 from datetime import datetime
-from fastapi import Request
+from fastapi import Request, Query
 from starlette.templating import Jinja2Templates
 from cart_db import record_to_carts_db
 
@@ -14,13 +14,13 @@ def today():
 
 
 def items_list():
-    with open("db.json", "r", encoding="utf-8") as f:
+    with open("db/db.json", "r", encoding="utf-8") as f:
         data = json.load(f)
     return data
 
 
 def categories_list():
-    with open("categoies.json", "r", encoding="utf-8") as с:
+    with open("db/categoies.json", "r", encoding="utf-8") as с:
         categories = json.load(с)
     return categories
 
@@ -51,3 +51,10 @@ def get_favorite(request: Request):
 
 def get_category(items: Dict, category: str):
     return {k: v for k, v in items.items() if v['category'] == category}
+
+
+def get_pagination_params(
+        offset: int = Query(0, ge=0),
+        limit: int = Query(3, gt=0)
+):
+    return {"offset": offset, "limit": limit}

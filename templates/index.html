@@ -1042,21 +1042,21 @@
 <div class="container between between__xl">
     <div class="cbp classicAnim">
         <!-- portfolio item 1 -->
-        {% for item_id, item in products.items() %}
+        {% for item in products[:4] %}
         {% if item.category == cat.category %}
-        <div class="col-md-6 col-12 col-4 cbp-item ">
-            <a href="/item/{{item_id}}">
-              <div class="image-box">
-                 <img src="{{ item.thumbnail }}" alt="{{ item.title }}">
-              </div>
-              <div class="caption-box">
-               <div class="caption-center-box">
-                 <div class="caption-body">
-                    <h2>{{ item.title }}</h2>
-                    <p>подробно...</p>
-                 </div>
+        <div class="col-md-6 col-12 col-lg-3 cbp-item ">
+            <a href="/item/{{item.slug}}">
+                <div class="image-box">
+                    <img src="{{ item.thumbnail }}" alt="{{ item.title }}">
                 </div>
-              </div>
+                <div class="caption-box">
+                    <div class="caption-center-box">
+                        <div class="caption-body">
+                            <h2>{{ item.title }}</h2>
+                            <p>подробно...</p>
+                        </div>
+                    </div>
+                </div>
             </a>
         </div>
         <!-- /portfolio item 1 -->

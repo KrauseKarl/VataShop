@@ -14,7 +14,7 @@ def today():
 
 
 def items_list():
-    with open("db/db.json", "r", encoding="utf-8") as f:
+    with open("db/products.json", "r", encoding="utf-8") as f:
         data = json.load(f)
     return data
 

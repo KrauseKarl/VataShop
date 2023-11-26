@@ -30,16 +30,16 @@
                     <form class="ordering" method="get">
                         <a href="/catalog" class="shop-sort-button-left">all</a>
                         {% for cat in categories %}
-                        <a href="{{ cat.url }}" class="shop-sort-button-left">{{ cat.category }}</a>
+                        <a href="/catalog?category={{ cat.slug }}" class="shop-sort-button-left">{{ cat.category }}</a>
                         {% endfor %}
-                        <button class="shop-sort-button" name="sort_by" value="price-asc">по возрастанию</button>
-                        <button class="shop-sort-button" name="sort_by" value="price-desc">по убыванию</button>
+                        <button class="shop-sort-button" name="sort_by" value="price-asc">
+                            цена <i class="fa fa-arrow-up"></i></button>
+                        <button class="shop-sort-button" name="sort_by" value="price-desc">
+                             цена <i class="fa fa-arrow-down"></i></button>
                     </form>
                 </div>
-                <div id="catalog-item-list" class="row" style="margin-top:20px;">
-
+                <div class="row" id="catalog-item-list"  style="margin-top:20px;">
                     {% for item in all_products %}
-
                     <div class="col-lg-4 col-md-4 col-sm-4 col-12 ">
                         <div class="card mb-2 product">
                             <a class="product-images" href="{{item.url}}">
@@ -58,10 +58,9 @@
                             </div>
                         </div>
                     </div>
-
                     {% endfor %}
                 </div>
-                <div id="load_data"></div>
+                <div class="row" id="load_data"  style="margin-top:20px;"></div>
                 <div id="load_data_message" class="col d-flex justify-content-center my-4"></div>
 
 

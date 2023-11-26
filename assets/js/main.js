@@ -101,10 +101,19 @@
         var offset = 2;
         var action = 'inactive';
         function load_country_data(limit, offset) {
+        var urlParams = new URLSearchParams(window.location.search);
+        console.log(urlParams.get("category"))
+        var stringData = {"offset":offset, "limit":limit}
+        if(urlParams.has('category')){
+            var stringData = {"offset":offset,"limit":limit,"category":urlParams.get("category")}
+        }
+        console.log(stringData["offset"])
+         console.log(stringData["limit"])
+          console.log(stringData["category"])
             $.ajax({
                 type: "GET",
                 url: '/catalog/load/more',
-                data: {"offset":offset, "limit":limit},
+                data: stringData,
                 success:function(data) {
                 $('#catalog-item-list').append(data);
                     if(data == ''){
@@ -226,7 +235,7 @@
                 $('.icon-cart-fix-bottom').html(cartCount).fadeIn();
                 $('.fix__cart__total').html(totalSum).fadeIn();
                 $('.cart-count').html(count).fadeIn();
-                $(".cart-container").load("/cart/update")
+                $(".cart-container").load("/cart/cart_update")
                 $('.icon-cart, .cart-widget').wrapAll('<div class="cart-container"></div>');
                 toster(toasterMessage, toasterColor, imgAddItem);
           },
@@ -246,9 +255,11 @@
     function extra_chgItemCart() {
     // Quantity
     $(document).on('click', '.change-qty .plus, .change-qty .minus', function(event){
+
     event.preventDefault();
     var $this = $(this);
     var $qtty = $this.siblings('.qty');
+    console.log($qtty.val())
     var item = $this.siblings('.hidden-name').val();
     var current = parseInt($qtty.val(), 10);
     var min = parseInt($qtty.attr('min'), 10);
@@ -1293,18 +1304,12 @@ map.controls[google.maps.ControlPosition.LEFT_TOP].push(zoomControlDiv);
         init: function(){
             $picts.on('click', function(e){
                 e.preventDefault();
-
-
-
                 var $this = $(this);
                 var href = $this.attr('href');
-
                 var colorId = $this.attr('id');
                 var optionId = "#color-option_"+colorId;
                 var inputColor = $('#color')
                 inputColor.val(colorId);
-
-
                 $photo.empty();
                 $photo.append('<img src="'+ href +'" />');
                 $picts.removeClass('ProductCard-pict_ACTIVE color-chosen');

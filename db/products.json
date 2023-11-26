@@ -1,0 +1,669 @@
+{
+  "001": {
+    "id": "1",
+    "colors": {
+      "00101": {
+        "color_code": "#fdfff5",
+        "color_name": "молочный",
+        "img": "/assets/images/items/001/001_img_1.jpg"
+      },
+      "00102": {
+        "color_code": "#151719",
+        "color_name": "черный",
+        "img": "/assets/images/items/001/001_img_2.jpg"
+      },
+      "00103": {
+        "color_code": "#F4CA16",
+        "color_name": "желтый",
+        "img": "/assets/images/items/001/001_img_3.jpg"
+      },
+      "00104": {
+        "color_code": "#686c5e",
+        "color_name": "серый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00105": {
+        "color_code": "#904d30",
+        "color_name": "терракотовый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00106": {
+        "color_code": "#7AC165",
+        "color_name": "зеленый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00107": {
+        "color_code": "",
+        "color_name": "мрамор 2 цвета",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00108": {
+        "color_code": "",
+        "color_name": "мрамор 3 цвета",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00109": {
+        "color_code": "",
+        "color_name": "эффект стрения 2 цвета",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      }
+    },
+    "slug": "Golova-MOAI",
+    "url": "/catalog/001",
+    "category": "кашпо",
+    "title": "Голова МОАИ",
+    "description": "Кашпо голова, горшок для цветов Истукан. Декоративная фигурка в виде головы Истукана Моаи с Острова Пасхи может быть использована как подставка для кистей или держатель для книг. Этот сувенир для дома будет замечательным подарком на праздник. Держатель для канцелярии выполнен из гипсобетона, полностью ручная работа и особенности материала предполагают наличие мелких дырочек на поверхности сувенирной продукции. Цветочный горшок в виде фигурки не имеет дренажного отверстия. Кашпо настольное тяжелое, устойчивое и снабжено мягкими ножками, чтобы не царапать поверхность.",
+    "price": "1000",
+    "weight": "2000",
+    "material": "cкульптурный высокопрочный гипс",
+    "place_operation": [
+      "дом"
+    ],
+    "size": {
+      "width": "12",
+      "height": "18,5",
+      "length": "13",
+      "volume": "230"
+    },
+    "hashtags": [
+      "кашпо",
+      "бетон",
+      "для суккулентов",
+      "голова",
+      "истукан"
+    ],
+    "main_image": "/assets/images/items/default.jpg",
+    "rest_image": [
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg"
+    ],
+    "thumbnail": "/assets/images/product-1.jpg"
+  },
+  "002": {
+    "id": "2",
+    "colors": {
+      "00101": {
+        "color_code": "#fdfff5",
+        "color_name": "молочный",
+        "img": "/assets/images/items/001/001_img_1.jpg"
+      },
+      "00102": {
+        "color_code": "#151719",
+        "color_name": "черный",
+        "img": "/assets/images/items/001/001_img_2.jpg"
+      },
+      "00103": {
+        "color_code": "#BCP13",
+        "color_name": "желтый",
+        "img": "/assets/images/items/001/001_img_3.jpg"
+      },
+      "00104": {
+        "color_code": "#686c5e",
+        "color_name": "серый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00105": {
+        "color_code": "#904d30",
+        "color_name": "терракотовый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00106": {
+        "color_code": "#7AC165",
+        "color_name": "зеленый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00107": {
+        "color_code": "#696250",
+        "color_name": "мрамор 2 цвета",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00108": {
+        "color_code": "#696250",
+        "color_name": "мрамор 3 цвета",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      }
+    },
+    "slug": "zajchik",
+    "url": "/catalog/002",
+    "category": "кашпо",
+    "title": "Зайчик",
+    "description": "Декоративное кашпо-органайзер добавит изящества и элегантности в любой интерьер. Подходит статуэтка кашпо для цветов и сухоцветов, а так же для канцелярских принадлежностей.Декоративная статуэтка кашпо выполнена из экологически чистых материалов.",
+    "price": "1000",
+    "weight": "420",
+    "material": "cкульптурный высокопрочный гипс",
+    "place_operation": [
+      "дом"
+    ],
+    "size": {
+      "width": "8",
+      "height": "10,5",
+      "length": "10",
+      "volume": "100 мл"
+    },
+    "hashtags": [
+      "кашпо",
+      "бетон",
+      "для суккулентов",
+      "зайчик"
+    ],
+    "main_image": "/assets/images/items/default.jpg",
+    "rest_image": [
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg"
+    ],
+    "thumbnail": "/assets/images/product-1.jpg"
+  },
+  "003": {
+    "id": "3",
+    "colors": {
+      "00101": {
+        "color_code": "#fdfff5",
+        "color_name": "молочный",
+        "img": "/assets/images/items/001/001_img_1.jpg"
+      },
+      "00102": {
+        "color_code": "#151719",
+        "color_name": "черный",
+        "img": "/assets/images/items/001/001_img_2.jpg"
+      },
+      "00103": {
+        "color_code": "#BCP13",
+        "color_name": "желтый",
+        "img": "/assets/images/items/001/001_img_3.jpg"
+      },
+      "00104": {
+        "color_code": "#686c5e",
+        "color_name": "серый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00105": {
+        "color_code": "#904d30",
+        "color_name": "терракотовый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00106": {
+        "color_code": "#7AC165",
+        "color_name": "зеленый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00107": {
+        "color_code": "#696250",
+        "color_name": "мрамор 2 цвета",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00108": {
+        "color_code": "#696250",
+        "color_name": "мрамор 3 цвета",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      }
+    },
+    "slug": "list-ginko",
+    "url": "/catalog/003",
+    "category": "подносы",
+    "title": "Лист ГИНКО",
+    "description": "Декоративная подставка (поднос) ручной работы выполнен из высокопрочного гипса. Может использоваться как подставка для украшений, очков, свечей, парфюма, диффузора и различные мелочи. Украсит интерьер, добавит эстетики и уюта.",
+    "price": "300",
+    "weight": "220",
+    "material": "cкульптурный высокопрочный гипс",
+    "place_operation": [
+      "дом"
+    ],
+    "size": {
+      "width": "18",
+      "height": "1,5",
+      "length": "14",
+      "volume": "none"
+    },
+    "hashtags": [
+      "поднос",
+      "тарелка"
+    ],
+    "main_image": "/assets/images/items/default.jpg",
+    "rest_image": [
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg"
+    ],
+    "thumbnail": "/assets/images/product-1.jpg"
+  },
+  "004": {
+    "id": "4",
+    "colors": {
+      "00101": {
+        "color_code": "#fdfff5",
+        "color_name": "молочный",
+        "img": "/assets/images/items/001/001_img_1.jpg"
+      },
+      "00102": {
+        "color_code": "#151719",
+        "color_name": "черный",
+        "img": "/assets/images/items/001/001_img_2.jpg"
+      },
+      "00103": {
+        "color_code": "#BCP13",
+        "color_name": "желтый",
+        "img": "/assets/images/items/001/001_img_3.jpg"
+      },
+      "00104": {
+        "color_code": "#686c5e",
+        "color_name": "серый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00105": {
+        "color_code": "#904d30",
+        "color_name": "терракотовый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00106": {
+        "color_code": "#7AC165",
+        "color_name": "зеленый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00107": {
+        "color_code": "#696250",
+        "color_name": "мрамор 2 цвета",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00108": {
+        "color_code": "#696250",
+        "color_name": "мрамор 3 цвета",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      }
+    },
+    "slug": "podnos-oval",
+    "url": "/catalog/004",
+    "category": "подносы",
+    "title": "Поднос ОВАЛ",
+    "description": "Декоративная подставка (поднос) ручной работы выполнен из высокопрочного гипса. Может использоваться как подставка для украшений, очков, свечей, парфюма, диффузора и различные мелочи. Украсит интерьер, добавит эстетики и уюта.",
+    "price": "300",
+    "weight": "220",
+    "material": "cкульптурный высокопрочный гипс",
+    "place_operation": [
+      "дом"
+    ],
+    "size": {
+      "width": "9,5",
+      "height": "2",
+      "length": "17,5",
+      "volume": "none"
+    },
+    "hashtags": [
+      "поднос",
+      "тарелка"
+    ],
+    "main_image": "/assets/images/items/default.jpg",
+    "rest_image": [
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg"
+    ],
+    "thumbnail": "/assets/images/product-1.jpg"
+  },
+  "005": {
+    "id": "5",
+    "colors": {
+      "00101": {
+        "color_code": "#fdfff5",
+        "color_name": "молочный",
+        "img": "/assets/images/items/001/001_img_1.jpg"
+      },
+      "00102": {
+        "color_code": "#151719",
+        "color_name": "черный",
+        "img": "/assets/images/items/001/001_img_2.jpg"
+      },
+      "00103": {
+        "color_code": "#BCP13",
+        "color_name": "желтый",
+        "img": "/assets/images/items/001/001_img_3.jpg"
+      },
+      "00104": {
+        "color_code": "#686c5e",
+        "color_name": "серый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00105": {
+        "color_code": "#904d30",
+        "color_name": "терракотовый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00106": {
+        "color_code": "#7AC165",
+        "color_name": "зеленый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00107": {
+        "color_code": "#696250",
+        "color_name": "мрамор 2 цвета",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00108": {
+        "color_code": "#696250",
+        "color_name": "мрамор 3 цвета",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      }
+    },
+    "slug": "betonnaya-shkatulka-s",
+    "url": "/catalog/005",
+    "category": "шкатулки",
+    "title": "Бетонная шкатулка S",
+    "description": "Маленькая шкатулка S будет вашей верной хранительницей колец, украшений и важной мелочи. Шкатулку можно использовать как подсвечник для чайных и свечей из воска.",
+    "price": "400",
+    "weight": "320",
+    "material": "cкульптурный высокопрочный гипс",
+    "place_operation": [
+      "дом"
+    ],
+    "size": {
+      "width": "9",
+      "height": "4",
+      "length": "9",
+      "volume": "100 мл"
+    },
+    "hashtags": [
+      "шкатулка",
+      "емкость для хранения "
+    ],
+    "main_image": "/assets/images/items/default.jpg",
+    "rest_image": [
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg"
+    ],
+    "thumbnail": "/assets/images/product-1.jpg"
+  },
+  "006": {
+    "id": "6",
+    "colors": {
+      "00101": {
+        "color_code": "#fdfff5",
+        "color_name": "молочный",
+        "img": "/assets/images/items/001/001_img_1.jpg"
+      },
+      "00102": {
+        "color_code": "#151719",
+        "color_name": "черный",
+        "img": "/assets/images/items/001/001_img_2.jpg"
+      },
+      "00103": {
+        "color_code": "#BCP13",
+        "color_name": "желтый",
+        "img": "/assets/images/items/001/001_img_3.jpg"
+      },
+      "00104": {
+        "color_code": "#686c5e",
+        "color_name": "серый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00105": {
+        "color_code": "#904d30",
+        "color_name": "терракотовый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00106": {
+        "color_code": "#7AC165",
+        "color_name": "зеленый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00107": {
+        "color_code": "#696250",
+        "color_name": "мрамор 2 цвета",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00108": {
+        "color_code": "#696250",
+        "color_name": "мрамор 3 цвета",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      }
+    },
+    "slug": "betonnaya-shkatulka-m",
+    "url": "/catalog/006",
+    "category": "шкатулки",
+    "title": "Бетонная шкатулка M",
+    "description": "Баночка для хранения мелочей с крышкой. Можно использовать как шкатулка для украшений, баночка для орехов, конфет. Подойдет как органайзер для ватных дисков, ватных палочек или  канцелярии. Её можно использовать как подсвечник для чайных и свечей из воска.",
+    "price": "400",
+    "weight": "390",
+    "material": "cкульптурный высокопрочный гипс",
+    "place_operation": [
+      "дом"
+    ],
+    "size": {
+      "width": "7,8",
+      "height": "11,5",
+      "length": "7,8",
+      "volume": "270 мл"
+    },
+    "hashtags": [
+      "шкатулка",
+      "емкость для хранения "
+    ],
+    "main_image": "/assets/images/items/default.jpg",
+    "rest_image": [
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg"
+    ],
+    "thumbnail": "/assets/images/product-1.jpg"
+  },
+  "007": {
+    "id": "7",
+    "colors": {
+      "00101": {
+        "color_code": "#fdfff5",
+        "color_name": "молочный",
+        "img": "/assets/images/items/001/001_img_1.jpg"
+      },
+      "00102": {
+        "color_code": "#151719",
+        "color_name": "черный",
+        "img": "/assets/images/items/001/001_img_2.jpg"
+      },
+      "00103": {
+        "color_code": "#BCP13",
+        "color_name": "желтый",
+        "img": "/assets/images/items/001/001_img_3.jpg"
+      },
+      "00104": {
+        "color_code": "#686c5e",
+        "color_name": "серый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00105": {
+        "color_code": "#904d30",
+        "color_name": "терракотовый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00106": {
+        "color_code": "#7AC165",
+        "color_name": "зеленый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00107": {
+        "color_code": "#696250",
+        "color_name": "мрамор 2 цвета",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00108": {
+        "color_code": "#696250",
+        "color_name": "мрамор 3 цвета",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      }
+    },
+    "slug": "ruki-davida",
+    "url": "/catalog/007",
+    "category": "кашпо",
+    "title": "Руки Давида",
+    "description": "Кашпо руки для хранения предметов - это оригинальный и нестандартный предмет интерьера, который прекрасно украсит любой уголок вашего дома или офиса. Может быть использована для хранения и организации вашей бижутерии, украшений, ключей, как подставка, органайзер или под любые другие задачи, которые вы можете представить. Если вы любите делать предметное фото, то кашпо Руки Давида идеально подойдет для этой задачи. Подставка \"Ладони\" - это идеальный выбор для декора вашей кухни, гостиной, прихожей или спальни.",
+    "price": "600",
+    "weight": "500",
+    "material": "cкульптурный высокопрочный гипс",
+    "place_operation": [
+      "дом"
+    ],
+    "size": {
+      "width": "15",
+      "height": "5",
+      "length": "17",
+      "volume": "none"
+    },
+    "hashtags": [
+      "кашпо",
+      "поднос",
+      "руки"
+    ],
+    "main_image": "/assets/images/items/default.jpg",
+    "rest_image": [
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg"
+    ],
+    "thumbnail": "/assets/images/product-1.jpg"
+  },
+  "008": {
+    "id": "8",
+    "colors": {
+      "00101": {
+        "color_code": "#fdfff5",
+        "color_name": "молочный",
+        "img": "/assets/images/items/001/001_img_1.jpg"
+      },
+      "00102": {
+        "color_code": "#151719",
+        "color_name": "черный",
+        "img": "/assets/images/items/001/001_img_2.jpg"
+      },
+      "00103": {
+        "color_code": "#BCP13",
+        "color_name": "желтый",
+        "img": "/assets/images/items/001/001_img_3.jpg"
+      },
+      "00104": {
+        "color_code": "#686c5e",
+        "color_name": "серый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00105": {
+        "color_code": "#904d30",
+        "color_name": "терракотовый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00106": {
+        "color_code": "#7AC165",
+        "color_name": "зеленый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00107": {
+        "color_code": "#696250",
+        "color_name": "мрамор 2 цвета",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      }
+    },
+    "slug": "afrodita-S",
+    "url": "/catalog/008",
+    "category": "статуэтки",
+    "title": "Афродита S",
+    "description": "Статуэтка Афродита -это эмоция ручной работы. Декор из гипса это не только изюминка интерьера, но и эксклюзивный эмоциональный подарок. Стилизованные статуэтки исключительно ручной работы добавят уюта и выразительности любой части вашего дома.",
+    "price": "150",
+    "weight": "140",
+    "material": "cкульптурный высокопрочный гипс",
+    "place_operation": [
+      "дом"
+    ],
+    "size": {
+      "width": "4,8",
+      "height": "9,5",
+      "length": "3,4",
+      "volume": "none"
+    },
+    "hashtags": [
+      "статуэтка",
+      "женское тело"
+    ],
+    "main_image": "/assets/images/items/default.jpg",
+    "rest_image": [
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg"
+    ],
+    "thumbnail": "/assets/images/product-1.jpg"
+  },
+  "009": {
+    "id": "9",
+    "colors": {
+      "00101": {
+        "color_code": "#fdfff5",
+        "color_name": "молочный",
+        "img": "/assets/images/items/001/001_img_1.jpg"
+      },
+      "00102": {
+        "color_code": "#151719",
+        "color_name": "черный",
+        "img": "/assets/images/items/001/001_img_2.jpg"
+      },
+      "00103": {
+        "color_code": "#BCP13",
+        "color_name": "желтый",
+        "img": "/assets/images/items/001/001_img_3.jpg"
+      },
+      "00104": {
+        "color_code": "#686c5e",
+        "color_name": "серый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00105": {
+        "color_code": "#904d30",
+        "color_name": "терракотовый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00106": {
+        "color_code": "#7AC165",
+        "color_name": "зеленый",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      },
+      "00107": {
+        "color_code": "#696250",
+        "color_name": "мрамор 2 цвета",
+        "img": "/assets/images/items/001/001_img_4.jpg"
+      }
+    },
+    "slug": "afrodita-m",
+    "url": "/catalog/009",
+    "category": "вазы",
+    "title": "Афродита M",
+    "description": "Вазочка Афродита можно использовать как органайзер для ручек и карандашей. Отлично впишется в интерьер. Можно использовать как кашпо для сухоцветов.",
+    "price": "300",
+    "weight": "260",
+    "material": "cкульптурный высокопрочный гипс",
+    "place_operation": [
+      "дом"
+    ],
+    "size": {
+      "width": "4,7",
+      "height": "13",
+      "length": "5",
+      "volume": "50 мл"
+    },
+    "hashtags": [
+      "статуэтка",
+      "женское тело"
+    ],
+    "main_image": "/assets/images/items/default.jpg",
+    "rest_image": [
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg",
+      "/assets/images/items/default.jpg"
+    ],
+    "thumbnail": "/assets/images/product-1.jpg"
+  }
+}

@@ -25,7 +25,7 @@
                     <div class="ProductCard-photo">
                         <img src="{{ product.main_image }}" alt="{{ product.title }}"/>
                     </div>
-                    <div class="ProductCard-picts">
+                    <div class="ProductCard-picts" style=" justify-content: space-evenly;">
 
                         {% for img in product.rest_image %}
                         <a style="border-radius:8px;"
@@ -54,11 +54,25 @@
 <!-- COLOR CHOSEN BUTTONS  -->
                     <div class="ProductCard-picts color-variants" >
                         {% for key, img in product.colors.items() %}
-                        <a style="border-radius:8px;" id="{{key}}"
+                        {% if loop.index <  5 %}
+                        <a style="border-radius:8px;margin-right:5px;" id="{{ key }}"
                            class="color-img ProductCard-pict  {% if loop.first %}ProductCard-pict_ACTIVE color-chosen{% endif %} "
                            href="{{ img.img }}">
                             <img src="{{ img.img }}" alt="{{ product.title }}"/>
                         </a>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="ProductCard-picts color-variants" style="margin-top:20px;" >
+                        {% for key, img in product.colors.items() %}
+                        {% if loop.index > 5 %}
+                        <a style="border-radius:8px; margin-right:5px;" id="{{ key }}"
+                           class="color-img ProductCard-pict  {% if loop.first %}ProductCard-pict_ACTIVE color-chosen{% endif %} "
+                           href="{{ img.img }}">
+                            <img src="{{ img.img }}" alt="{{ product.title }}"/>
+                        </a>
+                        {% endif %}
+
                         {% endfor %}
                     </div>
 <!-- COLOR CHOSEN BUTTONS  -->
@@ -93,13 +107,15 @@
                     <div class="product-single-box-detail">
                     <p><span>цвета</span><span>
                         {% for key, color in product.colors.items() %}
+                        {% if color.color_code %}
                         <b
                             style="margin-right:5px;
                             border-radius:20%;
                             background-color:{{color.color_code}};
-                            padding:8px 15px;"
+                            padding:8px 15px;border: 1px solid grey;"
                             title="{{color.color_name}}">
                         </b>
+                        {% endif %}
                         {% endfor %}
                     </span></p>
 

@@ -17,52 +17,68 @@ router = APIRouter(
 async def catalog(
         request: Request,
         sort_by: Optional[str] = None,
+        category: Optional[str] = None,
         products: Dict = Depends(items_list),
         cart: Dict = Depends(get_cart),
         pagination: dict = Depends(get_pagination_params)
 ):
+
+    if category in [x['slug'] for x in categories_list()]:
+        category = [x['category'] for x in categories_list() if x['slug'] == category][0]
+        products = [
+            v for k, v in products.items()
+            if v['category'] == category
+        ]
+    else:
+        products = [v for k, v in products.items()]
     if sort_by in ['price-asc', 'price-desc']:
-        queryset = [
-            v for k, v in sorted(
-                products.items(),
+        products = [
+            v for v in sorted(
+                products,
                 key=lambda x: int(x[1]["price"]),
                 reverse=True if sort_by == 'price-desc' else False
             )]
-    else:
-        queryset = [v for k, v in products.items()]
+
 
     limit = pagination["limit"]
     offset = pagination["offset"]
 
-    total_pages = len(queryset) // int(limit)
-    prod_len = len(queryset)
+    # total_pages = len(queryset) // int(limit)
+    # prod_len = len(queryset)
     start = (limit - 1) * offset
     end = start + limit
-
     context = {
         "cart": cart,
         "request": request,
         "categories": categories_list(),
-        "all_products": queryset[start:end],
-        "prod_len": total_pages,
+        "all_products": products[start:end],
         "per_page": limit,
         "current_page": offset,
-        "pagination": {}
     }
-    context['pagination']['first'] = f'/catalog/?offset=1&limit={limit}'
-    context['pagination']['last'] = f'/catalog/?offset={total_pages}&limit={limit}'
-    if end >= prod_len:
-        context['pagination']['next'] = None
-        if offset > 1:
-            context['pagination']['previous'] = f'/catalog/?offset={offset - 1}&limit={limit}'
-        else:
-            context['pagination']['previous'] = None
-    else:
-        if offset > 1:
-            context['pagination']['previous'] = f'/catalog/?offset={offset - 1}&limit={limit}'
-        else:
-            context['pagination']['previous'] = None
-        context['pagination']['next'] = f'/catalog/?offset={offset + 1}&limit={limit}'
+    # context = {
+    #     "cart": cart,
+    #     "request": request,
+    #     "categories": categories_list(),
+    #     "all_products": queryset[start:end],
+    #     "prod_len": total_pages,
+    #     "per_page": limit,
+    #     "current_page": offset,
+    #     "pagination": {}
+    # }
+    # context['pagination']['first'] = f'/catalog/?offset=1&limit={limit}'
+    # context['pagination']['last'] = f'/catalog/?offset={total_pages}&limit={limit}'
+    # if end >= prod_len:
+    #     context['pagination']['next'] = None
+    #     if offset > 1:
+    #         context['pagination']['previous'] = f'/catalog/?offset={offset - 1}&limit={limit}'
+    #     else:
+    #         context['pagination']['previous'] = None
+    # else:
+    #     if offset > 1:
+    #         context['pagination']['previous'] = f'/catalog/?offset={offset - 1}&limit={limit}'
+    #     else:
+    #         context['pagination']['previous'] = None
+    #     context['pagination']['next'] = f'/catalog/?offset={offset + 1}&limit={limit}'
 
     return templates.TemplateResponse(
         "catalog.html",
@@ -71,23 +87,30 @@ async def catalog(
 
 
 @router.get("/load/more", response_class=HTMLResponse)
-async def catalog(
+async def catalog_more(
         request: Request,
         sort_by: Optional[str] = None,
+        category: Optional[str] = None,
         products: Dict = Depends(items_list),
         cart: Dict = Depends(get_cart),
         limit: Optional[int] = None,
         offset: Optional[int] = None
 ):
+    if category in [x['slug'] for x in categories_list()]:
+        category = [x['category'] for x in categories_list() if x['slug'] == category][0]
+        products = [
+            v for k, v in products.items()
+            if v['category'] == category
+        ]
+    else:
+        products = [v for k, v in products.items()]
     start = (int(offset) - 1) * int(limit)
     end = start + int(limit)
-    queryset = [v for k, v in products.items()][start:end]
-
     context = {
         "cart": cart,
         "request": request,
         "categories": categories_list(),
-        "all_products": queryset,
+        "all_products": products[start:end],
     }
 
     return templates.TemplateResponse(
@@ -158,7 +181,7 @@ async def one_category_list(
             v for k, v in products.items()
             if v['category'] == category
         ]
-    print([x['slug'] for x in categories_list()])
+
     if sort_by in ['price-asc', 'price-desc']:
         products = [
             v for k, v in sorted(
@@ -169,33 +192,21 @@ async def one_category_list(
     limit = pagination["limit"]
     offset = pagination["offset"]
     total_pages = len(products) // int(limit)
-    prod_len = len(products)
+
     start = (offset - 1) * limit
     end = start + limit
+    print(products)
+
     context = {
         "cart": cart,
         "request": request,
         "categories": categories_list(),
-        "all_products": products[start:end],
+        "all_products": products,
         "prod_len": total_pages,
         "per_page": limit,
         "current_page": offset,
-        "pagination": {}
     }
-    context['pagination']['first'] = f'/catalog?offset=1&limit={limit}'
-    context['pagination']['last'] = f'/catalog?offset={total_pages}&limit={limit}'
-    if end >= prod_len:
-        context['pagination']['next'] = None
-        if offset > 1:
-            context['pagination']['previous'] = f'/catalog?offset={offset - 1}&limit={limit}'
-        else:
-            context['pagination']['previous'] = None
-    else:
-        if offset > 1:
-            context['pagination']['previous'] = f'/catalog?offset={offset - 1}&limit={limit}'
-        else:
-            context['pagination']['previous'] = None
-        context['pagination']['next'] = f'/catalog?offset={offset + 1}&limit={limit}'
+
 
     return templates.TemplateResponse(
         "catalog.html",

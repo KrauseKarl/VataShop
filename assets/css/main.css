@@ -3814,7 +3814,7 @@ footer .social-icons {
 .ProductCard-picts {
   margin-top:0;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: star;
   align-items: center;
 }
 .error-color-msg {

@@ -11,7 +11,7 @@ from dependencies import get_cart, categories_list, items_list
 from routers import catalog, cart, favorite, order
 from dependencies import templates
 
-locale.setlocale(category=locale.LC_ALL, locale="ru")
+locale.setlocale(category=locale.LC_ALL, locale="ru_RU.UTF-8")
 
 app = FastAPI()
 app.include_router(catalog.router)
@@ -43,7 +43,6 @@ async def index(request: Request):
         "index.html",
         context=context
     )
-
 
 
 if __name__ == '__main__':

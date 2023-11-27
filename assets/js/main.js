@@ -102,25 +102,23 @@
         var action = 'inactive';
         function load_country_data(limit, offset) {
         var urlParams = new URLSearchParams(window.location.search);
-        console.log(urlParams.get("category"))
+
         var stringData = {"offset":offset, "limit":limit}
         if(urlParams.has('category')){
             var stringData = {"offset":offset,"limit":limit,"category":urlParams.get("category")}
         }
-        console.log(stringData["offset"])
-         console.log(stringData["limit"])
-          console.log(stringData["category"])
             $.ajax({
                 type: "GET",
                 url: '/catalog/load/more',
                 data: stringData,
                 success:function(data) {
                 $('#catalog-item-list').append(data);
-                    if(data == ''){
-                    $('#load_data_message').html("<button type='button' class='btn btn-info'>No Data Found</button>");
+
+                    if(!data){
+                    $('#load_data_message').html("<a class='btn fix-bottom-button'  href='#roof'><i class='fa fa-arrow-up' aria-hidden='true'></i> на верх</a>");
                     action = 'active';
                     } else {
-                    $('#load_data_message').html("<button type='button' class='btn btn-warning'>загрузка....</button>");
+                    $('#load_data_message').html("<button type='button' class='btn btn-secondary'>загрузка....</button>");
                     action = "inactive";}
                 }
             });
@@ -259,7 +257,6 @@
     event.preventDefault();
     var $this = $(this);
     var $qtty = $this.siblings('.qty');
-    console.log($qtty.val())
     var item = $this.siblings('.hidden-name').val();
     var current = parseInt($qtty.val(), 10);
     var min = parseInt($qtty.attr('min'), 10);
@@ -278,7 +275,6 @@
     $qtty.trigger('change');
     }
     var dataInsert = {'item_id': item, 'qty': $qtty.val()};
-    console.log($qtty.val())
     $.ajax({
     type: "GET",
     url: '/cart/update',
@@ -323,7 +319,7 @@
             } else {
                 var cardItem = "#item_" + data.removed_id
                 var totalItem = "p#total_item_" + data.removed_id
-                console.log(totalItem)
+
                 $('.cart span').html(count).fadeIn(1000);
                 $(cardItem).remove().fadeOut(3000);
                 $(totalItem).remove();
@@ -457,8 +453,6 @@
         step = parseInt($qty.attr('step'), 10);
         item = $this.siblings('.name'),
 
-        console.log('item')
-        console.log(item)
 
       min = min ? min : 1;
       max = max ? max : current + step;
@@ -466,13 +460,11 @@
       if ($this.hasClass('minus') && current > min) {
         $qty.val(current - step);
         $qty.trigger('change');
-        console.log('minus')
       }
 
       if ($this.hasClass('plus') && current < max) {
         $qty.val(current + step);
         $qty.trigger('change');
-        console.log('plus')
       }
 
       return false;

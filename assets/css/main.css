@@ -2686,7 +2686,7 @@ footer a:hover {
 }
 
 .shop-products .button-product:before {
-    content: "\f07a";
+    content: "";
     margin-right: 7px;
     font-family: "Font Awesome 6 Pro";
     font-weight: 700;
@@ -2930,6 +2930,7 @@ footer a:hover {
 }
 
 .product-single-info .button-product {
+
   background: #000;
   color: #fff!important;
   text-decoration: none;

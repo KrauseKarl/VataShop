@@ -65,7 +65,7 @@
                     </div>
                     <div class="ProductCard-picts color-variants" style="margin-top:20px;" >
                         {% for key, img in product.colors.items() %}
-                        {% if loop.index > 5 %}
+                        {% if loop.index > 4 %}
                         <a style="border-radius:8px; margin-right:5px;" id="{{ key }}"
                            class="color-img ProductCard-pict  {% if loop.first %}ProductCard-pict_ACTIVE color-chosen{% endif %} "
                            href="{{ img.img }}">
@@ -93,7 +93,9 @@
                             <input id="color" type="hidden" name="color" value="{{ default }}">
                             <input id="quantity" type="hidden" class="input-text qty text" step="1" min="-1" max="20" name="quantity" value="1" title="Qty" size="4" placeholder="">
                         </div>
-                        <button type="submit" style="width:100%;" name="add-to-cart" class="button-product ">В корзину</button>
+                        <button type="submit" style="width:100%; height:70px;" name="add-to-cart" class="button-product ">
+                           <i class="fa fa-shopping-cart" aria-hidden="true"></i>&ensp;В корзину
+                        </button>
                     </form>
 <!--  FORM ADD TO CART -->
 
@@ -119,11 +121,15 @@
                         {% endfor %}
                     </span></p>
 
-                    <p><span>общий вес, г</span><span>{{product.weight}}</span></p>
-                    <p><span>материал</span><span>{{product.material}}</span></p>
-                    <p><span>размеры, мм</span><span>{{product.size.width}} X {{product.size.height}} X {{product.size.length}}</span></p>
-                    <p><span>место размещения</span><span>{{product.place_operation|join(', ') }}</span></p>
-                    <p><span>*По вашему желанию можно выбрать цвет из каталога RAL</span></p>
+                        <p><span>общий вес, г</span><span>{{product.weight}}</span></p>
+                        <p><span>материал</span><span>{{product.material}}</span></p>
+                        <p><span>размеры, мм</span><span>{{product.size.width}} X {{product.size.height}} X {{product.size.length}}</span>
+                        </p>
+                        {%  if product.size.volume %}
+                        <p><span>объем</span><span>{{product.size.volume}}</span></p>
+                        {% endif %}
+                        <p><span>место размещения</span><span>{{product.place_operation|join(', ') }}</span></p>
+                        <p><span>*По вашему желанию можно выбрать цвет из каталога RAL</span></p>
                 </div>
                     <div id="description" class="product-single-box">
                     <h2>Описание</h2>
@@ -142,7 +148,7 @@
                         {% for item_id, item in all_products.items() %}
                         {% if item.category == product.category %}
                         <div class="product">
-                            <a class="product-images" href="/item/{{ item_id }}">
+                            <a class="product-images" href="/catalog/{{item_id}}">
                                 <div class="shop-first-image">
                                     <img alt="image" src="{{ item.main_image }}" />
                                 </div>
@@ -153,7 +159,7 @@
                             <div class="shop-product-details">
                                 <div class="shop-product-details-container">
                                     <h4 class="shop-product-title">
-                                        <a  href="/item/{{ item_id }}">{{ item.title }}</a>
+                                        <a  href="/catalog/{{ item_id }}">{{ item.title }}</a>
                                     </h4>
                                     <div class="star-rating">
                                                   <span style="width:80%">Rated
@@ -163,7 +169,8 @@
                                     <span class="shop-price">
                                                    <span>&#8381</span>&ensp;{{ item.price }}</span>
                                     <div class="shop-button-box">
-                                        <a class="button-product" href="#">Добавить в корзину</a>
+
+                                        <a class="button-product" href="/catalog/{{ item_id }}">Подробнее</a>
                                     </div>
                                 </div>
                             </div>
@@ -181,7 +188,7 @@
                         <ul class="sidebar-product-list">
                             {% for item_id, item in all_products.items() %}
                             <li>
-                                <a href="/item/{{ item_id }}">
+                                <a href="/catalog/{{ item_id }}">
                                     <img alt="image" src="{{ item.thumbnail }}"/>
                                     <span class="product-title">{{ item.title }}</span>
                                 </a>

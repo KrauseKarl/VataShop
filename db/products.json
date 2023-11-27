@@ -5,7 +5,89 @@
       "00101": {
         "color_code": "#fdfff5",
         "color_name": "молочный",
-        "img": "/assets/images/items/001/001_img_1.jpg"
+        "img": "/assets/images/items/007/007_img_1.jpg"
+      },
+      "00102": {
+        "color_code": "#151719",
+        "color_name": "черный",
+        "img": "/assets/images/items/007/007_img_2.jpg"
+      },
+      "00103": {
+        "color_code": "#F4CA16",
+        "color_name": "желтый",
+        "img": "/assets/images/items/007/007_img_3.jpg"
+      },
+      "00104": {
+        "color_code": "#686c5e",
+        "color_name": "серый",
+        "img": "/assets/images/items/007/007_img_4.jpg"
+      },
+      "00105": {
+        "color_code": "#904d30",
+        "color_name": "терракотовый",
+        "img": "/assets/images/items/007/007_img_5.jpg"
+      },
+      "00106": {
+        "color_code": "#7AC165",
+        "color_name": "зеленый",
+        "img": "/assets/images/items/007/007_img_6.jpg"
+      },
+      "00107": {
+        "color_code": "",
+        "color_name": "мрамор 2 цвета",
+        "img": "/assets/images/items/007/007_img_7.jpg"
+      },
+      "00108": {
+        "color_code": "",
+        "color_name": "мрамор 3 цвета",
+        "img": "/assets/images/items/007/007_img_8.jpg"
+      },
+      "00109": {
+        "color_code": "",
+        "color_name": "эффект стрения 2 цвета",
+        "img": "/assets/images/items/007/007_img_9.jpg"
+      }
+    },
+    "slug": "Golova-MOAI",
+    "url": "/catalog/001",
+    "category": "кашпо",
+    "title": "Голова МОАИ",
+    "description": "Кашпо голова, горшок для цветов Истукан. Декоративная фигурка в виде головы Истукана Моаи с Острова Пасхи может быть использована как подставка для кистей или держатель для книг. Этот сувенир для дома будет замечательным подарком на праздник. Держатель для канцелярии выполнен из гипсобетона, полностью ручная работа и особенности материала предполагают наличие мелких дырочек на поверхности сувенирной продукции. Цветочный горшок в виде фигурки не имеет дренажного отверстия. Кашпо настольное тяжелое, устойчивое и снабжено мягкими ножками, чтобы не царапать поверхность.",
+    "price": "1000",
+    "weight": "2000",
+    "material": "cкульптурный высокопрочный гипс",
+    "place_operation": [
+      "дом"
+    ],
+    "size": {
+      "width": "12",
+      "height": "18,5",
+      "length": "13",
+      "volume": "230 мл"
+    },
+    "hashtags": [
+      "кашпо",
+      "бетон",
+      "для суккулентов",
+      "голова",
+      "истукан"
+    ],
+    "main_image": "/assets/images/items/007/007_thumbnail.jpg",
+    "rest_image": [
+      "/assets/images/items/007/007_img_1.jpg",
+      "/assets/images/items/007/007_img_1.jpg",
+      "/assets/images/items/007/007_img_1.jpg",
+      "/assets/images/items/007/007_img_1.jpg"
+    ],
+    "thumbnail": "/assets/images/items/007/007_thumbnail.jpg"
+  },
+  "002": {
+    "id": "2",
+    "colors": {
+      "00101": {
+        "color_code": "#fdfff5",
+        "color_name": "молочный",
+        "img": "/assets/images/items/001/001_img_8.jpg"
       },
       "00102": {
         "color_code": "#151719",
@@ -25,104 +107,22 @@
       "00105": {
         "color_code": "#904d30",
         "color_name": "терракотовый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
-      },
-      "00106": {
-        "color_code": "#7AC165",
-        "color_name": "зеленый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
-      },
-      "00107": {
-        "color_code": "",
-        "color_name": "мрамор 2 цвета",
-        "img": "/assets/images/items/001/001_img_4.jpg"
-      },
-      "00108": {
-        "color_code": "",
-        "color_name": "мрамор 3 цвета",
-        "img": "/assets/images/items/001/001_img_4.jpg"
-      },
-      "00109": {
-        "color_code": "",
-        "color_name": "эффект стрения 2 цвета",
-        "img": "/assets/images/items/001/001_img_4.jpg"
-      }
-    },
-    "slug": "Golova-MOAI",
-    "url": "/catalog/001",
-    "category": "кашпо",
-    "title": "Голова МОАИ",
-    "description": "Кашпо голова, горшок для цветов Истукан. Декоративная фигурка в виде головы Истукана Моаи с Острова Пасхи может быть использована как подставка для кистей или держатель для книг. Этот сувенир для дома будет замечательным подарком на праздник. Держатель для канцелярии выполнен из гипсобетона, полностью ручная работа и особенности материала предполагают наличие мелких дырочек на поверхности сувенирной продукции. Цветочный горшок в виде фигурки не имеет дренажного отверстия. Кашпо настольное тяжелое, устойчивое и снабжено мягкими ножками, чтобы не царапать поверхность.",
-    "price": "1000",
-    "weight": "2000",
-    "material": "cкульптурный высокопрочный гипс",
-    "place_operation": [
-      "дом"
-    ],
-    "size": {
-      "width": "12",
-      "height": "18,5",
-      "length": "13",
-      "volume": "230"
-    },
-    "hashtags": [
-      "кашпо",
-      "бетон",
-      "для суккулентов",
-      "голова",
-      "истукан"
-    ],
-    "main_image": "/assets/images/items/default.jpg",
-    "rest_image": [
-      "/assets/images/items/default.jpg",
-      "/assets/images/items/default.jpg",
-      "/assets/images/items/default.jpg",
-      "/assets/images/items/default.jpg"
-    ],
-    "thumbnail": "/assets/images/product-1.jpg"
-  },
-  "002": {
-    "id": "2",
-    "colors": {
-      "00101": {
-        "color_code": "#fdfff5",
-        "color_name": "молочный",
         "img": "/assets/images/items/001/001_img_1.jpg"
       },
-      "00102": {
-        "color_code": "#151719",
-        "color_name": "черный",
-        "img": "/assets/images/items/001/001_img_2.jpg"
-      },
-      "00103": {
-        "color_code": "#BCP13",
-        "color_name": "желтый",
-        "img": "/assets/images/items/001/001_img_3.jpg"
-      },
-      "00104": {
-        "color_code": "#686c5e",
-        "color_name": "серый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
-      },
-      "00105": {
-        "color_code": "#904d30",
-        "color_name": "терракотовый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
-      },
       "00106": {
         "color_code": "#7AC165",
         "color_name": "зеленый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/001/001_img_5.jpg"
       },
       "00107": {
-        "color_code": "#696250",
+        "color_code": "",
         "color_name": "мрамор 2 цвета",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/007/007_img_8.jpg"
       },
       "00108": {
-        "color_code": "#696250",
+        "color_code": "",
         "color_name": "мрамор 3 цвета",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/007/007_img_9.jpg"
       }
     },
     "slug": "zajchik",
@@ -148,14 +148,14 @@
       "для суккулентов",
       "зайчик"
     ],
-    "main_image": "/assets/images/items/default.jpg",
+    "main_image": "/assets/images/items/001/001_thumbnail.jpg",
     "rest_image": [
-      "/assets/images/items/default.jpg",
-      "/assets/images/items/default.jpg",
-      "/assets/images/items/default.jpg",
-      "/assets/images/items/default.jpg"
+      "/assets/images/items/001/001_img_1.jpg",
+      "/assets/images/items/001/001_img_6.jpg",
+      "/assets/images/items/001/001_img_7.jpg",
+      "/assets/images/items/001/001_img_5.jpg"
     ],
-    "thumbnail": "/assets/images/product-1.jpg"
+    "thumbnail": "/assets/images/items/001/001_thumbnail.jpg"
   },
   "003": {
     "id": "3",
@@ -163,42 +163,42 @@
       "00101": {
         "color_code": "#fdfff5",
         "color_name": "молочный",
-        "img": "/assets/images/items/001/001_img_1.jpg"
+        "img": "/assets/images/items/008/008_img_1.jpg"
       },
       "00102": {
         "color_code": "#151719",
         "color_name": "черный",
-        "img": "/assets/images/items/001/001_img_2.jpg"
+        "img": "/assets/images/items/008/008_img_2.jpg"
       },
       "00103": {
-        "color_code": "#BCP13",
+        "color_code": "#F4CA16",
         "color_name": "желтый",
-        "img": "/assets/images/items/001/001_img_3.jpg"
+        "img": "/assets/images/items/008/008_img_3.jpg"
       },
       "00104": {
         "color_code": "#686c5e",
         "color_name": "серый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/008/008_img_4.jpg"
       },
       "00105": {
         "color_code": "#904d30",
         "color_name": "терракотовый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/008/008_img_5.jpg"
       },
       "00106": {
         "color_code": "#7AC165",
         "color_name": "зеленый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/008/008_img_6.jpg"
       },
       "00107": {
-        "color_code": "#696250",
+        "color_code": "",
         "color_name": "мрамор 2 цвета",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/007/007_img_8.jpg"
       },
       "00108": {
-        "color_code": "#696250",
+        "color_code": "",
         "color_name": "мрамор 3 цвета",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/007/007_img_9.jpg"
       }
     },
     "slug": "list-ginko",
@@ -222,14 +222,14 @@
       "поднос",
       "тарелка"
     ],
-    "main_image": "/assets/images/items/default.jpg",
+    "main_image": "/assets/images/items/008/008_thumbnail.jpg",
     "rest_image": [
       "/assets/images/items/default.jpg",
       "/assets/images/items/default.jpg",
       "/assets/images/items/default.jpg",
       "/assets/images/items/default.jpg"
     ],
-    "thumbnail": "/assets/images/product-1.jpg"
+    "thumbnail": "/assets/images/items/008/008_thumbnail.jpg"
   },
   "004": {
     "id": "4",
@@ -237,42 +237,42 @@
       "00101": {
         "color_code": "#fdfff5",
         "color_name": "молочный",
-        "img": "/assets/images/items/001/001_img_1.jpg"
+        "img": "/assets/images/items/010/010_img_1.jpg"
       },
       "00102": {
         "color_code": "#151719",
         "color_name": "черный",
-        "img": "/assets/images/items/001/001_img_2.jpg"
+        "img": "/assets/images/items/010/010_img_2.jpg"
       },
       "00103": {
-        "color_code": "#BCP13",
+        "color_code": "#F4CA16",
         "color_name": "желтый",
-        "img": "/assets/images/items/001/001_img_3.jpg"
+        "img": "/assets/images/items/010/010_img_3.jpg"
       },
       "00104": {
         "color_code": "#686c5e",
         "color_name": "серый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/010/010_img_4.jpg"
       },
       "00105": {
         "color_code": "#904d30",
         "color_name": "терракотовый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/010/010_img_5.jpg"
       },
       "00106": {
         "color_code": "#7AC165",
         "color_name": "зеленый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/010/010_img_6.jpg"
       },
       "00107": {
-        "color_code": "#696250",
+        "color_code": "",
         "color_name": "мрамор 2 цвета",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/007/007_img_8.jpg"
       },
       "00108": {
-        "color_code": "#696250",
+        "color_code": "",
         "color_name": "мрамор 3 цвета",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/007/007_img_9.jpg"
       }
     },
     "slug": "podnos-oval",
@@ -296,14 +296,14 @@
       "поднос",
       "тарелка"
     ],
-    "main_image": "/assets/images/items/default.jpg",
+    "main_image": "/assets/images/items/010/010_thumbnail.jpg",
     "rest_image": [
       "/assets/images/items/default.jpg",
       "/assets/images/items/default.jpg",
       "/assets/images/items/default.jpg",
       "/assets/images/items/default.jpg"
     ],
-    "thumbnail": "/assets/images/product-1.jpg"
+    "thumbnail": "/assets/images/items/010/010_thumbnail.jpg"
   },
   "005": {
     "id": "5",
@@ -311,42 +311,42 @@
       "00101": {
         "color_code": "#fdfff5",
         "color_name": "молочный",
-        "img": "/assets/images/items/001/001_img_1.jpg"
+        "img": "/assets/images/items/005/005_img_7.jpg"
       },
       "00102": {
         "color_code": "#151719",
         "color_name": "черный",
-        "img": "/assets/images/items/001/001_img_2.jpg"
+        "img": "/assets/images/items/005/005_img_2.jpg"
       },
       "00103": {
-        "color_code": "#BCP13",
+        "color_code": "#F4CA16",
         "color_name": "желтый",
-        "img": "/assets/images/items/001/001_img_3.jpg"
+        "img": "/assets/images/items/005/005_img_3.jpg"
       },
       "00104": {
         "color_code": "#686c5e",
         "color_name": "серый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/005/005_img_4.jpg"
       },
       "00105": {
         "color_code": "#904d30",
         "color_name": "терракотовый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/005/005_img_5.jpg"
       },
       "00106": {
         "color_code": "#7AC165",
         "color_name": "зеленый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/005/005_img_6.jpg"
       },
       "00107": {
-        "color_code": "#696250",
+        "color_code": "",
         "color_name": "мрамор 2 цвета",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/007/007_img_8.jpg"
       },
       "00108": {
-        "color_code": "#696250",
+        "color_code": "",
         "color_name": "мрамор 3 цвета",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/007/007_img_9.jpg"
       }
     },
     "slug": "betonnaya-shkatulka-s",
@@ -370,14 +370,14 @@
       "шкатулка",
       "емкость для хранения "
     ],
-    "main_image": "/assets/images/items/default.jpg",
+    "main_image": "/assets/images/items/005/005_thumbnail.jpg",
     "rest_image": [
-      "/assets/images/items/default.jpg",
+      "/assets/images/items/005/005_img_1.jpg",
       "/assets/images/items/default.jpg",
       "/assets/images/items/default.jpg",
       "/assets/images/items/default.jpg"
     ],
-    "thumbnail": "/assets/images/product-1.jpg"
+    "thumbnail": "/assets/images/items/005/005_thumbnail.jpg"
   },
   "006": {
     "id": "6",
@@ -385,42 +385,42 @@
       "00101": {
         "color_code": "#fdfff5",
         "color_name": "молочный",
-        "img": "/assets/images/items/001/001_img_1.jpg"
+        "img": "/assets/images/items/005/005_img_1.jpg"
       },
       "00102": {
         "color_code": "#151719",
         "color_name": "черный",
-        "img": "/assets/images/items/001/001_img_2.jpg"
+        "img": "/assets/images/items/005/005_img_2.jpg"
       },
       "00103": {
-        "color_code": "#BCP13",
+        "color_code": "#F4CA16",
         "color_name": "желтый",
-        "img": "/assets/images/items/001/001_img_3.jpg"
+        "img": "/assets/images/items/005/005_img_3.jpg"
       },
       "00104": {
         "color_code": "#686c5e",
         "color_name": "серый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/005/005_img_4.jpg"
       },
       "00105": {
         "color_code": "#904d30",
         "color_name": "терракотовый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/005/005_img_5.jpg"
       },
       "00106": {
         "color_code": "#7AC165",
         "color_name": "зеленый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/005/005_img_6.jpg"
       },
       "00107": {
-        "color_code": "#696250",
+        "color_code": "",
         "color_name": "мрамор 2 цвета",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/007/007_img_8.jpg"
       },
       "00108": {
-        "color_code": "#696250",
+        "color_code": "",
         "color_name": "мрамор 3 цвета",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/007/007_img_9.jpg"
       }
     },
     "slug": "betonnaya-shkatulka-m",
@@ -444,14 +444,14 @@
       "шкатулка",
       "емкость для хранения "
     ],
-    "main_image": "/assets/images/items/default.jpg",
+    "main_image": "/assets/images/items/005/005_img_5.jpg",
     "rest_image": [
       "/assets/images/items/default.jpg",
       "/assets/images/items/default.jpg",
       "/assets/images/items/default.jpg",
       "/assets/images/items/default.jpg"
     ],
-    "thumbnail": "/assets/images/product-1.jpg"
+    "thumbnail": "/assets/images/items/005/005_img_5.jpg"
   },
   "007": {
     "id": "7",
@@ -459,42 +459,42 @@
       "00101": {
         "color_code": "#fdfff5",
         "color_name": "молочный",
-        "img": "/assets/images/items/001/001_img_1.jpg"
+        "img": "/assets/images/items/009/090_img_3.jpg"
       },
       "00102": {
         "color_code": "#151719",
         "color_name": "черный",
-        "img": "/assets/images/items/001/001_img_2.jpg"
+        "img": "/assets/images/items/009/090_img_2.jpg"
       },
       "00103": {
-        "color_code": "#BCP13",
+        "color_code": "#F4CA16",
         "color_name": "желтый",
-        "img": "/assets/images/items/001/001_img_3.jpg"
+        "img": "/assets/images/items/009/090_img_3.jpg"
       },
       "00104": {
         "color_code": "#686c5e",
         "color_name": "серый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/009/090_img_4.jpg"
       },
       "00105": {
         "color_code": "#904d30",
         "color_name": "терракотовый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/009/090_img_5.jpg"
       },
       "00106": {
         "color_code": "#7AC165",
         "color_name": "зеленый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/009/090_img_6.jpg"
       },
       "00107": {
-        "color_code": "#696250",
+        "color_code": "",
         "color_name": "мрамор 2 цвета",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/007/007_img_8.jpg"
       },
       "00108": {
-        "color_code": "#696250",
+        "color_code": "",
         "color_name": "мрамор 3 цвета",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/007/007_img_9.jpg"
       }
     },
     "slug": "ruki-davida",
@@ -519,14 +519,14 @@
       "поднос",
       "руки"
     ],
-    "main_image": "/assets/images/items/default.jpg",
+    "main_image": "/assets/images/items/009/090_thumbnail.jpg",
     "rest_image": [
       "/assets/images/items/default.jpg",
       "/assets/images/items/default.jpg",
       "/assets/images/items/default.jpg",
       "/assets/images/items/default.jpg"
     ],
-    "thumbnail": "/assets/images/product-1.jpg"
+    "thumbnail": "/assets/images/items/009/090_thumbnail.jpg"
   },
   "008": {
     "id": "8",
@@ -534,37 +534,37 @@
       "00101": {
         "color_code": "#fdfff5",
         "color_name": "молочный",
-        "img": "/assets/images/items/001/001_img_1.jpg"
+        "img": "/assets/images/items/004/004_img_1.jpg"
       },
       "00102": {
         "color_code": "#151719",
         "color_name": "черный",
-        "img": "/assets/images/items/001/001_img_2.jpg"
+        "img": "/assets/images/items/004/004_img_2.jpg"
       },
       "00103": {
         "color_code": "#BCP13",
         "color_name": "желтый",
-        "img": "/assets/images/items/001/001_img_3.jpg"
+        "img": "/assets/images/items/004/004_img_3.jpg"
       },
       "00104": {
         "color_code": "#686c5e",
         "color_name": "серый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/004/004_img_4.jpg"
       },
       "00105": {
         "color_code": "#904d30",
         "color_name": "терракотовый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/004/004_img_5.jpg"
       },
       "00106": {
         "color_code": "#7AC165",
         "color_name": "зеленый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/004/004_img_6.jpg"
       },
       "00107": {
-        "color_code": "#696250",
+        "color_code": "",
         "color_name": "мрамор 2 цвета",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/007/007_img_8.jpg"
       }
     },
     "slug": "afrodita-S",
@@ -588,14 +588,14 @@
       "статуэтка",
       "женское тело"
     ],
-    "main_image": "/assets/images/items/default.jpg",
+    "main_image": "/assets/images/items/004/004_thumbnail.jpg",
     "rest_image": [
       "/assets/images/items/default.jpg",
       "/assets/images/items/default.jpg",
       "/assets/images/items/default.jpg",
       "/assets/images/items/default.jpg"
     ],
-    "thumbnail": "/assets/images/product-1.jpg"
+    "thumbnail": "/assets/images/items/004/004_thumbnail.jpg"
   },
   "009": {
     "id": "9",
@@ -603,37 +603,37 @@
       "00101": {
         "color_code": "#fdfff5",
         "color_name": "молочный",
-        "img": "/assets/images/items/001/001_img_1.jpg"
+        "img": "/assets/images/items/004/004_img_1.jpg"
       },
       "00102": {
         "color_code": "#151719",
         "color_name": "черный",
-        "img": "/assets/images/items/001/001_img_2.jpg"
+        "img": "/assets/images/items/004/004_img_2.jpg"
       },
       "00103": {
         "color_code": "#BCP13",
         "color_name": "желтый",
-        "img": "/assets/images/items/001/001_img_3.jpg"
+        "img": "/assets/images/items/004/004_img_3.jpg"
       },
       "00104": {
         "color_code": "#686c5e",
         "color_name": "серый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/004/004_img_4.jpg"
       },
       "00105": {
         "color_code": "#904d30",
         "color_name": "терракотовый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/004/004_img_5.jpg"
       },
       "00106": {
         "color_code": "#7AC165",
         "color_name": "зеленый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/004/004_img_6.jpg"
       },
       "00107": {
         "color_code": "#696250",
         "color_name": "мрамор 2 цвета",
-        "img": "/assets/images/items/001/001_img_4.jpg"
+        "img": "/assets/images/items/007/007_img_9.jpg"
       }
     },
     "slug": "afrodita-m",
@@ -657,13 +657,13 @@
       "статуэтка",
       "женское тело"
     ],
-    "main_image": "/assets/images/items/default.jpg",
+    "main_image": "/assets/images/items/004/004_img_3.jpg",
     "rest_image": [
       "/assets/images/items/default.jpg",
       "/assets/images/items/default.jpg",
       "/assets/images/items/default.jpg",
       "/assets/images/items/default.jpg"
     ],
-    "thumbnail": "/assets/images/product-1.jpg"
+    "thumbnail": "/assets/images/items/004/004_img_3.jpg"
   }
 }

@@ -22,7 +22,6 @@ async def catalog(
         cart: Dict = Depends(get_cart),
         pagination: dict = Depends(get_pagination_params)
 ):
-
     if category in [x['slug'] for x in categories_list()]:
         category = [x['category'] for x in categories_list() if x['slug'] == category][0]
         products = [
@@ -38,7 +37,6 @@ async def catalog(
                 key=lambda x: int(x[1]["price"]),
                 reverse=True if sort_by == 'price-desc' else False
             )]
-
 
     limit = pagination["limit"]
     offset = pagination["offset"]
@@ -111,6 +109,7 @@ async def catalog_more(
         "request": request,
         "categories": categories_list(),
         "all_products": products[start:end],
+        "nothing": "yes" if len(products[start:end]) > 0 else "no"
     }
 
     return templates.TemplateResponse(
@@ -206,7 +205,6 @@ async def one_category_list(
         "per_page": limit,
         "current_page": offset,
     }
-
 
     return templates.TemplateResponse(
         "catalog.html",

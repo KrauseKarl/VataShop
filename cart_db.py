@@ -4,7 +4,8 @@ import os
 
 from typing import Dict
 
-CART_DB_FOLDER = './carts'
+CART_DB_FOLDER = '/home/vata/VataShop/carts'
+ERR_text = '/home/vata/VataShop/carts/errors.txt'
 CART_DB_FILE = 'carts_db.json'
 CART_DB_PATH = os.path.join(CART_DB_FOLDER, CART_DB_FILE)
 
@@ -19,6 +20,7 @@ def create_carts_json():
 
 
 def update_carts_json(cart: Dict, **kwargs):
+    create_carts_json()
     with open(CART_DB_PATH, "r", encoding='utf-8') as jsonFile:
         data = json.load(jsonFile)
     data[cart["id"]] = cart
@@ -29,6 +31,7 @@ def update_carts_json(cart: Dict, **kwargs):
 def record_to_carts_db(cart: Dict, **kwargs):
     try:
         update_carts_json(cart)
-    except Exception:
-        create_carts_json()
-        update_carts_json(cart, **kwargs)
+    except Exception as e:
+        with open(ERR_text, 'w', encoding='utf-8') as f:
+            f.write(str(e))
+

@@ -18,7 +18,7 @@ from order_db import record_to_order_db, ORDER_DB_PATH
 # celery -A task:celery flower
 locale.setlocale(
     category=locale.LC_ALL,
-    locale="Russian"
+    locale="ru_RU.UTF-8"
 )
 
 

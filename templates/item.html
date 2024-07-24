@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Товар | VATA SHOP {% endblock %}
+
+{% block content %}
+<!-- wrapper -->    
+<div class="wrapper">
+    <div class="container">
+        <h1 class="text-end h1_label">{{ product.title }}
+        </h1>
+        <div class="row" style="margin: 20px 0;">
+            <div class="col-md-9">
+
+<!--MAIN IMAGE -->
+                <div class="product-single-image">
+                    <div class="ProductCard-photo">
+                        <img src="{{ product.main_image }}" alt="{{ product.title }}"/>
+                    </div>
+                    <div class="ProductCard-picts" style="justify-content: space-evenly; ">
+
+                        {% for img in product.rest_image %}
+                        <a style="border-radius:8px;"
+                           class="ProductCard-pict {% if loop.first %}ProductCard-pict_ACTIVE {% endif %}"
+                           href="{{ img }}">
+                            <img src="{{ img }}" alt="{{ product.title }}"/>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+<!--MAIN IMAGE -->
+
+                <div class="product-single-info">
+
+<!-- TITLE   -->
+                    <h3 class="product-single-title text-end">{{ product.title }}
+                    </h3>
+<!-- TITLE   -->
+                    <!-- PRICE   -->
+                    <span class="shop-price" style="font-size:1.5rem;">
+                        <span>&#8381&ensp;</span>{{ product.price }}.00
+                    </span>
+<!-- PRICE   -->
+
+<!-- COLOR CHOSEN BUTTONS  -->
+                    <div class="ProductCard-picts color-variants" >
+                        {% for key, img in product.colors.items() %}
+                            {% if loop.index <  5 %}
+                            <a style="border-radius:15px;margin-right:5px;width:15%; height:15%;" id="{{ key }}"
+                               class="color-img ProductCard-pict  {% if loop.first %}ProductCard-pict_ACTIVE color-chosen{% endif %} "
+                               href="{{ img.img }}">
+                                <img style="border-radius:15px;" src="{{ img.img }}" alt="{{ product.title }}"/>
+                            </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <div class="ProductCard-picts color-variants" style="margin-top:10px;" >
+                        {% for key, img in product.colors.items() %}
+                        {% if loop.index > 4 %}
+                        <a style="border-radius:15px; margin-right:5px; width:15%; height:15%;" id="{{ key }}"
+                           class="color-img ProductCard-pict  {% if loop.first %}ProductCard-pict_ACTIVE color-chosen{% endif %} "
+                           href="{{ img.img }}">
+                            <img style="border-radius:15px;"  src="{{ img.img }}" alt="{{ product.title }}" />
+                        </a>
+                        {% endif %}
+
+                        {% endfor %}
+                    </div>
+<!-- COLOR CHOSEN BUTTONS  -->
+
+<!--                    <div class="star-rating">-->
+<!--                        <span style="width:90%">Rated-->
+<!--                              <strong class="rating">4.50-->
+<!--                              </strong>out of 5-->
+<!--                          </span>-->
+<!--                    </div>-->
+
+<!--  FORM ADD TO CART -->
+                    <form id="ajax-add-cart-form" class="cart" method="post" enctype="multipart/form-data"
+                          style="margin-top:5px;">
+                        <div id="error-msg"></div>
+                        <div class="shop-qty">
+                            <input id="name" type="hidden" name="name" value="{{ product.id }}">
+                            <input id="color" type="hidden" name="color" value="{{ product.colors| first }}">
+                            <input id="quantity"
+                                   type="hidden"
+                                   class="input-text qty text"
+                                   step="1" min="0" max="20"
+                                   name="quantity"
+                                   value="1"
+                                   title="Qty">
+                        </div>
+                        <button type="submit" style="width:100%; height:50px;" name="add-to-cart" class="button-product ">
+                           <i class="fa fa-shopping-cart" aria-hidden="true"></i>&ensp;В корзину
+                        </button>
+                    </form>
+<!--  FORM ADD TO CART -->
+
+                    <div class="product-single-description">
+                        <p>{{ product.description|truncate(100, False, '...', 0) }}
+                            <a style="color:blue;" href="#description"> подробно
+                            </a>
+                        </p>
+                    </div>
+
+                </div>
+
+                    <div class="product-single-box-detail">
+                    <p><span>цвета</span><span>
+                        {% for key, color in product.colors.items() %}
+                        {% if color.color_code %}
+                        <b
+                            style="margin-right:5px;
+                            border-radius:20%;
+                            background-color:{{color.color_code}};
+                            padding:8px 15px;border: 1px solid grey;"
+                            title="{{color.color_name}}">
+                        </b>
+                        {% endif %}
+                        {% endfor %}
+                    </span></p>
+
+                        <p><span>общий вес, г</span><span>{{product.weight}}</span></p>
+                        <p><span>материал</span><span>{{product.material}}</span></p>
+                        <p><span>размеры, мм</span><span>{{product.size.width}} X {{product.size.height}} X {{product.size.length}}</span>
+                        </p>
+                        {%  if product.size.volume %}
+                        <p><span>объем</span><span>{{product.size.volume}}</span></p>
+                        {% endif %}
+                        <p><span>место размещения</span><span>{{product.place_operation|join(', ') }}</span></p>
+                        <p><span>*По вашему желанию можно выбрать цвет из каталога RAL</span></p>
+                </div>
+                    <div id="description" class="product-single-box">
+                    <h2>Описание</h2>
+                    {{ product.description }}
+                </div>
+                     <div  class="product-single-box">
+                    {% for hashtag in product.hashtags %}
+                    <span>#</span>&nbsp;{{ hashtag }}&emsp;
+                         {% endfor %}
+                </div>
+
+                <!--RELATED ITEMS -->
+                <div class="product-related-products">
+                    <h3 class="product-single-title">Похожие товары</h3>
+                    <div class="shop-products shopContainer columns-3">
+                        <div class="gutter-sizer"></div>
+                        {% for item_id, item in all_products.items() %}
+                        {% if item.category == product.category %}
+                        <div class="product" >
+                            <a class="product-images" href="/catalog/{{item_id}}" style="border-radius:8px;">
+                                <div class="shop-first-image">
+                                    <img alt="image" src="{{ item.main_image }}"  />
+                                </div>
+                                 <div class="shop-second-image">
+                                    <img alt="image" src="{{ item.rest_image.1 }}"/>
+                                </div>
+                            </a>
+                            <div class="shop-product-details">
+                                <div class="shop-product-details-container">
+                                    <h4 class="shop-product-title">
+                                        <a  href="/catalog/{{ item_id }}">{{ item.title }}</a>
+                                    </h4>
+                                    <div class="star-rating">
+                                          <span style="width:80%">Rated
+                                              <strong class="rating">4.00
+                                              </strong>
+                                              out of 5
+                                          </span>
+                                    </div>
+                                    <span class="shop-price">
+                                        <span>&#8381</span>&ensp;{{ item.price }}</span>
+                                    <div class="shop-button-box">
+                                        <a class="button-product" href="/catalog/{{ item_id }}">Подробнее
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <!--RELATED ITEMS -->
+
+            </div>
+            <div class="col-md-3 rex-padding-left">
+                <div class="sidebar">
+                    <div class="sidebar-box">
+                        <h1 class="sidebar-title text-end">популярные товары</h1>
+                        <ul class="sidebar-product-list">
+                            {% for item_id, item in all_products.items() %}
+                            <li>
+                                <a href="/catalog/{{ item_id }}" style="width:25%;">
+                                    <img alt="image" src="{{ item.thumbnail }}" style="border-radius:8px;"/>
+                                    <span class="product-title">{{ item.title }}
+                                    </span>
+                                </a>
+                                <div class="star-rating">
+                                      <span style="width:50%">Rated
+                                          <strong class="rating">5.00
+                                          </strong>
+                                          out of 5
+                                      </span>
+                                </div>
+                                <span class="shop-price">
+                                    <span>&#8381</span>&ensp;{{ item.price}}
+                                </span>
+                            </li>
+                             {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /wrapper --> 
+{% endblock %}

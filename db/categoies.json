@@ -1,0 +1,39 @@
+[
+  {
+        "id": "1",
+        "slug": "kashpo",
+        "category": "кашпо",
+        "url": "/catalog/category/kashpo"
+  },
+  {
+        "id": "2",
+        "slug": "svechi",
+        "category": "свечи",
+        "url": "/catalog/category/svechi"
+  },
+  {
+        "id": "3",
+        "slug": "vasy",
+        "category": "вазы",
+        "url": "/catalog/category/vasy"
+  },
+  {
+        "id": "4",
+        "slug": "podnosy",
+        "category": "подносы",
+        "url": "/catalog/category/podnosy"
+
+  },
+  {
+        "id": "5",
+        "slug": "shkatulki",
+        "category": "шкатулки",
+        "url": "/catalog/category/shkatulki"
+  },
+  {
+        "id": "6",
+        "slug": "statuetki",
+        "category": "статуэтки",
+        "url": "/catalog/category/statuetki"
+  }
+]

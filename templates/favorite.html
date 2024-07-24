@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Каталог | VATA SHOP {% endblock %}
+
+{% block content %}
+<!-- wrapper -->
+<div class="wrapper">
+    <div class="container">
+        <h1  class="text-end h1_label">
+            {% if products %}ранее заказанные товары{% endif %}
+        </h1>
+        <div class="row">
+            {% if products %}
+            <div class="col-lg-8 offset-lg-1 order-lg-1 order-2">
+                <div class="row" style="margin:20px 0;"  >
+
+                    {% for date, items in products.values()|groupby("date")|reverse %}
+                    <p id="date_{{ date[:2] }}" style="margin-top:40px;" class="shop-result-count">{{date}}</p>
+                    <!-- product 1 -->
+                    {% for item in items %}
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div class="card mb-2 product shadow-sm" style="border-radius:8px;">
+                            <a class="product-images" href="/item/{{item.parent_id}}">
+                                <div class="shop-favorite-image">
+                                    <img src="{{item.img}}" alt="{{item.title}}"/>
+                                </div>
+                            </a>
+                            <div class="card-body">
+                                <small class="text-muted"> {{item.name| capitalize}}
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-lg-2 rex-padding-left order-lg-2 order-1">
+                <div class="sidebar">
+                    <div class="sidebar-box">
+                        <h2 class="sidebar-title h1_label">даты заказа</h2>
+                        <ul class="sidebar-product-list">
+                            {% for date, items in products.values()|groupby("date")|reverse %}
+                            <li>
+                                <a href="#date_{{ date[:2] }}">
+                                    <span class="product-title">{{ date }}
+                                    </span>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<!-- /wrapper -->
+{% endblock %}

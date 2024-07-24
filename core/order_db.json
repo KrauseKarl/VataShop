@@ -1,0 +1,248 @@
+{
+    "orders": {
+        "1": {
+            "date": "23 Июль 2024(16:53)",
+            "name": "max",
+            "email": "mary@mail.com",
+            "phone": "9780879898798798",
+            "msg": "",
+            "cart": {
+                "created": "23 Июль 2024(15:06)",
+                "updated": "23 Июль 2024(16:11)",
+                "id": "88238e6d-76ac-4660-942e-1e19611ddf81",
+                "item": {
+                    "00103": {
+                        "name": "Поднос ОВАЛ",
+                        "parent_id": "004",
+                        "price": "300",
+                        "quantity": 1,
+                        "color": "00103",
+                        "color_name": "желтый",
+                        "img": "/assets/images/items/010/010_img_3.jpg",
+                        "summary": 300
+                    }
+                },
+                "total": 300,
+                "archived": false
+            }
+        },
+        "2": {
+            "date": "23 Июль 2024(16:55)",
+            "name": "max",
+            "email": "Kucherdimd",
+            "phone": "9780879898798798",
+            "msg": "",
+            "cart": {
+                "created": "23 Июль 2024(15:06)",
+                "updated": "23 Июль 2024(16:55)",
+                "id": "88238e6d-76ac-4660-942e-1e19611ddf81",
+                "item": {
+                    "00103": {
+                        "name": "Поднос ОВАЛ",
+                        "parent_id": "004",
+                        "price": "300",
+                        "quantity": 1,
+                        "color": "00103",
+                        "color_name": "желтый",
+                        "img": "/assets/images/items/010/010_img_3.jpg",
+                        "summary": 300
+                    },
+                    "00102": {
+                        "name": "Зайчик",
+                        "parent_id": "002",
+                        "price": "1000",
+                        "quantity": 1,
+                        "color": "00102",
+                        "color_name": "черный",
+                        "img": "/assets/images/items/001/001_img_2.jpg",
+                        "summary": 1000
+                    }
+                },
+                "total": 1300,
+                "archived": false
+            }
+        },
+        "3": {
+            "date": "23 Июль 2024(17:02)",
+            "name": "max",
+            "email": "max@mail.com",
+            "phone": "9780879898798798",
+            "msg": "",
+            "cart": {
+                "created": "23 Июль 2024(16:56)",
+                "updated": "23 Июль 2024(17:02)",
+                "id": "92db93b5-5f2f-44f0-9bce-3adc4cd7a9c2",
+                "item": {
+                    "00103": {
+                        "name": "Голова МОАИ",
+                        "parent_id": "001",
+                        "price": "1000",
+                        "quantity": 1,
+                        "color": "00103",
+                        "color_name": "желтый",
+                        "img": "/assets/images/items/007/007_img_3.jpg",
+                        "summary": 1000
+                    }
+                },
+                "total": 1000,
+                "archived": false
+            }
+        },
+        "4": {
+            "date": "23 Июль 2024(17:03)",
+            "name": "max",
+            "email": "max@mail.com",
+            "phone": "9780879898798798",
+            "msg": "",
+            "cart": {
+                "created": "23 Июль 2024(16:56)",
+                "updated": "23 Июль 2024(17:02)",
+                "id": "92db93b5-5f2f-44f0-9bce-3adc4cd7a9c2",
+                "item": {
+                    "00103": {
+                        "name": "Голова МОАИ",
+                        "parent_id": "001",
+                        "price": "1000",
+                        "quantity": 1,
+                        "color": "00103",
+                        "color_name": "желтый",
+                        "img": "/assets/images/items/007/007_img_3.jpg",
+                        "summary": 1000
+                    }
+                },
+                "total": 1000,
+                "archived": false
+            }
+        },
+        "5": {
+            "date": "23 Июль 2024(17:08)",
+            "name": "max",
+            "email": "ivan@mail.ru",
+            "phone": "9780879898798798",
+            "msg": "",
+            "cart": {
+                "created": "23 Июль 2024(17:03)",
+                "updated": "23 Июль 2024(17:08)",
+                "id": "9f8bb787-d168-4056-985d-3b782cd5aa98",
+                "item": {
+                    "00103": {
+                        "name": "Зайчик",
+                        "parent_id": "002",
+                        "price": "1000",
+                        "quantity": 1,
+                        "color": "00103",
+                        "color_name": "желтый",
+                        "img": "/assets/images/items/001/001_img_3.jpg",
+                        "summary": 1000
+                    }
+                },
+                "total": 1000,
+                "archived": false
+            }
+        },
+        "6": {
+            "date": "23 Июль 2024(17:13)",
+            "name": "max",
+            "email": "max@mail.com",
+            "phone": "9780879898798798",
+            "msg": "",
+            "cart": {
+                "created": "23 Июль 2024(17:08)",
+                "updated": "23 Июль 2024(17:13)",
+                "id": "34a4f946-fed8-41c9-a967-550ce81e75ff",
+                "item": {
+                    "00102": {
+                        "name": "Бетонная шкатулка S",
+                        "parent_id": "005",
+                        "price": "400",
+                        "quantity": 1,
+                        "color": "00102",
+                        "color_name": "черный",
+                        "img": "/assets/images/items/005/005_img_2.jpg",
+                        "summary": 400
+                    }
+                },
+                "total": 400,
+                "archived": false
+            }
+        },
+        "7": {
+            "date": "23 Июль 2024(17:16)",
+            "name": "max",
+            "email": "ivan@mail.ru",
+            "phone": "9780879898798798",
+            "msg": "",
+            "cart": {
+                "created": "23 Июль 2024(17:13)",
+                "updated": "23 Июль 2024(17:16)",
+                "id": "c5168da7-c0f6-4e29-93a1-84cd81b4ad02",
+                "item": {
+                    "00104": {
+                        "name": "Зайчик",
+                        "parent_id": "002",
+                        "price": "1000",
+                        "quantity": 1,
+                        "color": "00104",
+                        "color_name": "серый",
+                        "img": "/assets/images/items/001/001_img_4.jpg",
+                        "summary": 1000
+                    }
+                },
+                "total": 1000,
+                "archived": false
+            }
+        },
+        "8": {
+            "date": "23 Июль 2024(17:21)",
+            "name": "name",
+            "email": "name@mail.ru",
+            "phone": "+7 900 000-00-00",
+            "msg": "",
+            "cart": {
+                "created": "23 Июль 2024(17:16)",
+                "updated": "23 Июль 2024(17:21)",
+                "id": "ac263bb9-4605-41db-a043-3cfce6882326",
+                "item": {
+                    "00104": {
+                        "name": "Лист ГИНКО",
+                        "parent_id": "003",
+                        "price": "300",
+                        "quantity": 1,
+                        "color": "00104",
+                        "color_name": "серый",
+                        "img": "/assets/images/items/008/008_img_4.jpg",
+                        "summary": 300
+                    }
+                },
+                "total": 300,
+                "archived": false
+            }
+        },
+        "9": {
+            "date": "23 Июль 2024(17:29)",
+            "name": "max",
+            "email": "ivan@mail.ru",
+            "phone": "+7 900 000-00-00",
+            "msg": "",
+            "cart": {
+                "created": "23 Июль 2024(17:21)",
+                "updated": "23 Июль 2024(17:28)",
+                "id": "1b84d4e2-b696-4da0-b778-0e0bc37f92f0",
+                "item": {
+                    "00103": {
+                        "name": "Зайчик",
+                        "parent_id": "002",
+                        "price": "1000",
+                        "quantity": 1,
+                        "color": "00103",
+                        "color_name": "желтый",
+                        "img": "/assets/images/items/001/001_img_3.jpg",
+                        "summary": 1000
+                    }
+                },
+                "total": 1000,
+                "archived": false
+            }
+        }
+    }
+}

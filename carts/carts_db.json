@@ -1,0 +1,87 @@
+{
+    "cde1df91-a371-48e1-8629-f122848d0c52": {
+        "created": "24 Июль 2024(12:41)",
+        "updated": "24 Июль 2024(12:41)",
+        "id": "cde1df91-a371-48e1-8629-f122848d0c52",
+        "item": {
+            "00302": {
+                "name": "Лист ГИНКО",
+                "parent_id": "003",
+                "price": "300",
+                "quantity": 1,
+                "color": "00302",
+                "color_name": "черный",
+                "img": "/assets/images/items/008/008_img_2.jpg",
+                "summary": 300
+            }
+        },
+        "total": 0,
+        "archived": false
+    },
+    "96124e5b-867f-4316-9e5a-8de9d1e43b3a": {
+        "created": "24 Июль 2024(12:42)",
+        "updated": "24 Июль 2024(12:42)",
+        "id": "96124e5b-867f-4316-9e5a-8de9d1e43b3a",
+        "item": {
+            "00202": {
+                "name": "Зайчик",
+                "parent_id": "002",
+                "price": "1000",
+                "quantity": 1,
+                "color": "00202",
+                "color_name": "черный",
+                "img": "/assets/images/items/001/001_img_2.jpg",
+                "summary": 1000
+            }
+        },
+        "total": 0,
+        "archived": false
+    },
+    "9c9e34ab-806a-49ab-b8f4-386ab809d26d": {
+        "created": "24 Июль 2024(12:43)",
+        "updated": "24 Июль 2024(13:07)",
+        "id": "9c9e34ab-806a-49ab-b8f4-386ab809d26d",
+        "item": {
+            "00102": {
+                "name": "Голова МОАИ",
+                "parent_id": "001",
+                "price": "1000",
+                "quantity": 1,
+                "color": "00102",
+                "color_name": "черный",
+                "img": "/assets/images/items/007/007_img_2.jpg",
+                "summary": 1000
+            },
+            "00306": {
+                "name": "Лист ГИНКО",
+                "parent_id": "003",
+                "price": "300",
+                "quantity": 1,
+                "color": "00306",
+                "color_name": "зеленый",
+                "img": "/assets/images/items/008/008_img_6.jpg",
+                "summary": 300
+            },
+            "00403": {
+                "name": "Поднос ОВАЛ",
+                "parent_id": "004",
+                "price": "300",
+                "quantity": 1,
+                "color": "00403",
+                "color_name": "желтый",
+                "img": "/assets/images/items/010/010_img_3.jpg",
+                "summary": 300
+            }
+        },
+        "total": 1300,
+        "archived": false
+    },
+    "f5fc948c-777f-4841-bf82-dd9314fe1794": {
+        "created": "24 Июль 2024(13:23)",
+        "updated": "24 Июль 2024(16:10)",
+        "id": "f5fc948c-777f-4841-bf82-dd9314fe1794",
+        "item": {},
+        "total": 0,
+        "archived": false
+    }
+}

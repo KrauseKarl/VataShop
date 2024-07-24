@@ -2,14 +2,12 @@ import json
 
 from typing import Dict
 
-ORDER_DB_PATH = './orders/order_db.json'
+from config import ORDER_DB_PATH
 
 
 def create_order_json():
     with open(ORDER_DB_PATH, 'w', encoding='utf-8') as f:
-        order_dict = {
-            "orders": {}
-        }
+        order_dict = {"orders": {}}
         json.dump(order_dict, f, indent=4, ensure_ascii=False)
 
 
@@ -31,7 +29,8 @@ def update_order_json(order: Dict):
 async def record_to_order_db(order: Dict):
     try:
         current_key = update_order_json(order)
-    except Exception:
+    except Exception as e:
+        print(e)
         create_order_json()
         current_key = update_order_json(order)
     return current_key

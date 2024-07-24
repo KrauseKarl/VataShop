@@ -78,8 +78,37 @@
     },
     "f5fc948c-777f-4841-bf82-dd9314fe1794": {
         "created": "24 Июль 2024(13:23)",
-        "updated": "24 Июль 2024(16:10)",
+        "updated": "24 Июль 2024(18:18)",
         "id": "f5fc948c-777f-4841-bf82-dd9314fe1794",
+        "item": {
+            "00203": {
+                "name": "Зайчик",
+                "parent_id": "002",
+                "price": "1000",
+                "quantity": "1",
+                "color": "00203",
+                "color_name": "желтый",
+                "img": "/assets/images/items/001/001_img_3.jpg",
+                "summary": 1000
+            },
+            "00206": {
+                "name": "Зайчик",
+                "parent_id": "002",
+                "price": "1000",
+                "quantity": "1",
+                "color": "00206",
+                "color_name": "зеленый",
+                "img": "/assets/images/items/001/001_img_5.jpg",
+                "summary": 1000
+            }
+        },
+        "total": 2000,
+        "archived": true
+    },
+    "ba742940-d042-4ea1-b1c3-3df97c7707fb": {
+        "created": "24 Июль 2024(18:19)",
+        "updated": "24 Июль 2024(18:19)",
+        "id": "ba742940-d042-4ea1-b1c3-3df97c7707fb",
         "item": {},
         "total": 0,
         "archived": false

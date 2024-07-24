@@ -155,7 +155,6 @@ def send_pdf_to_tg_chat(bot, chat_id, filename):
 
 def get_filename(**data):
     filename = data.get("data").get("order_id")
-    print(f'__order_id= {data} ____ ')
     pdf_path = f'./orders/pdf/order_{filename}.pdf'
     return pdf_path
 

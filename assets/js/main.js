@@ -175,7 +175,7 @@
             var imgItem = '<i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>&ensp;'
             };
     };
-    $('.toast-body').html(imgItem+"&nbsp;&nbsp;&nbsp;"+msg).fadeIn('slow');
+    $('.toast-body').html(imgItem+"&nbsp;"+msg).fadeIn('slow');
     $('.toast-body').addClass(color)
     setTimeout(function () {
         $('.toast-body').removeClass(color)
@@ -223,7 +223,7 @@
                 console.log(response.cart)
                 var totalSum = response.total + '&#8381;'
                 if(response.data == 'OK') {
-                    var toasterMessage = '<span class="text-center" style="font-size:1.5rem"> добавлен в корзину</span>';
+                    var toasterMessage = '<span class="text-center" style="font-size:1rem"> добавлен в корзину</span>';
                     var toasterColor = "toster__success"
                     var imgAddItem = '<img src="' + response.img + '" style="border-radius:8px;" class="m-1 p-1 rounded-3 mr-2 border-2" width="50" alt="..."> '
                     var cartCount = '<i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="cart-count"></span>'
@@ -296,7 +296,7 @@
             $('.cart span').html(count).fadeIn(1000);
             $(cardItem).remove().fadeOut(3000);
             $(totalItem).remove();
-            var toasterMessage = '<span class="text-center" style="font-size:1.5rem">товар удален</span>';
+            var toasterMessage = '<span class="text-center" style="font-size:1rem">товар удален</span>';
             var toasterColor = "toster__info";
             if(data.removed_all){
                 console.log('change 1')
@@ -311,7 +311,7 @@
                 $(".fix-bottom-total").remove().html(emptyTotal)
             } else {
                 console.log('change 2')
-                var toasterMessage = '<span class="text-center" style="font-size:1.5rem;">количество обновлено</span>';
+                var toasterMessage = '<span class="text-center" style="font-size:1rem">количество обновлено</span>';
                 var toasterColor = "toster__success";
 
                 var quantity = "#" + idd + "_quantity";
@@ -340,7 +340,7 @@
             $(".fix__cart__total").html(totalCart);
             $(".cart-count-fix-bottom").html(totalItems);
 
-            var toasterMessage = '<span class="text-center" style="font-size:1.5rem;">количество обновлено</span>';
+            var toasterMessage = '<span class="text-center" style="font-size:1rem">количество обновлено</span>';
             var toasterColor = "toster__info";
             var imgAddItem = '<img src="' + imgChanged + '" style="border-radius:8px;" class="m-1 p-1 rounded-3 mr-2 border-2" width="50" alt="..."> '
         };
@@ -388,7 +388,7 @@
                 var totalItem = "p#total_item_" + data.removed_id;
                 var cardItem = "#item_" + data.removed_id;
                 var cartCount = '<i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="cart-count"></span>'
-                var toasterMessage = '<span class="text-center" style="font-size:1.5rem">товар удален</span>';
+                var toasterMessage = '<span class="text-center" style="font-size:1rem">товар удален</span>';
                 var toasterColor = "toster__error"
 
                 $('.icon-cart').html(cartCount).fadeIn();
@@ -419,7 +419,7 @@
                 $(".cart-count-fix-bottom").html(totalItems);
             } else {
                 console.log("remove 4")
-                var toasterMessage = '<span class="text-center" style="font-size:1.5rem">товар удален</span>';
+                var toasterMessage = '<span class="text-center" style="font-size:1rem">товар удален</span>';
                 var toasterColor = "toster__error";
                 $(".fix__cart__total").remove().html(totalCart);
                 $(".cart-count-fix-bottom").remove().html(totalItems);

@@ -3,15 +3,13 @@ import json
 import os
 
 from typing import Dict
+from config import CART_DB_FOLDER, CART_DB_FILE, CART_ERROR_LOG
 
-CART_DB_FOLDER = "./carts"  # '/home/vata/VataShop/carts'
-
-ERR_text = "carts/errors.txt"  # '/home/vata/VataShop/carts/errors.txt'
-CART_DB_FILE = 'carts_db.json'
 CART_DB_PATH = os.path.join(CART_DB_FOLDER, CART_DB_FILE)
 MODE_A = "a"
 MODE_R = "r"
 MODE_W = "w"
+
 
 def create_carts_json():
     if not os.path.exists(CART_DB_FOLDER):
@@ -39,7 +37,7 @@ def record_to_carts_db(cart: Dict, **kwargs):
     try:
         update_carts_json(cart)
     except Exception as e:
-        with open(ERR_text, mode=MODE_A, encoding='utf-8') as f:
+        with open(CART_ERROR_LOG, mode=MODE_A, encoding='utf-8') as f:
             date = datetime.datetime.now().strftime("%B-%d-%Y (%H:%M)")
             error = str(e)
             message = f"{date} {error}\n"

@@ -1,4 +1,5 @@
 import json
+import os
 import locale
 import smtplib
 import telebot
@@ -23,6 +24,7 @@ locale.setlocale(
 )
 
 
+ORDER_DB_FILE = os.path.join(ORDER_DB_PATH, "order_db.json") 
 # SMTP_USER = SMTP_USER
 # SMTP_PASSWORD = SMTP_PASSWORD
 # SMTP_HOST = "smtp.mail.ru"
@@ -38,7 +40,7 @@ celery.autodiscover_tasks()
 
 
 def create_pdf(data):
-    with open(ORDER_DB_PATH, "r", encoding='utf-8') as jsonFile:
+    with open(ORDER_DB_FILE, "r", encoding='utf-8') as jsonFile:
         data = json.load(jsonFile)
 
         # try:
@@ -98,11 +100,11 @@ def create_pdf(data):
 
 def html2pdf(html_path, pdf_path):
     options = {
-        'page-size': 'Letter',
+        'page-size': 'A4',
         'margin-top': '0.35in',
-        'margin-right': '0.75in',
-        'margin-bottom': '0.75in',
-        'margin-left': '0.75in',
+        'margin-right': '0.15in',
+        'margin-bottom': '0.15in',
+        'margin-left': '0.15in',
         'encoding': "UTF-8",
         'no-outline': None,
         'enable-local-file-access': '',
@@ -111,7 +113,7 @@ def html2pdf(html_path, pdf_path):
     config = pdfkit.configuration(wkhtmltopdf=r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe')
     # pdfkit.from_string(output_text, 'pdf_generated.pdf', configuration=config, css='style.css')
     with open(html_path) as f:
-        pdfkit.from_file(f, pdf_path, configuration=config, options=options)
+        pdfkit.from_file(f, pdf_path, options=options)
 
 
 # def create_mail(data):

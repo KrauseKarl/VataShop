@@ -1,18 +1,20 @@
 import json
-
+import os 
 from typing import Dict
 
 from config import ORDER_DB_PATH
 
 
+ORDER_DB_FILE = os.path.join(ORDER_DB_PATH, "order_db.json") 
+
 def create_order_json():
-    with open(ORDER_DB_PATH, 'w', encoding='utf-8') as f:
+    with open(ORDER_DB_FILE, 'w', encoding='utf-8') as f:
         order_dict = {"orders": {}}
         json.dump(order_dict, f, indent=4, ensure_ascii=False)
 
 
 def update_order_json(order: Dict):
-    with open(ORDER_DB_PATH, "r", encoding='utf-8') as jsonFile:
+    with open(ORDER_DB_FILE, "r", encoding='utf-8') as jsonFile:
         data = json.load(jsonFile)
         try:
             current_key = int(list(data["orders"].keys())[-1]) + 1
@@ -21,7 +23,7 @@ def update_order_json(order: Dict):
     order["order_id"] = current_key
     data["orders"][current_key] = order
 
-    with open(ORDER_DB_PATH, "w", encoding='utf-8') as jsonFile:
+    with open(ORDER_DB_FILE, "w", encoding='utf-8') as jsonFile:
         json.dump(data, jsonFile, indent=4, ensure_ascii=False)
     return current_key
 

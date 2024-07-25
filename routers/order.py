@@ -37,19 +37,19 @@ async def preorder(
         name: Optional[str] = Form(...),
         email: Optional[str] = Form(...),
         phone: Optional[str] = Form(...),
-        msg: Optional[str] = None):
+        msg: Optional[str] = Form(...)
+):
     data = {
         "date": now,
         "name": name,
         "email": email,
         "phone": phone,
-        "msg": msg if msg else '',
+        "msg": msg,
         "cart": cart
     }
 
     try:
         current_key = await record_to_order_db(data)
-        print("#456 current order id", current_key)
         data['order_id'] = current_key
         cart['archived'] = True
 

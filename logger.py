@@ -1,11 +1,13 @@
 import logging
-import sys
-from config import DATE_FORMAT, LOG_FILE
+from config import DATE_FORMAT
+from config import LOG_FILE
+from config import LOG_FORMAT
 
 logging.basicConfig(
     level="INFO",
-    format=DATE_FORMAT,
-    datefmt="%d/%b/%Y %H:%M:%S",
-    filename=LOG_FILE
+    format=LOG_FORMAT,
+    datefmt=DATE_FORMAT,
+    filename=LOG_FILE,
+    filemode="a"
 )
 logger = logging.getLogger("vataShop")

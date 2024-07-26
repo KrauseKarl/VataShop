@@ -284,8 +284,7 @@
     success: function(data) {
         var totalCart = data.total
         var totalItems = data.count_items
-        console.log('change Cart', totalCart)
-        console.log(totalItems)
+
         var idd = '' + data.item_id;
         var count = data.count_items;
         var imgChanged = data.img;
@@ -316,16 +315,18 @@
 
                 var quantity = "#" + idd + "_quantity";
                 var summary = "#" + idd + "_summary";
+                console.log(summary)
                 var totalSummary = "#" + idd + "__summary";
                 var imgAddItem = '<img src="' + imgChanged + '" style="border-radius:8px;" class="m-1 p-1 rounded-3 mr-2 border-2" width="50" alt="..."> '
                 $(".fix__cart__total").html(totalCart);
                 $(".cart-count-fix-bottom").html(totalItems);
 
                 $(quantity).text(data.cart['item'][idd]['quantity']).fadeIn(1000);
+                console.log(quantity)
                 $(summary).text(data.cart['item'][idd]['summary']).fadeIn(1000);
                 $(totalSummary).text(data.cart['item'][idd]['summary']).fadeIn(1000);
                 };
-                $("#cart__total").text(data.cart["total"]).fadeIn(1000);
+                $("#cart__total").text(totalCart).fadeIn(1000);
         } else {
             console.log('change 3')
             console.log(imgChanged)
@@ -333,7 +334,18 @@
 
             var cardItem = "#item_" + data.removed_id
             var totalItem = "p#total_item_" + data.removed_id
+            var quantity = "#" + idd + "_quantity";
+            var summary = "#" + idd + "_summary";
+            var totalSummary = "#" + idd + "__summary";
+            var imgAddItem = '<img src="' + imgChanged + '" style="border-radius:8px;" class="m-1 p-1 rounded-3 mr-2 border-2" width="50" alt="..."> '
+            $(".fix__cart__total").html(totalCart);
+            $(".cart-count-fix-bottom").html(totalItems);
 
+            $(quantity).text(data.cart['item'][idd]['quantity']).fadeIn(1000);
+            $(summary).text(data.cart['item'][idd]['summary']).fadeIn(1000);
+            $(totalSummary).text(data.cart['item'][idd]['summary']).fadeIn(1000);
+            };
+            $("#cart__total").text(totalCart).fadeIn(1000);
             $('.cart span').html(count).fadeIn(1000);
             $(cardItem).remove().fadeOut(3000);
             $(totalItem).remove();
@@ -342,8 +354,7 @@
 
             var toasterMessage = '<span class="text-center" style="font-size:1rem">количество обновлено</span>';
             var toasterColor = "toster__info";
-            var imgAddItem = '<img src="' + imgChanged + '" style="border-radius:8px;" class="m-1 p-1 rounded-3 mr-2 border-2" width="50" alt="..."> '
-        };
+            var imgAddItem = '<img src="' + imgChanged + '" style="border-radius:8px;" class="m-1 p-1 rounded-3 mr-2 border-2" width="50" alt="..."> ';
         toster(toasterMessage, toasterColor, imgAddItem);
         },
     error: function(data) {
@@ -438,6 +449,8 @@
             $(".cart__container").removeClass("invisible");
             $(".cart__empty__container").addClass("invisible");
         }
+        console.log('cart__total changed REMOVE')
+        $("#cart__total").text(itemsQNT).fadeIn(1000);
         var imgItem = '<img src="' + data.img + '" style="border-radius:8px;" class="m-1 p-1 rounded-3 mr-2 border-2" width="50" alt="..."> '
         toster(toasterMessage, toasterColor, imgItem);
         },

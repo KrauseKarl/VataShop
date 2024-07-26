@@ -74,7 +74,7 @@ else:
     LOG_FILE = os.getenv("LOG_FILE_PROD")
 LOG_FORMAT = os.getenv("LOG_FORMAT")
 
-DATE_FORMAT = os.getenv("DATE_FORMAT")
+DATE_FORMAT = "%d %b %y (%H:%M)"
 
 # POSTGRES
 # DB_HOST = os.getenv("DB_HOST")

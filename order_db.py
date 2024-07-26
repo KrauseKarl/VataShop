@@ -1,12 +1,6 @@
 import os
 import json
-<<<<<<< HEAD
-<<<<<<< HEAD
-import os 
-=======
->>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
-=======
->>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
+import os
 from typing import Dict
 
 from config import ORDER_DB_PATH
@@ -14,8 +8,6 @@ from config import ORDER_DB_FILE
 
 ORDER_DB_FILE = os.path.join(ORDER_DB_PATH, ORDER_DB_FILE)
 
-
-ORDER_DB_FILE = os.path.join(ORDER_DB_PATH, "order_db.json") 
 
 def create_order_json():
     with open(ORDER_DB_FILE, 'w', encoding='utf-8') as f:
@@ -46,4 +38,3 @@ async def record_to_order_db(order: Dict):
         create_order_json()
         current_key = update_order_json(order)
     return current_key
-

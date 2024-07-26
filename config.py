@@ -67,6 +67,14 @@ if OST == WINDOWS:
 else:
     ALLOWED_HOST = os.getenv("ALLOWED_HOST_PROD").split(" ")
 
+# LOG FILE
+if OST == WINDOWS:
+    LOG_FILE = os.getenv("LOG_FILE_DEV")
+else:
+    LOG_FILE = os.getenv("LOG_FILE_PROD")
+LOG_FORMAT = os.getenv("LOG_FORMAT")
+
+DATE_FORMAT = os.getenv("DATE_FORMAT")
 
 # POSTGRES
 # DB_HOST = os.getenv("DB_HOST")

@@ -14,7 +14,8 @@ from fastapi_sessions import session_verifier
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 
-from config import APP, HOST, PORT, DEBUG
+from config import APP, HOST, PORT
+from config import LOG_FILE
 from config import OST, WINDOWS
 from config import ORIGINS
 from config import ALLOWED_HOST
@@ -27,30 +28,15 @@ from dependencies import get_cart
 from dependencies import categories_list
 from dependencies import items_list
 from dependencies import templates
+from logger import logger
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#locale.setlocale(category=locale.LC_ALL, locale="ru_RU.UTF-8")
-=======
-=======
->>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
+
 if OST == WINDOWS:
     locale.setlocale(
         category=locale.LC_ALL,
         locale="ru_RU.UTF-8"
     )
 
-logging.basicConfig(
-    stream=sys.stdout,
-    level="INFO",
-    format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
-    datefmt="%d/%b/%Y %H:%M:%S",
-)
-logger = logging.getLogger("vataShop")
-<<<<<<< HEAD
->>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
-=======
->>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
 
 app = FastAPI()
 app.include_router(catalog.router)

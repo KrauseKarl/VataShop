@@ -4,12 +4,21 @@ from fastapi import APIRouter, Depends, Request, Form
 from fastapi.responses import HTMLResponse, JSONResponse
 
 from cart_db import record_to_carts_db
-from dependencies import get_cart, items_list, categories_list, templates
+from config import DATE_FORMAT
+from dependencies import get_cart
+from dependencies import items_list
+from dependencies import categories_list
+from dependencies import templates
+from logger import logger
 
 router = APIRouter(
     prefix="/cart",
     tags=["cart"],
-    dependencies=[Depends(get_cart), Depends(items_list), Depends(categories_list), ],
+    dependencies=[
+        Depends(get_cart),
+        Depends(items_list),
+        Depends(categories_list),
+    ],
     responses={404: {"description": "Not found"}},
 )
 
@@ -90,6 +99,7 @@ async def add_to_cart(
             "product": data.get(parent_id),
         }
     except Exception as error:
+        logger.error(error)
         response = {"data": error}
     return response
 
@@ -120,7 +130,7 @@ async def recalculate_cart(
     else:
         removed_all = True
         request.session["cart"]["total"] = 0
-    request.session["cart"]["updated"] = datetime.now().strftime("%d %B %Y(%H:%M)")
+    request.session["cart"]["updated"] = datetime.now().strftime(DATE_FORMAT)
     record_to_carts_db(request.session["cart"])
     count_items = len(request.session["cart"].get("item").keys())
     context = {
@@ -158,4 +168,5 @@ async def delete_cart(
         request: Request,
         cart: Dict = Depends(get_cart)):
     del request.session['cart']
+
     return {'status': 204, "cart": cart}

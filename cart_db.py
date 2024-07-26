@@ -1,13 +1,13 @@
 import os
 import json
-import datetime
 
+from datetime import datetime
 from typing import Dict
 
 from config import CART_DB_FOLDER
 from config import CART_DB_FILE
 from config import CART_ERROR_LOG
-
+from config import DATE_FORMAT
 
 CART_DB_PATH = os.path.join(CART_DB_FOLDER, CART_DB_FILE)
 MODE_A = "a"
@@ -42,7 +42,7 @@ def record_to_carts_db(cart: Dict, **kwargs):
         update_carts_json(cart)
     except Exception as e:
         with open(CART_ERROR_LOG, mode=MODE_A, encoding='utf-8') as f:
-            date = datetime.datetime.now().strftime("%B-%d-%Y (%H:%M)")
+            date = datetime.now().strftime(DATE_FORMAT)
             error = str(e)
             message = f"{date} {error}\n"
             f.write(message)

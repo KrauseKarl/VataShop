@@ -2,12 +2,20 @@ from typing import Dict
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import HTMLResponse, JSONResponse
 
-from dependencies import get_cart, items_list, categories_list, get_favorite, templates
+from dependencies import get_cart
+from dependencies import items_list
+from dependencies import categories_list
+from dependencies import get_favorite
+from dependencies import templates
 
 router = APIRouter(
     prefix="/favorite",
     tags=["favorite"],
-    dependencies=[Depends(get_cart), Depends(items_list), Depends(categories_list), ],
+    dependencies=[
+        Depends(get_cart),
+        Depends(items_list),
+        Depends(categories_list),
+    ],
     responses={404: {"description": "Not found"}},
 )
 

@@ -1,11 +1,12 @@
+import os
 import json
-import os 
 from typing import Dict
 
 from config import ORDER_DB_PATH
+from config import ORDER_DB_FILE
 
+ORDER_DB_FILE = os.path.join(ORDER_DB_PATH, ORDER_DB_FILE)
 
-ORDER_DB_FILE = os.path.join(ORDER_DB_PATH, "order_db.json") 
 
 def create_order_json():
     with open(ORDER_DB_FILE, 'w', encoding='utf-8') as f:

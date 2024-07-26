@@ -4,6 +4,7 @@ from typing import Dict
 from datetime import datetime
 from fastapi import Request, Query
 from starlette.templating import Jinja2Templates
+
 from cart_db import record_to_carts_db
 
 templates = Jinja2Templates(directory="templates")
@@ -20,7 +21,7 @@ def items_list():
 
 
 def categories_list():
-    with open("db/categoies.json", "r", encoding="utf-8") as с:
+    with open("db/categories.json", "r", encoding="utf-8") as с:
         categories = json.load(с)
     return categories
 
@@ -50,7 +51,10 @@ def get_favorite(request: Request):
 
 
 def get_category(items: Dict, category: str):
-    return {k: v for k, v in items.items() if v['category'] == category}
+    return {
+        k: v for k, v in items.items()
+        if v['category'] == category
+    }
 
 
 def get_pagination_params(

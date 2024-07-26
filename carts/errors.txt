@@ -15,3 +15,8 @@
 Июль-24-2024 (12:34) Extra data: line 2 column 43 (char 43)
 Июль-24-2024 (12:34) Extra data: line 2 column 43 (char 43)
 Июль-24-2024 (12:35) Extra data: line 2 column 43 (char 43)
+Июль-26-2024 (18:58) 'NoneType' object is not subscriptable
+Июль-26-2024 (19:03) 'NoneType' object is not subscriptable
+Июль-26-2024 (19:06) 'NoneType' object is not subscriptable
+Июль-26-2024 (19:07) 'NoneType' object is not subscriptable
+Июль-26-2024 (19:08) 'NoneType' object is not subscriptable

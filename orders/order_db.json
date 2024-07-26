@@ -4917,6 +4917,545 @@
                 "archived": false
             },
             "order_id": 150
+        },
+        "151": {
+            "date": "26 Июль 2024(13:05)",
+            "name": "max",
+            "email": "max@mail.com",
+            "phone": "79000000000",
+            "msg": "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites qui n'en sont encore qu'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d'y rajouter de petits clins d'oeil, voire des phrases embarassantes).",
+            "cart": {
+                "created": "24 Июль 2024(18:19)",
+                "updated": "26 Июль 2024(02:03)",
+                "id": "ba742940-d042-4ea1-b1c3-3df97c7707fb",
+                "item": {
+                    "00202": {
+                        "name": "Зайчик",
+                        "parent_id": "002",
+                        "price": "1000",
+                        "quantity": "1",
+                        "color": "00202",
+                        "color_name": "черный",
+                        "img": "/assets/images/items/001/001_img_2.jpg",
+                        "summary": 1000
+                    },
+                    "00203": {
+                        "name": "Зайчик",
+                        "parent_id": "002",
+                        "price": "1000",
+                        "quantity": "1",
+                        "color": "00203",
+                        "color_name": "желтый",
+                        "img": "/assets/images/items/001/001_img_3.jpg",
+                        "summary": 1000
+                    }
+                },
+                "total": 2000,
+                "archived": false
+            },
+            "order_id": 151
+        },
+        "152": {
+            "date": "26 Июль 2024(13:08)",
+            "name": "max",
+            "email": "max@mail.com",
+            "phone": "79000000000",
+            "msg": "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites qui n'en sont encore qu'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d'y rajouter de petits clins d'oeil, voire des phrases embarassantes).",
+            "cart": {
+                "created": "26 Июль 2024(13:05)",
+                "updated": "26 Июль 2024(13:07)",
+                "id": "6e5f92e8-7701-431e-a620-86b2455c66d7",
+                "item": {
+                    "00202": {
+                        "name": "Зайчик",
+                        "parent_id": "002",
+                        "price": "1000",
+                        "quantity": 3,
+                        "color": "00202",
+                        "color_name": "черный",
+                        "img": "/assets/images/items/001/001_img_2.jpg",
+                        "summary": 3000
+                    }
+                },
+                "total": 3000,
+                "archived": false
+            },
+            "order_id": 152
+        },
+        "153": {
+            "date": "26 Июль 2024(13:10)",
+            "name": "max",
+            "email": "max@mail.com",
+            "phone": "79000000000",
+            "msg": "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites qui n'en sont encore qu'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d'y rajouter de petits clins d'oeil, voire des phrases embarassantes).",
+            "cart": {
+                "created": "26 Июль 2024(13:08)",
+                "updated": "26 Июль 2024(13:10)",
+                "id": "d917bb51-ed20-4afc-9dbe-bbd26354dd9a",
+                "item": {
+                    "00106": {
+                        "name": "Голова МОАИ",
+                        "parent_id": "001",
+                        "price": "1000",
+                        "quantity": "1",
+                        "color": "00106",
+                        "color_name": "зеленый",
+                        "img": "/assets/images/items/007/007_img_6.jpg",
+                        "summary": 1000
+                    }
+                },
+                "total": 1000,
+                "archived": false
+            },
+            "order_id": 153
+        },
+        "154": {
+            "date": "26 Июль 2024(13:12)",
+            "name": "max",
+            "email": "max@mail.com",
+            "phone": "79000000000",
+            "msg": "\nOn sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites qui n'en sont encore qu'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d'y rajouter de petits clins d'oeil, voire des phrases embarassantes).",
+            "cart": {
+                "created": "26 Июль 2024(13:11)",
+                "updated": "26 Июль 2024(13:11)",
+                "id": "b157fd37-14dd-40df-96bc-79fc6dd721b2",
+                "item": {
+                    "00504": {
+                        "name": "Бетонная шкатулка S",
+                        "parent_id": "005",
+                        "price": "400",
+                        "quantity": "1",
+                        "color": "00504",
+                        "color_name": "серый",
+                        "img": "/assets/images/items/005/005_img_4.jpg",
+                        "summary": 400
+                    }
+                },
+                "total": 400,
+                "archived": false
+            },
+            "order_id": 154
+        },
+        "155": {
+            "date": "26 Июль 2024(13:13)",
+            "name": "max",
+            "email": "max@mail.com",
+            "phone": "79000000000",
+            "msg": "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites qui n'en sont encore qu'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d'y rajouter de petits clins d'oeil, voire des phrases embarassantes).",
+            "cart": {
+                "created": "26 Июль 2024(13:12)",
+                "updated": "26 Июль 2024(13:13)",
+                "id": "d37ffeaa-4c2c-4b7a-a7ec-a00251e088fd",
+                "item": {
+                    "00402": {
+                        "name": "Поднос ОВАЛ",
+                        "parent_id": "004",
+                        "price": "300",
+                        "quantity": "1",
+                        "color": "00402",
+                        "color_name": "черный",
+                        "img": "/assets/images/items/010/010_img_2.jpg",
+                        "summary": 300
+                    }
+                },
+                "total": 300,
+                "archived": false
+            },
+            "order_id": 155
+        },
+        "156": {
+            "date": "26 Июль 2024(15:55)",
+            "name": "max",
+            "email": "max@mail.com",
+            "phone": "79000000000",
+            "msg": "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites qui n'en sont encore qu'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d'y rajouter de petits clins d'oeil, voire des phrases embarassantes).",
+            "cart": {
+                "created": "26 Июль 2024(13:13)",
+                "updated": "26 Июль 2024(14:20)",
+                "id": "e262dfe4-723f-40a7-abaa-93cd066fc9dd",
+                "item": {
+                    "00202": {
+                        "name": "Зайчик",
+                        "parent_id": "002",
+                        "price": "1000",
+                        "quantity": 2,
+                        "color": "00202",
+                        "color_name": "черный",
+                        "img": "/assets/images/items/001/001_img_2.jpg",
+                        "summary": 2000
+                    }
+                },
+                "total": 2000,
+                "archived": false
+            },
+            "order_id": 156
+        },
+        "157": {
+            "date": "26 Июль 2024(16:08)",
+            "name": "max",
+            "email": "max@mail.com",
+            "phone": "79000000000",
+            "msg": "Es ist ein lang erwiesener Fakt, dass ein Leser vom Text abgelenkt wird, wenn er sich ein Layout ansieht. Der Punkt, Lorem Ipsum zu nutzen, ist, dass es mehr oder weniger die normale Anordnung von Buchstaben darstellt und somit nach lesbarer Sprache aussieht. Viele Desktop Publisher und Webeditoren nutzen mittlerweile Lorem Ipsum als den Standardtext, auch die Suche im Internet nach \"lorem ipsum\" macht viele Webseiten sichtbar, wo diese noch immer vorkommen. Mittlerweile gibt es mehrere Versionen des Lorem Ipsum, einige zufällig, andere bewusst (beeinflusst von Witz und des eigenen Geschmacks)",
+            "cart": {
+                "created": "26 Июль 2024(16:07)",
+                "updated": "26 Июль 2024(16:07)",
+                "id": "0596723d-5ecd-4c10-ac6c-23a68c555f74",
+                "item": {
+                    "00204": {
+                        "name": "Зайчик",
+                        "parent_id": "002",
+                        "price": "1000",
+                        "quantity": "1",
+                        "color": "00204",
+                        "color_name": "серый",
+                        "img": "/assets/images/items/001/001_img_4.jpg",
+                        "summary": 1000
+                    }
+                },
+                "total": 1000,
+                "archived": false
+            },
+            "order_id": 157
+        },
+        "158": {
+            "date": "26 Июль 2024(16:18)",
+            "name": "Alex",
+            "email": "alex@mail.com",
+            "phone": "79008007060Es ist ein lang erwiesener Fakt, dass ein Leser vom Text abgelenkt wird, wenn er sich ein Layout ansieht. Der Punkt, Lorem Ipsum zu nutzen, ist, dass es mehr oder weniger die normale Anordnung von Buchstaben darstellt und somit nach lesbarer Sprache aussieht. Viele Desktop Publisher und Webeditoren nutzen mittlerweile Lorem Ipsum als den Standardtext, auch die Suche im Internet nach \"lorem ipsum\" macht viele Webseiten sichtbar, wo diese noch immer vorkommen. Mittlerweile gibt es mehrere Versionen des Lorem Ipsum, einige zufällig, andere bewusst (beeinflusst von Witz und des eigenen Geschmacks)",
+            "msg": "Es ist ein lang erwiesener Fakt, dass ein Leser vom Text abgelenkt wird, wenn er sich ein Layout ansieht. Der Punkt, Lorem Ipsum zu nutzen, ist, dass es mehr oder weniger die normale Anordnung von Buchstaben darstellt und somit nach lesbarer Sprache aussieht. Viele Desktop Publisher und Webeditoren nutzen mittlerweile Lorem Ipsum als den Standardtext, auch die Suche im Internet nach \"lorem ipsum\" macht viele Webseiten sichtbar, wo diese noch immer vorkommen. Mittlerweile gibt es mehrere Versionen des Lorem Ipsum, einige zufällig, andere bewusst (beeinflusst von Witz und des eigenen Geschmacks)",
+            "cart": {
+                "created": "26 Июль 2024(16:08)",
+                "updated": "26 Июль 2024(16:17)",
+                "id": "0dbd95fd-507d-4ee4-be74-79dfb16f063b",
+                "item": {
+                    "00203": {
+                        "name": "Зайчик",
+                        "parent_id": "002",
+                        "price": "1000",
+                        "quantity": 2,
+                        "color": "00203",
+                        "color_name": "желтый",
+                        "img": "/assets/images/items/001/001_img_3.jpg",
+                        "summary": 2000
+                    }
+                },
+                "total": 2000,
+                "archived": false
+            },
+            "order_id": 158
+        },
+        "159": {
+            "date": "26 Июль 2024(16:20)",
+            "name": "Alex",
+            "email": "alex@mail.com",
+            "phone": "=79008006070",
+            "msg": "Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aquí, contenido aquí\". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda de \"Lorem Ipsum\" va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras veces a propósito (por ejemplo insertándole humor y cosas por el estilo).",
+            "cart": {
+                "created": "26 Июль 2024(16:18)",
+                "updated": "26 Июль 2024(16:19)",
+                "id": "b6e34f9c-4084-46af-8698-0a1c0bbc7e10",
+                "item": {
+                    "00506": {
+                        "name": "Бетонная шкатулка S",
+                        "parent_id": "005",
+                        "price": "400",
+                        "quantity": "1",
+                        "color": "00506",
+                        "color_name": "зеленый",
+                        "img": "/assets/images/items/005/005_img_6.jpg",
+                        "summary": 400
+                    }
+                },
+                "total": 400,
+                "archived": false
+            },
+            "order_id": 159
+        },
+        "160": {
+            "date": "26 Июль 2024(16:24)",
+            "name": "max",
+            "email": "max@mail.com",
+            "phone": "79000000000",
+            "msg": "Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aquí, contenido aquí\". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda de \"Lorem Ipsum\" va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras veces a propósito (por ejemplo insertándole humor y cosas por el estilo).",
+            "cart": {
+                "created": "26 Июль 2024(16:20)",
+                "updated": "26 Июль 2024(16:24)",
+                "id": "6885aca4-d84d-451b-9de4-210d75243f76",
+                "item": {
+                    "00206": {
+                        "name": "Зайчик",
+                        "parent_id": "002",
+                        "price": "1000",
+                        "quantity": "1",
+                        "color": "00206",
+                        "color_name": "зеленый",
+                        "img": "/assets/images/items/001/001_img_5.jpg",
+                        "summary": 1000
+                    }
+                },
+                "total": 1000,
+                "archived": false
+            },
+            "order_id": 160
+        },
+        "161": {
+            "date": "26 Июль 2024(16:30)",
+            "name": "max",
+            "email": "max@mail.com",
+            "phone": "79000000000",
+            "msg": "Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aquí, contenido aquí\". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda de \"Lorem Ipsum\" va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras veces a propósito (por ejemplo insertándole humor y cosas por el estilo).",
+            "cart": {
+                "created": "26 Июль 2024(16:24)",
+                "updated": "26 Июль 2024(16:30)",
+                "id": "54a2bb5f-34de-4f18-81f0-60c15bca877a",
+                "item": {
+                    "00202": {
+                        "name": "Зайчик",
+                        "parent_id": "002",
+                        "price": "1000",
+                        "quantity": "1",
+                        "color": "00202",
+                        "color_name": "черный",
+                        "img": "/assets/images/items/001/001_img_2.jpg",
+                        "summary": 1000
+                    },
+                    "00203": {
+                        "name": "Зайчик",
+                        "parent_id": "002",
+                        "price": "1000",
+                        "quantity": "1",
+                        "color": "00203",
+                        "color_name": "желтый",
+                        "img": "/assets/images/items/001/001_img_3.jpg",
+                        "summary": 1000
+                    },
+                    "00204": {
+                        "name": "Зайчик",
+                        "parent_id": "002",
+                        "price": "1000",
+                        "quantity": "1",
+                        "color": "00204",
+                        "color_name": "серый",
+                        "img": "/assets/images/items/001/001_img_4.jpg",
+                        "summary": 1000
+                    }
+                },
+                "total": 3000,
+                "archived": false
+            },
+            "order_id": 161
+        },
+        "162": {
+            "date": "26 Июль 2024(16:35)",
+            "name": "max",
+            "email": "max@mail.com",
+            "phone": "79000000000",
+            "msg": "Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aquí, contenido aquí\". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda de \"Lorem Ipsum\" va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras veces a propósito (por ejemplo insertándole humor y cosas por el estilo).",
+            "cart": {
+                "created": "26 Июль 2024(16:30)",
+                "updated": "26 Июль 2024(16:35)",
+                "id": "de5c88d9-2cfc-43ec-9e65-0a3e3fe6bb93",
+                "item": {
+                    "00204": {
+                        "name": "Зайчик",
+                        "parent_id": "002",
+                        "price": "1000",
+                        "quantity": "1",
+                        "color": "00204",
+                        "color_name": "серый",
+                        "img": "/assets/images/items/001/001_img_4.jpg",
+                        "summary": 1000
+                    }
+                },
+                "total": 1000,
+                "archived": false
+            },
+            "order_id": 162
+        },
+        "163": {
+            "date": "26 Июль 2024(16:59)",
+            "name": "max",
+            "email": "max@mail.com",
+            "phone": "79000000000",
+            "msg": "Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aquí, contenido aquí\". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda de \"Lorem Ipsum\" va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras veces a propósito (por ejemplo insertándole humor y cosas por el estilo).",
+            "cart": {
+                "created": "26 Июль 2024(16:35)",
+                "updated": "26 Июль 2024(16:58)",
+                "id": "36b2804c-43bb-4026-b94a-6832593f900c",
+                "item": {
+                    "00202": {
+                        "name": "Зайчик",
+                        "parent_id": "002",
+                        "price": "1000",
+                        "quantity": "1",
+                        "color": "00202",
+                        "color_name": "черный",
+                        "img": "/assets/images/items/001/001_img_2.jpg",
+                        "summary": 1000
+                    }
+                },
+                "total": 1000,
+                "archived": false
+            },
+            "order_id": 163
+        },
+        "164": {
+            "date": "26 Июль 2024(17:03)",
+            "name": "max",
+            "email": "max@mail.com",
+            "phone": "79008006070",
+            "msg": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+            "cart": {
+                "created": "26 Июль 2024(16:59)",
+                "updated": "26 Июль 2024(17:01)",
+                "id": "76e7283c-8919-4d94-8853-a47289bd922f",
+                "item": {
+                    "00303": {
+                        "name": "Лист ГИНКО",
+                        "parent_id": "003",
+                        "price": "300",
+                        "quantity": "1",
+                        "color": "00303",
+                        "color_name": "желтый",
+                        "img": "/assets/images/items/008/008_img_3.jpg",
+                        "summary": 300
+                    },
+                    "00304": {
+                        "name": "Лист ГИНКО",
+                        "parent_id": "003",
+                        "price": "300",
+                        "quantity": "1",
+                        "color": "00304",
+                        "color_name": "серый",
+                        "img": "/assets/images/items/008/008_img_4.jpg",
+                        "summary": 300
+                    },
+                    "00308": {
+                        "name": "Лист ГИНКО",
+                        "parent_id": "003",
+                        "price": "300",
+                        "quantity": "1",
+                        "color": "00308",
+                        "color_name": "мрамор 3 цвета",
+                        "img": "/assets/images/items/007/007_img_9.jpg",
+                        "summary": 300
+                    }
+                },
+                "total": 900,
+                "archived": false
+            },
+            "order_id": 164
+        },
+        "165": {
+            "date": "26 Июль 2024(17:06)",
+            "name": "max",
+            "email": "max@mail.com",
+            "phone": "79000000000",
+            "msg": "hello",
+            "cart": {
+                "created": "26 Июль 2024(17:03)",
+                "updated": "26 Июль 2024(17:05)",
+                "id": "f32a1e61-dfd8-4921-a72e-57a06d2b2a5f",
+                "item": {
+                    "00202": {
+                        "name": "Зайчик",
+                        "parent_id": "002",
+                        "price": "1000",
+                        "quantity": "1",
+                        "color": "00202",
+                        "color_name": "черный",
+                        "img": "/assets/images/items/001/001_img_2.jpg",
+                        "summary": 1000
+                    }
+                },
+                "total": 1000,
+                "archived": false
+            },
+            "order_id": 165
+        },
+        "166": {
+            "date": "26 Июль 2024(17:57)",
+            "name": "max",
+            "email": "max@mail.com",
+            "phone": "79000000000",
+            "msg": "Yinelenen bir sayfa içeriğinin okuyucunun dikkatini dağıttığı bilinen bir gerçektir. Lorem Ipsum kullanmanın amacı, sürekli 'buraya metin gelecek, buraya metin gelecek' yazmaya kıyasla daha dengeli bir harf dağılımı sağlayarak okunurluğu artırmasıdır. Şu anda birçok masaüstü yayıncılık paketi ve web sayfa düzenleyicisi, varsayılan mıgır metinler olarak Lorem Ipsum kullanmaktadır. Ayrıca arama motorlarında 'lorem ipsum' anahtar sözcükleri ile arama yapıldığında henüz tasarım aşamasında olan çok sayıda site listelenir. Yıllar içinde, bazen kazara, bazen bilinçli olarak (örneğin mizah katılarak), çeşitli sürümleri geliştirilmiştir.",
+            "cart": {
+                "created": "26 Июль 2024(17:06)",
+                "updated": "26 Июль 2024(17:55)",
+                "id": "c4da1114-2c3d-46d6-a8a5-f57359772e4f",
+                "item": {
+                    "00402": {
+                        "name": "Поднос ОВАЛ",
+                        "parent_id": "004",
+                        "price": "300",
+                        "quantity": "1",
+                        "color": "00402",
+                        "color_name": "черный",
+                        "img": "/assets/images/items/010/010_img_2.jpg",
+                        "summary": 300
+                    }
+                },
+                "total": 300,
+                "archived": false
+            },
+            "order_id": 166
+        },
+        "167": {
+            "date": "26 Июль 2024(19:09)",
+            "name": "max",
+            "email": "max@mail.com",
+            "phone": "79000000000",
+            "msg": "Yinelenen bir sayfa içeriğinin okuyucunun dikkatini dağıttığı bilinen bir gerçektir. Lorem Ipsum kullanmanın amacı, sürekli 'buraya metin gelecek, buraya metin gelecek' yazmaya kıyasla daha dengeli bir harf dağılımı sağlayarak okunurluğu artırmasıdır. Şu anda birçok masaüstü yayıncılık paketi ve web sayfa düzenleyicisi, varsayılan mıgır metinler olarak Lorem Ipsum kullanmaktadır. Ayrıca arama motorlarında 'lorem ipsum' anahtar sözcükleri ile arama yapıldığında henüz tasarım aşamasında olan çok sayıda site listelenir. Yıllar içinde, bazen kazara, bazen bilinçli olarak (örneğin mizah katılarak), çeşitli sürümleri geliştirilmiştir.",
+            "cart": {
+                "created": "26 Июль 2024(19:08)",
+                "updated": "26 Июль 2024(19:09)",
+                "id": "6f97ca90-3cfa-4362-a4b1-7c998bc12576",
+                "item": {
+                    "00206": {
+                        "name": "Зайчик",
+                        "parent_id": "002",
+                        "price": "1000",
+                        "quantity": 3,
+                        "color": "00206",
+                        "color_name": "зеленый",
+                        "img": "/assets/images/items/001/001_img_5.jpg",
+                        "summary": 3000
+                    },
+                    "00203": {
+                        "name": "Зайчик",
+                        "parent_id": "002",
+                        "price": "1000",
+                        "quantity": 2,
+                        "color": "00203",
+                        "color_name": "желтый",
+                        "img": "/assets/images/items/001/001_img_3.jpg",
+                        "summary": 2000
+                    },
+                    "00202": {
+                        "name": "Зайчик",
+                        "parent_id": "002",
+                        "price": "1000",
+                        "quantity": 4,
+                        "color": "00202",
+                        "color_name": "черный",
+                        "img": "/assets/images/items/001/001_img_2.jpg",
+                        "summary": 4000
+                    },
+                    "00204": {
+                        "name": "Зайчик",
+                        "parent_id": "002",
+                        "price": "1000",
+                        "quantity": 4,
+                        "color": "00204",
+                        "color_name": "серый",
+                        "img": "/assets/images/items/001/001_img_4.jpg",
+                        "summary": 4000
+                    }
+                },
+                "total": 13000,
+                "archived": false
+            },
+            "order_id": 167
         }
     }
 }

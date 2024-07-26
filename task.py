@@ -41,96 +41,104 @@ celery.autodiscover_tasks()
 
 
 def create_pdf(data):
-    with open(ORDER_DB_FILE, "r", encoding='utf-8') as jsonFile:
-        data = json.load(jsonFile)
-        # try:
-        number_cart = str(list(data["orders"].keys())[-1])
-        last_cart = data["orders"].get(number_cart)
-        # except (KeyError, IndexError):
-        #     filename = datetime.now().strftime(DATE_FORMAT),
+    try:
+        with open(ORDER_DB_FILE, "r", encoding='utf-8') as jsonFile:
+            data = json.load(jsonFile)
+            try:
+                number_cart = str(list(data["orders"].keys())[-1])
+            except (KeyError, IndexError):
+                number_cart = 1
+            last_cart = data["orders"].get(number_cart)
 
-    context = {
-        "date": datetime.now().strftime(DATE_FORMAT),
-        "name": last_cart.get("name"),
-        "email": last_cart.get("email"),
-        "phone": last_cart.get("phone"),
-        "msg": last_cart.get("msg"),
-        'cart': last_cart.get("cart"),
-        "order_id": last_cart.get("order_id")
-    }
+        context = {
+            "date": datetime.now().strftime(DATE_FORMAT),
+            "name": last_cart.get("name"),
+            "email": last_cart.get("email"),
+            "phone": last_cart.get("phone"),
+            "msg": last_cart.get("msg"),
+            'cart': last_cart.get("cart"),
+            "order_id": last_cart.get("order_id")
+        }
 
-    cart = context.get("cart")
-    products = cart.get("item")
+        cart = context.get("cart")
+        products = cart.get("item")
 
-    order_items = [
-        "{name}  [{quantity}] шт ({color})\n".format(
-            name=it.get("name"),
-            quantity=it.get("quantity"),
-            color=it.get("color_name")
-        ) for item_id, it in products.items()
-    ]
+        order_items = [
+            "{name}  [{quantity}] шт ({color})\n".format(
+                name=it.get("name"),
+                quantity=it.get("quantity"),
+                color=it.get("color_name")
+            ) for item_id, it in products.items()
+        ]
 
-    template_loader = jinja2.FileSystemLoader('./templates')
-    template_env = jinja2.Environment(loader=template_loader)
-    template_file = "/order-list.html"
-    template = template_env.get_template(template_file)
-    output_text = template.render(context)
-    html_path = ORDER_DB_PATH + '/html/order.html'
+        template_loader = jinja2.FileSystemLoader('./templates')
+        template_env = jinja2.Environment(loader=template_loader)
+        template_file = "/order-list.html"
+        template = template_env.get_template(template_file)
+        output_text = template.render(context)
+        html_path = ORDER_DB_PATH + '/html/order.html'
 
-    with open(html_path, 'w', encoding='utf-8') as file:
-        file.write(output_text)
+        with open(html_path, 'w', encoding='utf-8') as file:
+            file.write(output_text)
 
-    html2pdf(
-        html_path=ORDER_DB_PATH + '/html/order.html',
-        pdf_path=ORDER_DB_PATH + f'/pdf/order_{number_cart}.pdf'
-    )
-
-    finale_message = "✅Заказ {order_id}\n👤: {name}\n✉️: {email}\n☎️: {phone}\n💰 {total}\n\n{items}".format(
-        name=context.get('name', 'anon'),
-        order_id=context.get('order_id', 'none'),
-        date=DATE_FORMAT,
-        email=context.get('email', 'anon'),
-        phone=context.get('phone', 'anon'),
-        total=context.get('cart', 'anon').get("total", 0),
-        items="".join(order_items),
-    )
-    if context.get('msg'):
-        msg = "\n🗒 комментарий:\n\n{msg}\n\n#{order_id}\n#{telephone}".format(
-            msg=context.get('msg', 'anon'),
-            order_id=str(context.get('order_id', 'none')),
-            telephone=context.get('phone', 'anon').strip(),
+        html2pdf(
+            html_path=ORDER_DB_PATH + '/html/order.html',
+            pdf_path=ORDER_DB_PATH + f'/pdf/order_{number_cart}.pdf'
         )
-        finale_message = finale_message + msg
 
-    return finale_message
+        finale_message = "✅Заказ {order_id}\n👤: {name}\n✉️: {email}\n☎️: {phone}\n💰 {total}\n\n{items}".format(
+            name=context.get('name', 'anon'),
+            order_id=context.get('order_id', 'none'),
+            date=DATE_FORMAT,
+            email=context.get('email', 'anon'),
+            phone=context.get('phone', 'anon'),
+            total=context.get('cart', 'anon').get("total", 0),
+            items="".join(order_items),
+        )
+        if context.get('msg'):
+            msg = "\n🗒 комментарий:\n\n{msg}\n\n#{order_id}\n#{telephone}".format(
+                msg=context.get('msg', 'anon'),
+                order_id=str(context.get('order_id', 'none')),
+                telephone=context.get('phone', 'anon').strip(),
+            )
+            finale_message = finale_message + msg
+
+        return finale_message
+    except Exception as error:
+        logger.info(error)
+
     # return output_text
 
 
 def html2pdf(html_path, pdf_path):
-    options = {
-        'page-size': 'A4',
-        'margin-top': '0.35in',
-        'margin-right': '0.15in',
-        'margin-bottom': '0.25in',
-        'margin-left': '0.15in',
-        'encoding': "UTF-8",
-        'no-outline': None,
-        'enable-local-file-access': '',
-    }
-    # pdfkit.from_string(
-    # output_text,
-    # 'pdf_generated.pdf',
-    # configuration=config,
-    # css='style.css'
-    # )
-    with open(html_path) as f:
-        if OST == WINDOWS:
-            config = pdfkit.configuration(
-                wkhtmltopdf=r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
-            )
-            pdfkit.from_file(f, pdf_path, options=options, configuration=config)
-        else:
-            pdfkit.from_file(f, pdf_path, options=options)
+    try:
+        options = {
+            'page-size': 'A4',
+            'margin-top': '0.35in',
+            'margin-right': '0.15in',
+            'margin-bottom': '0.25in',
+            'margin-left': '0.15in',
+            'encoding': "UTF-8",
+            'no-outline': None,
+            'enable-local-file-access': '',
+        }
+        # pdfkit.from_string(
+        # output_text,
+        # 'pdf_generated.pdf',
+        # configuration=config,
+        # css='style.css'
+        # )
+        with open(html_path) as f:
+            if OST == WINDOWS:
+                config = pdfkit.configuration(
+                    wkhtmltopdf=r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+                )
+                pdfkit.from_file(f, pdf_path, options=options, configuration=config)
+            else:
+                pdfkit.from_file(f, pdf_path, options=options)
+    except Exception as error:
+        logger.info('⛔не смог сформировать PDF файл')
+        logger.info(error)
 
 
 def bot_init(token: str):
@@ -143,16 +151,19 @@ def send_order_to_tg_chat(bot, chat_id, message):
 
 
 def send_pdf_to_tg_chat(bot, chat_id, filename):
-    bot.send_document(
-        chat_id=chat_id,
-        filename=open(filename, "rb")
-    )
+    pdf_file = open(filename, "rb")
+    bot.send_document(chat_id, pdf_file)
 
 
 def get_filename(**data):
-    filename = data.get("data").get("order_id")
-    pdf_path = f'./orders/pdf/order_{filename}.pdf'
-    return pdf_path
+    try:
+        filename = data.get("data").get("order_id")
+        pdf_path = f'./orders/pdf/order_{filename}.pdf'
+        logger.info(pdf_path)
+        return pdf_path
+    except Exception as error:
+        logger.error('⛔путь до файла не найден')
+        logger.error(error)
 
 
 @celery.task
@@ -166,21 +177,23 @@ def send_order_tg_chat(**data):
 
     try:
         send_order_to_tg_chat(bot, chat_id, message)
+        logger.info("✅ сообщение с заявкой отправлено")
     except Exception as error:
         message = "⛔ ОШИБКА! не смог отправить данные по заказу."
-        logger.info(message)
-        logger.info(error)
+        logger.error(message)
+        logger.error(error)
         send_order_to_tg_chat(bot, chat_id, message)
 
     try:
         send_pdf_to_tg_chat(bot, chat_id, filename)
+        logger.info("✅ PDF файл отправлен")
     except Exception as error:
         message = "⛔ ОШИБКА! не смог отправить PDF-файл."
-        logger.info(error)
-        logger.info(message)
+        logger.error(error)
+        logger.error(message)
         send_order_to_tg_chat(bot, chat_id, message)
 
-    return {"msg": "SUCCESS! bot just has sent a pdf."}
+    return {"msg": "✅ SUCCESS! bot just has sent a pdf."}
     # except Exception as error:
     #     return {"msg": "ERROR! bot  has not sent a pdf."}
 

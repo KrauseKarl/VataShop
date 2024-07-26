@@ -69,7 +69,7 @@ async def preorder(
         del request.session["cart"]
         message = "Заявка отправлена!"
         status_code = 200
-        logger.info(f'Заказ [{current_key}] отправлен')
+        logger.info(f'✅Заказ [{current_key}] отправлен')
     except Exception as error:
 
         message = error

@@ -4,7 +4,7 @@ from config import LOG_FILE
 from config import LOG_FORMAT
 
 logging.basicConfig(
-    level="INFO",
+    level=logging.DEBUG,
     format=LOG_FORMAT,
     datefmt=DATE_FORMAT,
     filename=LOG_FILE,

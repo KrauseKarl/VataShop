@@ -7,7 +7,7 @@ from cart_db import record_to_carts_db
 from dependencies import get_cart, items_list, templates
 from dependencies import categories_list, get_favorite, today
 from order_db import record_to_order_db
-from task import send_order_email
+from task import send_order_tg_chat
 from logger import logger
 
 router = APIRouter(
@@ -59,7 +59,7 @@ async def preorder(
         cart['archived'] = True
 
         record_to_carts_db(cart, msg="order")
-        send_order_email.apply_async(kwargs={'data': data})
+        send_order_tg_chat.apply_async(kwargs={'data': data})
         yesterday = datetime.today() - timedelta(days=1)
 
         for prod in request.session["cart"]['item'].values():

@@ -156,7 +156,7 @@ def get_filename(**data):
 
 
 @celery.task
-def send_order_email(**data):
+def send_order_tg_chat(**data):
     # try:
     bot = bot_init(token=TOKEN_TG)
     chat_id = CHAT_ID
@@ -167,15 +167,17 @@ def send_order_email(**data):
     try:
         send_order_to_tg_chat(bot, chat_id, message)
     except Exception as error:
-        logger.error(error)
-        message = "ОШИБКА! не смог отправить данные по заказу."
+        message = "⛔ ОШИБКА! не смог отправить данные по заказу."
+        logger.info(message)
+        logger.info(error)
         send_order_to_tg_chat(bot, chat_id, message)
 
     try:
         send_pdf_to_tg_chat(bot, chat_id, filename)
     except Exception as error:
-        logger.error(error)
-        message = "ОШИБКА! не смог отправить PDF-файл."
+        message = "⛔ ОШИБКА! не смог отправить PDF-файл."
+        logger.info(error)
+        logger.info(message)
         send_order_to_tg_chat(bot, chat_id, message)
 
     return {"msg": "SUCCESS! bot just has sent a pdf."}

@@ -4920,6 +4920,7 @@
         },
         "151": {
 <<<<<<< HEAD
+<<<<<<< HEAD
             "date": "25 July 2024(18:56)",
             "name": "max",
             "email": "max@mail.com",
@@ -4931,6 +4932,8 @@
                 "id": "3210765d-e134-4aaf-8a5e-3ef26f2d8e70",
                 "item": {
 =======
+=======
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
             "date": "26 Июль 2024(13:05)",
             "name": "max",
             "email": "max@mail.com",
@@ -4951,11 +4954,15 @@
                         "img": "/assets/images/items/001/001_img_2.jpg",
                         "summary": 1000
                     },
+<<<<<<< HEAD
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
+=======
 >>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
                     "00203": {
                         "name": "Зайчик",
                         "parent_id": "002",
                         "price": "1000",
+<<<<<<< HEAD
 <<<<<<< HEAD
                         "quantity": 4,
                         "color": "00203",
@@ -4966,6 +4973,8 @@
                 },
                 "total": 4000,
 =======
+=======
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
                         "quantity": "1",
                         "color": "00203",
                         "color_name": "желтый",
@@ -4974,12 +4983,16 @@
                     }
                 },
                 "total": 2000,
+<<<<<<< HEAD
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
+=======
 >>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
                 "archived": false
             },
             "order_id": 151
         },
         "152": {
+<<<<<<< HEAD
 <<<<<<< HEAD
             "date": "25 July 2024(19:06)",
             "name": "max",
@@ -5004,6 +5017,8 @@
                 },
                 "total": 600,
 =======
+=======
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
             "date": "26 Июль 2024(13:08)",
             "name": "max",
             "email": "max@mail.com",
@@ -5026,12 +5041,16 @@
                     }
                 },
                 "total": 3000,
+<<<<<<< HEAD
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
+=======
 >>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
                 "archived": false
             },
             "order_id": 152
         },
         "153": {
+<<<<<<< HEAD
 <<<<<<< HEAD
             "date": "25 July 2024(22:55)",
             "name": "max",
@@ -5056,6 +5075,8 @@
                 },
                 "total": 2000,
 =======
+=======
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
             "date": "26 Июль 2024(13:10)",
             "name": "max",
             "email": "max@mail.com",
@@ -5078,12 +5099,16 @@
                     }
                 },
                 "total": 1000,
+<<<<<<< HEAD
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
+=======
 >>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
                 "archived": false
             },
             "order_id": 153
         },
         "154": {
+<<<<<<< HEAD
 <<<<<<< HEAD
             "date": "25 July 2024(23:07)",
             "name": "max",
@@ -5108,6 +5133,8 @@
                 },
                 "total": 1000,
 =======
+=======
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
             "date": "26 Июль 2024(13:12)",
             "name": "max",
             "email": "max@mail.com",
@@ -5130,12 +5157,16 @@
                     }
                 },
                 "total": 400,
+<<<<<<< HEAD
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
+=======
 >>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
                 "archived": false
             },
             "order_id": 154
         },
         "155": {
+<<<<<<< HEAD
 <<<<<<< HEAD
             "date": "25 July 2024(23:10)",
             "name": "max",
@@ -5170,6 +5201,8 @@
                 },
                 "total": 800,
 =======
+=======
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
             "date": "26 Июль 2024(13:13)",
             "name": "max",
             "email": "max@mail.com",
@@ -5192,12 +5225,16 @@
                     }
                 },
                 "total": 300,
+<<<<<<< HEAD
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
+=======
 >>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
                 "archived": false
             },
             "order_id": 155
         },
         "156": {
+<<<<<<< HEAD
 <<<<<<< HEAD
             "date": "25 July 2024(23:57)",
             "name": "max",
@@ -5222,6 +5259,8 @@
                 },
                 "total": 1800,
 =======
+=======
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
             "date": "26 Июль 2024(15:55)",
             "name": "max",
             "email": "max@mail.com",
@@ -5244,12 +5283,16 @@
                     }
                 },
                 "total": 2000,
+<<<<<<< HEAD
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
+=======
 >>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
                 "archived": false
             },
             "order_id": 156
         },
         "157": {
+<<<<<<< HEAD
 <<<<<<< HEAD
             "date": "26 July 2024(00:07)",
             "name": "max",
@@ -5263,6 +5306,8 @@
                 "item": {
                     "00202": {
 =======
+=======
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
             "date": "26 Июль 2024(16:08)",
             "name": "max",
             "email": "max@mail.com",
@@ -5274,15 +5319,24 @@
                 "id": "0596723d-5ecd-4c10-ac6c-23a68c555f74",
                 "item": {
                     "00204": {
+<<<<<<< HEAD
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
+=======
 >>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
                         "name": "Зайчик",
                         "parent_id": "002",
                         "price": "1000",
                         "quantity": "1",
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "color": "00202",
                         "color_name": "черный",
                         "img": "/assets/images/items/001/001_img_2.jpg",
+=======
+                        "color": "00204",
+                        "color_name": "серый",
+                        "img": "/assets/images/items/001/001_img_4.jpg",
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
 =======
                         "color": "00204",
                         "color_name": "серый",
@@ -5298,6 +5352,7 @@
         },
         "158": {
 <<<<<<< HEAD
+<<<<<<< HEAD
             "date": "26 July 2024(00:16)",
             "name": "max",
             "email": "max@mail.com",
@@ -5308,6 +5363,8 @@
                 "updated": "26 July 2024(00:12)",
                 "id": "7d31945b-2f4c-41d2-af85-6e1ef868d7f1",
 =======
+=======
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
             "date": "26 Июль 2024(16:18)",
             "name": "Alex",
             "email": "alex@mail.com",
@@ -5398,6 +5455,9 @@
                 "created": "26 Июль 2024(16:24)",
                 "updated": "26 Июль 2024(16:30)",
                 "id": "54a2bb5f-34de-4f18-81f0-60c15bca877a",
+<<<<<<< HEAD
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
+=======
 >>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
                 "item": {
                     "00202": {
@@ -5420,6 +5480,7 @@
                         "img": "/assets/images/items/001/001_img_3.jpg",
                         "summary": 1000
 <<<<<<< HEAD
+<<<<<<< HEAD
                     }
                 },
                 "total": 2000,
@@ -5438,6 +5499,8 @@
                 "updated": "26 July 2024(00:19)",
                 "id": "bae1fc0d-c0b6-430a-9250-1b0f73d8d735",
 =======
+=======
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
                     },
                     "00204": {
                         "name": "Зайчик",
@@ -5465,6 +5528,9 @@
                 "created": "26 Июль 2024(16:30)",
                 "updated": "26 Июль 2024(16:35)",
                 "id": "de5c88d9-2cfc-43ec-9e65-0a3e3fe6bb93",
+<<<<<<< HEAD
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
+=======
 >>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
                 "item": {
                     "00204": {
@@ -5482,6 +5548,7 @@
                 "archived": false
             },
 <<<<<<< HEAD
+<<<<<<< HEAD
             "order_id": 159
         },
         "160": {
@@ -5497,6 +5564,8 @@
                 "item": {
                     "00206": {
 =======
+=======
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
             "order_id": 162
         },
         "163": {
@@ -5511,15 +5580,24 @@
                 "id": "36b2804c-43bb-4026-b94a-6832593f900c",
                 "item": {
                     "00202": {
+<<<<<<< HEAD
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
+=======
 >>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
                         "name": "Зайчик",
                         "parent_id": "002",
                         "price": "1000",
                         "quantity": "1",
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "color": "00206",
                         "color_name": "зеленый",
                         "img": "/assets/images/items/001/001_img_5.jpg",
+=======
+                        "color": "00202",
+                        "color_name": "черный",
+                        "img": "/assets/images/items/001/001_img_2.jpg",
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
 =======
                         "color": "00202",
                         "color_name": "черный",
@@ -5531,6 +5609,7 @@
                 "total": 1000,
                 "archived": false
             },
+<<<<<<< HEAD
 <<<<<<< HEAD
             "order_id": 160
         },
@@ -5547,6 +5626,8 @@
                 "item": {
                     "00301": {
 =======
+=======
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
             "order_id": 163
         },
         "164": {
@@ -5581,11 +5662,15 @@
                         "summary": 300
                     },
                     "00308": {
+<<<<<<< HEAD
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
+=======
 >>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
                         "name": "Лист ГИНКО",
                         "parent_id": "003",
                         "price": "300",
                         "quantity": "1",
+<<<<<<< HEAD
 <<<<<<< HEAD
                         "color": "00301",
                         "color_name": "молочный",
@@ -5611,6 +5696,8 @@
                 "item": {
                     "00203": {
 =======
+=======
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
                         "color": "00308",
                         "color_name": "мрамор 3 цвета",
                         "img": "/assets/images/items/007/007_img_9.jpg",
@@ -5634,15 +5721,24 @@
                 "id": "f32a1e61-dfd8-4921-a72e-57a06d2b2a5f",
                 "item": {
                     "00202": {
+<<<<<<< HEAD
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
+=======
 >>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
                         "name": "Зайчик",
                         "parent_id": "002",
                         "price": "1000",
                         "quantity": "1",
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "color": "00203",
                         "color_name": "желтый",
                         "img": "/assets/images/items/001/001_img_3.jpg",
+=======
+                        "color": "00202",
+                        "color_name": "черный",
+                        "img": "/assets/images/items/001/001_img_2.jpg",
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
 =======
                         "color": "00202",
                         "color_name": "черный",
@@ -5654,6 +5750,7 @@
                 "total": 1000,
                 "archived": false
             },
+<<<<<<< HEAD
 <<<<<<< HEAD
             "order_id": 162
         },
@@ -5669,6 +5766,8 @@
                 "id": "9229d92c-caeb-4baf-ac55-63e8fddb821c",
                 "item": {
 =======
+=======
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
             "order_id": 165
         },
         "166": {
@@ -5719,11 +5818,15 @@
                         "img": "/assets/images/items/001/001_img_5.jpg",
                         "summary": 3000
                     },
+<<<<<<< HEAD
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
+=======
 >>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
                     "00203": {
                         "name": "Зайчик",
                         "parent_id": "002",
                         "price": "1000",
+<<<<<<< HEAD
 <<<<<<< HEAD
                         "quantity": "1",
                         "color": "00203",
@@ -5731,17 +5834,23 @@
                         "img": "/assets/images/items/001/001_img_3.jpg",
                         "summary": 1000
 =======
+=======
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
                         "quantity": 2,
                         "color": "00203",
                         "color_name": "желтый",
                         "img": "/assets/images/items/001/001_img_3.jpg",
                         "summary": 2000
+<<<<<<< HEAD
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
+=======
 >>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
                     },
                     "00202": {
                         "name": "Зайчик",
                         "parent_id": "002",
                         "price": "1000",
+<<<<<<< HEAD
 <<<<<<< HEAD
                         "quantity": "1",
                         "color": "00202",
@@ -5765,6 +5874,8 @@
             },
             "order_id": 163
 =======
+=======
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
                         "quantity": 4,
                         "color": "00202",
                         "color_name": "черный",
@@ -5786,6 +5897,9 @@
                 "archived": false
             },
             "order_id": 167
+<<<<<<< HEAD
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
+=======
 >>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
         }
     }

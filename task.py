@@ -15,8 +15,20 @@ from email.mime.text import MIMEText
 
 from celery import Celery
 <<<<<<< HEAD
+<<<<<<< HEAD
 from config import TOKEN_TG, CHAT_ID, SMTP_USER, SMTP_PASSWORD, CELERY_BROKER, CELERY_BACKEND
 from order_db import ORDER_DB_PATH, record_to_order_db, create_order_json,update_order_json
+=======
+from config import TOKEN_TG, CHAT_ID
+from config import SMTP_USER, SMTP_PASSWORD
+from config import DEBUG, OST, WINDOWS
+from config import ORDER_DB_PATH, ORDER_DB_FILE
+from config import CELERY_BROKER, CELERY_BACKEND
+
+from order_db import create_order_json
+from order_db import update_order_json
+from order_db import record_to_order_db
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
 
 # celery -A task:celery worker -l INFO --pool=solo
 # celery -A task:celery flDower
@@ -44,17 +56,25 @@ if OST == WINDOWS:
         category=locale.LC_ALL,
         locale="ru_RU.UTF-8"
     )
+<<<<<<< HEAD
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
+=======
 >>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
 
 ORDER_DB_FILE = os.path.join(ORDER_DB_PATH, ORDER_DB_FILE)
 
-celery = Celery(
+app_celery = Celery(
     'orders',
     broker=CELERY_BROKER,
     backend=CELERY_BACKEND
 )
+<<<<<<< HEAD
 celery.conf.broker_url = CELERY_BROKER
 celery.autodiscover_tasks()
+=======
+app_celery.conf.broker_url = CELERY_BROKER
+app_celery.autodiscover_tasks()
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
 
 
 def create_pdf(data):
@@ -126,7 +146,11 @@ def html2pdf(html_path, pdf_path):
         'margin-top': '0.35in',
         'margin-right': '0.15in',
 <<<<<<< HEAD
+<<<<<<< HEAD
         'margin-bottom': '0.25in',
+=======
+        'margin-bottom': '0.15in',
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
 =======
         'margin-bottom': '0.15in',
 >>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
@@ -139,6 +163,7 @@ def html2pdf(html_path, pdf_path):
     #config = pdfkit.configuration(wkhtmltopdf=r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe')
     #pdfkit.from_string(output_text, 'pdf_generated.pdf', configuration=config, css='style.css')
     with open(html_path) as f:
+<<<<<<< HEAD
 <<<<<<< HEAD
         pdfkit.from_file(f, pdf_path, options=options)
 
@@ -159,10 +184,15 @@ def html2pdf(html_path, pdf_path):
 #     envelope.attach(attach)
 #     return envelope
 =======
+=======
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
         if DEBUG:
             pdfkit.from_file(f, pdf_path, options=options, configuration=config)
         else:
             pdfkit.from_file(f, pdf_path, options=options)
+<<<<<<< HEAD
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
+=======
 >>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
 
 
@@ -187,7 +217,7 @@ def get_filename(**data):
     return pdf_path
 
 
-@celery.task
+@app_celery.task
 def send_order_email(**data):
     # try:
     bot = bot_init(token=TOKEN_TG)
@@ -253,4 +283,8 @@ def send_order_email(**data):
 #     with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT) as server:
 #         server.login(SMTP_USER, SMTP_PASSWORD)
 #         server.send_message(email)
+<<<<<<< HEAD
 #     return {"status": "ok"}
+=======
+#     return {"status": "ok"}
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db

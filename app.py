@@ -29,8 +29,11 @@ from dependencies import items_list
 from dependencies import templates
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #locale.setlocale(category=locale.LC_ALL, locale="ru_RU.UTF-8")
 =======
+=======
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
 if OST == WINDOWS:
     locale.setlocale(
         category=locale.LC_ALL,
@@ -44,6 +47,9 @@ logging.basicConfig(
     datefmt="%d/%b/%Y %H:%M:%S",
 )
 logger = logging.getLogger("vataShop")
+<<<<<<< HEAD
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
+=======
 >>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
 
 app = FastAPI()

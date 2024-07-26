@@ -811,6 +811,7 @@
         "created": "26 Июль 2024(19:09)",
         "updated": "26 Июль 2024(19:09)",
         "id": "50db314b-5047-4f27-bd39-309256eccfaa",
+<<<<<<< HEAD
         "item": {},
         "total": 0,
         "archived": false
@@ -1336,6 +1337,8 @@
         "created": "26 July 2024(00:38)",
         "updated": "26 July 2024(00:38)",
         "id": "df33df27-3f05-497c-98a4-d722e887dfeb",
+=======
+>>>>>>> 4bc9bce99031afd8465234f752b7911e6cd598db
         "item": {},
         "total": 0,
         "archived": false

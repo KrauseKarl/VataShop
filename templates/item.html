@@ -18,12 +18,11 @@
                         <img src="{{ product.main_image }}" alt="{{ product.title }}"/>
                     </div>
                     <div class="ProductCard-picts" style="justify-content: space-evenly; ">
-
                         {% for img in product.rest_image %}
                         <a style="border-radius:8px;"
                            class="ProductCard-pict {% if loop.first %}ProductCard-pict_ACTIVE {% endif %}"
                            href="{{ img }}">
-                            <img src="{{ img }}" alt="{{ product.title }}"/>
+                            <img src="{{ img }}" alt="{{ product.title }}" loading="lazy"/>
                         </a>
                         {% endfor %}
                     </div>
@@ -45,36 +44,18 @@
 <!-- COLOR CHOSEN BUTTONS  -->
                     <div class="ProductCard-picts color-variants" >
                         {% for key, img in product.colors.items() %}
-                            {% if loop.index <  5 %}
-                            <a style="border-radius:15px;margin-right:5px;width:15%; height:15%;" id="{{ key }}"
-                               class="color-img ProductCard-pict  {% if loop.first %}ProductCard-pict_ACTIVE color-chosen{% endif %} "
-                               href="{{ img.img }}">
-                                <img style="border-radius:15px;" src="{{ img.img }}" alt="{{ product.title }}"/>
+                            {% if loop.index < 6 %}
+                            <a class="color-img ProductCard-pict-color
+                            {% if loop.first == 1 %}color-chosen{% endif %}"
+                            id="{{ key }}">
+                                <div style="background:{{ img.color_code }}; padding:35%"
+                                 title="{{ img.color_name }}">
+                                </div>
                             </a>
                             {% endif %}
                         {% endfor %}
                     </div>
-
-                    <div class="ProductCard-picts color-variants" style="margin-top:10px;" >
-                        {% for key, img in product.colors.items() %}
-                        {% if loop.index > 4 %}
-                        <a style="border-radius:15px; margin-right:5px; width:15%; height:15%;" id="{{ key }}"
-                           class="color-img ProductCard-pict  {% if loop.first %}ProductCard-pict_ACTIVE color-chosen{% endif %} "
-                           href="{{ img.img }}">
-                            <img style="border-radius:15px;"  src="{{ img.img }}" alt="{{ product.title }}" />
-                        </a>
-                        {% endif %}
-
-                        {% endfor %}
-                    </div>
-<!-- COLOR CHOSEN BUTTONS  -->
-
-<!--                    <div class="star-rating">-->
-<!--                        <span style="width:90%">Rated-->
-<!--                              <strong class="rating">4.50-->
-<!--                              </strong>out of 5-->
-<!--                          </span>-->
-<!--                    </div>-->
+                    <small>выберите цвет</small>
 
 <!--  FORM ADD TO CART -->
                     <form id="ajax-add-cart-form" class="cart" method="post" enctype="multipart/form-data"
@@ -91,7 +72,7 @@
                                    value="1"
                                    title="Qty">
                         </div>
-                        <button type="submit" style="width:100%; height:50px;" name="add-to-cart" class="button-product ">
+                        <button type="submit" style="width:100%; height:50px;" name="add-to-cart" class="button-product">
                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>&ensp;В корзину
                         </button>
                     </form>
@@ -113,7 +94,7 @@
                         <b
                             style="margin-right:5px;
                             border-radius:20%;
-                            background-color:{{color.color_code}};
+                            background:{{color.color_code}};
                             padding:8px 15px;border: 1px solid grey;"
                             title="{{color.color_name}}">
                         </b>
@@ -151,10 +132,10 @@
                         <div class="product" >
                             <a class="product-images" href="/catalog/{{item_id}}" style="border-radius:8px;">
                                 <div class="shop-first-image">
-                                    <img alt="image" src="{{ item.main_image }}"  />
+                                    <img alt="image" src="{{ item.main_image }}"   loading="lazy"/>
                                 </div>
                                  <div class="shop-second-image">
-                                    <img alt="image" src="{{ item.rest_image.1 }}"/>
+                                    <img alt="image" src="{{ item.rest_image.1 }}"  loading="lazy"/>
                                 </div>
                             </a>
                             <div class="shop-product-details">
@@ -192,8 +173,11 @@
                         <ul class="sidebar-product-list">
                             {% for item_id, item in all_products.items() %}
                             <li>
-                                <a href="/catalog/{{ item_id }}" style="width:25%;">
-                                    <img alt="image" src="{{ item.thumbnail }}" style="border-radius:8px;"/>
+                                <a href="/catalog/{{ item_id }}" class="sidebar-product-list-li-a">
+                                    <img
+                                         alt="{{ item.title }}" src="{{ item.thumbnail }}"
+                                         class="sidebar-product-list-li-img"
+                                        loading="lazy"/>
                                     <span class="product-title">{{ item.title }}
                                     </span>
                                 </a>

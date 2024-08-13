@@ -49,20 +49,22 @@ async def add_to_cart(
         data: Dict = Depends(items_list),
         cart: Dict = Depends(get_cart)
 ):
-    try:
+    # try:
         total_sum = 0
         parent_id = '00' + str(name)
         color_id = color
         title = data.get(parent_id).get('title')
         img = data.get(parent_id).get("colors").get(color).get('img')
+        color_name = data.get(parent_id).get("colors").get(color).get('color_name')
         new_items = {
             color_id: {
                 "name": title,
                 "parent_id": parent_id,
-                "price": data.get(parent_id).get('price'),
-                "quantity": quantity,
+                "price": int(data.get(parent_id).get('price')),
+                "quantity": int(quantity),
                 "color": color_id,
-                "color_name": data.get(parent_id).get("colors").get(color).get('color_name'),
+                "color_name": color_name,
+                "color_code": data.get(parent_id).get("colors").get(color).get('color_code'),
                 "img": img,
                 "summary": int(data.get(parent_id).get('price')) * int(quantity),
             }
@@ -70,14 +72,20 @@ async def add_to_cart(
 
         if cart:
             if str(color) in list(request.session["cart"]["item"].keys()):
-                request.session["cart"]["item"][color_id]['quantity'] += 1
+                print("yes")
+                print('4*', request.session["cart"]["item"][color_id]['quantity'])
+                quantity = int(request.session["cart"]["item"][color_id]['quantity']) + 1
+                request.session["cart"]["item"][color_id]['quantity'] = str(quantity)
+                print('5*', request.session["cart"]["item"][color_id]['quantity'])
+
                 final_price = int(request.session["cart"]["item"][color_id]['price'])
-                final_quantity = request.session["cart"]["item"][color_id]['quantity']
+                final_quantity = int(request.session["cart"]["item"][color_id]['quantity'])
                 final_summary = final_quantity * final_price
                 request.session["cart"]["item"][color_id]['summary'] = final_summary
             else:
                 request.session["cart"]["item"].update(new_items)
         else:
+            print("add new item")
             request.session["cart"]["item"] = new_items
         record_to_carts_db(cart)
 
@@ -93,15 +101,16 @@ async def add_to_cart(
             "data": "OK",
             "count_items": len(cart["item"].keys()),
             "title": title,
+            "color_name": color_name,
             "img": img,
             "total": total_sum,
             "cart": request.session["cart"],
             "product": data.get(parent_id),
         }
-    except Exception as error:
-        logger.error(error)
-        response = {"data": error}
-    return response
+    # except Exception as error:
+    #     logger.error(error)
+    #     response = {"data": error}
+        return response
 
 
 @router.get("/update", response_class=JSONResponse)
@@ -115,14 +124,15 @@ async def recalculate_cart(
     removed_all = None
     img_removed_item = request.session['cart']['item'][item_id]['img']
     request.session["cart"]["total"] = 0
-    if int(qty) < 1:
+    quantity = int(qty)
+    if quantity < 1:
         extra_msg = "removed"
         removed_id = item_id
         del request.session['cart']['item'][item_id]
     else:
         price = int(request.session["cart"]["item"][item_id]['price'])
-        request.session['cart']['item'][item_id]['quantity'] = qty
-        request.session["cart"]["item"][item_id]['summary'] = qty * price
+        request.session['cart']['item'][item_id]['quantity'] = quantity
+        request.session["cart"]["item"][item_id]['summary'] =  quantity * price
         request.session["cart"]["total"] = 0
     if len(request.session["cart"]["item"]) > 0:
         for k, it in request.session["cart"]["item"].items():

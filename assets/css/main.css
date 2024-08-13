@@ -2848,6 +2848,10 @@ footer a:hover {
     width: 75px;
     float: right;
     margin-left: 4px;
+    border-radius:8px;
+    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.5) ;
+    -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.5) ;
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.5) ;
 }
 
 .product-single-image {
@@ -3935,18 +3939,28 @@ footer .social-icons {
   min-width: 210px;
   margin-top: 10px;
 }
-.ProductCard-pict {
-  border-radius:2%;
-  width: 73px;
-  height: 73px;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  padding: 4px;
-  justify-content: center;
-  border: 1px solid #e0e0e0;
+.ProductCard-pict, .ProductCard-pict-color {
+
+    width: 73px;
+    height: 73px;
+    /* background: #fff; */
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    justify-content: center;
+    border: 1px solid #e0e0e0;
+    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.5) ;
+    -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.5) ;
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.5) ;
+
 }
-.ProductCard-pict img {
+.color-img {
+    border-radius: 5%;
+    margin-bottom: 3%;
+    margin-right: 1%;
+}
+
+.ProductCard-pict img, ProductCard-pict-color img {
   max-width: 100%;
   max-height: 100%;
   border-radius:2%;
@@ -3957,8 +3971,14 @@ footer .social-icons {
 .ProductCard-pict + .ProductCard-pict {
   margin-top: 0;
 }
+.ProductCard-pict-color + .ProductCard-pict-color {
+  margin-top: 0;
+}
 @media screen and (max-width: 700px) {
   .ProductCard-pict + .ProductCard-pict {
+    margin-top: 0;
+  }
+  .ProductCard-pict-color + .ProductCard-pict-color {
     margin-top: 0;
   }
 }
@@ -3967,6 +3987,11 @@ footer .social-icons {
     margin-bottom: 10px;
     margin-right: 10px;
   }
+  .ProductCard-pict-color {
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+
 }
 .ProductCard-photo {
   width: 100%;
@@ -4227,34 +4252,27 @@ footer .social-icons {
 }
 
 /* MESSAGE TOSTER   */
-.toster__success {
+.toster {
+    text-align: center;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 2%;
     border-radius: 8px;
     color: #fff;
     font-weight:600;
-    background-color: rgb(80,200,120, 0.9);
-    -webkit-box-shadow: 0px 5px 20px 10px rgba(34, 60, 80, 0.2);
-    -moz-box-shadow: 0px 5px 20px 10px rgba(34, 60, 80, 0.2);
-    box-shadow: 0px 5px 20px 10px rgba(34, 60, 80, 0.2);
+    -webkit-box-shadow: 0px 5px 20px 10px rgba(34, 60, 80, 0.4);
+    -moz-box-shadow: 0px 5px 20px 10px rgba(34, 60, 80, 0.4);
+    box-shadow: 0px 5px 20px 10px rgba(34, 60, 80, 0.4);
+
+}
+.toster__success {
+    background-color: #198754;
 }
 .toster__error {
-    border-radius: 8px;
-    color: #fff;
-    font-weight:600;
-    background-color: rgb(235,76,66, 0.9);
-    -webkit-box-shadow: 0px 5px 20px 10px rgba(34, 60, 80, 0.2);
-    -moz-box-shadow: 0px 5px 20px 10px rgba(34, 60, 80, 0.2);
-    box-shadow: 0px 5px 20px 10px rgba(34, 60, 80, 0.2);
-
+    background-color: #dc3545;
 }
 .toster__info {
-    border-radius: 8px;
-    color: #fff;
-    font-weight:600;
-    background-color: rgb(49,140,231, 0.9);
-    -webkit-box-shadow: 0px 5px 20px 10px rgba(34, 60, 80, 0.2);
-    -moz-box-shadow: 0px 5px 20px 10px rgba(34, 60, 80, 0.2);
-    box-shadow: 0px 5px 20px 10px rgba(34, 60, 80, 0.2);
-
+    background-color: #0dcaf0;
 }
 
 .color-button {
@@ -7243,14 +7261,11 @@ footer a:hover {
 .sidebar-product-list {
     margin-top: 15px!important;
 }
-
-.sidebar-product-list img {
-    max-width: 100%;
-    height: auto;
-    width: 75px;
-    float: right;
-    margin-left: 4px;
+.sidebar-product-list-li-a {
+    width:25%;
 }
+
+
 
 .product-single-image {
     float: left;
@@ -8339,8 +8354,8 @@ footer .social-icons {
 }
 .ProductCard-pict {
   border-radius:2%;
-  width: 73px;
-  height: 73px;
+  width: 72px;
+  height: 72px;
   background: #fff;
   display: flex;
   align-items: center;
@@ -8348,7 +8363,23 @@ footer .social-icons {
   justify-content: center;
   border: 1px solid #e0e0e0;
 }
-.ProductCard-pict img {
+.ProductCard-pict-color {
+    width: 72px;
+    height: 72px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    justify-content: center;
+    border-radius: 8%;
+    margin-bottom: 2%;
+    margin-right: 2%;
+}
+
+.color-img {
+}
+
+.ProductCard-pict img, .ProductCard-pict-color img {
   max-width: 100%;
   max-height: 100%;
   border-radius:2%;
@@ -8390,7 +8421,7 @@ footer .social-icons {
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.5) ;
 }
 .color-chosen {
-    border: 5px solid #000;
+    border: 5px solid rgba(34, 60, 80, 0.5);
 }
 @media screen and (max-width: 990px) {
   .ProductCard-photo {

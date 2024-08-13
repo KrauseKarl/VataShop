@@ -85,45 +85,26 @@
     "id": "2",
     "colors": {
       "00201": {
-        "color_code": "#fdfff5",
-        "color_name": "молочный",
-        "img": "/assets/images/items/001/001_img_8.jpg"
+        "color_code": "#797970",
+        "color_name": "серый",
+        "img": "/assets/images/items/001/001_1_900_1000.png"
       },
       "00202": {
-        "color_code": "#151719",
-        "color_name": "черный",
-        "img": "/assets/images/items/001/001_img_2.jpg"
+        "color_code": "#B76B6B",
+        "color_name": "красный",
+        "img": "/assets/images/items/001/001_2_900_1000.png"
       },
       "00203": {
-        "color_code": "#F4CA16",
+        "color_code": "#C1A965",
         "color_name": "желтый",
-        "img": "/assets/images/items/001/001_img_3.jpg"
+        "img": "/assets/images/items/001/001_3_900_1000.png"
       },
       "00204": {
-        "color_code": "#686c5e",
-        "color_name": "серый",
-        "img": "/assets/images/items/001/001_img_4.jpg"
-      },
-      "00205": {
-        "color_code": "#904d30",
-        "color_name": "терракотовый",
-        "img": "/assets/images/items/001/001_img_1.jpg"
-      },
-      "00206": {
-        "color_code": "#7AC165",
-        "color_name": "зеленый",
-        "img": "/assets/images/items/001/001_img_5.jpg"
-      },
-      "00207": {
-        "color_code": "",
-        "color_name": "мрамор 2 цвета",
-        "img": "/assets/images/items/007/007_img_8.jpg"
-      },
-      "00208": {
-        "color_code": "",
-        "color_name": "мрамор 3 цвета",
-        "img": "/assets/images/items/007/007_img_9.jpg"
+        "color_code": "#4D6E5A",
+        "color_name": "зелёный",
+        "img": "/assets/images/items/001/001_4_900_1000.png"
       }
+
     },
     "slug": "zajchik",
     "url": "/catalog/002",
@@ -148,14 +129,14 @@
       "для суккулентов",
       "зайчик"
     ],
-    "main_image": "/assets/images/items/001/001_thumbnail.jpg",
+    "main_image": "/assets/images/items/001/001_1_900_1000.png",
     "rest_image": [
-      "/assets/images/items/001/001_img_1.jpg",
-      "/assets/images/items/001/001_img_6.jpg",
-      "/assets/images/items/001/001_img_7.jpg",
-      "/assets/images/items/001/001_img_5.jpg"
+      "/assets/images/items/001/001_1_900_1000.png",
+      "/assets/images/items/001/001_2_900_1000.png",
+      "/assets/images/items/001/001_3_900_1000.png",
+      "/assets/images/items/001/001_4_900_1000.png"
     ],
-    "thumbnail": "/assets/images/items/001/001_thumbnail.jpg"
+    "thumbnail": "/assets/images/items/001/001_1_300_300.png"
   },
   "003": {
     "id": "3",
@@ -457,44 +438,29 @@
     "id": "7",
     "colors": {
       "00701": {
-        "color_code": "#fdfff5",
-        "color_name": "молочный",
+        "color_code": "#929391",
+        "color_name": "серый",
         "img": "/assets/images/items/009/090_img_3.jpg"
       },
       "00702": {
-        "color_code": "#151719",
-        "color_name": "черный",
+        "color_code": "#B76B6B",
+        "color_name": "красный",
         "img": "/assets/images/items/009/090_img_2.jpg"
       },
       "00703": {
-        "color_code": "#F4CA16",
+        "color_code": "#C1A965",
         "color_name": "желтый",
         "img": "/assets/images/items/009/090_img_3.jpg"
       },
       "00704": {
-        "color_code": "#686c5e",
-        "color_name": "серый",
+        "color_code": "#4D6E5A",
+        "color_name": "зелёный",
         "img": "/assets/images/items/009/090_img_4.jpg"
       },
       "00705": {
-        "color_code": "#904d30",
-        "color_name": "терракотовый",
+        "color_code": "linear-gradient(90deg, rgba(183,107,107,1) 0%, rgba(187,187,173,1) 50%, rgba(77,110,90,1) 100%);",
+        "color_name": "микс",
         "img": "/assets/images/items/009/090_img_5.jpg"
-      },
-      "00706": {
-        "color_code": "#7AC165",
-        "color_name": "зеленый",
-        "img": "/assets/images/items/009/090_img_6.jpg"
-      },
-      "00707": {
-        "color_code": "",
-        "color_name": "мрамор 2 цвета",
-        "img": "/assets/images/items/007/007_img_8.jpg"
-      },
-      "00708": {
-        "color_code": "",
-        "color_name": "мрамор 3 цвета",
-        "img": "/assets/images/items/007/007_img_9.jpg"
       }
     },
     "slug": "ruki-davida",
@@ -519,12 +485,12 @@
       "поднос",
       "руки"
     ],
-    "main_image": "/assets/images/items/009/090_thumbnail.jpg",
+    "main_image": "/assets/images/items/009/006_1_900_1000.png",
     "rest_image": [
-      "/assets/images/items/default.jpg",
-      "/assets/images/items/default.jpg",
-      "/assets/images/items/default.jpg",
-      "/assets/images/items/default.jpg"
+      "/assets/images/items/009/006_1_900_1000.png",
+      "/assets/images/items/009/006_2_900_1000.png",
+      "/assets/images/items/009/006_3_900_1000.png",
+      "/assets/images/items/009/006_1_900_1000.png"
     ],
     "thumbnail": "/assets/images/items/009/090_thumbnail.jpg"
   },

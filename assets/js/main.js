@@ -164,7 +164,7 @@
   /* ================================= */
     function toster(msg, color, imgItem) {
     $('.toast.fade').addClass('show');
-    if(!imgItem) {
+    if(imgItem) {
         if(color == 'toster__success') {
             var imgItem = '<i class="fa fa-check fa-lg" aria-hidden="true"></i>&ensp;'
             };
@@ -172,7 +172,7 @@
             var imgItem = '<i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i>&ensp;'
             };
         if(color == 'toster__info') {
-            var imgItem = '<i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>&ensp;'
+            var imgItem = '<i class="fa fa-refresh" aria-hidden="true"></i>&ensp;'
             };
     };
     $('.toast-body').html(imgItem+"&nbsp;"+msg).fadeIn('slow');
@@ -202,6 +202,9 @@
         var name = $('input#name').val();
         var quantity = $('input#quantity').val();
         var color = $('input#color').val();
+        console.log(name)
+        console.log(quantity)
+        console.log(color)
         if (color == "" || color == null) {
             $('.color-variants').addClass("error-color-msg")
             $('#error-msg').html("<div class='error-msg '>* Выберите один из вариантов цвета</div>").fadeIn(1000);
@@ -217,18 +220,21 @@
             url: '/cart/add',
             data: {'name': name, 'quantity': quantity,'color': color},
             success: function(response) {
+
                 var count = response.count_items
                 var cartPage = $( "#cart" );
                 var product = response.product
-                console.log(response.cart)
+                var prodName = response.title
+                var prodColor =  response.color_name
+                console.log(product)
                 var totalSum = response.total + '&#8381;'
                 if(response.data == 'OK') {
-                    var toasterMessage = '<span class="text-center" style="font-size:1rem"> добавлен в корзину</span>';
+                    var toasterMessage = '<span class="text-center" style="font-size:1rem">' + prodName +' ('+ prodColor +')</span><br>'+'<span>добавлен в корзину</span>';
                     var toasterColor = "toster__success"
                     var imgAddItem = '<img src="' + response.img + '" style="border-radius:8px;" class="m-1 p-1 rounded-3 mr-2 border-2" width="50" alt="..."> '
                     var cartCount = '<i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="cart-count"></span>'
                 } else {
-                    result = response.data;
+                    result = response;
                 }
 
                 $('.icon-cart').html(cartCount).fadeIn();
@@ -310,7 +316,7 @@
                 $(".fix-bottom-total").remove().html(emptyTotal)
             } else {
                 console.log('change 2')
-                var toasterMessage = '<span class="text-center" style="font-size:1rem">количество обновлено</span>';
+                var toasterMessage = '<span>количество обновлено</span>';
                 var toasterColor = "toster__success";
 
                 var quantity = "#" + idd + "_quantity";
@@ -352,7 +358,7 @@
             $(".fix__cart__total").html(totalCart);
             $(".cart-count-fix-bottom").html(totalItems);
 
-            var toasterMessage = '<span class="text-center" style="font-size:1rem">количество обновлено</span>';
+            var toasterMessage = '<span>количество обновлено</span>';
             var toasterColor = "toster__info";
             var imgAddItem = '<img src="' + imgChanged + '" style="border-radius:8px;" class="m-1 p-1 rounded-3 mr-2 border-2" width="50" alt="..."> ';
         toster(toasterMessage, toasterColor, imgAddItem);
@@ -1373,4 +1379,29 @@ map.controls[google.maps.ControlPosition.LEFT_TOP].push(zoomControlDiv);
     };
 };
         ProductCard().init();
+
+     /* ================================= */
+  /* :::::::: 17. color-chosen ::::::::: */
+  /* ================================= */
+   var ProductCardColor = function(){
+    var $picts = $('.ProductCard-pict-color');
+   // var $photo = $('.ProductCard-photo');
+    return {
+        init: function(){
+            $picts.on('click', function(e){
+                e.preventDefault();
+                var $this = $(this);
+                var href = $this.attr('href');
+                var colorId = $this.attr('id');
+                var optionId = "#color-option_"+colorId;
+                var inputColor = $('#color')
+                inputColor.val(colorId);
+                console.log(colorId)
+                $picts.removeClass('color-chosen');
+                $this.addClass(' color-chosen');
+            });
+        }
+    };
+};
+        ProductCardColor().init();
 });

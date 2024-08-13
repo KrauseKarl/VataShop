@@ -18,7 +18,7 @@
                     <article id="item_{{ key }}" class="blog-column-one">
                         <div class="blog-minimal">
                             <div class="col-md-5">
-                                <a href="/item/{{it.parent_id}}">
+                                <a href="/catalog/{{it.parent_id}}">
                                     <div class="post-intro contact-form "
                                          style="border-radius: 8px; margin:auto; height:200px; width:200px; overflow:hidden" >
                                         <img src="{{ it.img }}"
@@ -28,7 +28,16 @@
                             </div>
                             <div class="col-md-7">
                                 <h2 class="entry-title">
-                                    <a href="/item/{{it.parent_id}}" rel="bookmark">{{ it.name}}</a>
+                                    <a href="/item/{{it.parent_id}}" rel="bookmark">
+                                        {{ it.name}}
+                                        <span style="
+                                        background-color:{{it.color_code }};
+                                        padding-right:2%;
+                                        padding-left: 5%;
+                                        margin: 2%;
+                                        border-radius: 20%;
+                                        "></span>
+                                        ({{it.color_name}})</a>
                                 </h2>
                                 <div class="post-details">
                                     <div class="post-date">
